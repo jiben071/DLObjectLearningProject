@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B656CA6C1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B656CA6B1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m */; };
 		B6BED68C1FE954670048F222 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BED68B1FE954670048F222 /* AppDelegate.m */; };
 		B6BED68F1FE954670048F222 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BED68E1FE954670048F222 /* ViewController.m */; };
 		B6BED6921FE954670048F222 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6BED6901FE954670048F222 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 		B6BED69A1FE954670048F222 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BED6991FE954670048F222 /* main.m */; };
 		B6BED6A41FE954670048F222 /* DLObjectLearningProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BED6A31FE954670048F222 /* DLObjectLearningProjectTests.m */; };
 		B6BED6AF1FE954670048F222 /* DLObjectLearningProjectUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BED6AE1FE954670048F222 /* DLObjectLearningProjectUITests.m */; };
+		B6BED6C11FE9554B0048F222 /* DLFatherObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BED6C01FE9554B0048F222 /* DLFatherObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B656CA6A1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLPrivatePropertyVisitedViewController.h; sourceTree = "<group>"; };
+		B656CA6B1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLPrivatePropertyVisitedViewController.m; sourceTree = "<group>"; };
 		B6BED6871FE954670048F222 /* DLObjectLearningProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DLObjectLearningProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6BED68A1FE954670048F222 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B6BED68B1FE954670048F222 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -51,6 +55,8 @@
 		B6BED6AA1FE954670048F222 /* DLObjectLearningProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DLObjectLearningProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6BED6AE1FE954670048F222 /* DLObjectLearningProjectUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLObjectLearningProjectUITests.m; sourceTree = "<group>"; };
 		B6BED6B01FE954670048F222 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6BED6BF1FE9554B0048F222 /* DLFatherObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLFatherObject.h; sourceTree = "<group>"; };
+		B6BED6C01FE9554B0048F222 /* DLFatherObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLFatherObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,7 @@
 		B6BED6891FE954670048F222 /* DLObjectLearningProject */ = {
 			isa = PBXGroup;
 			children = (
+				B6BED6BE1FE9551F0048F222 /* InterView */,
 				B6BED68A1FE954670048F222 /* AppDelegate.h */,
 				B6BED68B1FE954670048F222 /* AppDelegate.m */,
 				B6BED68D1FE954670048F222 /* ViewController.h */,
@@ -130,6 +137,17 @@
 				B6BED6B01FE954670048F222 /* Info.plist */,
 			);
 			path = DLObjectLearningProjectUITests;
+			sourceTree = "<group>";
+		};
+		B6BED6BE1FE9551F0048F222 /* InterView */ = {
+			isa = PBXGroup;
+			children = (
+				B6BED6BF1FE9554B0048F222 /* DLFatherObject.h */,
+				B6BED6C01FE9554B0048F222 /* DLFatherObject.m */,
+				B656CA6A1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.h */,
+				B656CA6B1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m */,
+			);
+			path = InterView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +283,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B656CA6C1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m in Sources */,
+				B6BED6C11FE9554B0048F222 /* DLFatherObject.m in Sources */,
 				B6BED68F1FE954670048F222 /* ViewController.m in Sources */,
 				B6BED69A1FE954670048F222 /* main.m in Sources */,
 				B6BED68C1FE954670048F222 /* AppDelegate.m in Sources */,
@@ -433,6 +453,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 982JFBV2HY;
 				INFOPLIST_FILE = DLObjectLearningProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.long.DLObjectLearningProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -447,6 +468,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 982JFBV2HY;
 				INFOPLIST_FILE = DLObjectLearningProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.long.DLObjectLearningProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
