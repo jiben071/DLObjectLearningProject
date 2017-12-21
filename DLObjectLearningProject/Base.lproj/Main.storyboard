@@ -61,6 +61,29 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="aHf-kg-S17">
+                                        <rect key="frame" x="0.0" y="79" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aHf-kg-S17" id="4l2-1b-W79">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RRv-nY-1gh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                    <state key="normal" title="自定义ScrollView"/>
+                                                    <connections>
+                                                        <segue destination="fdv-5I-e81" kind="show" id="by4-bo-dcB"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="RRv-nY-1gh" secondAttribute="trailing" id="8t9-cg-NmI"/>
+                                                <constraint firstItem="RRv-nY-1gh" firstAttribute="top" secondItem="4l2-1b-W79" secondAttribute="top" id="Spx-hx-xqz"/>
+                                                <constraint firstAttribute="bottom" secondItem="RRv-nY-1gh" secondAttribute="bottom" id="lYZ-HK-sZM"/>
+                                                <constraint firstItem="RRv-nY-1gh" firstAttribute="leading" secondItem="4l2-1b-W79" secondAttribute="leading" id="n9f-mY-LAw"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -74,6 +97,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zhF-sq-5wG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="15" y="1080"/>
+        </scene>
+        <!--自构造ScrollView-->
+        <scene sceneID="7XC-jG-APa">
+            <objects>
+                <viewController storyboardIdentifier="DLGestureOnImitateScrollViewViewController" title="自构造ScrollView" id="fdv-5I-e81" customClass="DLGestureOnImitateScrollViewViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7NZ-1E-Zgx"/>
+                        <viewControllerLayoutGuide type="bottom" id="eBy-oW-eSg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7zk-Zk-BQU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nI8-yu-Foj" customClass="DLImitateScrollView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="参照物" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmA-15-mjH">
+                                        <rect key="frame" x="161.5" y="291" width="52" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.7744605597033386" green="0.92311524108200549" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="xmA-15-mjH" firstAttribute="centerX" secondItem="nI8-yu-Foj" secondAttribute="centerX" id="0xP-ZB-1gj"/>
+                                    <constraint firstItem="xmA-15-mjH" firstAttribute="centerY" secondItem="nI8-yu-Foj" secondAttribute="centerY" id="82G-si-56M"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nI8-yu-Foj" firstAttribute="leading" secondItem="7zk-Zk-BQU" secondAttribute="leading" id="22d-sn-q7A"/>
+                            <constraint firstItem="eBy-oW-eSg" firstAttribute="top" secondItem="nI8-yu-Foj" secondAttribute="bottom" id="KJ3-Ed-shG"/>
+                            <constraint firstItem="nI8-yu-Foj" firstAttribute="top" secondItem="7NZ-1E-Zgx" secondAttribute="bottom" id="kRs-XF-wC1"/>
+                            <constraint firstAttribute="trailing" secondItem="nI8-yu-Foj" secondAttribute="trailing" id="uLO-TN-IEx"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nL2-37-UHf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="846" y="1856"/>
         </scene>
         <!--运行时测试-->
         <scene sceneID="9mv-9N-9xp">

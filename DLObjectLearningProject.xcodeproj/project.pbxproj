@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B60F3E9E1FEAB5AE00EB3154 /* NSObject+LogCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = B60F3E9D1FEAB5AE00EB3154 /* NSObject+LogCategory.m */; };
+		B60F3EA11FEAB81600EB3154 /* DLGCDCompareWithOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B60F3EA01FEAB81600EB3154 /* DLGCDCompareWithOperation.m */; };
 		B656CA6C1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B656CA6B1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m */; };
+		B656CA6F1FEAA826001573A0 /* DLImitateScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B656CA6E1FEAA826001573A0 /* DLImitateScrollView.m */; };
+		B656CA721FEAB065001573A0 /* DLGestureOnImitateScrollViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B656CA711FEAB065001573A0 /* DLGestureOnImitateScrollViewViewController.m */; };
 		B6BED68C1FE954670048F222 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BED68B1FE954670048F222 /* AppDelegate.m */; };
 		B6BED68F1FE954670048F222 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BED68E1FE954670048F222 /* ViewController.m */; };
 		B6BED6921FE954670048F222 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6BED6901FE954670048F222 /* Main.storyboard */; };
@@ -37,8 +41,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B60F3E9C1FEAB5AE00EB3154 /* NSObject+LogCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LogCategory.h"; sourceTree = "<group>"; };
+		B60F3E9D1FEAB5AE00EB3154 /* NSObject+LogCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LogCategory.m"; sourceTree = "<group>"; };
+		B60F3E9F1FEAB81600EB3154 /* DLGCDCompareWithOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLGCDCompareWithOperation.h; sourceTree = "<group>"; };
+		B60F3EA01FEAB81600EB3154 /* DLGCDCompareWithOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLGCDCompareWithOperation.m; sourceTree = "<group>"; };
 		B656CA6A1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLPrivatePropertyVisitedViewController.h; sourceTree = "<group>"; };
 		B656CA6B1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLPrivatePropertyVisitedViewController.m; sourceTree = "<group>"; };
+		B656CA6D1FEAA826001573A0 /* DLImitateScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLImitateScrollView.h; sourceTree = "<group>"; };
+		B656CA6E1FEAA826001573A0 /* DLImitateScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLImitateScrollView.m; sourceTree = "<group>"; };
+		B656CA701FEAB065001573A0 /* DLGestureOnImitateScrollViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLGestureOnImitateScrollViewViewController.h; sourceTree = "<group>"; };
+		B656CA711FEAB065001573A0 /* DLGestureOnImitateScrollViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLGestureOnImitateScrollViewViewController.m; sourceTree = "<group>"; };
 		B6BED6871FE954670048F222 /* DLObjectLearningProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DLObjectLearningProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6BED68A1FE954670048F222 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B6BED68B1FE954670048F222 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -146,6 +158,14 @@
 				B6BED6C01FE9554B0048F222 /* DLFatherObject.m */,
 				B656CA6A1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.h */,
 				B656CA6B1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m */,
+				B656CA6D1FEAA826001573A0 /* DLImitateScrollView.h */,
+				B656CA6E1FEAA826001573A0 /* DLImitateScrollView.m */,
+				B656CA701FEAB065001573A0 /* DLGestureOnImitateScrollViewViewController.h */,
+				B656CA711FEAB065001573A0 /* DLGestureOnImitateScrollViewViewController.m */,
+				B60F3E9C1FEAB5AE00EB3154 /* NSObject+LogCategory.h */,
+				B60F3E9D1FEAB5AE00EB3154 /* NSObject+LogCategory.m */,
+				B60F3E9F1FEAB81600EB3154 /* DLGCDCompareWithOperation.h */,
+				B60F3EA01FEAB81600EB3154 /* DLGCDCompareWithOperation.m */,
 			);
 			path = InterView;
 			sourceTree = "<group>";
@@ -284,7 +304,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B656CA6C1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m in Sources */,
+				B656CA6F1FEAA826001573A0 /* DLImitateScrollView.m in Sources */,
+				B656CA721FEAB065001573A0 /* DLGestureOnImitateScrollViewViewController.m in Sources */,
 				B6BED6C11FE9554B0048F222 /* DLFatherObject.m in Sources */,
+				B60F3E9E1FEAB5AE00EB3154 /* NSObject+LogCategory.m in Sources */,
+				B60F3EA11FEAB81600EB3154 /* DLGCDCompareWithOperation.m in Sources */,
 				B6BED68F1FE954670048F222 /* ViewController.m in Sources */,
 				B6BED69A1FE954670048F222 /* main.m in Sources */,
 				B6BED68C1FE954670048F222 /* AppDelegate.m in Sources */,
@@ -451,11 +475,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 982JFBV2HY;
+				DEVELOPMENT_TEAM = GLWCRSS83U;
 				INFOPLIST_FILE = DLObjectLearningProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.long.DLObjectLearningProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.long.DLObjectLearningProject2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -466,11 +490,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 982JFBV2HY;
+				DEVELOPMENT_TEAM = GLWCRSS83U;
 				INFOPLIST_FILE = DLObjectLearningProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.long.DLObjectLearningProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.long.DLObjectLearningProject2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
