@@ -4,7 +4,7 @@
 //
 //  Created by denglong on 21/12/2017.
 //  Copyright © 2017 long deng. All rights reserved.
-//
+//  tableview相关流畅度体验测试
 
 import UIKit
 
@@ -17,10 +17,11 @@ class DLSmoothTableViewSwiftVC: UIViewController,UITableViewDelegate, UITableVie
         self.view.addSubview(exampleTableView)
         return exampleTableView
     }()
+    
     fileprivate static let IDENTIFIER = "IDENTIFIER"
     fileprivate static let CELL_HEIGHT: CGFloat = 135.0
     
-//    override func loadView() {
+//    override func loadView() {//会导致黑屏
 //        view = UIView()
 //        exampleTableView = UITableView()
 //        exampleTableView?.delegate = self
