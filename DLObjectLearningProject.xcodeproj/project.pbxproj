@@ -14,6 +14,9 @@
 		10B0C5D21FEB8A3700C37675 /* DLMainPageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C5D11FEB8A3700C37675 /* DLMainPageTableViewController.m */; };
 		10B0C5D51FEB8C9400C37675 /* DLRunLoopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C5D41FEB8C9400C37675 /* DLRunLoopTableViewController.m */; };
 		10B0C5D81FEB90D600C37675 /* spaceship.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 10B0C5D71FEB90D600C37675 /* spaceship.jpg */; };
+		10B0C5E71FEBA92C00C37675 /* BLEManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C5DE1FEBA92C00C37675 /* BLEManage.m */; };
+		10B0C5E81FEBA92C00C37675 /* BLE.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C5E01FEBA92C00C37675 /* BLE.m */; };
+		10B0C5E91FEBA92C00C37675 /* UBTBLEListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C5E31FEBA92C00C37675 /* UBTBLEListModel.m */; };
 		B60F3E9E1FEAB5AE00EB3154 /* NSObject+LogCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = B60F3E9D1FEAB5AE00EB3154 /* NSObject+LogCategory.m */; };
 		B60F3EA11FEAB81600EB3154 /* DLGCDCompareWithOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B60F3EA01FEAB81600EB3154 /* DLGCDCompareWithOperation.m */; };
 		B656CA6C1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B656CA6B1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m */; };
@@ -61,6 +64,13 @@
 		10B0C5D31FEB8C9400C37675 /* DLRunLoopTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLRunLoopTableViewController.h; sourceTree = "<group>"; };
 		10B0C5D41FEB8C9400C37675 /* DLRunLoopTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLRunLoopTableViewController.m; sourceTree = "<group>"; };
 		10B0C5D71FEB90D600C37675 /* spaceship.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spaceship.jpg; sourceTree = "<group>"; };
+		10B0C5DB1FEBA92C00C37675 /* BLE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLE.h; sourceTree = "<group>"; };
+		10B0C5DE1FEBA92C00C37675 /* BLEManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEManage.m; sourceTree = "<group>"; };
+		10B0C5DF1FEBA92C00C37675 /* UBTBLEListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBTBLEListModel.h; sourceTree = "<group>"; };
+		10B0C5E01FEBA92C00C37675 /* BLE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLE.m; sourceTree = "<group>"; };
+		10B0C5E31FEBA92C00C37675 /* UBTBLEListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBTBLEListModel.m; sourceTree = "<group>"; };
+		10B0C5E41FEBA92C00C37675 /* BLEManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEManage.h; sourceTree = "<group>"; };
+		10B0C5EA1FEBAA6100C37675 /* DLSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSingleton.h; sourceTree = "<group>"; };
 		B60F3E9C1FEAB5AE00EB3154 /* NSObject+LogCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LogCategory.h"; sourceTree = "<group>"; };
 		B60F3E9D1FEAB5AE00EB3154 /* NSObject+LogCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LogCategory.m"; sourceTree = "<group>"; };
 		B60F3E9F1FEAB81600EB3154 /* DLGCDCompareWithOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLGCDCompareWithOperation.h; sourceTree = "<group>"; };
@@ -167,6 +177,28 @@
 			path = resource;
 			sourceTree = "<group>";
 		};
+		10B0C5D91FEBA91F00C37675 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				10B0C5EA1FEBAA6100C37675 /* DLSingleton.h */,
+				10B0C5DA1FEBA92C00C37675 /* BLE */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		10B0C5DA1FEBA92C00C37675 /* BLE */ = {
+			isa = PBXGroup;
+			children = (
+				10B0C5DB1FEBA92C00C37675 /* BLE.h */,
+				10B0C5E01FEBA92C00C37675 /* BLE.m */,
+				10B0C5E41FEBA92C00C37675 /* BLEManage.h */,
+				10B0C5DE1FEBA92C00C37675 /* BLEManage.m */,
+				10B0C5DF1FEBA92C00C37675 /* UBTBLEListModel.h */,
+				10B0C5E31FEBA92C00C37675 /* UBTBLEListModel.m */,
+			);
+			path = BLE;
+			sourceTree = "<group>";
+		};
 		B6BED67E1FE954670048F222 = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +222,7 @@
 		B6BED6891FE954670048F222 /* DLObjectLearningProject */ = {
 			isa = PBXGroup;
 			children = (
+				10B0C5D91FEBA91F00C37675 /* Tool */,
 				10B0C5CF1FEB8A2200C37675 /* MainPage */,
 				10B0C5BE1FEB5CB200C37675 /* RunLoop */,
 				B6BED6BE1FE9551F0048F222 /* InterView */,
@@ -383,9 +416,11 @@
 				B656CA6F1FEAA826001573A0 /* DLImitateScrollView.m in Sources */,
 				B656CA721FEAB065001573A0 /* DLGestureOnImitateScrollViewViewController.m in Sources */,
 				B6BED6C11FE9554B0048F222 /* DLFatherObject.m in Sources */,
+				10B0C5E81FEBA92C00C37675 /* BLE.m in Sources */,
 				10B0C5D21FEB8A3700C37675 /* DLMainPageTableViewController.m in Sources */,
 				B60F3E9E1FEAB5AE00EB3154 /* NSObject+LogCategory.m in Sources */,
 				10B0C5CE1FEB862E00C37675 /* DLSmoothTableViewSwiftVC.swift in Sources */,
+				10B0C5E71FEBA92C00C37675 /* BLEManage.m in Sources */,
 				10B0C5CC1FEB851D00C37675 /* UIViewController+HeavyTaskSimulateCategory.m in Sources */,
 				B60F3EA11FEAB81600EB3154 /* DLGCDCompareWithOperation.m in Sources */,
 				B6BED68F1FE954670048F222 /* ViewController.m in Sources */,
@@ -393,6 +428,7 @@
 				B6BED68C1FE954670048F222 /* AppDelegate.m in Sources */,
 				10B0C5C51FEB845E00C37675 /* DLSmoothTableViewViewController.m in Sources */,
 				10B0C5D51FEB8C9400C37675 /* DLRunLoopTableViewController.m in Sources */,
+				10B0C5E91FEBA92C00C37675 /* UBTBLEListModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
