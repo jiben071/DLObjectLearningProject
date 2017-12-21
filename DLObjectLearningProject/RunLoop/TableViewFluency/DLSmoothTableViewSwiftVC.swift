@@ -57,12 +57,13 @@ class DLSmoothTableViewSwiftVC: UIViewController,UITableViewDelegate, UITableVie
         cell.currentIndexPath = indexPath
         
         //类方法，添加耗时任务
-        DLSmoothTableViewSwiftVC.task_5(cell, indexPath: indexPath)
+        UIViewController.task_5(cell, indexPath: indexPath)
+        UIViewController.task_1(cell, indexPath: indexPath)
         DWURunLoopWorkDistribution.shared().addTask({ () -> Bool in
             if cell.currentIndexPath != indexPath {//如果来到不是当前行，就没有必要添加耗时任务了
                 return false
             }else{
-                DLSmoothTableViewSwiftVC.task_2(cell, indexPath: indexPath)
+                UIViewController.task_2(cell, indexPath: indexPath)
                 return true
             }
         }, withKey: indexPath)
