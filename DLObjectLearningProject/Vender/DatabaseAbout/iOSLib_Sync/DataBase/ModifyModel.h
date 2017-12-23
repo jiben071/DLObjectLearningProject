@@ -4,7 +4,7 @@
 //
 //  Created by 朱志刚 on 2017/9/12.
 //  Copyright © 2017年 UBTECH. All rights reserved.
-//
+//  需要修改的实体
 
 
 #import "BaseModel.h"

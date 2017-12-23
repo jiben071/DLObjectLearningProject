@@ -4,7 +4,7 @@
 //
 //  Created by 朱志刚 on 2017/9/12.
 //  Copyright © 2017年 UBTECH. All rights reserved.
-//
+//  机器人实体类（这里命名不准确）
 
 
 #import "BaseModel.h"

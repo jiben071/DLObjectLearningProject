@@ -17,17 +17,6 @@
 		10B0C5E71FEBA92C00C37675 /* BLEManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C5DE1FEBA92C00C37675 /* BLEManage.m */; };
 		10B0C5E81FEBA92C00C37675 /* BLE.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C5E01FEBA92C00C37675 /* BLE.m */; };
 		10B0C5E91FEBA92C00C37675 /* UBTBLEListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C5E31FEBA92C00C37675 /* UBTBLEListModel.m */; };
-		10B0C7AA1FEBB33800C37675 /* AsynTcpSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C6FB1FEBB33800C37675 /* AsynTcpSocketManager.m */; };
-		10B0C7AB1FEBB33800C37675 /* AsyncUdpSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C6FC1FEBB33800C37675 /* AsyncUdpSocketManager.m */; };
-		10B0C7AC1FEBB33800C37675 /* HeartBeat.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C6FD1FEBB33800C37675 /* HeartBeat.m */; };
-		10B0C7AD1FEBB33800C37675 /* AsynSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C6FF1FEBB33800C37675 /* AsynSocketManager.m */; };
-		10B0C7AE1FEBB33800C37675 /* SubScriber.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7011FEBB33800C37675 /* SubScriber.m */; };
-		10B0C7AF1FEBB33800C37675 /* PacketHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7041FEBB33800C37675 /* PacketHub.m */; };
-		10B0C7B01FEBB33800C37675 /* packethub_utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7051FEBB33800C37675 /* packethub_utils.m */; };
-		10B0C7B11FEBB33800C37675 /* PacketHub_IM.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7071FEBB33800C37675 /* PacketHub_IM.m */; };
-		10B0C7B21FEBB33800C37675 /* Packet.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C70B1FEBB33800C37675 /* Packet.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		10B0C7B31FEBB33800C37675 /* Params.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C70C1FEBB33800C37675 /* Params.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		10B0C7B41FEBB33800C37675 /* Contract.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C70D1FEBB33800C37675 /* Contract.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		10B0C7B51FEBB33800C37675 /* SyncEvents.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7141FEBB33800C37675 /* SyncEvents.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		10B0C7B61FEBB33800C37675 /* SyncParams.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7151FEBB33800C37675 /* SyncParams.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		10B0C7B71FEBB33800C37675 /* SyncFiles.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7161FEBB33800C37675 /* SyncFiles.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -62,9 +51,6 @@
 		10B0C7D41FEBB33800C37675 /* SyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C75C1FEBB33800C37675 /* SyncClient.m */; };
 		10B0C7D51FEBB33800C37675 /* SyncCloudClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C75F1FEBB33800C37675 /* SyncCloudClient.m */; };
 		10B0C7D61FEBB33800C37675 /* SyncRobotClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7601FEBB33800C37675 /* SyncRobotClient.m */; };
-		10B0C7D71FEBB33800C37675 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7641FEBB33800C37675 /* GCDAsyncUdpSocket.m */; };
-		10B0C7D81FEBB33800C37675 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7651FEBB33800C37675 /* GCDAsyncSocket.m */; };
-		10B0C7D91FEBB33800C37675 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 10B0C7681FEBB33800C37675 /* README.markdown */; };
 		10B0C7DA1FEBB33800C37675 /* GPBExtensionRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C76C1FEBB33800C37675 /* GPBExtensionRegistry.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		10B0C7DB1FEBB33800C37675 /* GPBRootObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C76D1FEBB33800C37675 /* GPBRootObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		10B0C7DC1FEBB33800C37675 /* GPBDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C76E1FEBB33800C37675 /* GPBDescriptor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -89,6 +75,20 @@
 		10B0C7EF1FEBB33800C37675 /* GPBArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7971FEBB33800C37675 /* GPBArray.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		10B0C7F01FEBB33800C37675 /* GPBCodedOutputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7A11FEBB33800C37675 /* GPBCodedOutputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		10B0C7F11FEBB33800C37675 /* GPBDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7A21FEBB33800C37675 /* GPBDictionary.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		10B0C7F31FEE061200C37675 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 10B0C7F21FEE061100C37675 /* README.markdown */; };
+		10B0C7F81FEE062000C37675 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7F51FEE062000C37675 /* GCDAsyncUdpSocket.m */; };
+		10B0C7F91FEE062000C37675 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7F71FEE062000C37675 /* GCDAsyncSocket.m */; };
+		10B0C8021FEE064000C37675 /* PacketHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7FB1FEE063F00C37675 /* PacketHub.m */; };
+		10B0C8031FEE064000C37675 /* PacketHub_IM.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7FC1FEE063F00C37675 /* PacketHub_IM.m */; };
+		10B0C8041FEE064000C37675 /* SubScriber.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7FE1FEE063F00C37675 /* SubScriber.m */; };
+		10B0C8051FEE064000C37675 /* packethub_utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C8011FEE064000C37675 /* packethub_utils.m */; };
+		10B0C80E1FEE064A00C37675 /* AsynSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C8071FEE064900C37675 /* AsynSocketManager.m */; };
+		10B0C80F1FEE064A00C37675 /* AsynTcpSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C80B1FEE064A00C37675 /* AsynTcpSocketManager.m */; };
+		10B0C8101FEE064A00C37675 /* AsyncUdpSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C80C1FEE064A00C37675 /* AsyncUdpSocketManager.m */; };
+		10B0C8111FEE064A00C37675 /* HeartBeat.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C80D1FEE064A00C37675 /* HeartBeat.m */; };
+		10B0C8181FEE065E00C37675 /* Params.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C8121FEE065E00C37675 /* Params.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		10B0C8191FEE065E00C37675 /* Packet.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C8141FEE065E00C37675 /* Packet.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		10B0C81A1FEE065E00C37675 /* Contract.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C8161FEE065E00C37675 /* Contract.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B60F3E9E1FEAB5AE00EB3154 /* NSObject+LogCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = B60F3E9D1FEAB5AE00EB3154 /* NSObject+LogCategory.m */; };
 		B60F3EA11FEAB81600EB3154 /* DLGCDCompareWithOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B60F3EA01FEAB81600EB3154 /* DLGCDCompareWithOperation.m */; };
 		B656CA6C1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B656CA6B1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m */; };
@@ -143,28 +143,6 @@
 		10B0C5E31FEBA92C00C37675 /* UBTBLEListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBTBLEListModel.m; sourceTree = "<group>"; };
 		10B0C5E41FEBA92C00C37675 /* BLEManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEManage.h; sourceTree = "<group>"; };
 		10B0C5EA1FEBAA6100C37675 /* DLSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSingleton.h; sourceTree = "<group>"; };
-		10B0C6F81FEBB33800C37675 /* AsyncUdpSocketManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncUdpSocketManager.h; sourceTree = "<group>"; };
-		10B0C6F91FEBB33800C37675 /* HeartBeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartBeat.h; sourceTree = "<group>"; };
-		10B0C6FA1FEBB33800C37675 /* AsynSocketManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsynSocketManager.h; sourceTree = "<group>"; };
-		10B0C6FB1FEBB33800C37675 /* AsynTcpSocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsynTcpSocketManager.m; sourceTree = "<group>"; };
-		10B0C6FC1FEBB33800C37675 /* AsyncUdpSocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncUdpSocketManager.m; sourceTree = "<group>"; };
-		10B0C6FD1FEBB33800C37675 /* HeartBeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeartBeat.m; sourceTree = "<group>"; };
-		10B0C6FE1FEBB33800C37675 /* AsynTcpSocketManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsynTcpSocketManager.h; sourceTree = "<group>"; };
-		10B0C6FF1FEBB33800C37675 /* AsynSocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsynSocketManager.m; sourceTree = "<group>"; };
-		10B0C7001FEBB33800C37675 /* PacketHub_IM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketHub_IM.h; sourceTree = "<group>"; };
-		10B0C7011FEBB33800C37675 /* SubScriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubScriber.m; sourceTree = "<group>"; };
-		10B0C7021FEBB33800C37675 /* packethub_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = packethub_utils.h; sourceTree = "<group>"; };
-		10B0C7031FEBB33800C37675 /* PacketHub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketHub.h; sourceTree = "<group>"; };
-		10B0C7041FEBB33800C37675 /* PacketHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketHub.m; sourceTree = "<group>"; };
-		10B0C7051FEBB33800C37675 /* packethub_utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = packethub_utils.m; sourceTree = "<group>"; };
-		10B0C7061FEBB33800C37675 /* SubScriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubScriber.h; sourceTree = "<group>"; };
-		10B0C7071FEBB33800C37675 /* PacketHub_IM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketHub_IM.m; sourceTree = "<group>"; };
-		10B0C70A1FEBB33800C37675 /* Contract.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contract.pbobjc.h; sourceTree = "<group>"; };
-		10B0C70B1FEBB33800C37675 /* Packet.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Packet.pbobjc.m; sourceTree = "<group>"; };
-		10B0C70C1FEBB33800C37675 /* Params.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Params.pbobjc.m; sourceTree = "<group>"; };
-		10B0C70D1FEBB33800C37675 /* Contract.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contract.pbobjc.m; sourceTree = "<group>"; };
-		10B0C70E1FEBB33800C37675 /* Params.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Params.pbobjc.h; sourceTree = "<group>"; };
-		10B0C70F1FEBB33800C37675 /* Packet.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Packet.pbobjc.h; sourceTree = "<group>"; };
 		10B0C7121FEBB33800C37675 /* Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Protocol.h; sourceTree = "<group>"; };
 		10B0C7141FEBB33800C37675 /* SyncEvents.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncEvents.pbobjc.m; sourceTree = "<group>"; };
 		10B0C7151FEBB33800C37675 /* SyncParams.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncParams.pbobjc.m; sourceTree = "<group>"; };
@@ -233,11 +211,6 @@
 		10B0C75E1FEBB33800C37675 /* SyncClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncClient.h; sourceTree = "<group>"; };
 		10B0C75F1FEBB33800C37675 /* SyncCloudClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncCloudClient.m; sourceTree = "<group>"; };
 		10B0C7601FEBB33800C37675 /* SyncRobotClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncRobotClient.m; sourceTree = "<group>"; };
-		10B0C7641FEBB33800C37675 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
-		10B0C7651FEBB33800C37675 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
-		10B0C7661FEBB33800C37675 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
-		10B0C7671FEBB33800C37675 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
-		10B0C7681FEBB33800C37675 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.markdown; sourceTree = "<group>"; };
 		10B0C76A1FEBB33800C37675 /* GPBCodedOutputStream_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBCodedOutputStream_PackagePrivate.h; sourceTree = "<group>"; };
 		10B0C76B1FEBB33800C37675 /* GPBArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBArray.h; sourceTree = "<group>"; };
 		10B0C76C1FEBB33800C37675 /* GPBExtensionRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBExtensionRegistry.m; sourceTree = "<group>"; };
@@ -300,6 +273,33 @@
 		10B0C7A71FEBB33800C37675 /* GPBWellKnownTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBWellKnownTypes.h; sourceTree = "<group>"; };
 		10B0C7A81FEBB33800C37675 /* GPBUnknownField_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBUnknownField_PackagePrivate.h; sourceTree = "<group>"; };
 		10B0C7A91FEBB33800C37675 /* GPBDictionary_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBDictionary_PackagePrivate.h; sourceTree = "<group>"; };
+		10B0C7F21FEE061100C37675 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.markdown; path = DLObjectLearningProject/Vender/CocoaAsyncSocket/README.markdown; sourceTree = SOURCE_ROOT; };
+		10B0C7F41FEE062000C37675 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncUdpSocket.h; path = DLObjectLearningProject/Vender/CocoaAsyncSocket/Source/GCD/GCDAsyncUdpSocket.h; sourceTree = SOURCE_ROOT; };
+		10B0C7F51FEE062000C37675 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncUdpSocket.m; path = DLObjectLearningProject/Vender/CocoaAsyncSocket/Source/GCD/GCDAsyncUdpSocket.m; sourceTree = SOURCE_ROOT; };
+		10B0C7F61FEE062000C37675 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = DLObjectLearningProject/Vender/CocoaAsyncSocket/Source/GCD/GCDAsyncSocket.h; sourceTree = SOURCE_ROOT; };
+		10B0C7F71FEE062000C37675 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = DLObjectLearningProject/Vender/CocoaAsyncSocket/Source/GCD/GCDAsyncSocket.m; sourceTree = SOURCE_ROOT; };
+		10B0C7FA1FEE063F00C37675 /* SubScriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubScriber.h; path = DLObjectLearningProject/Vender/Channel/iOS/Channel/SubScriber.h; sourceTree = SOURCE_ROOT; };
+		10B0C7FB1FEE063F00C37675 /* PacketHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PacketHub.m; path = DLObjectLearningProject/Vender/Channel/iOS/Channel/PacketHub.m; sourceTree = SOURCE_ROOT; };
+		10B0C7FC1FEE063F00C37675 /* PacketHub_IM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PacketHub_IM.m; path = DLObjectLearningProject/Vender/Channel/iOS/Channel/PacketHub_IM.m; sourceTree = SOURCE_ROOT; };
+		10B0C7FD1FEE063F00C37675 /* PacketHub_IM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketHub_IM.h; path = DLObjectLearningProject/Vender/Channel/iOS/Channel/PacketHub_IM.h; sourceTree = SOURCE_ROOT; };
+		10B0C7FE1FEE063F00C37675 /* SubScriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubScriber.m; path = DLObjectLearningProject/Vender/Channel/iOS/Channel/SubScriber.m; sourceTree = SOURCE_ROOT; };
+		10B0C7FF1FEE064000C37675 /* packethub_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = packethub_utils.h; path = DLObjectLearningProject/Vender/Channel/iOS/Channel/packethub_utils.h; sourceTree = SOURCE_ROOT; };
+		10B0C8001FEE064000C37675 /* PacketHub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketHub.h; path = DLObjectLearningProject/Vender/Channel/iOS/Channel/PacketHub.h; sourceTree = SOURCE_ROOT; };
+		10B0C8011FEE064000C37675 /* packethub_utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = packethub_utils.m; path = DLObjectLearningProject/Vender/Channel/iOS/Channel/packethub_utils.m; sourceTree = SOURCE_ROOT; };
+		10B0C8061FEE064900C37675 /* AsynSocketManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsynSocketManager.h; path = DLObjectLearningProject/Vender/Channel/iOS/Channel/SocketConnect/AsynSocketManager.h; sourceTree = SOURCE_ROOT; };
+		10B0C8071FEE064900C37675 /* AsynSocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsynSocketManager.m; path = DLObjectLearningProject/Vender/Channel/iOS/Channel/SocketConnect/AsynSocketManager.m; sourceTree = SOURCE_ROOT; };
+		10B0C8081FEE064900C37675 /* AsyncUdpSocketManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncUdpSocketManager.h; path = DLObjectLearningProject/Vender/Channel/iOS/Channel/SocketConnect/AsyncUdpSocketManager.h; sourceTree = SOURCE_ROOT; };
+		10B0C8091FEE064A00C37675 /* AsynTcpSocketManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsynTcpSocketManager.h; path = DLObjectLearningProject/Vender/Channel/iOS/Channel/SocketConnect/AsynTcpSocketManager.h; sourceTree = SOURCE_ROOT; };
+		10B0C80A1FEE064A00C37675 /* HeartBeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeartBeat.h; path = DLObjectLearningProject/Vender/Channel/iOS/Channel/SocketConnect/HeartBeat.h; sourceTree = SOURCE_ROOT; };
+		10B0C80B1FEE064A00C37675 /* AsynTcpSocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsynTcpSocketManager.m; path = DLObjectLearningProject/Vender/Channel/iOS/Channel/SocketConnect/AsynTcpSocketManager.m; sourceTree = SOURCE_ROOT; };
+		10B0C80C1FEE064A00C37675 /* AsyncUdpSocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncUdpSocketManager.m; path = DLObjectLearningProject/Vender/Channel/iOS/Channel/SocketConnect/AsyncUdpSocketManager.m; sourceTree = SOURCE_ROOT; };
+		10B0C80D1FEE064A00C37675 /* HeartBeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeartBeat.m; path = DLObjectLearningProject/Vender/Channel/iOS/Channel/SocketConnect/HeartBeat.m; sourceTree = SOURCE_ROOT; };
+		10B0C8121FEE065E00C37675 /* Params.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Params.pbobjc.m; path = DLObjectLearningProject/Vender/Channel/iOS/Channel/Data/protofile/Params.pbobjc.m; sourceTree = SOURCE_ROOT; };
+		10B0C8131FEE065E00C37675 /* Contract.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Contract.pbobjc.h; path = DLObjectLearningProject/Vender/Channel/iOS/Channel/Data/protofile/Contract.pbobjc.h; sourceTree = SOURCE_ROOT; };
+		10B0C8141FEE065E00C37675 /* Packet.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Packet.pbobjc.m; path = DLObjectLearningProject/Vender/Channel/iOS/Channel/Data/protofile/Packet.pbobjc.m; sourceTree = SOURCE_ROOT; };
+		10B0C8151FEE065E00C37675 /* Params.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Params.pbobjc.h; path = DLObjectLearningProject/Vender/Channel/iOS/Channel/Data/protofile/Params.pbobjc.h; sourceTree = SOURCE_ROOT; };
+		10B0C8161FEE065E00C37675 /* Contract.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Contract.pbobjc.m; path = DLObjectLearningProject/Vender/Channel/iOS/Channel/Data/protofile/Contract.pbobjc.m; sourceTree = SOURCE_ROOT; };
+		10B0C8171FEE065E00C37675 /* Packet.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Packet.pbobjc.h; path = DLObjectLearningProject/Vender/Channel/iOS/Channel/Data/protofile/Packet.pbobjc.h; sourceTree = SOURCE_ROOT; };
 		B60F3E9C1FEAB5AE00EB3154 /* NSObject+LogCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LogCategory.h"; sourceTree = "<group>"; };
 		B60F3E9D1FEAB5AE00EB3154 /* NSObject+LogCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LogCategory.m"; sourceTree = "<group>"; };
 		B60F3E9F1FEAB81600EB3154 /* DLGCDCompareWithOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLGCDCompareWithOperation.h; sourceTree = "<group>"; };
@@ -468,15 +468,15 @@
 		10B0C6F61FEBB33800C37675 /* Channel */ = {
 			isa = PBXGroup;
 			children = (
+				10B0C7FD1FEE063F00C37675 /* PacketHub_IM.h */,
+				10B0C7FC1FEE063F00C37675 /* PacketHub_IM.m */,
+				10B0C7FF1FEE064000C37675 /* packethub_utils.h */,
+				10B0C8011FEE064000C37675 /* packethub_utils.m */,
+				10B0C8001FEE064000C37675 /* PacketHub.h */,
+				10B0C7FB1FEE063F00C37675 /* PacketHub.m */,
+				10B0C7FA1FEE063F00C37675 /* SubScriber.h */,
+				10B0C7FE1FEE063F00C37675 /* SubScriber.m */,
 				10B0C6F71FEBB33800C37675 /* SocketConnect */,
-				10B0C7001FEBB33800C37675 /* PacketHub_IM.h */,
-				10B0C7011FEBB33800C37675 /* SubScriber.m */,
-				10B0C7021FEBB33800C37675 /* packethub_utils.h */,
-				10B0C7031FEBB33800C37675 /* PacketHub.h */,
-				10B0C7041FEBB33800C37675 /* PacketHub.m */,
-				10B0C7051FEBB33800C37675 /* packethub_utils.m */,
-				10B0C7061FEBB33800C37675 /* SubScriber.h */,
-				10B0C7071FEBB33800C37675 /* PacketHub_IM.m */,
 				10B0C7081FEBB33800C37675 /* Data */,
 			);
 			path = Channel;
@@ -485,14 +485,14 @@
 		10B0C6F71FEBB33800C37675 /* SocketConnect */ = {
 			isa = PBXGroup;
 			children = (
-				10B0C6F81FEBB33800C37675 /* AsyncUdpSocketManager.h */,
-				10B0C6F91FEBB33800C37675 /* HeartBeat.h */,
-				10B0C6FA1FEBB33800C37675 /* AsynSocketManager.h */,
-				10B0C6FB1FEBB33800C37675 /* AsynTcpSocketManager.m */,
-				10B0C6FC1FEBB33800C37675 /* AsyncUdpSocketManager.m */,
-				10B0C6FD1FEBB33800C37675 /* HeartBeat.m */,
-				10B0C6FE1FEBB33800C37675 /* AsynTcpSocketManager.h */,
-				10B0C6FF1FEBB33800C37675 /* AsynSocketManager.m */,
+				10B0C8081FEE064900C37675 /* AsyncUdpSocketManager.h */,
+				10B0C80C1FEE064A00C37675 /* AsyncUdpSocketManager.m */,
+				10B0C8061FEE064900C37675 /* AsynSocketManager.h */,
+				10B0C8071FEE064900C37675 /* AsynSocketManager.m */,
+				10B0C8091FEE064A00C37675 /* AsynTcpSocketManager.h */,
+				10B0C80B1FEE064A00C37675 /* AsynTcpSocketManager.m */,
+				10B0C80A1FEE064A00C37675 /* HeartBeat.h */,
+				10B0C80D1FEE064A00C37675 /* HeartBeat.m */,
 			);
 			path = SocketConnect;
 			sourceTree = "<group>";
@@ -508,12 +508,12 @@
 		10B0C7091FEBB33800C37675 /* protofile */ = {
 			isa = PBXGroup;
 			children = (
-				10B0C70A1FEBB33800C37675 /* Contract.pbobjc.h */,
-				10B0C70B1FEBB33800C37675 /* Packet.pbobjc.m */,
-				10B0C70C1FEBB33800C37675 /* Params.pbobjc.m */,
-				10B0C70D1FEBB33800C37675 /* Contract.pbobjc.m */,
-				10B0C70E1FEBB33800C37675 /* Params.pbobjc.h */,
-				10B0C70F1FEBB33800C37675 /* Packet.pbobjc.h */,
+				10B0C8131FEE065E00C37675 /* Contract.pbobjc.h */,
+				10B0C8161FEE065E00C37675 /* Contract.pbobjc.m */,
+				10B0C8171FEE065E00C37675 /* Packet.pbobjc.h */,
+				10B0C8141FEE065E00C37675 /* Packet.pbobjc.m */,
+				10B0C8151FEE065E00C37675 /* Params.pbobjc.h */,
+				10B0C8121FEE065E00C37675 /* Params.pbobjc.m */,
 			);
 			path = protofile;
 			sourceTree = "<group>";
@@ -691,7 +691,6 @@
 			isa = PBXGroup;
 			children = (
 				10B0C7621FEBB33800C37675 /* Source */,
-				10B0C7681FEBB33800C37675 /* README.markdown */,
 			);
 			path = CocoaAsyncSocket;
 			sourceTree = "<group>";
@@ -699,6 +698,7 @@
 		10B0C7621FEBB33800C37675 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				10B0C7F21FEE061100C37675 /* README.markdown */,
 				10B0C7631FEBB33800C37675 /* GCD */,
 			);
 			path = Source;
@@ -707,10 +707,10 @@
 		10B0C7631FEBB33800C37675 /* GCD */ = {
 			isa = PBXGroup;
 			children = (
-				10B0C7671FEBB33800C37675 /* GCDAsyncSocket.h */,
-				10B0C7651FEBB33800C37675 /* GCDAsyncSocket.m */,
-				10B0C7661FEBB33800C37675 /* GCDAsyncUdpSocket.h */,
-				10B0C7641FEBB33800C37675 /* GCDAsyncUdpSocket.m */,
+				10B0C7F61FEE062000C37675 /* GCDAsyncSocket.h */,
+				10B0C7F71FEE062000C37675 /* GCDAsyncSocket.m */,
+				10B0C7F41FEE062000C37675 /* GCDAsyncUdpSocket.h */,
+				10B0C7F51FEE062000C37675 /* GCDAsyncUdpSocket.m */,
 			);
 			path = GCD;
 			sourceTree = "<group>";
@@ -989,8 +989,8 @@
 				10B0C5D81FEB90D600C37675 /* spaceship.jpg in Resources */,
 				10B0C7B91FEBB33800C37675 /* README.markdown in Resources */,
 				B6BED6971FE954670048F222 /* LaunchScreen.storyboard in Resources */,
-				10B0C7D91FEBB33800C37675 /* README.markdown in Resources */,
 				B6BED6941FE954670048F222 /* Assets.xcassets in Resources */,
+				10B0C7F31FEE061200C37675 /* README.markdown in Resources */,
 				B6BED6921FE954670048F222 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1017,6 +1017,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10B0C7EC1FEBB33800C37675 /* GPBCodedInputStream.m in Sources */,
+				10B0C8191FEE065E00C37675 /* Packet.pbobjc.m in Sources */,
 				10B0C7E71FEBB33800C37675 /* Duration.pbobjc.m in Sources */,
 				10B0C7DF1FEBB33800C37675 /* GPBUtilities.m in Sources */,
 				B656CA6C1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m in Sources */,
@@ -1026,15 +1027,20 @@
 				10B0C7BD1FEBB33800C37675 /* FMDatabase.m in Sources */,
 				10B0C7CF1FEBB33800C37675 /* SimpleTask.m in Sources */,
 				B656CA721FEAB065001573A0 /* DLGestureOnImitateScrollViewViewController.m in Sources */,
-				10B0C7B41FEBB33800C37675 /* Contract.pbobjc.m in Sources */,
+				10B0C8031FEE064000C37675 /* PacketHub_IM.m in Sources */,
+				10B0C8051FEE064000C37675 /* packethub_utils.m in Sources */,
+				10B0C8181FEE065E00C37675 /* Params.pbobjc.m in Sources */,
 				10B0C7E21FEBB33800C37675 /* Type.pbobjc.m in Sources */,
+				10B0C7F81FEE062000C37675 /* GCDAsyncUdpSocket.m in Sources */,
 				10B0C7EF1FEBB33800C37675 /* GPBArray.m in Sources */,
 				10B0C7CC1FEBB33800C37675 /* BatchTask.m in Sources */,
+				10B0C8111FEE064A00C37675 /* HeartBeat.m in Sources */,
 				10B0C7B81FEBB33800C37675 /* Protocol.m in Sources */,
 				10B0C7CD1FEBB33800C37675 /* CloudPushTask.m in Sources */,
 				10B0C7EB1FEBB33800C37675 /* Struct.pbobjc.m in Sources */,
 				10B0C7DB1FEBB33800C37675 /* GPBRootObject.m in Sources */,
 				B6BED6C11FE9554B0048F222 /* DLFatherObject.m in Sources */,
+				10B0C8041FEE064000C37675 /* SubScriber.m in Sources */,
 				10B0C7DC1FEBB33800C37675 /* GPBDescriptor.m in Sources */,
 				10B0C5E81FEBA92C00C37675 /* BLE.m in Sources */,
 				10B0C7C01FEBB33800C37675 /* FileModel.m in Sources */,
@@ -1044,20 +1050,18 @@
 				10B0C7E81FEBB33800C37675 /* Wrappers.pbobjc.m in Sources */,
 				10B0C7B51FEBB33800C37675 /* SyncEvents.pbobjc.m in Sources */,
 				B60F3E9E1FEAB5AE00EB3154 /* NSObject+LogCategory.m in Sources */,
-				10B0C7B31FEBB33800C37675 /* Params.pbobjc.m in Sources */,
 				10B0C7CB1FEBB33800C37675 /* SyncManager.m in Sources */,
 				10B0C7D21FEBB33800C37675 /* Result.m in Sources */,
 				10B0C7D51FEBB33800C37675 /* SyncCloudClient.m in Sources */,
-				10B0C7D71FEBB33800C37675 /* GCDAsyncUdpSocket.m in Sources */,
-				10B0C7B21FEBB33800C37675 /* Packet.pbobjc.m in Sources */,
-				10B0C7AE1FEBB33800C37675 /* SubScriber.m in Sources */,
 				10B0C7B61FEBB33800C37675 /* SyncParams.pbobjc.m in Sources */,
 				10B0C7E41FEBB33800C37675 /* Any.pbobjc.m in Sources */,
-				10B0C7B11FEBB33800C37675 /* PacketHub_IM.m in Sources */,
+				10B0C8101FEE064A00C37675 /* AsyncUdpSocketManager.m in Sources */,
 				10B0C7DD1FEBB33800C37675 /* GPBMessage.m in Sources */,
 				10B0C7D61FEBB33800C37675 /* SyncRobotClient.m in Sources */,
 				10B0C5CE1FEB862E00C37675 /* DLSmoothTableViewSwiftVC.swift in Sources */,
+				10B0C81A1FEE065E00C37675 /* Contract.pbobjc.m in Sources */,
 				10B0C7C91FEBB33800C37675 /* SQLStringModel.m in Sources */,
+				10B0C80F1FEE064A00C37675 /* AsynTcpSocketManager.m in Sources */,
 				10B0C5E71FEBA92C00C37675 /* BLEManage.m in Sources */,
 				10B0C5CC1FEB851D00C37675 /* UIViewController+HeavyTaskSimulateCategory.m in Sources */,
 				10B0C7ED1FEBB33800C37675 /* GPBWellKnownTypes.m in Sources */,
@@ -1066,10 +1070,9 @@
 				10B0C7DA1FEBB33800C37675 /* GPBExtensionRegistry.m in Sources */,
 				10B0C7E31FEBB33800C37675 /* Timestamp.pbobjc.m in Sources */,
 				10B0C7BC1FEBB33800C37675 /* FMDatabaseAdditions.m in Sources */,
-				10B0C7D81FEBB33800C37675 /* GCDAsyncSocket.m in Sources */,
 				10B0C7E51FEBB33800C37675 /* SourceContext.pbobjc.m in Sources */,
-				10B0C7AD1FEBB33800C37675 /* AsynSocketManager.m in Sources */,
-				10B0C7AF1FEBB33800C37675 /* PacketHub.m in Sources */,
+				10B0C8021FEE064000C37675 /* PacketHub.m in Sources */,
+				10B0C80E1FEE064A00C37675 /* AsynSocketManager.m in Sources */,
 				10B0C7E01FEBB33800C37675 /* GPBExtensionInternals.m in Sources */,
 				10B0C7CA1FEBB33800C37675 /* Sync_Utils.m in Sources */,
 				10B0C7C71FEBB33800C37675 /* RobotTable.m in Sources */,
@@ -1084,20 +1087,17 @@
 				10B0C7C11FEBB33800C37675 /* DataBase.m in Sources */,
 				10B0C7D01FEBB33800C37675 /* RobotPullTask.m in Sources */,
 				10B0C7D11FEBB33800C37675 /* CloudPullTask.m in Sources */,
-				10B0C7AC1FEBB33800C37675 /* HeartBeat.m in Sources */,
+				10B0C7F91FEE062000C37675 /* GCDAsyncSocket.m in Sources */,
 				B6BED68F1FE954670048F222 /* ViewController.m in Sources */,
 				10B0C7F11FEBB33800C37675 /* GPBDictionary.m in Sources */,
 				B6BED69A1FE954670048F222 /* main.m in Sources */,
 				10B0C7C21FEBB33800C37675 /* BaseTable.m in Sources */,
 				10B0C7E61FEBB33800C37675 /* Api.pbobjc.m in Sources */,
 				B6BED68C1FE954670048F222 /* AppDelegate.m in Sources */,
-				10B0C7B01FEBB33800C37675 /* packethub_utils.m in Sources */,
 				10B0C7D31FEBB33800C37675 /* SyncModifyClient.m in Sources */,
-				10B0C7AA1FEBB33800C37675 /* AsynTcpSocketManager.m in Sources */,
 				10B0C7B71FEBB33800C37675 /* SyncFiles.pbobjc.m in Sources */,
 				10B0C7D41FEBB33800C37675 /* SyncClient.m in Sources */,
 				10B0C5C51FEB845E00C37675 /* DLSmoothTableViewViewController.m in Sources */,
-				10B0C7AB1FEBB33800C37675 /* AsyncUdpSocketManager.m in Sources */,
 				10B0C7BB1FEBB33800C37675 /* FMDatabaseQueue.m in Sources */,
 				10B0C7F01FEBB33800C37675 /* GPBCodedOutputStream.m in Sources */,
 				10B0C5D51FEB8C9400C37675 /* DLRunLoopTableViewController.m in Sources */,

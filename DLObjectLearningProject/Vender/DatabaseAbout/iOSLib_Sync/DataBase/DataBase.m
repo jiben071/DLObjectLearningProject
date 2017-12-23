@@ -4,7 +4,7 @@
 //
 //  Created by 朱志刚 on 2017/9/11.
 //  Copyright © 2017年 UBTECH. All rights reserved.
-//
+//  数据库操作
 
 
 
@@ -29,6 +29,8 @@
     return shareInstance;
 }
 
+
+//初始化数据库文件
 -(id)init {
     self = [super init];
     if(self) {
@@ -40,6 +42,8 @@
     return self;
 }
 
+
+//创建表
 -(BOOL)createTable:(NSString *)sql {
     if(!sql) {
         NSLog(@"sql is nil");
@@ -63,7 +67,7 @@
     return res;
 }
 
-
+//插入数据库
 -(BOOL)insertData:(NSString *)sql {
     if(!sql) {
         NSLog(@"sql is nil");
@@ -88,6 +92,7 @@
     
 }
 
+//获取最后一条插入数据的ID
 -(long)lastInsertRowId {
     __block long num = -1;
     
@@ -102,6 +107,7 @@
     return num;
 }
 
+//判断数据变更了几行
 -(int)rowsChanged {
     __block int num = -1;
     [_queue inDatabase:^(FMDatabase * _Nonnull db) {
@@ -116,6 +122,7 @@
 }
 
 
+//查询数据
 -(NSArray <NSDictionary *> *)queryData:(NSString *)sql {
     if(!sql) {
         NSLog(@"sql is nil");
@@ -151,6 +158,7 @@
 }
 
 
+//更新数据
 -(BOOL)updateData:(NSString *)sql {
     if(!sql) {
         NSLog(@"sql is nil");
@@ -174,6 +182,7 @@
 }
 
 
+//删除数据
 -(BOOL)deleteData:(NSString *)sql {
     if(!sql) {
         NSLog(@"sql is nil");
@@ -200,6 +209,7 @@
     return res;
 }
 
+//查询所有的数据有多少条
 -(long)queryAllCount:(NSString *)sql {
     if(!sql) {
         NSLog(@"sql is nil");

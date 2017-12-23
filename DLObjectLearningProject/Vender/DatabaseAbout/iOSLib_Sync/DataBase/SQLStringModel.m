@@ -13,6 +13,7 @@
 @implementation SQLStringModel
 
 //create table sql
+//创建表格
 +(NSString *)createTable:(NSString *)tableName columnInfo:(NSDictionary *)columnInfo {
     if(SQLStringModel_isEmptyString(tableName) || columnInfo == nil) return nil;
     NSMutableArray *columnList = [NSMutableArray array];
@@ -32,13 +33,14 @@
     return [[NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS '%@' (%@);", tableName, columns] copy];
 }
 
-
+//移除表格
 +(NSString *)dropTable:(NSString *)tableName {
     if(SQLStringModel_isEmptyString(tableName)) return nil;
     return [[NSString stringWithFormat:@"DROP TABLE IF EXISTS '%@';",tableName] copy];
 }
 
 
+//添加列
 +(NSString *)addColumn:(NSString *)columnName columnInfo:(NSString *)columnInfo tableName:(NSString *)tableName {
     if(SQLStringModel_isEmptyString(columnName) || SQLStringModel_isEmptyString(columnInfo) || SQLStringModel_isEmptyString(tableName)) {
         return  nil;
@@ -48,6 +50,7 @@
 
 
 //insert sql
+//插入数据
 +(NSString *)insertTable:(NSString *)tableName withDataList:(NSArray *)dataList {
     if(SQLStringModel_isEmptyString(tableName) || dataList == nil) return nil;
     NSMutableArray *valueItemList = [NSMutableArray array];
@@ -79,6 +82,7 @@
 
 
 //update sql
+//更新数据
 +(NSString *)updateTable:(NSString *)tableName withData:(NSDictionary *)data condition:(NSString *)condition conditionParams:(NSDictionary *)conditionParams {
     NSMutableArray *valueList = [NSMutableArray array];
     [data enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull colum, id  _Nonnull value, BOOL * _Nonnull stop) {
@@ -100,6 +104,7 @@
 
 
 //delete sql
+//删除数据
 +(NSString *)deleteTable:(NSString *)tableName withCondition:(NSString *)condition conditionParams:(NSDictionary *)conditionParams {
     if(SQLStringModel_isEmptyString(tableName)) return nil;
     
@@ -112,6 +117,7 @@
 
 
 //fetch sql
+//抓取数据
 +(NSString *)select:(NSString *)columList isDistinct:(BOOL)isDistinct {
     if (columList == nil) {
         if (isDistinct) {
@@ -128,6 +134,8 @@
     }
 }
 
+#pragma mark - 条件语句
+#pragma mark -- 表格
 +(NSString *)from:(NSString *)fromList {
     if (fromList == nil) {
         return nil;
@@ -135,6 +143,7 @@
     return [[NSString stringWithFormat:@"FROM '%@' ", fromList] copy];
 }
 
+#pragma mark -- where条件
 +(NSString *)where:(NSString *)condition params:(NSDictionary *)params {
     if (condition == nil) {
         return @"";
@@ -143,6 +152,7 @@
     return [[NSString stringWithFormat:@"WHERE %@ ",whereString] copy];
 }
 
+#pragma mark -- 排序
 +(NSString *)orderBy:(NSString *)orderBy isDESC:(BOOL)isDESC {
     if (orderBy == nil) {
         return @"";
@@ -157,6 +167,7 @@
     return sqlString.copy;
 }
 
+#pragma mark -- 数量限制
 +(NSString *)limit:(NSInteger)limit {
     if (limit == -1) {
         return nil;
@@ -164,6 +175,7 @@
     return [[NSString stringWithFormat:@"LIMIT %lu ",(unsigned long)limit] copy];
 }
 
+#pragma mark --
 +(NSString *)offset:(NSInteger)offset {
     if (offset == -1) {
         return nil;
@@ -177,6 +189,7 @@
     return [[NSString stringWithFormat:@"%@%@", str1, str2] copy];
 }
 
+#pragma mark -- 获取所有数据
 +(NSString *)countAll {
     return [[NSString stringWithFormat:@"SELECT COUNT(*) "] copy];
 }

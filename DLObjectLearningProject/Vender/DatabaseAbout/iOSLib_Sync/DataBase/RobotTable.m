@@ -14,6 +14,7 @@
     return @"robot";
 }
 
+#pragma mark -- 创建表格字段
 - (NSDictionary *)columnInfo {
     return @{@"id_q":@"integer primary key autoincrement",  //NSUInteger
              @"path":@"text unique",  //NSString

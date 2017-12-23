@@ -4,7 +4,7 @@
 //
 //  Created by 朱志刚 on 2017/9/12.
 //  Copyright © 2017年 UBTECH. All rights reserved.
-//
+//  SQL语句构造器
 
 #import <Foundation/Foundation.h>
 #import "NSString+SQL.h"

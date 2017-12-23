@@ -4,7 +4,7 @@
 //
 //  Created by 朱志刚 on 2017/9/12.
 //  Copyright © 2017年 UBTECH. All rights reserved.
-//
+//  数据记录需遵守的协议
 
 #ifndef SQLModelRecordProtocol_h
 #define SQLModelRecordProtocol_h
