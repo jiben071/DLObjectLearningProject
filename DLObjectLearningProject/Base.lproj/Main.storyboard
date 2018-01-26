@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -96,7 +98,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zhF-sq-5wG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1243" y="1134"/>
+            <point key="canvasLocation" x="-1650" y="1118"/>
         </scene>
         <!--自构造ScrollView-->
         <scene sceneID="7XC-jG-APa">
@@ -231,6 +233,29 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="QpD-pk-kat">
+                                        <rect key="frame" x="0.0" y="199.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QpD-pk-kat" id="IXI-DJ-2fB">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yKw-Wa-YdA">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                    <state key="normal" title="layout相关"/>
+                                                    <connections>
+                                                        <segue destination="vwb-RR-3K8" kind="show" id="cCr-1F-nUc"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="yKw-Wa-YdA" secondAttribute="trailing" id="Ehu-ng-8pq"/>
+                                                <constraint firstItem="yKw-Wa-YdA" firstAttribute="top" secondItem="IXI-DJ-2fB" secondAttribute="top" id="eAo-fw-myB"/>
+                                                <constraint firstItem="yKw-Wa-YdA" firstAttribute="leading" secondItem="IXI-DJ-2fB" secondAttribute="leading" id="i2v-Sy-HMD"/>
+                                                <constraint firstAttribute="bottom" secondItem="yKw-Wa-YdA" secondAttribute="bottom" id="vzk-kn-snS"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -293,7 +318,42 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MPj-5k-DoP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1242" y="2225"/>
+            <point key="canvasLocation" x="-1470" y="2301"/>
+        </scene>
+        <!--Layer Test View Controller-->
+        <scene sceneID="n2r-v1-kJW">
+            <objects>
+                <viewController storyboardIdentifier="DLLayerTestViewController" id="vwb-RR-3K8" customClass="DLLayerTestViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uWo-6j-flK"/>
+                        <viewControllerLayoutGuide type="bottom" id="IYt-wr-OFi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kzG-Hl-5Qv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T2y-Uo-Rd3">
+                                <rect key="frame" x="94" y="240" width="187.5" height="187.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="T2y-Uo-Rd3" secondAttribute="height" multiplier="1:1" id="ukn-Bq-vDb"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="T2y-Uo-Rd3" firstAttribute="centerX" secondItem="kzG-Hl-5Qv" secondAttribute="centerX" id="Ehp-jT-Fse"/>
+                            <constraint firstItem="T2y-Uo-Rd3" firstAttribute="centerY" secondItem="kzG-Hl-5Qv" secondAttribute="centerY" id="h25-SH-NoC"/>
+                            <constraint firstItem="T2y-Uo-Rd3" firstAttribute="width" secondItem="kzG-Hl-5Qv" secondAttribute="width" multiplier="0.5" id="xkp-8s-uvb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="layerView" destination="T2y-Uo-Rd3" id="7qy-Li-WNN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uEY-gD-Ehh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1471" y="3037"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wzg-TD-6Sv">

@@ -21,6 +21,8 @@
 		10634762201AC3B700C62B54 /* Packet.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 10634752201AC3B600C62B54 /* Packet.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		10634763201AC3B700C62B54 /* Params.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 10634753201AC3B600C62B54 /* Params.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		10634764201AC3B700C62B54 /* Contract.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 10634754201AC3B600C62B54 /* Contract.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		10634767201AC65200C62B54 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10634766201AC65200C62B54 /* QuartzCore.framework */; };
+		1063476B201AC69F00C62B54 /* DLLayerTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1063476A201AC69F00C62B54 /* DLLayerTestViewController.m */; };
 		10B0C5C51FEB845E00C37675 /* DLSmoothTableViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C5C41FEB845E00C37675 /* DLSmoothTableViewViewController.m */; };
 		10B0C5C91FEB84CD00C37675 /* DWURunLoopWorkDistribution.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C5C81FEB84CD00C37675 /* DWURunLoopWorkDistribution.m */; };
 		10B0C5CC1FEB851D00C37675 /* UIViewController+HeavyTaskSimulateCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C5CB1FEB851D00C37675 /* UIViewController+HeavyTaskSimulateCategory.m */; };
@@ -150,6 +152,9 @@
 		10634754201AC3B600C62B54 /* Contract.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contract.pbobjc.m; sourceTree = "<group>"; };
 		10634755201AC3B600C62B54 /* Params.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Params.pbobjc.h; sourceTree = "<group>"; };
 		10634756201AC3B600C62B54 /* Packet.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Packet.pbobjc.h; sourceTree = "<group>"; };
+		10634766201AC65200C62B54 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		10634769201AC69F00C62B54 /* DLLayerTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLLayerTestViewController.h; sourceTree = "<group>"; };
+		1063476A201AC69F00C62B54 /* DLLayerTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLLayerTestViewController.m; sourceTree = "<group>"; };
 		10B0C5C01FEB5CD000C37675 /* DLObjectLearningProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DLObjectLearningProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		10B0C5C31FEB845E00C37675 /* DLSmoothTableViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLSmoothTableViewViewController.h; sourceTree = "<group>"; };
 		10B0C5C41FEB845E00C37675 /* DLSmoothTableViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLSmoothTableViewViewController.m; sourceTree = "<group>"; };
@@ -335,6 +340,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10634767201AC65200C62B54 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +456,23 @@
 				10634756201AC3B600C62B54 /* Packet.pbobjc.h */,
 			);
 			path = protofile;
+			sourceTree = "<group>";
+		};
+		10634765201AC65100C62B54 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				10634766201AC65200C62B54 /* QuartzCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		10634768201AC67D00C62B54 /* CoreAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				10634769201AC69F00C62B54 /* DLLayerTestViewController.h */,
+				1063476A201AC69F00C62B54 /* DLLayerTestViewController.m */,
+			);
+			path = CoreAnimation;
 			sourceTree = "<group>";
 		};
 		10B0C5BE1FEB5CB200C37675 /* RunLoop */ = {
@@ -807,6 +830,7 @@
 				B6BED6A21FE954670048F222 /* DLObjectLearningProjectTests */,
 				B6BED6AD1FE954670048F222 /* DLObjectLearningProjectUITests */,
 				B6BED6881FE954670048F222 /* Products */,
+				10634765201AC65100C62B54 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -862,6 +886,7 @@
 		B6BED6BE1FE9551F0048F222 /* InterView */ = {
 			isa = PBXGroup;
 			children = (
+				10634768201AC67D00C62B54 /* CoreAnimation */,
 				B6BED6BF1FE9554B0048F222 /* DLFatherObject.h */,
 				B6BED6C01FE9554B0048F222 /* DLFatherObject.m */,
 				B656CA6A1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.h */,
@@ -1098,6 +1123,7 @@
 				10B0C7D41FEBB33800C37675 /* SyncClient.m in Sources */,
 				10B0C5C51FEB845E00C37675 /* DLSmoothTableViewViewController.m in Sources */,
 				10B0C7BB1FEBB33800C37675 /* FMDatabaseQueue.m in Sources */,
+				1063476B201AC69F00C62B54 /* DLLayerTestViewController.m in Sources */,
 				1063475F201AC3B700C62B54 /* PacketHub.m in Sources */,
 				10B0C7F01FEBB33800C37675 /* GPBCodedOutputStream.m in Sources */,
 				10B0C5D51FEB8C9400C37675 /* DLRunLoopTableViewController.m in Sources */,
