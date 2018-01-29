@@ -9,7 +9,7 @@
 #import "DLLayerTestViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface DLLayerTestViewController ()
+@interface DLLayerTestViewController ()<CALayerDelegate>
 @property (weak, nonatomic) IBOutlet UIView *layerView;
 
 @end
@@ -34,6 +34,8 @@
     self.layerView.layer.masksToBounds = YES;//裁剪边界
     
     
+    //测试图层绘图
+    [self customView];
 }
 
 - (void)addLayout{
@@ -43,10 +45,31 @@
     blueLayer.backgroundColor = [UIColor blueColor].CGColor;
     
     [self.layerView.layer addSublayer:blueLayer];
-    
-
-    
 }
+
+//使用layer进行绘图
+- (void)customView {
+    CALayer *blueLayer = [CALayer layer];
+    blueLayer.frame = CGRectMake(50.0f, 50.0f, 100.0f, 100.0f);
+    blueLayer.backgroundColor = [UIColor blueColor].CGColor;
+    
+    //set controller as layer delegate
+    blueLayer.delegate = self;
+    
+    //ensure that layer backing image uses correct scale
+    blueLayer.contentsScale = [UIScreen mainScreen].scale;//add layer to our view
+    [self.layerView.layer addSublayer:blueLayer];
+    
+    //forse layer to redraw
+    [blueLayer display];//将重汇的决定权交给了开发者
+}
+
+- (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx{
+    CGContextSetLineWidth(ctx, 10.0f);
+    CGContextSetStrokeColorWithColor(ctx, [UIColor redColor].CGColor);
+    CGContextStrokeEllipseInRect(ctx, layer.bounds);
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
