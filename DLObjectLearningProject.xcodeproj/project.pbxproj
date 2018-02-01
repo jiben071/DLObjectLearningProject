@@ -10,6 +10,8 @@
 		10271994201EF6A20071EC9A /* HSClockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1027198F201EF6A20071EC9A /* HSClockView.m */; };
 		10271995201EF6A20071EC9A /* HSTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 10271990201EF6A20071EC9A /* HSTimer.m */; };
 		10271996201EF6A20071EC9A /* bg_dail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10271992201EF6A20071EC9A /* bg_dail@2x.png */; };
+		102969C12022B64000D01259 /* Digits.png in Resources */ = {isa = PBXBuildFile; fileRef = 102969C02022B64000D01259 /* Digits.png */; };
+		102969C42022B9AA00D01259 /* DLDigitClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 102969C32022B9AA00D01259 /* DLDigitClockViewController.m */; };
 		10634757201AC3B700C62B54 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 10634736201AC3B600C62B54 /* GCDAsyncUdpSocket.m */; };
 		10634758201AC3B700C62B54 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 10634737201AC3B600C62B54 /* GCDAsyncSocket.m */; };
 		10634759201AC3B700C62B54 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 1063473A201AC3B600C62B54 /* README.markdown */; };
@@ -133,6 +135,9 @@
 		10271991201EF6A20071EC9A /* HSClockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSClockView.h; sourceTree = "<group>"; };
 		10271992201EF6A20071EC9A /* bg_dail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_dail@2x.png"; sourceTree = "<group>"; };
 		10271993201EF6A20071EC9A /* HSTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSTimer.h; sourceTree = "<group>"; };
+		102969C02022B64000D01259 /* Digits.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Digits.png; sourceTree = "<group>"; };
+		102969C22022B9AA00D01259 /* DLDigitClockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLDigitClockViewController.h; sourceTree = "<group>"; };
+		102969C32022B9AA00D01259 /* DLDigitClockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLDigitClockViewController.m; sourceTree = "<group>"; };
 		10634736201AC3B600C62B54 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
 		10634737201AC3B600C62B54 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		10634738201AC3B600C62B54 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
@@ -381,6 +386,14 @@
 			path = TimerClock;
 			sourceTree = "<group>";
 		};
+		102969BF2022B62F00D01259 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				102969C02022B64000D01259 /* Digits.png */,
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
 		10634733201AC3B600C62B54 /* CocoaAsyncSocket */ = {
 			isa = PBXGroup;
 			children = (
@@ -489,9 +502,12 @@
 		10634768201AC67D00C62B54 /* CoreAnimation */ = {
 			isa = PBXGroup;
 			children = (
+				102969BF2022B62F00D01259 /* resource */,
 				1027198E201EF6A20071EC9A /* TimerClock */,
 				10634769201AC69F00C62B54 /* DLLayerTestViewController.h */,
 				1063476A201AC69F00C62B54 /* DLLayerTestViewController.m */,
+				102969C22022B9AA00D01259 /* DLDigitClockViewController.h */,
+				102969C32022B9AA00D01259 /* DLDigitClockViewController.m */,
 			);
 			path = CoreAnimation;
 			sourceTree = "<group>";
@@ -1036,6 +1052,7 @@
 				10B0C7B91FEBB33800C37675 /* README.markdown in Resources */,
 				B6BED6971FE954670048F222 /* LaunchScreen.storyboard in Resources */,
 				10634759201AC3B700C62B54 /* README.markdown in Resources */,
+				102969C12022B64000D01259 /* Digits.png in Resources */,
 				10271996201EF6A20071EC9A /* bg_dail@2x.png in Resources */,
 				B6BED6941FE954670048F222 /* Assets.xcassets in Resources */,
 				B6BED6921FE954670048F222 /* Main.storyboard in Resources */,
@@ -1152,6 +1169,7 @@
 				10B0C7F01FEBB33800C37675 /* GPBCodedOutputStream.m in Sources */,
 				10B0C5D51FEB8C9400C37675 /* DLRunLoopTableViewController.m in Sources */,
 				10B0C5E91FEBA92C00C37675 /* UBTBLEListModel.m in Sources */,
+				102969C42022B9AA00D01259 /* DLDigitClockViewController.m in Sources */,
 				10B0C7BE1FEBB33800C37675 /* FMDatabasePool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1319,7 +1337,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GLWCRSS83U;
 				INFOPLIST_FILE = DLObjectLearningProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.long.DLObjectLearningProject2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1338,7 +1356,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GLWCRSS83U;
 				INFOPLIST_FILE = DLObjectLearningProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.long.DLObjectLearningProject2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
