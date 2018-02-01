@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -333,27 +334,59 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T2y-Uo-Rd3">
-                                <rect key="frame" x="94" y="240" width="187.5" height="187.5"/>
+                                <rect key="frame" x="131.5" y="277.5" width="112.5" height="112.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="T2y-Uo-Rd3" secondAttribute="height" multiplier="1:1" id="ukn-Bq-vDb"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o0z-xy-LSa">
+                                <rect key="frame" x="41" y="445.5" width="112.5" height="112.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="o0z-xy-LSa" secondAttribute="height" multiplier="1:1" id="VnJ-rj-OyR"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gcX-xX-l4u">
+                                <rect key="frame" x="220" y="445.5" width="113" height="113"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gcX-xX-l4u" secondAttribute="height" multiplier="1:1" id="PR8-xP-Ufm"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="snow-coverd" translatesAutoresizingMaskIntoConstraints="NO" id="Ppb-yp-mJ9">
+                                <rect key="frame" x="93.5" y="74" width="187.5" height="187.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Ppb-yp-mJ9" secondAttribute="height" multiplier="1:1" id="ESy-TH-m9w"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="gcX-xX-l4u" firstAttribute="width" secondItem="kzG-Hl-5Qv" secondAttribute="width" multiplier="0.3" id="6wJ-L8-x22"/>
+                            <constraint firstItem="gcX-xX-l4u" firstAttribute="top" secondItem="T2y-Uo-Rd3" secondAttribute="bottom" constant="55.5" id="AGp-ft-Kkq"/>
                             <constraint firstItem="T2y-Uo-Rd3" firstAttribute="centerX" secondItem="kzG-Hl-5Qv" secondAttribute="centerX" id="Ehp-jT-Fse"/>
+                            <constraint firstItem="o0z-xy-LSa" firstAttribute="width" secondItem="kzG-Hl-5Qv" secondAttribute="width" multiplier="0.3" id="HmU-g2-Bht"/>
+                            <constraint firstItem="o0z-xy-LSa" firstAttribute="leading" secondItem="kzG-Hl-5Qv" secondAttribute="leadingMargin" constant="25" id="IXl-Vl-dCQ"/>
+                            <constraint firstItem="Ppb-yp-mJ9" firstAttribute="width" secondItem="kzG-Hl-5Qv" secondAttribute="width" multiplier="0.5" id="fNI-Sc-0tI"/>
+                            <constraint firstItem="Ppb-yp-mJ9" firstAttribute="top" secondItem="uWo-6j-flK" secondAttribute="bottom" constant="10" id="h0J-G6-8aS"/>
                             <constraint firstItem="T2y-Uo-Rd3" firstAttribute="centerY" secondItem="kzG-Hl-5Qv" secondAttribute="centerY" id="h25-SH-NoC"/>
-                            <constraint firstItem="T2y-Uo-Rd3" firstAttribute="width" secondItem="kzG-Hl-5Qv" secondAttribute="width" multiplier="0.5" id="xkp-8s-uvb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gcX-xX-l4u" secondAttribute="trailing" constant="26" id="imS-Hq-tug"/>
+                            <constraint firstItem="Ppb-yp-mJ9" firstAttribute="centerX" secondItem="kzG-Hl-5Qv" secondAttribute="centerX" id="tIf-KR-blr"/>
+                            <constraint firstItem="T2y-Uo-Rd3" firstAttribute="width" secondItem="kzG-Hl-5Qv" secondAttribute="width" multiplier="0.3" id="xkp-8s-uvb"/>
+                            <constraint firstItem="o0z-xy-LSa" firstAttribute="top" secondItem="T2y-Uo-Rd3" secondAttribute="bottom" constant="55.5" id="yN5-1A-g5G"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="imageView" destination="Ppb-yp-mJ9" id="H1X-EO-GJK"/>
                         <outlet property="layerView" destination="T2y-Uo-Rd3" id="7qy-Li-WNN"/>
+                        <outlet property="layerView1" destination="o0z-xy-LSa" id="k0S-RY-22u"/>
+                        <outlet property="layerView2" destination="gcX-xX-l4u" id="snI-fx-rJa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uEY-gD-Ehh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1471" y="3037"/>
+            <point key="canvasLocation" x="-1471.2" y="3036.4317841079464"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wzg-TD-6Sv">
@@ -374,4 +407,7 @@
             <point key="canvasLocation" x="-3434" y="1836"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="snow-coverd" width="650" height="528"/>
+    </resources>
 </document>
