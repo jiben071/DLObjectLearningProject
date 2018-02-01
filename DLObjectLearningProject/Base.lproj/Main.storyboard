@@ -430,10 +430,19 @@
                                     <constraint firstAttribute="width" secondItem="Ppb-yp-mJ9" secondAttribute="height" multiplier="1:1" id="ESy-TH-m9w"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HPn-EM-Yza">
+                                <rect key="frame" x="0.0" y="566" width="375" height="101"/>
+                                <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="101" id="I5k-J4-V7K"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="HPn-EM-Yza" secondAttribute="bottom" id="4Mb-k3-z42"/>
                             <constraint firstItem="gcX-xX-l4u" firstAttribute="width" secondItem="kzG-Hl-5Qv" secondAttribute="width" multiplier="0.3" id="6wJ-L8-x22"/>
+                            <constraint firstAttribute="trailing" secondItem="HPn-EM-Yza" secondAttribute="trailing" id="9kE-MS-ZSL"/>
                             <constraint firstItem="gcX-xX-l4u" firstAttribute="top" secondItem="T2y-Uo-Rd3" secondAttribute="bottom" constant="55.5" id="AGp-ft-Kkq"/>
                             <constraint firstItem="T2y-Uo-Rd3" firstAttribute="centerX" secondItem="kzG-Hl-5Qv" secondAttribute="centerX" id="Ehp-jT-Fse"/>
                             <constraint firstItem="o0z-xy-LSa" firstAttribute="width" secondItem="kzG-Hl-5Qv" secondAttribute="width" multiplier="0.3" id="HmU-g2-Bht"/>
@@ -445,9 +454,11 @@
                             <constraint firstItem="Ppb-yp-mJ9" firstAttribute="centerX" secondItem="kzG-Hl-5Qv" secondAttribute="centerX" id="tIf-KR-blr"/>
                             <constraint firstItem="T2y-Uo-Rd3" firstAttribute="width" secondItem="kzG-Hl-5Qv" secondAttribute="width" multiplier="0.3" id="xkp-8s-uvb"/>
                             <constraint firstItem="o0z-xy-LSa" firstAttribute="top" secondItem="T2y-Uo-Rd3" secondAttribute="bottom" constant="55.5" id="yN5-1A-g5G"/>
+                            <constraint firstItem="HPn-EM-Yza" firstAttribute="leading" secondItem="kzG-Hl-5Qv" secondAttribute="leading" id="zUE-zZ-oJJ"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="containerView" destination="HPn-EM-Yza" id="NZW-ZJ-l6S"/>
                         <outlet property="imageView" destination="Ppb-yp-mJ9" id="H1X-EO-GJK"/>
                         <outlet property="layerView" destination="T2y-Uo-Rd3" id="7qy-Li-WNN"/>
                         <outlet property="layerView1" destination="o0z-xy-LSa" id="k0S-RY-22u"/>
@@ -456,7 +467,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uEY-gD-Ehh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-647" y="3030"/>
+            <point key="canvasLocation" x="-647.20000000000005" y="3028.3358320839584"/>
         </scene>
         <!--Digit Clock View Controller-->
         <scene sceneID="Nnc-Kw-fWW">
