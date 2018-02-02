@@ -12,6 +12,7 @@
 		10271996201EF6A20071EC9A /* bg_dail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10271992201EF6A20071EC9A /* bg_dail@2x.png */; };
 		102969C12022B64000D01259 /* Digits.png in Resources */ = {isa = PBXBuildFile; fileRef = 102969C02022B64000D01259 /* Digits.png */; };
 		102969C42022B9AA00D01259 /* DLDigitClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 102969C32022B9AA00D01259 /* DLDigitClockViewController.m */; };
+		102969D42024006400D01259 /* DLTransformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 102969D32024006400D01259 /* DLTransformViewController.m */; };
 		10634757201AC3B700C62B54 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 10634736201AC3B600C62B54 /* GCDAsyncUdpSocket.m */; };
 		10634758201AC3B700C62B54 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 10634737201AC3B600C62B54 /* GCDAsyncSocket.m */; };
 		10634759201AC3B700C62B54 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 1063473A201AC3B600C62B54 /* README.markdown */; };
@@ -138,6 +139,8 @@
 		102969C02022B64000D01259 /* Digits.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Digits.png; sourceTree = "<group>"; };
 		102969C22022B9AA00D01259 /* DLDigitClockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLDigitClockViewController.h; sourceTree = "<group>"; };
 		102969C32022B9AA00D01259 /* DLDigitClockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLDigitClockViewController.m; sourceTree = "<group>"; };
+		102969D22024006400D01259 /* DLTransformViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLTransformViewController.h; sourceTree = "<group>"; };
+		102969D32024006400D01259 /* DLTransformViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLTransformViewController.m; sourceTree = "<group>"; };
 		10634736201AC3B600C62B54 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
 		10634737201AC3B600C62B54 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		10634738201AC3B600C62B54 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
@@ -508,6 +511,8 @@
 				1063476A201AC69F00C62B54 /* DLLayerTestViewController.m */,
 				102969C22022B9AA00D01259 /* DLDigitClockViewController.h */,
 				102969C32022B9AA00D01259 /* DLDigitClockViewController.m */,
+				102969D22024006400D01259 /* DLTransformViewController.h */,
+				102969D32024006400D01259 /* DLTransformViewController.m */,
 			);
 			path = CoreAnimation;
 			sourceTree = "<group>";
@@ -1165,6 +1170,7 @@
 				10B0C5C51FEB845E00C37675 /* DLSmoothTableViewViewController.m in Sources */,
 				10B0C7BB1FEBB33800C37675 /* FMDatabaseQueue.m in Sources */,
 				1063476B201AC69F00C62B54 /* DLLayerTestViewController.m in Sources */,
+				102969D42024006400D01259 /* DLTransformViewController.m in Sources */,
 				1063475F201AC3B700C62B54 /* PacketHub.m in Sources */,
 				10B0C7F01FEBB33800C37675 /* GPBCodedOutputStream.m in Sources */,
 				10B0C5D51FEB8C9400C37675 /* DLRunLoopTableViewController.m in Sources */,
