@@ -30,6 +30,9 @@
 		10634764201AC3B700C62B54 /* Contract.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 10634754201AC3B600C62B54 /* Contract.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		10634767201AC65200C62B54 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10634766201AC65200C62B54 /* QuartzCore.framework */; };
 		1063476B201AC69F00C62B54 /* DLLayerTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1063476A201AC69F00C62B54 /* DLLayerTestViewController.m */; };
+		108F95DA202FE10B0044FDDC /* DLSpecialLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 108F95D9202FE10B0044FDDC /* DLSpecialLayerViewController.m */; };
+		108F95DC202FF1A00044FDDC /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108F95DB202FF1A00044FDDC /* CoreText.framework */; };
+		108F95DF2030109B0044FDDC /* DLLayerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 108F95DE2030109B0044FDDC /* DLLayerLabel.m */; };
 		10B0C5C51FEB845E00C37675 /* DLSmoothTableViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C5C41FEB845E00C37675 /* DLSmoothTableViewViewController.m */; };
 		10B0C5C91FEB84CD00C37675 /* DWURunLoopWorkDistribution.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C5C81FEB84CD00C37675 /* DWURunLoopWorkDistribution.m */; };
 		10B0C5CC1FEB851D00C37675 /* UIViewController+HeavyTaskSimulateCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C5CB1FEB851D00C37675 /* UIViewController+HeavyTaskSimulateCategory.m */; };
@@ -174,6 +177,11 @@
 		10634766201AC65200C62B54 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		10634769201AC69F00C62B54 /* DLLayerTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLLayerTestViewController.h; sourceTree = "<group>"; };
 		1063476A201AC69F00C62B54 /* DLLayerTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLLayerTestViewController.m; sourceTree = "<group>"; };
+		108F95D8202FE10B0044FDDC /* DLSpecialLayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLSpecialLayerViewController.h; sourceTree = "<group>"; };
+		108F95D9202FE10B0044FDDC /* DLSpecialLayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLSpecialLayerViewController.m; sourceTree = "<group>"; };
+		108F95DB202FF1A00044FDDC /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		108F95DD2030109B0044FDDC /* DLLayerLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLLayerLabel.h; sourceTree = "<group>"; };
+		108F95DE2030109B0044FDDC /* DLLayerLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLLayerLabel.m; sourceTree = "<group>"; };
 		10B0C5C01FEB5CD000C37675 /* DLObjectLearningProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DLObjectLearningProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		10B0C5C31FEB845E00C37675 /* DLSmoothTableViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLSmoothTableViewViewController.h; sourceTree = "<group>"; };
 		10B0C5C41FEB845E00C37675 /* DLSmoothTableViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLSmoothTableViewViewController.m; sourceTree = "<group>"; };
@@ -359,6 +367,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				108F95DC202FF1A00044FDDC /* CoreText.framework in Frameworks */,
 				10634767201AC65200C62B54 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -500,6 +509,7 @@
 		10634765201AC65100C62B54 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				108F95DB202FF1A00044FDDC /* CoreText.framework */,
 				10634766201AC65200C62B54 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
@@ -518,6 +528,10 @@
 				102969D32024006400D01259 /* DLTransformViewController.m */,
 				102969DC2025597A00D01259 /* SLSolidObjectBuildViewController.h */,
 				102969DD2025597A00D01259 /* SLSolidObjectBuildViewController.m */,
+				108F95D8202FE10B0044FDDC /* DLSpecialLayerViewController.h */,
+				108F95D9202FE10B0044FDDC /* DLSpecialLayerViewController.m */,
+				108F95DD2030109B0044FDDC /* DLLayerLabel.h */,
+				108F95DE2030109B0044FDDC /* DLLayerLabel.m */,
 			);
 			path = CoreAnimation;
 			sourceTree = "<group>";
@@ -1128,6 +1142,7 @@
 				10634757201AC3B700C62B54 /* GCDAsyncUdpSocket.m in Sources */,
 				10B0C7E41FEBB33800C37675 /* Any.pbobjc.m in Sources */,
 				10B0C7DD1FEBB33800C37675 /* GPBMessage.m in Sources */,
+				108F95DF2030109B0044FDDC /* DLLayerLabel.m in Sources */,
 				10B0C7D61FEBB33800C37675 /* SyncRobotClient.m in Sources */,
 				10634762201AC3B700C62B54 /* Packet.pbobjc.m in Sources */,
 				10B0C5CE1FEB862E00C37675 /* DLSmoothTableViewSwiftVC.swift in Sources */,
@@ -1160,6 +1175,7 @@
 				10B0C7EA1FEBB33800C37675 /* FieldMask.pbobjc.m in Sources */,
 				10B0C7C11FEBB33800C37675 /* DataBase.m in Sources */,
 				1063475D201AC3B700C62B54 /* AsynSocketManager.m in Sources */,
+				108F95DA202FE10B0044FDDC /* DLSpecialLayerViewController.m in Sources */,
 				10B0C7D01FEBB33800C37675 /* RobotPullTask.m in Sources */,
 				10B0C7D11FEBB33800C37675 /* CloudPullTask.m in Sources */,
 				B6BED68F1FE954670048F222 /* ViewController.m in Sources */,
