@@ -275,6 +275,14 @@
     
 }
 
+//渐变图层 CAGradientLayer  用来生成两种或更多颜色平滑渐变的
+/*
+ 用Core Graphics复制一个CAGradientLayer并将内容绘制到一个普通图层的寄宿图也是有可能的，但是CAGradientLayer的真正好处在于绘制使用了硬件加速。
+ */
+- (void)testGradientLayer{
+    
+}
+
 
 
 @end

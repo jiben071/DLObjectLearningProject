@@ -14,6 +14,8 @@
 		102969C42022B9AA00D01259 /* DLDigitClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 102969C32022B9AA00D01259 /* DLDigitClockViewController.m */; };
 		102969D42024006400D01259 /* DLTransformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 102969D32024006400D01259 /* DLTransformViewController.m */; };
 		102969DE2025597A00D01259 /* SLSolidObjectBuildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 102969DD2025597A00D01259 /* SLSolidObjectBuildViewController.m */; };
+		105E317B204401B40006D3AD /* DLRacTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E317A204401B40006D3AD /* DLRacTestViewController.m */; };
+		105E317E2044034C0006D3AD /* RWDummySignInService.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E317C2044034C0006D3AD /* RWDummySignInService.m */; };
 		10634757201AC3B700C62B54 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 10634736201AC3B600C62B54 /* GCDAsyncUdpSocket.m */; };
 		10634758201AC3B700C62B54 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 10634737201AC3B600C62B54 /* GCDAsyncSocket.m */; };
 		10634759201AC3B700C62B54 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 1063473A201AC3B600C62B54 /* README.markdown */; };
@@ -101,6 +103,9 @@
 		10B0C7EF1FEBB33800C37675 /* GPBArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7971FEBB33800C37675 /* GPBArray.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		10B0C7F01FEBB33800C37675 /* GPBCodedOutputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7A11FEBB33800C37675 /* GPBCodedOutputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		10B0C7F11FEBB33800C37675 /* GPBDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7A21FEBB33800C37675 /* GPBDictionary.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		244FCDB325BD12A118D22551 /* Pods_DLObjectLearningProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A95589D0F190AC88D8CE65D /* Pods_DLObjectLearningProjectUITests.framework */; };
+		3EE5C7AC1D590ACA5E38B9C0 /* Pods_DLObjectLearningProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 861742B96D511CC559F01DC1 /* Pods_DLObjectLearningProjectTests.framework */; };
+		4F66821E593BE290427D1E64 /* Pods_DLObjectLearningProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C3091F4F536E5DE79CCD22 /* Pods_DLObjectLearningProject.framework */; };
 		B60F3E9E1FEAB5AE00EB3154 /* NSObject+LogCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = B60F3E9D1FEAB5AE00EB3154 /* NSObject+LogCategory.m */; };
 		B60F3EA11FEAB81600EB3154 /* DLGCDCompareWithOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B60F3EA01FEAB81600EB3154 /* DLGCDCompareWithOperation.m */; };
 		B656CA6C1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B656CA6B1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m */; };
@@ -147,6 +152,10 @@
 		102969D32024006400D01259 /* DLTransformViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLTransformViewController.m; sourceTree = "<group>"; };
 		102969DC2025597A00D01259 /* SLSolidObjectBuildViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLSolidObjectBuildViewController.h; sourceTree = "<group>"; };
 		102969DD2025597A00D01259 /* SLSolidObjectBuildViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLSolidObjectBuildViewController.m; sourceTree = "<group>"; };
+		105E3179204401B40006D3AD /* DLRacTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLRacTestViewController.h; sourceTree = "<group>"; };
+		105E317A204401B40006D3AD /* DLRacTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLRacTestViewController.m; sourceTree = "<group>"; };
+		105E317C2044034C0006D3AD /* RWDummySignInService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWDummySignInService.m; sourceTree = "<group>"; };
+		105E317D2044034C0006D3AD /* RWDummySignInService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWDummySignInService.h; sourceTree = "<group>"; };
 		10634736201AC3B600C62B54 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
 		10634737201AC3B600C62B54 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		10634738201AC3B600C62B54 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
@@ -332,6 +341,13 @@
 		10B0C7A71FEBB33800C37675 /* GPBWellKnownTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBWellKnownTypes.h; sourceTree = "<group>"; };
 		10B0C7A81FEBB33800C37675 /* GPBUnknownField_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBUnknownField_PackagePrivate.h; sourceTree = "<group>"; };
 		10B0C7A91FEBB33800C37675 /* GPBDictionary_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBDictionary_PackagePrivate.h; sourceTree = "<group>"; };
+		2A05F7BED7022439AC0141E4 /* Pods-DLObjectLearningProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLObjectLearningProjectUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DLObjectLearningProjectUITests/Pods-DLObjectLearningProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		33DE728B08349936399F547D /* Pods-DLObjectLearningProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLObjectLearningProjectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DLObjectLearningProjectTests/Pods-DLObjectLearningProjectTests.release.xcconfig"; sourceTree = "<group>"; };
+		3A95589D0F190AC88D8CE65D /* Pods_DLObjectLearningProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DLObjectLearningProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		415273351540B521825C1099 /* Pods-DLObjectLearningProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLObjectLearningProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-DLObjectLearningProject/Pods-DLObjectLearningProject.release.xcconfig"; sourceTree = "<group>"; };
+		622B04FD16F30D28555ECF15 /* Pods-DLObjectLearningProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLObjectLearningProjectUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DLObjectLearningProjectUITests/Pods-DLObjectLearningProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
+		861742B96D511CC559F01DC1 /* Pods_DLObjectLearningProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DLObjectLearningProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3A2E79B711DCC2CAB36FA1C /* Pods-DLObjectLearningProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLObjectLearningProjectTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DLObjectLearningProjectTests/Pods-DLObjectLearningProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B60F3E9C1FEAB5AE00EB3154 /* NSObject+LogCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LogCategory.h"; sourceTree = "<group>"; };
 		B60F3E9D1FEAB5AE00EB3154 /* NSObject+LogCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LogCategory.m"; sourceTree = "<group>"; };
 		B60F3E9F1FEAB81600EB3154 /* DLGCDCompareWithOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLGCDCompareWithOperation.h; sourceTree = "<group>"; };
@@ -360,6 +376,8 @@
 		B6BED6B01FE954670048F222 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6BED6BF1FE9554B0048F222 /* DLFatherObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLFatherObject.h; sourceTree = "<group>"; };
 		B6BED6C01FE9554B0048F222 /* DLFatherObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLFatherObject.m; sourceTree = "<group>"; };
+		E4C943ED76E847CE4C86CBB3 /* Pods-DLObjectLearningProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLObjectLearningProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DLObjectLearningProject/Pods-DLObjectLearningProject.debug.xcconfig"; sourceTree = "<group>"; };
+		F1C3091F4F536E5DE79CCD22 /* Pods_DLObjectLearningProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DLObjectLearningProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -369,6 +387,7 @@
 			files = (
 				108F95DC202FF1A00044FDDC /* CoreText.framework in Frameworks */,
 				10634767201AC65200C62B54 /* QuartzCore.framework in Frameworks */,
+				4F66821E593BE290427D1E64 /* Pods_DLObjectLearningProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +395,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EE5C7AC1D590ACA5E38B9C0 /* Pods_DLObjectLearningProjectTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +403,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				244FCDB325BD12A118D22551 /* Pods_DLObjectLearningProjectUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +428,17 @@
 				102969C02022B64000D01259 /* Digits.png */,
 			);
 			path = resource;
+			sourceTree = "<group>";
+		};
+		105E31782044019A0006D3AD /* RAC */ = {
+			isa = PBXGroup;
+			children = (
+				105E317D2044034C0006D3AD /* RWDummySignInService.h */,
+				105E317C2044034C0006D3AD /* RWDummySignInService.m */,
+				105E3179204401B40006D3AD /* DLRacTestViewController.h */,
+				105E317A204401B40006D3AD /* DLRacTestViewController.m */,
+			);
+			path = RAC;
 			sourceTree = "<group>";
 		};
 		10634733201AC3B600C62B54 /* CocoaAsyncSocket */ = {
@@ -511,6 +543,9 @@
 			children = (
 				108F95DB202FF1A00044FDDC /* CoreText.framework */,
 				10634766201AC65200C62B54 /* QuartzCore.framework */,
+				F1C3091F4F536E5DE79CCD22 /* Pods_DLObjectLearningProject.framework */,
+				861742B96D511CC559F01DC1 /* Pods_DLObjectLearningProjectTests.framework */,
+				3A95589D0F190AC88D8CE65D /* Pods_DLObjectLearningProjectUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -884,6 +919,19 @@
 			path = protobuf;
 			sourceTree = "<group>";
 		};
+		8386AF8EE48A731E6831D6CE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E4C943ED76E847CE4C86CBB3 /* Pods-DLObjectLearningProject.debug.xcconfig */,
+				415273351540B521825C1099 /* Pods-DLObjectLearningProject.release.xcconfig */,
+				B3A2E79B711DCC2CAB36FA1C /* Pods-DLObjectLearningProjectTests.debug.xcconfig */,
+				33DE728B08349936399F547D /* Pods-DLObjectLearningProjectTests.release.xcconfig */,
+				2A05F7BED7022439AC0141E4 /* Pods-DLObjectLearningProjectUITests.debug.xcconfig */,
+				622B04FD16F30D28555ECF15 /* Pods-DLObjectLearningProjectUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B6BED67E1FE954670048F222 = {
 			isa = PBXGroup;
 			children = (
@@ -892,6 +940,7 @@
 				B6BED6AD1FE954670048F222 /* DLObjectLearningProjectUITests */,
 				B6BED6881FE954670048F222 /* Products */,
 				10634765201AC65100C62B54 /* Frameworks */,
+				8386AF8EE48A731E6831D6CE /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -947,6 +996,7 @@
 		B6BED6BE1FE9551F0048F222 /* InterView */ = {
 			isa = PBXGroup;
 			children = (
+				105E31782044019A0006D3AD /* RAC */,
 				10634768201AC67D00C62B54 /* CoreAnimation */,
 				B6BED6BF1FE9554B0048F222 /* DLFatherObject.h */,
 				B6BED6C01FE9554B0048F222 /* DLFatherObject.m */,
@@ -971,9 +1021,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6BED6B31FE954670048F222 /* Build configuration list for PBXNativeTarget "DLObjectLearningProject" */;
 			buildPhases = (
+				4F46B2F814CDCDFFACE91CA9 /* [CP] Check Pods Manifest.lock */,
 				B6BED6831FE954670048F222 /* Sources */,
 				B6BED6841FE954670048F222 /* Frameworks */,
 				B6BED6851FE954670048F222 /* Resources */,
+				0178F99228B4D02BA799ABB0 /* [CP] Embed Pods Frameworks */,
+				DDE22A3AAEE939B57FFEB6F3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -988,9 +1041,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6BED6B61FE954670048F222 /* Build configuration list for PBXNativeTarget "DLObjectLearningProjectTests" */;
 			buildPhases = (
+				6CD045A9305F11B777C3679D /* [CP] Check Pods Manifest.lock */,
 				B6BED69B1FE954670048F222 /* Sources */,
 				B6BED69C1FE954670048F222 /* Frameworks */,
 				B6BED69D1FE954670048F222 /* Resources */,
+				4811774BE9F77925EB3A04CC /* [CP] Embed Pods Frameworks */,
+				1F0D877AC79530441FA2B9F8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1006,9 +1062,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6BED6B91FE954670048F222 /* Build configuration list for PBXNativeTarget "DLObjectLearningProjectUITests" */;
 			buildPhases = (
+				B8C01E78EEDB1C81F4C55F96 /* [CP] Check Pods Manifest.lock */,
 				B6BED6A61FE954670048F222 /* Sources */,
 				B6BED6A71FE954670048F222 /* Frameworks */,
 				B6BED6A81FE954670048F222 /* Resources */,
+				74CACECE84D99A936E3455DC /* [CP] Embed Pods Frameworks */,
+				B6E14517F8AB5BF479787B8F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1099,6 +1158,156 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0178F99228B4D02BA799ABB0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DLObjectLearningProject/Pods-DLObjectLearningProject-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DLObjectLearningProject/Pods-DLObjectLearningProject-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1F0D877AC79530441FA2B9F8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DLObjectLearningProjectTests/Pods-DLObjectLearningProjectTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4811774BE9F77925EB3A04CC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DLObjectLearningProjectTests/Pods-DLObjectLearningProjectTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4F46B2F814CDCDFFACE91CA9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DLObjectLearningProject-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6CD045A9305F11B777C3679D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DLObjectLearningProjectTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		74CACECE84D99A936E3455DC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DLObjectLearningProjectUITests/Pods-DLObjectLearningProjectUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6E14517F8AB5BF479787B8F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DLObjectLearningProjectUITests/Pods-DLObjectLearningProjectUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B8C01E78EEDB1C81F4C55F96 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DLObjectLearningProjectUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DDE22A3AAEE939B57FFEB6F3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DLObjectLearningProject/Pods-DLObjectLearningProject-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B6BED6831FE954670048F222 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1161,6 +1370,7 @@
 				10B0C7E51FEBB33800C37675 /* SourceContext.pbobjc.m in Sources */,
 				10634763201AC3B700C62B54 /* Params.pbobjc.m in Sources */,
 				10B0C7E01FEBB33800C37675 /* GPBExtensionInternals.m in Sources */,
+				105E317B204401B40006D3AD /* DLRacTestViewController.m in Sources */,
 				10B0C7CA1FEBB33800C37675 /* Sync_Utils.m in Sources */,
 				10B0C7C71FEBB33800C37675 /* RobotTable.m in Sources */,
 				10B0C7C41FEBB33800C37675 /* CloudTable.m in Sources */,
@@ -1169,6 +1379,7 @@
 				10B0C7C61FEBB33800C37675 /* ModifyTable.m in Sources */,
 				10B0C7E11FEBB33800C37675 /* GPBUnknownFieldSet.m in Sources */,
 				B60F3EA11FEAB81600EB3154 /* DLGCDCompareWithOperation.m in Sources */,
+				105E317E2044034C0006D3AD /* RWDummySignInService.m in Sources */,
 				10B0C7BF1FEBB33800C37675 /* FMResultSet.m in Sources */,
 				10B0C7C81FEBB33800C37675 /* NSString+SQL.m in Sources */,
 				1063475B201AC3B700C62B54 /* AsyncUdpSocketManager.m in Sources */,
@@ -1359,6 +1570,7 @@
 		};
 		B6BED6B41FE954670048F222 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4C943ED76E847CE4C86CBB3 /* Pods-DLObjectLearningProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1378,6 +1590,7 @@
 		};
 		B6BED6B51FE954670048F222 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 415273351540B521825C1099 /* Pods-DLObjectLearningProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1396,6 +1609,7 @@
 		};
 		B6BED6B71FE954670048F222 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3A2E79B711DCC2CAB36FA1C /* Pods-DLObjectLearningProjectTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1412,6 +1626,7 @@
 		};
 		B6BED6B81FE954670048F222 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33DE728B08349936399F547D /* Pods-DLObjectLearningProjectTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1428,6 +1643,7 @@
 		};
 		B6BED6BA1FE954670048F222 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A05F7BED7022439AC0141E4 /* Pods-DLObjectLearningProjectUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1443,6 +1659,7 @@
 		};
 		B6BED6BB1FE954670048F222 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 622B04FD16F30D28555ECF15 /* Pods-DLObjectLearningProjectUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
