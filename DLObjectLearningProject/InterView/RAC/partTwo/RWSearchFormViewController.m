@@ -53,9 +53,22 @@ static NSString * const RWTwitterInstantDomain = @"TwitterInstant";
     }];
      */
     
+    /*
+     http://bbs.520it.com/forum.php?mod=viewthread&tid=257  辅助理解
+     FlatternMap和Map的区别
+     1.FlatternMap中的Block返回信号。
+     2.Map中的Block返回对象。
+     3.开发中，如果信号发出的值不是信号，映射一般使用Map
+     4.开发中，如果信号发出的值是信号，映射一般使用FlatternMap。
+     总结：signalOfsignals用FlatternMap。
+     */
+    
     //不同信号连续的链
     @weakify(self)
     [[[[[[[self requestAccessToTwitterSignal] then:^RACSignal * _Nonnull{//then方法会一直等待，知道completed事件发出
+        //then:用于连接两个信号，当第一个信号完成，才会连接then返回的信号。
+        // 注意使用then，之前信号的值会被忽略掉.
+        // 底层实现：1、先过滤掉之前的信号发出的值。2.使用concat连接then返回的信号
         @strongify(self)
         return self.searchText.rac_textSignal;
     }] filter:^BOOL(NSString *  _Nullable value) {
