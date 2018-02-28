@@ -7,6 +7,7 @@ target 'DLObjectLearningProject' do
 
   # Pods for DLObjectLearningProject
   pod 'ReactiveObjC'
+  pod 'LinqToObjectiveC'
 
   target 'DLObjectLearningProjectTests' do
     inherit! :search_paths

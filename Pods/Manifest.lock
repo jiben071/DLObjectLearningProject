@@ -1,12 +1,15 @@
 PODS:
+  - LinqToObjectiveC (2.1.0)
   - ReactiveObjC (3.1.0)
 
 DEPENDENCIES:
+  - LinqToObjectiveC
   - ReactiveObjC
 
 SPEC CHECKSUMS:
+  LinqToObjectiveC: f0e40c137a458b6b9725c4c7b6a575c0c72e3aec
   ReactiveObjC: 2a38ea15335de4119d8b17caf1db1484f61db902
 
-PODFILE CHECKSUM: ee506d88a6388fe7c0aa70ee54aafd521e47ee9f
+PODFILE CHECKSUM: 01b198a1fcc8a7ad223336b4f64c49ceb72da911
 
 COCOAPODS: 1.4.0

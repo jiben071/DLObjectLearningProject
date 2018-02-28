@@ -16,6 +16,10 @@
 		102969DE2025597A00D01259 /* SLSolidObjectBuildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 102969DD2025597A00D01259 /* SLSolidObjectBuildViewController.m */; };
 		105E317B204401B40006D3AD /* DLRacTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E317A204401B40006D3AD /* DLRacTestViewController.m */; };
 		105E317E2044034C0006D3AD /* RWDummySignInService.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E317C2044034C0006D3AD /* RWDummySignInService.m */; };
+		105E31BD20464F280006D3AD /* RWSearchFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31B820464F270006D3AD /* RWSearchFormViewController.m */; };
+		105E31BE20464F280006D3AD /* RWTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31B920464F270006D3AD /* RWTweet.m */; };
+		105E31BF20464F280006D3AD /* RWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31BA20464F270006D3AD /* RWTableViewCell.m */; };
+		105E31C020464F280006D3AD /* RWSearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31BB20464F270006D3AD /* RWSearchResultsViewController.m */; };
 		10634757201AC3B700C62B54 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 10634736201AC3B600C62B54 /* GCDAsyncUdpSocket.m */; };
 		10634758201AC3B700C62B54 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 10634737201AC3B600C62B54 /* GCDAsyncSocket.m */; };
 		10634759201AC3B700C62B54 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 1063473A201AC3B600C62B54 /* README.markdown */; };
@@ -156,6 +160,14 @@
 		105E317A204401B40006D3AD /* DLRacTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLRacTestViewController.m; sourceTree = "<group>"; };
 		105E317C2044034C0006D3AD /* RWDummySignInService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWDummySignInService.m; sourceTree = "<group>"; };
 		105E317D2044034C0006D3AD /* RWDummySignInService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWDummySignInService.h; sourceTree = "<group>"; };
+		105E31B520464F270006D3AD /* RWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTableViewCell.h; sourceTree = "<group>"; };
+		105E31B620464F270006D3AD /* RWTweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTweet.h; sourceTree = "<group>"; };
+		105E31B720464F270006D3AD /* RWSearchResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWSearchResultsViewController.h; sourceTree = "<group>"; };
+		105E31B820464F270006D3AD /* RWSearchFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWSearchFormViewController.m; sourceTree = "<group>"; };
+		105E31B920464F270006D3AD /* RWTweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTweet.m; sourceTree = "<group>"; };
+		105E31BA20464F270006D3AD /* RWTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTableViewCell.m; sourceTree = "<group>"; };
+		105E31BB20464F270006D3AD /* RWSearchResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWSearchResultsViewController.m; sourceTree = "<group>"; };
+		105E31BC20464F270006D3AD /* RWSearchFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWSearchFormViewController.h; sourceTree = "<group>"; };
 		10634736201AC3B600C62B54 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
 		10634737201AC3B600C62B54 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		10634738201AC3B600C62B54 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
@@ -433,12 +445,28 @@
 		105E31782044019A0006D3AD /* RAC */ = {
 			isa = PBXGroup;
 			children = (
+				105E31B420464F270006D3AD /* partTwo */,
 				105E317D2044034C0006D3AD /* RWDummySignInService.h */,
 				105E317C2044034C0006D3AD /* RWDummySignInService.m */,
 				105E3179204401B40006D3AD /* DLRacTestViewController.h */,
 				105E317A204401B40006D3AD /* DLRacTestViewController.m */,
 			);
 			path = RAC;
+			sourceTree = "<group>";
+		};
+		105E31B420464F270006D3AD /* partTwo */ = {
+			isa = PBXGroup;
+			children = (
+				105E31BC20464F270006D3AD /* RWSearchFormViewController.h */,
+				105E31B820464F270006D3AD /* RWSearchFormViewController.m */,
+				105E31B720464F270006D3AD /* RWSearchResultsViewController.h */,
+				105E31BB20464F270006D3AD /* RWSearchResultsViewController.m */,
+				105E31B520464F270006D3AD /* RWTableViewCell.h */,
+				105E31BA20464F270006D3AD /* RWTableViewCell.m */,
+				105E31B620464F270006D3AD /* RWTweet.h */,
+				105E31B920464F270006D3AD /* RWTweet.m */,
+			);
+			path = partTwo;
 			sourceTree = "<group>";
 		};
 		10634733201AC3B600C62B54 /* CocoaAsyncSocket */ = {
@@ -1166,10 +1194,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DLObjectLearningProject/Pods-DLObjectLearningProject-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/LinqToObjectiveC/LinqToObjectiveC.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LinqToObjectiveC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1317,6 +1347,7 @@
 				10B0C7E71FEBB33800C37675 /* Duration.pbobjc.m in Sources */,
 				10B0C7DF1FEBB33800C37675 /* GPBUtilities.m in Sources */,
 				B656CA6C1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m in Sources */,
+				105E31BF20464F280006D3AD /* RWTableViewCell.m in Sources */,
 				10634764201AC3B700C62B54 /* Contract.pbobjc.m in Sources */,
 				10B0C7E91FEBB33800C37675 /* Empty.pbobjc.m in Sources */,
 				10B0C5C91FEB84CD00C37675 /* DWURunLoopWorkDistribution.m in Sources */,
@@ -1344,9 +1375,11 @@
 				10B0C7B51FEBB33800C37675 /* SyncEvents.pbobjc.m in Sources */,
 				B60F3E9E1FEAB5AE00EB3154 /* NSObject+LogCategory.m in Sources */,
 				10B0C7CB1FEBB33800C37675 /* SyncManager.m in Sources */,
+				105E31BD20464F280006D3AD /* RWSearchFormViewController.m in Sources */,
 				102969DE2025597A00D01259 /* SLSolidObjectBuildViewController.m in Sources */,
 				10B0C7D21FEBB33800C37675 /* Result.m in Sources */,
 				10B0C7D51FEBB33800C37675 /* SyncCloudClient.m in Sources */,
+				105E31BE20464F280006D3AD /* RWTweet.m in Sources */,
 				10B0C7B61FEBB33800C37675 /* SyncParams.pbobjc.m in Sources */,
 				10634757201AC3B700C62B54 /* GCDAsyncUdpSocket.m in Sources */,
 				10B0C7E41FEBB33800C37675 /* Any.pbobjc.m in Sources */,
@@ -1369,6 +1402,7 @@
 				10271994201EF6A20071EC9A /* HSClockView.m in Sources */,
 				10B0C7E51FEBB33800C37675 /* SourceContext.pbobjc.m in Sources */,
 				10634763201AC3B700C62B54 /* Params.pbobjc.m in Sources */,
+				105E31C020464F280006D3AD /* RWSearchResultsViewController.m in Sources */,
 				10B0C7E01FEBB33800C37675 /* GPBExtensionInternals.m in Sources */,
 				105E317B204401B40006D3AD /* DLRacTestViewController.m in Sources */,
 				10B0C7CA1FEBB33800C37675 /* Sync_Utils.m in Sources */,
@@ -1574,6 +1608,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GLWCRSS83U;
 				INFOPLIST_FILE = DLObjectLearningProject/Info.plist;
@@ -1594,6 +1629,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GLWCRSS83U;
 				INFOPLIST_FILE = DLObjectLearningProject/Info.plist;
