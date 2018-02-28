@@ -62,18 +62,22 @@
     // 5.订阅RACReturnSignal，就会拿到绑定信号的订阅者，把处理完成的信号内容发送出来。
     // 注意:不同订阅者，保存不同的nextBlock，看源码的时候，一定要看清楚订阅者是哪个。
     // 这里需要手动导入#import <ReactiveCocoa/RACReturnSignal.h>，才能使用RACReturnSignal。
-    [[_textField.rac_textSignal bind:^RACSignalBindBlock _Nonnull{
-        //什么时候调用
-        //block作用：表示绑定了一个信号
-        return (RACStream *)^(id value,BOOL *stop){
-            //什么时候调用block：当信号有新的值发出，就会来到这个block。
-            //block作用：做返回值的处理
-            //做好处理，通过信号返回出去
-            return [RACReturnSignal return:[NSString stringWithFormat:@"输出:%@",value]];
-        };
-    }] subscribeNext:^(id  _Nullable x) {
-        NSLog(@"%@",x);
-    }];
+    
+    //总是报错  没有解决报错问题
+//    [[_textField.rac_textSignal bind:^RACSignalBindBlock _Nonnull{
+//        //什么时候调用
+//        //block作用：表示绑定了一个信号
+//        return ^RACStream *(id value,BOOL *stop){
+//            //什么时候调用block：当信号有新的值发出，就会来到这个block。
+//            //block作用：做返回值的处理
+//            //做好处理，通过信号返回出去
+//            return [RACReturnSignal return:[NSString stringWithFormat:@"输出:%@",value]];
+//        };
+//    }] subscribeNext:^(id  _Nullable x) {
+//        NSLog(@"%@",x);
+//    }];
+
+
     
 }
 
