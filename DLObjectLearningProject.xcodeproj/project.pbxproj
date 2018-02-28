@@ -14,8 +14,6 @@
 		102969C42022B9AA00D01259 /* DLDigitClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 102969C32022B9AA00D01259 /* DLDigitClockViewController.m */; };
 		102969D42024006400D01259 /* DLTransformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 102969D32024006400D01259 /* DLTransformViewController.m */; };
 		102969DE2025597A00D01259 /* SLSolidObjectBuildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 102969DD2025597A00D01259 /* SLSolidObjectBuildViewController.m */; };
-		105E317B204401B40006D3AD /* DLRacTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E317A204401B40006D3AD /* DLRacTestViewController.m */; };
-		105E317E2044034C0006D3AD /* RWDummySignInService.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E317C2044034C0006D3AD /* RWDummySignInService.m */; };
 		105E31BD20464F280006D3AD /* RWSearchFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31B820464F270006D3AD /* RWSearchFormViewController.m */; };
 		105E31BE20464F280006D3AD /* RWTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31B920464F270006D3AD /* RWTweet.m */; };
 		105E31BF20464F280006D3AD /* RWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31BA20464F270006D3AD /* RWTableViewCell.m */; };
@@ -107,6 +105,9 @@
 		10B0C7EF1FEBB33800C37675 /* GPBArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7971FEBB33800C37675 /* GPBArray.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		10B0C7F01FEBB33800C37675 /* GPBCodedOutputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7A11FEBB33800C37675 /* GPBCodedOutputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		10B0C7F11FEBB33800C37675 /* GPBDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7A21FEBB33800C37675 /* GPBDictionary.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		10EDD86D2046B5F2003EA6B9 /* DLRacTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EDD8682046B5F1003EA6B9 /* DLRacTestViewController.m */; };
+		10EDD86E2046B5F2003EA6B9 /* RWDummySignInService.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EDD86B2046B5F1003EA6B9 /* RWDummySignInService.m */; };
+		10EDD8712046B61C003EA6B9 /* DLRacBasicCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EDD8702046B61C003EA6B9 /* DLRacBasicCourse.m */; };
 		244FCDB325BD12A118D22551 /* Pods_DLObjectLearningProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A95589D0F190AC88D8CE65D /* Pods_DLObjectLearningProjectUITests.framework */; };
 		3EE5C7AC1D590ACA5E38B9C0 /* Pods_DLObjectLearningProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 861742B96D511CC559F01DC1 /* Pods_DLObjectLearningProjectTests.framework */; };
 		4F66821E593BE290427D1E64 /* Pods_DLObjectLearningProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C3091F4F536E5DE79CCD22 /* Pods_DLObjectLearningProject.framework */; };
@@ -156,10 +157,6 @@
 		102969D32024006400D01259 /* DLTransformViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLTransformViewController.m; sourceTree = "<group>"; };
 		102969DC2025597A00D01259 /* SLSolidObjectBuildViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLSolidObjectBuildViewController.h; sourceTree = "<group>"; };
 		102969DD2025597A00D01259 /* SLSolidObjectBuildViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLSolidObjectBuildViewController.m; sourceTree = "<group>"; };
-		105E3179204401B40006D3AD /* DLRacTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLRacTestViewController.h; sourceTree = "<group>"; };
-		105E317A204401B40006D3AD /* DLRacTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLRacTestViewController.m; sourceTree = "<group>"; };
-		105E317C2044034C0006D3AD /* RWDummySignInService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWDummySignInService.m; sourceTree = "<group>"; };
-		105E317D2044034C0006D3AD /* RWDummySignInService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWDummySignInService.h; sourceTree = "<group>"; };
 		105E31B520464F270006D3AD /* RWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTableViewCell.h; sourceTree = "<group>"; };
 		105E31B620464F270006D3AD /* RWTweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTweet.h; sourceTree = "<group>"; };
 		105E31B720464F270006D3AD /* RWSearchResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWSearchResultsViewController.h; sourceTree = "<group>"; };
@@ -353,6 +350,12 @@
 		10B0C7A71FEBB33800C37675 /* GPBWellKnownTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBWellKnownTypes.h; sourceTree = "<group>"; };
 		10B0C7A81FEBB33800C37675 /* GPBUnknownField_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBUnknownField_PackagePrivate.h; sourceTree = "<group>"; };
 		10B0C7A91FEBB33800C37675 /* GPBDictionary_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBDictionary_PackagePrivate.h; sourceTree = "<group>"; };
+		10EDD8682046B5F1003EA6B9 /* DLRacTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRacTestViewController.m; sourceTree = "<group>"; };
+		10EDD8692046B5F1003EA6B9 /* RWDummySignInService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWDummySignInService.h; sourceTree = "<group>"; };
+		10EDD86A2046B5F1003EA6B9 /* DLRacTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRacTestViewController.h; sourceTree = "<group>"; };
+		10EDD86B2046B5F1003EA6B9 /* RWDummySignInService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWDummySignInService.m; sourceTree = "<group>"; };
+		10EDD86F2046B61C003EA6B9 /* DLRacBasicCourse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLRacBasicCourse.h; sourceTree = "<group>"; };
+		10EDD8702046B61C003EA6B9 /* DLRacBasicCourse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLRacBasicCourse.m; sourceTree = "<group>"; };
 		2A05F7BED7022439AC0141E4 /* Pods-DLObjectLearningProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLObjectLearningProjectUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DLObjectLearningProjectUITests/Pods-DLObjectLearningProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		33DE728B08349936399F547D /* Pods-DLObjectLearningProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLObjectLearningProjectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DLObjectLearningProjectTests/Pods-DLObjectLearningProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		3A95589D0F190AC88D8CE65D /* Pods_DLObjectLearningProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DLObjectLearningProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -445,11 +448,9 @@
 		105E31782044019A0006D3AD /* RAC */ = {
 			isa = PBXGroup;
 			children = (
+				10EDD86C2046B5F1003EA6B9 /* Basic */,
+				10EDD8672046B5F1003EA6B9 /* partOne */,
 				105E31B420464F270006D3AD /* partTwo */,
-				105E317D2044034C0006D3AD /* RWDummySignInService.h */,
-				105E317C2044034C0006D3AD /* RWDummySignInService.m */,
-				105E3179204401B40006D3AD /* DLRacTestViewController.h */,
-				105E317A204401B40006D3AD /* DLRacTestViewController.m */,
 			);
 			path = RAC;
 			sourceTree = "<group>";
@@ -947,6 +948,26 @@
 			path = protobuf;
 			sourceTree = "<group>";
 		};
+		10EDD8672046B5F1003EA6B9 /* partOne */ = {
+			isa = PBXGroup;
+			children = (
+				10EDD8682046B5F1003EA6B9 /* DLRacTestViewController.m */,
+				10EDD8692046B5F1003EA6B9 /* RWDummySignInService.h */,
+				10EDD86A2046B5F1003EA6B9 /* DLRacTestViewController.h */,
+				10EDD86B2046B5F1003EA6B9 /* RWDummySignInService.m */,
+			);
+			path = partOne;
+			sourceTree = "<group>";
+		};
+		10EDD86C2046B5F1003EA6B9 /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+				10EDD86F2046B61C003EA6B9 /* DLRacBasicCourse.h */,
+				10EDD8702046B61C003EA6B9 /* DLRacBasicCourse.m */,
+			);
+			path = Basic;
+			sourceTree = "<group>";
+		};
 		8386AF8EE48A731E6831D6CE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1397,6 +1418,7 @@
 				10B0C7CE1FEBB33800C37675 /* RobotPushTask.m in Sources */,
 				10B0C7C51FEBB33800C37675 /* ModifyModel.m in Sources */,
 				10B0C7DA1FEBB33800C37675 /* GPBExtensionRegistry.m in Sources */,
+				10EDD8712046B61C003EA6B9 /* DLRacBasicCourse.m in Sources */,
 				10B0C7E31FEBB33800C37675 /* Timestamp.pbobjc.m in Sources */,
 				10B0C7BC1FEBB33800C37675 /* FMDatabaseAdditions.m in Sources */,
 				10271994201EF6A20071EC9A /* HSClockView.m in Sources */,
@@ -1404,7 +1426,6 @@
 				10634763201AC3B700C62B54 /* Params.pbobjc.m in Sources */,
 				105E31C020464F280006D3AD /* RWSearchResultsViewController.m in Sources */,
 				10B0C7E01FEBB33800C37675 /* GPBExtensionInternals.m in Sources */,
-				105E317B204401B40006D3AD /* DLRacTestViewController.m in Sources */,
 				10B0C7CA1FEBB33800C37675 /* Sync_Utils.m in Sources */,
 				10B0C7C71FEBB33800C37675 /* RobotTable.m in Sources */,
 				10B0C7C41FEBB33800C37675 /* CloudTable.m in Sources */,
@@ -1413,11 +1434,11 @@
 				10B0C7C61FEBB33800C37675 /* ModifyTable.m in Sources */,
 				10B0C7E11FEBB33800C37675 /* GPBUnknownFieldSet.m in Sources */,
 				B60F3EA11FEAB81600EB3154 /* DLGCDCompareWithOperation.m in Sources */,
-				105E317E2044034C0006D3AD /* RWDummySignInService.m in Sources */,
 				10B0C7BF1FEBB33800C37675 /* FMResultSet.m in Sources */,
 				10B0C7C81FEBB33800C37675 /* NSString+SQL.m in Sources */,
 				1063475B201AC3B700C62B54 /* AsyncUdpSocketManager.m in Sources */,
 				10B0C7EA1FEBB33800C37675 /* FieldMask.pbobjc.m in Sources */,
+				10EDD86D2046B5F2003EA6B9 /* DLRacTestViewController.m in Sources */,
 				10B0C7C11FEBB33800C37675 /* DataBase.m in Sources */,
 				1063475D201AC3B700C62B54 /* AsynSocketManager.m in Sources */,
 				108F95DA202FE10B0044FDDC /* DLSpecialLayerViewController.m in Sources */,
@@ -1434,6 +1455,7 @@
 				10B0C7D31FEBB33800C37675 /* SyncModifyClient.m in Sources */,
 				10B0C7B71FEBB33800C37675 /* SyncFiles.pbobjc.m in Sources */,
 				10B0C7D41FEBB33800C37675 /* SyncClient.m in Sources */,
+				10EDD86E2046B5F2003EA6B9 /* RWDummySignInService.m in Sources */,
 				10B0C5C51FEB845E00C37675 /* DLSmoothTableViewViewController.m in Sources */,
 				10B0C7BB1FEBB33800C37675 /* FMDatabaseQueue.m in Sources */,
 				1063476B201AC69F00C62B54 /* DLLayerTestViewController.m in Sources */,
