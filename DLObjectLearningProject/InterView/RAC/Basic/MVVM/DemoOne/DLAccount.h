@@ -1,5 +1,5 @@
 //
-//  DLLoginViewModel.h
+//  DLAccount.h
 //  DLObjectLearningProject
 //
 //  Created by denglong on 01/03/2018.
@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DLLoginViewModel : NSObject
-
+@interface DLAccount : NSObject
+@property(nonatomic, strong) NSString *account;//账户名称
+@property(nonatomic, strong) NSString *pwd;//密码
 @end

@@ -108,6 +108,11 @@
 		10EDD86D2046B5F2003EA6B9 /* DLRacTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EDD8682046B5F1003EA6B9 /* DLRacTestViewController.m */; };
 		10EDD86E2046B5F2003EA6B9 /* RWDummySignInService.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EDD86B2046B5F1003EA6B9 /* RWDummySignInService.m */; };
 		10EDD8712046B61C003EA6B9 /* DLRacBasicCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EDD8702046B61C003EA6B9 /* DLRacBasicCourse.m */; };
+		10EDD8742047D02C003EA6B9 /* DLMVVMCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EDD8732047D02C003EA6B9 /* DLMVVMCourse.m */; };
+		10EDD8872047DBC7003EA6B9 /* DLAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EDD8822047DBC6003EA6B9 /* DLAccount.m */; };
+		10EDD8882047DBC7003EA6B9 /* DLLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EDD8832047DBC6003EA6B9 /* DLLoginViewModel.m */; };
+		10EDD8892047DBC7003EA6B9 /* DLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EDD8852047DBC6003EA6B9 /* DLLoginViewController.m */; };
+		10EDD88C2047DC01003EA6B9 /* DLRequestViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EDD88B2047DC01003EA6B9 /* DLRequestViewModel.m */; };
 		244FCDB325BD12A118D22551 /* Pods_DLObjectLearningProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A95589D0F190AC88D8CE65D /* Pods_DLObjectLearningProjectUITests.framework */; };
 		3EE5C7AC1D590ACA5E38B9C0 /* Pods_DLObjectLearningProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 861742B96D511CC559F01DC1 /* Pods_DLObjectLearningProjectTests.framework */; };
 		4F66821E593BE290427D1E64 /* Pods_DLObjectLearningProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C3091F4F536E5DE79CCD22 /* Pods_DLObjectLearningProject.framework */; };
@@ -356,6 +361,16 @@
 		10EDD86B2046B5F1003EA6B9 /* RWDummySignInService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWDummySignInService.m; sourceTree = "<group>"; };
 		10EDD86F2046B61C003EA6B9 /* DLRacBasicCourse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLRacBasicCourse.h; sourceTree = "<group>"; };
 		10EDD8702046B61C003EA6B9 /* DLRacBasicCourse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLRacBasicCourse.m; sourceTree = "<group>"; };
+		10EDD8722047D02C003EA6B9 /* DLMVVMCourse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLMVVMCourse.h; sourceTree = "<group>"; };
+		10EDD8732047D02C003EA6B9 /* DLMVVMCourse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLMVVMCourse.m; sourceTree = "<group>"; };
+		10EDD8802047DBC6003EA6B9 /* DLLoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLoginViewModel.h; sourceTree = "<group>"; };
+		10EDD8812047DBC6003EA6B9 /* DLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLoginViewController.h; sourceTree = "<group>"; };
+		10EDD8822047DBC6003EA6B9 /* DLAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAccount.m; sourceTree = "<group>"; };
+		10EDD8832047DBC6003EA6B9 /* DLLoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLoginViewModel.m; sourceTree = "<group>"; };
+		10EDD8842047DBC6003EA6B9 /* DLAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAccount.h; sourceTree = "<group>"; };
+		10EDD8852047DBC6003EA6B9 /* DLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLoginViewController.m; sourceTree = "<group>"; };
+		10EDD88A2047DC01003EA6B9 /* DLRequestViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLRequestViewModel.h; sourceTree = "<group>"; };
+		10EDD88B2047DC01003EA6B9 /* DLRequestViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLRequestViewModel.m; sourceTree = "<group>"; };
 		2A05F7BED7022439AC0141E4 /* Pods-DLObjectLearningProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLObjectLearningProjectUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DLObjectLearningProjectUITests/Pods-DLObjectLearningProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		33DE728B08349936399F547D /* Pods-DLObjectLearningProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLObjectLearningProjectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DLObjectLearningProjectTests/Pods-DLObjectLearningProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		3A95589D0F190AC88D8CE65D /* Pods_DLObjectLearningProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DLObjectLearningProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -962,10 +977,44 @@
 		10EDD86C2046B5F1003EA6B9 /* Basic */ = {
 			isa = PBXGroup;
 			children = (
+				10EDD8752047D1CE003EA6B9 /* MVVM */,
 				10EDD86F2046B61C003EA6B9 /* DLRacBasicCourse.h */,
 				10EDD8702046B61C003EA6B9 /* DLRacBasicCourse.m */,
+				10EDD8722047D02C003EA6B9 /* DLMVVMCourse.h */,
+				10EDD8732047D02C003EA6B9 /* DLMVVMCourse.m */,
 			);
 			path = Basic;
+			sourceTree = "<group>";
+		};
+		10EDD8752047D1CE003EA6B9 /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+				10EDD87F2047DBC6003EA6B9 /* DemoOne */,
+				10EDD8862047DBC6003EA6B9 /* DemoTwo */,
+			);
+			path = MVVM;
+			sourceTree = "<group>";
+		};
+		10EDD87F2047DBC6003EA6B9 /* DemoOne */ = {
+			isa = PBXGroup;
+			children = (
+				10EDD8802047DBC6003EA6B9 /* DLLoginViewModel.h */,
+				10EDD8812047DBC6003EA6B9 /* DLLoginViewController.h */,
+				10EDD8822047DBC6003EA6B9 /* DLAccount.m */,
+				10EDD8832047DBC6003EA6B9 /* DLLoginViewModel.m */,
+				10EDD8842047DBC6003EA6B9 /* DLAccount.h */,
+				10EDD8852047DBC6003EA6B9 /* DLLoginViewController.m */,
+			);
+			path = DemoOne;
+			sourceTree = "<group>";
+		};
+		10EDD8862047DBC6003EA6B9 /* DemoTwo */ = {
+			isa = PBXGroup;
+			children = (
+				10EDD88A2047DC01003EA6B9 /* DLRequestViewModel.h */,
+				10EDD88B2047DC01003EA6B9 /* DLRequestViewModel.m */,
+			);
+			path = DemoTwo;
 			sourceTree = "<group>";
 		};
 		8386AF8EE48A731E6831D6CE /* Pods */ = {
@@ -1215,11 +1264,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DLObjectLearningProject/Pods-DLObjectLearningProject-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/LinqToObjectiveC/LinqToObjectiveC.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LinqToObjectiveC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
 			);
@@ -1376,12 +1427,14 @@
 				10B0C7BD1FEBB33800C37675 /* FMDatabase.m in Sources */,
 				10B0C7CF1FEBB33800C37675 /* SimpleTask.m in Sources */,
 				B656CA721FEAB065001573A0 /* DLGestureOnImitateScrollViewViewController.m in Sources */,
+				10EDD8742047D02C003EA6B9 /* DLMVVMCourse.m in Sources */,
 				10B0C7E21FEBB33800C37675 /* Type.pbobjc.m in Sources */,
 				10B0C7EF1FEBB33800C37675 /* GPBArray.m in Sources */,
 				10B0C7CC1FEBB33800C37675 /* BatchTask.m in Sources */,
 				10B0C7B81FEBB33800C37675 /* Protocol.m in Sources */,
 				10B0C7CD1FEBB33800C37675 /* CloudPushTask.m in Sources */,
 				10B0C7EB1FEBB33800C37675 /* Struct.pbobjc.m in Sources */,
+				10EDD88C2047DC01003EA6B9 /* DLRequestViewModel.m in Sources */,
 				10B0C7DB1FEBB33800C37675 /* GPBRootObject.m in Sources */,
 				B6BED6C11FE9554B0048F222 /* DLFatherObject.m in Sources */,
 				10B0C7DC1FEBB33800C37675 /* GPBDescriptor.m in Sources */,
@@ -1416,6 +1469,7 @@
 				10B0C5CC1FEB851D00C37675 /* UIViewController+HeavyTaskSimulateCategory.m in Sources */,
 				10B0C7ED1FEBB33800C37675 /* GPBWellKnownTypes.m in Sources */,
 				10B0C7CE1FEBB33800C37675 /* RobotPushTask.m in Sources */,
+				10EDD8872047DBC7003EA6B9 /* DLAccount.m in Sources */,
 				10B0C7C51FEBB33800C37675 /* ModifyModel.m in Sources */,
 				10B0C7DA1FEBB33800C37675 /* GPBExtensionRegistry.m in Sources */,
 				10EDD8712046B61C003EA6B9 /* DLRacBasicCourse.m in Sources */,
@@ -1425,6 +1479,7 @@
 				10B0C7E51FEBB33800C37675 /* SourceContext.pbobjc.m in Sources */,
 				10634763201AC3B700C62B54 /* Params.pbobjc.m in Sources */,
 				105E31C020464F280006D3AD /* RWSearchResultsViewController.m in Sources */,
+				10EDD8882047DBC7003EA6B9 /* DLLoginViewModel.m in Sources */,
 				10B0C7E01FEBB33800C37675 /* GPBExtensionInternals.m in Sources */,
 				10B0C7CA1FEBB33800C37675 /* Sync_Utils.m in Sources */,
 				10B0C7C71FEBB33800C37675 /* RobotTable.m in Sources */,
@@ -1448,6 +1503,7 @@
 				10B0C7F11FEBB33800C37675 /* GPBDictionary.m in Sources */,
 				1063475E201AC3B700C62B54 /* SubScriber.m in Sources */,
 				B6BED69A1FE954670048F222 /* main.m in Sources */,
+				10EDD8892047DBC7003EA6B9 /* DLLoginViewController.m in Sources */,
 				1063475A201AC3B700C62B54 /* AsynTcpSocketManager.m in Sources */,
 				10B0C7C21FEBB33800C37675 /* BaseTable.m in Sources */,
 				10B0C7E61FEBB33800C37675 /* Api.pbobjc.m in Sources */,

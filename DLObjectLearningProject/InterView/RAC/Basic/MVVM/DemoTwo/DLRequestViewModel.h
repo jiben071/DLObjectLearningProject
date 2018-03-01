@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <ReactiveObjC/ReactiveObjC.h>
 
-@interface DLRequestViewModel : NSObject
-
+@interface DLRequestViewModel : NSObject<UITableViewDataSource>
+//请求命令
+@property(nonatomic, strong, readonly) RACCommand *reqeustCommand;
+//模型数组
+@property(nonatomic, strong, readonly) NSArray *models;
 @end

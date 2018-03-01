@@ -9,5 +9,24 @@
 #import "DLRequestViewModel.h"
 
 @implementation DLRequestViewModel
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self initialBind];
+    }
+    return self;
+}
 
+- (void)initialBind{
+    _reqeustCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+        RACSignal *requestSignal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+            NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+            parameters[@"q"] = @"基础";
+            //发送请求
+            [[AFHTT]]
+            return nil;
+        }]
+    }]
+}
 @end
