@@ -7,16 +7,37 @@
 //
 
 #import "DLBooksViewController.h"
+#import "DLRequestViewModel.h"
 
 @interface DLBooksViewController ()
-
+@property(nonatomic, weak) UITableView *tableView;
+@property(nonatomic, strong) DLRequestViewModel *requestModel;
 @end
 
 @implementation DLBooksViewController
 
+- (DLRequestViewModel *)requestModel{
+    if (!_requestModel) {
+        _requestModel = [[DLRequestViewModel alloc] init];
+    }
+    return _requestModel;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //创建tableView
+    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    tableView.dataSource = self.requestModel;
+    [self.view addSubview:tableView];
+    
+    RACSignal *requestSignal = [self.requestModel.reqeustCommand execute:nil];
+    //获取请求的数据
+    [requestSignal subscribeNext:^(NSArray *_Nullable x) {
+        self.requestModel.models = x;
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

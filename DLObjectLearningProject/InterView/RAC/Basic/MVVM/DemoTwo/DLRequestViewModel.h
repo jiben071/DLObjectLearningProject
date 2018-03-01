@@ -11,7 +11,7 @@
 
 @interface DLRequestViewModel : NSObject<UITableViewDataSource>
 //请求命令
-@property(nonatomic, strong, readonly) RACCommand *reqeustCommand;
+@property(nonatomic, strong) RACCommand *reqeustCommand;
 //模型数组
-@property(nonatomic, strong, readonly) NSArray *models;
+@property(nonatomic, strong) NSArray *models;
 @end

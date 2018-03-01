@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface DLBook : NSObject
-
++ (instancetype)bookWithDict:(NSDictionary *)dictionary;
+@property(nonatomic, strong) NSString *title;
+@property(nonatomic, strong) NSString *subtitle;
 @end
