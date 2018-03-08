@@ -107,6 +107,8 @@
 		10B0C7F11FEBB33800C37675 /* GPBDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C7A21FEBB33800C37675 /* GPBDictionary.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		10DAA87D20494295008A6C58 /* NSObject+caculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DAA87C20494295008A6C58 /* NSObject+caculator.m */; };
 		10DAA881204946DA008A6C58 /* DLCaculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DAA880204946DA008A6C58 /* DLCaculator.m */; };
+		10DAA887204D21F5008A6C58 /* DLRACPrincipleCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DAA886204D21F5008A6C58 /* DLRACPrincipleCourse.m */; };
+		10DAA88A204D2651008A6C58 /* NSObject+extensionForRACDL.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DAA889204D2651008A6C58 /* NSObject+extensionForRACDL.m */; };
 		10EDD86D2046B5F2003EA6B9 /* DLRacTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EDD8682046B5F1003EA6B9 /* DLRacTestViewController.m */; };
 		10EDD86E2046B5F2003EA6B9 /* RWDummySignInService.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EDD86B2046B5F1003EA6B9 /* RWDummySignInService.m */; };
 		10EDD8712046B61C003EA6B9 /* DLRacBasicCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EDD8702046B61C003EA6B9 /* DLRacBasicCourse.m */; };
@@ -365,6 +367,10 @@
 		10DAA87C20494295008A6C58 /* NSObject+caculator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+caculator.m"; sourceTree = "<group>"; };
 		10DAA87F204946DA008A6C58 /* DLCaculator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLCaculator.h; sourceTree = "<group>"; };
 		10DAA880204946DA008A6C58 /* DLCaculator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLCaculator.m; sourceTree = "<group>"; };
+		10DAA885204D21F5008A6C58 /* DLRACPrincipleCourse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLRACPrincipleCourse.h; sourceTree = "<group>"; };
+		10DAA886204D21F5008A6C58 /* DLRACPrincipleCourse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLRACPrincipleCourse.m; sourceTree = "<group>"; };
+		10DAA888204D2651008A6C58 /* NSObject+extensionForRACDL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+extensionForRACDL.h"; sourceTree = "<group>"; };
+		10DAA889204D2651008A6C58 /* NSObject+extensionForRACDL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+extensionForRACDL.m"; sourceTree = "<group>"; };
 		10EDD8682046B5F1003EA6B9 /* DLRacTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRacTestViewController.m; sourceTree = "<group>"; };
 		10EDD8692046B5F1003EA6B9 /* RWDummySignInService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWDummySignInService.h; sourceTree = "<group>"; };
 		10EDD86A2046B5F1003EA6B9 /* DLRacTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRacTestViewController.h; sourceTree = "<group>"; };
@@ -1013,6 +1019,10 @@
 				10EDD8732047D02C003EA6B9 /* DLMVVMCourse.m */,
 				10EDD89420493E29003EA6B9 /* DLRACBasicConceptCourse.h */,
 				10EDD89520493E29003EA6B9 /* DLRACBasicConceptCourse.m */,
+				10DAA885204D21F5008A6C58 /* DLRACPrincipleCourse.h */,
+				10DAA886204D21F5008A6C58 /* DLRACPrincipleCourse.m */,
+				10DAA888204D2651008A6C58 /* NSObject+extensionForRACDL.h */,
+				10DAA889204D2651008A6C58 /* NSObject+extensionForRACDL.m */,
 			);
 			path = Basic;
 			sourceTree = "<group>";
@@ -1471,6 +1481,7 @@
 				10DAA881204946DA008A6C58 /* DLCaculator.m in Sources */,
 				10B0C5C91FEB84CD00C37675 /* DWURunLoopWorkDistribution.m in Sources */,
 				B656CA6F1FEAA826001573A0 /* DLImitateScrollView.m in Sources */,
+				10DAA88A204D2651008A6C58 /* NSObject+extensionForRACDL.m in Sources */,
 				10B0C7BD1FEBB33800C37675 /* FMDatabase.m in Sources */,
 				10B0C7CF1FEBB33800C37675 /* SimpleTask.m in Sources */,
 				B656CA721FEAB065001573A0 /* DLGestureOnImitateScrollViewViewController.m in Sources */,
@@ -1561,6 +1572,7 @@
 				B6BED68C1FE954670048F222 /* AppDelegate.m in Sources */,
 				10B0C7D31FEBB33800C37675 /* SyncModifyClient.m in Sources */,
 				10B0C7B71FEBB33800C37675 /* SyncFiles.pbobjc.m in Sources */,
+				10DAA887204D21F5008A6C58 /* DLRACPrincipleCourse.m in Sources */,
 				10B0C7D41FEBB33800C37675 /* SyncClient.m in Sources */,
 				10EDD86E2046B5F2003EA6B9 /* RWDummySignInService.m in Sources */,
 				10B0C5C51FEB845E00C37675 /* DLSmoothTableViewViewController.m in Sources */,
