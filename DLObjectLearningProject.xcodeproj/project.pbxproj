@@ -38,6 +38,7 @@
 		108F95DC202FF1A00044FDDC /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108F95DB202FF1A00044FDDC /* CoreText.framework */; };
 		108F95DF2030109B0044FDDC /* DLLayerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 108F95DE2030109B0044FDDC /* DLLayerLabel.m */; };
 		10929B2B205118CA003DF3BC /* DLRACClassIntroduceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10929B2A205118CA003DF3BC /* DLRACClassIntroduceViewController.m */; };
+		10929B3120526035003DF3BC /* DLSubscriptionComprehandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10929B3020526035003DF3BC /* DLSubscriptionComprehandViewController.m */; };
 		10B0C5C51FEB845E00C37675 /* DLSmoothTableViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C5C41FEB845E00C37675 /* DLSmoothTableViewViewController.m */; };
 		10B0C5C91FEB84CD00C37675 /* DWURunLoopWorkDistribution.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C5C81FEB84CD00C37675 /* DWURunLoopWorkDistribution.m */; };
 		10B0C5CC1FEB851D00C37675 /* UIViewController+HeavyTaskSimulateCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C5CB1FEB851D00C37675 /* UIViewController+HeavyTaskSimulateCategory.m */; };
@@ -216,6 +217,8 @@
 		108F95DE2030109B0044FDDC /* DLLayerLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLLayerLabel.m; sourceTree = "<group>"; };
 		10929B29205118CA003DF3BC /* DLRACClassIntroduceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLRACClassIntroduceViewController.h; sourceTree = "<group>"; };
 		10929B2A205118CA003DF3BC /* DLRACClassIntroduceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLRACClassIntroduceViewController.m; sourceTree = "<group>"; };
+		10929B2F20526035003DF3BC /* DLSubscriptionComprehandViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLSubscriptionComprehandViewController.h; sourceTree = "<group>"; };
+		10929B3020526035003DF3BC /* DLSubscriptionComprehandViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLSubscriptionComprehandViewController.m; sourceTree = "<group>"; };
 		10B0C5C01FEB5CD000C37675 /* DLObjectLearningProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DLObjectLearningProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		10B0C5C31FEB845E00C37675 /* DLSmoothTableViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLSmoothTableViewViewController.h; sourceTree = "<group>"; };
 		10B0C5C41FEB845E00C37675 /* DLSmoothTableViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLSmoothTableViewViewController.m; sourceTree = "<group>"; };
@@ -1028,6 +1031,8 @@
 				10DAA889204D2651008A6C58 /* NSObject+extensionForRACDL.m */,
 				10929B29205118CA003DF3BC /* DLRACClassIntroduceViewController.h */,
 				10929B2A205118CA003DF3BC /* DLRACClassIntroduceViewController.m */,
+				10929B2F20526035003DF3BC /* DLSubscriptionComprehandViewController.h */,
+				10929B3020526035003DF3BC /* DLSubscriptionComprehandViewController.m */,
 			);
 			path = Basic;
 			sourceTree = "<group>";
@@ -1503,6 +1508,7 @@
 				B6BED6C11FE9554B0048F222 /* DLFatherObject.m in Sources */,
 				10B0C7DC1FEBB33800C37675 /* GPBDescriptor.m in Sources */,
 				10B0C5E81FEBA92C00C37675 /* BLE.m in Sources */,
+				10929B3120526035003DF3BC /* DLSubscriptionComprehandViewController.m in Sources */,
 				10B0C7C01FEBB33800C37675 /* FileModel.m in Sources */,
 				10B0C7EE1FEBB33800C37675 /* GPBUnknownField.m in Sources */,
 				10B0C7DE1FEBB33800C37675 /* GPBWireFormat.m in Sources */,
