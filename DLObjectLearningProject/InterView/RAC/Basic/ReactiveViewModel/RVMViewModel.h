@@ -45,6 +45,7 @@
 // Returns a signal which forwards `next`s from the latest subscription to
 // `signal`, and completes when the receiver is deallocated. If `signal` sends
 // an error at any point, the returned signal will error out as well.
+//作用：使外部signal接受此类的active接管，如active为false，signal即失效
 - (RACSignal *)forwardSignalWhileActive:(RACSignal *)signal;
 
 // Throttles events on the given signal while the receiver is inactive.
@@ -56,6 +57,7 @@
 // Returns a signal which forwards events from `signal` (throttled while the
 // receiver is inactive), and completes when `signal` completes or the receiver
 // is deallocated.
+//作用：当active为false的时候，限流
 - (RACSignal *)throttleSignalWhileInactive:(RACSignal *)signal;
 
 @end

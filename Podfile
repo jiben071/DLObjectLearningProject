@@ -9,6 +9,8 @@ target 'DLObjectLearningProject' do
   pod 'ReactiveObjC'
   pod 'LinqToObjectiveC'
   pod 'AFNetworking'
+  pod 'Motis'  #json转模型
+  pod 'BlocksKit'  #UIKit的代理转为Block使用
 
   target 'DLObjectLearningProjectTests' do
     inherit! :search_paths
