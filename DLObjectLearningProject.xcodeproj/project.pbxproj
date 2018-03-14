@@ -114,6 +114,11 @@
 		10B98C612058F6B3001D1526 /* DLRACSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B98C602058F6B3001D1526 /* DLRACSampleViewController.m */; };
 		10B98C6720590073001D1526 /* YDStartAPP.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B98C6420590073001D1526 /* YDStartAPP.m */; };
 		10B98C6820590073001D1526 /* YDThirdPartService.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B98C6520590073001D1526 /* YDThirdPartService.m */; };
+		10B98C742059106F001D1526 /* MovieViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B98C6B2059106F001D1526 /* MovieViewModel.m */; };
+		10B98C752059106F001D1526 /* MovieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B98C6D2059106F001D1526 /* MovieModel.m */; };
+		10B98C762059106F001D1526 /* MovieCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B98C6E2059106F001D1526 /* MovieCollectionViewCell.m */; };
+		10B98C772059106F001D1526 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B98C702059106F001D1526 /* ViewController.m */; };
+		10B98C782059106F001D1526 /* ModelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B98C712059106F001D1526 /* ModelBase.m */; };
 		10DAA87D20494295008A6C58 /* NSObject+caculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DAA87C20494295008A6C58 /* NSObject+caculator.m */; };
 		10DAA881204946DA008A6C58 /* DLCaculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DAA880204946DA008A6C58 /* DLCaculator.m */; };
 		10DAA887204D21F5008A6C58 /* DLRACPrincipleCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DAA886204D21F5008A6C58 /* DLRACPrincipleCourse.m */; };
@@ -139,7 +144,6 @@
 		B656CA6F1FEAA826001573A0 /* DLImitateScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B656CA6E1FEAA826001573A0 /* DLImitateScrollView.m */; };
 		B656CA721FEAB065001573A0 /* DLGestureOnImitateScrollViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B656CA711FEAB065001573A0 /* DLGestureOnImitateScrollViewViewController.m */; };
 		B6BED68C1FE954670048F222 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BED68B1FE954670048F222 /* AppDelegate.m */; };
-		B6BED68F1FE954670048F222 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BED68E1FE954670048F222 /* ViewController.m */; };
 		B6BED6921FE954670048F222 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6BED6901FE954670048F222 /* Main.storyboard */; };
 		B6BED6941FE954670048F222 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6BED6931FE954670048F222 /* Assets.xcassets */; };
 		B6BED6971FE954670048F222 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6BED6951FE954670048F222 /* LaunchScreen.storyboard */; };
@@ -391,6 +395,16 @@
 		10B98C6420590073001D1526 /* YDStartAPP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDStartAPP.m; sourceTree = "<group>"; };
 		10B98C6520590073001D1526 /* YDThirdPartService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDThirdPartService.m; sourceTree = "<group>"; };
 		10B98C6620590073001D1526 /* YDThirdPartService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDThirdPartService.h; sourceTree = "<group>"; };
+		10B98C6A2059106E001D1526 /* MovieCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCollectionViewCell.h; sourceTree = "<group>"; };
+		10B98C6B2059106F001D1526 /* MovieViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieViewModel.m; sourceTree = "<group>"; };
+		10B98C6C2059106F001D1526 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		10B98C6D2059106F001D1526 /* MovieModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieModel.m; sourceTree = "<group>"; };
+		10B98C6E2059106F001D1526 /* MovieCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCollectionViewCell.m; sourceTree = "<group>"; };
+		10B98C6F2059106F001D1526 /* ModelBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelBase.h; sourceTree = "<group>"; };
+		10B98C702059106F001D1526 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		10B98C712059106F001D1526 /* ModelBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelBase.m; sourceTree = "<group>"; };
+		10B98C722059106F001D1526 /* MovieViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieViewModel.h; sourceTree = "<group>"; };
+		10B98C732059106F001D1526 /* MovieModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieModel.h; sourceTree = "<group>"; };
 		10DAA87B20494295008A6C58 /* NSObject+caculator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+caculator.h"; sourceTree = "<group>"; };
 		10DAA87C20494295008A6C58 /* NSObject+caculator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+caculator.m"; sourceTree = "<group>"; };
 		10DAA87F204946DA008A6C58 /* DLCaculator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLCaculator.h; sourceTree = "<group>"; };
@@ -443,8 +457,6 @@
 		B6BED6871FE954670048F222 /* DLObjectLearningProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DLObjectLearningProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6BED68A1FE954670048F222 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B6BED68B1FE954670048F222 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B6BED68D1FE954670048F222 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B6BED68E1FE954670048F222 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		B6BED6911FE954670048F222 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B6BED6931FE954670048F222 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6BED6961FE954670048F222 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -515,6 +527,7 @@
 		105E31782044019A0006D3AD /* RAC */ = {
 			isa = PBXGroup;
 			children = (
+				10B98C692059103C001D1526 /* MVVCSample */,
 				10EDD86C2046B5F1003EA6B9 /* Basic */,
 				10EDD8672046B5F1003EA6B9 /* partOne */,
 				105E31B420464F270006D3AD /* partTwo */,
@@ -1047,6 +1060,23 @@
 			path = AppDelegate;
 			sourceTree = "<group>";
 		};
+		10B98C692059103C001D1526 /* MVVCSample */ = {
+			isa = PBXGroup;
+			children = (
+				10B98C6F2059106F001D1526 /* ModelBase.h */,
+				10B98C712059106F001D1526 /* ModelBase.m */,
+				10B98C6A2059106E001D1526 /* MovieCollectionViewCell.h */,
+				10B98C6E2059106F001D1526 /* MovieCollectionViewCell.m */,
+				10B98C732059106F001D1526 /* MovieModel.h */,
+				10B98C6D2059106F001D1526 /* MovieModel.m */,
+				10B98C722059106F001D1526 /* MovieViewModel.h */,
+				10B98C6B2059106F001D1526 /* MovieViewModel.m */,
+				10B98C6C2059106F001D1526 /* ViewController.h */,
+				10B98C702059106F001D1526 /* ViewController.m */,
+			);
+			path = MVVCSample;
+			sourceTree = "<group>";
+		};
 		10DAA87E204946C9008A6C58 /* FunctionExpression */ = {
 			isa = PBXGroup;
 			children = (
@@ -1189,8 +1219,6 @@
 				10B0C5CF1FEB8A2200C37675 /* MainPage */,
 				10B0C5BE1FEB5CB200C37675 /* RunLoop */,
 				B6BED6BE1FE9551F0048F222 /* InterView */,
-				B6BED68D1FE954670048F222 /* ViewController.h */,
-				B6BED68E1FE954670048F222 /* ViewController.m */,
 				B6BED6901FE954670048F222 /* Main.storyboard */,
 				B6BED6931FE954670048F222 /* Assets.xcassets */,
 				B6BED6951FE954670048F222 /* LaunchScreen.storyboard */,
@@ -1392,14 +1420,24 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DLObjectLearningProject/Pods-DLObjectLearningProject-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/BlocksKit/BlocksKit.framework",
 				"${BUILT_PRODUCTS_DIR}/LinqToObjectiveC/LinqToObjectiveC.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/Motis/Motis.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BlocksKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LinqToObjectiveC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Motis.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1545,6 +1583,7 @@
 				10B0C7EC1FEBB33800C37675 /* GPBCodedInputStream.m in Sources */,
 				10B0C7E71FEBB33800C37675 /* Duration.pbobjc.m in Sources */,
 				10B0C7DF1FEBB33800C37675 /* GPBUtilities.m in Sources */,
+				10B98C782059106F001D1526 /* ModelBase.m in Sources */,
 				B656CA6C1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m in Sources */,
 				105E31BF20464F280006D3AD /* RWTableViewCell.m in Sources */,
 				10634764201AC3B700C62B54 /* Contract.pbobjc.m in Sources */,
@@ -1600,6 +1639,7 @@
 				10271995201EF6A20071EC9A /* HSTimer.m in Sources */,
 				10B0C5E71FEBA92C00C37675 /* BLEManage.m in Sources */,
 				10B0C5CC1FEB851D00C37675 /* UIViewController+HeavyTaskSimulateCategory.m in Sources */,
+				10B98C752059106F001D1526 /* MovieModel.m in Sources */,
 				10B0C7ED1FEBB33800C37675 /* GPBWellKnownTypes.m in Sources */,
 				10B0C7CE1FEBB33800C37675 /* RobotPushTask.m in Sources */,
 				10EDD8872047DBC7003EA6B9 /* DLAccount.m in Sources */,
@@ -1622,6 +1662,7 @@
 				10634760201AC3B700C62B54 /* packethub_utils.m in Sources */,
 				10B0C7C61FEBB33800C37675 /* ModifyTable.m in Sources */,
 				10B0C7E11FEBB33800C37675 /* GPBUnknownFieldSet.m in Sources */,
+				10B98C742059106F001D1526 /* MovieViewModel.m in Sources */,
 				10B98C612058F6B3001D1526 /* DLRACSampleViewController.m in Sources */,
 				B60F3EA11FEAB81600EB3154 /* DLGCDCompareWithOperation.m in Sources */,
 				10B0C7BF1FEBB33800C37675 /* FMResultSet.m in Sources */,
@@ -1636,8 +1677,8 @@
 				108F95DA202FE10B0044FDDC /* DLSpecialLayerViewController.m in Sources */,
 				10B0C7D01FEBB33800C37675 /* RobotPullTask.m in Sources */,
 				10B0C7D11FEBB33800C37675 /* CloudPullTask.m in Sources */,
-				B6BED68F1FE954670048F222 /* ViewController.m in Sources */,
 				10B0C7F11FEBB33800C37675 /* GPBDictionary.m in Sources */,
+				10B98C762059106F001D1526 /* MovieCollectionViewCell.m in Sources */,
 				1063475E201AC3B700C62B54 /* SubScriber.m in Sources */,
 				B6BED69A1FE954670048F222 /* main.m in Sources */,
 				10B98C2A205778C8001D1526 /* DLMVVMTestThreeViewController.m in Sources */,
@@ -1645,6 +1686,7 @@
 				1063475A201AC3B700C62B54 /* AsynTcpSocketManager.m in Sources */,
 				10EDD88F2047EA0E003EA6B9 /* DLBook.m in Sources */,
 				10B0C7C21FEBB33800C37675 /* BaseTable.m in Sources */,
+				10B98C772059106F001D1526 /* ViewController.m in Sources */,
 				10B0C7E61FEBB33800C37675 /* Api.pbobjc.m in Sources */,
 				B6BED68C1FE954670048F222 /* AppDelegate.m in Sources */,
 				10B0C7D31FEBB33800C37675 /* SyncModifyClient.m in Sources */,

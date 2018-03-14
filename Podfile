@@ -11,6 +11,9 @@ target 'DLObjectLearningProject' do
   pod 'AFNetworking'
   pod 'Motis'  #json转模型
   pod 'BlocksKit'  #UIKit的代理转为Block使用
+  pod 'Masonry'
+  pod 'SVProgressHUD'
+  pod 'SDWebImage'
 
   target 'DLObjectLearningProjectTests' do
     inherit! :search_paths
