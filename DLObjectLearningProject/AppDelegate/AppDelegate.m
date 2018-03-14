@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "YDStartAPP.h"
+#import "YDThirdPartService.h"
 
 @interface AppDelegate ()
 
