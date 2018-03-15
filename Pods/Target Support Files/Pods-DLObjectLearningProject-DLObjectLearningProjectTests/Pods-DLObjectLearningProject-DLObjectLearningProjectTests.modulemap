@@ -1,0 +1,6 @@
+framework module Pods_DLObjectLearningProject_DLObjectLearningProjectTests {
+  umbrella header "Pods-DLObjectLearningProject-DLObjectLearningProjectTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

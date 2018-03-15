@@ -48,6 +48,7 @@
     collectionView.showsVerticalScrollIndicator = NO;
     collectionView.alwaysBounceVertical = YES;
     [self.view addSubview:collectionView];
+    //一定要时刻记住：进行massonry布局时，必须先把视图添加到父视图上
     [collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.mas_topLayoutGuide);
         make.left.right.equalTo(self.view);

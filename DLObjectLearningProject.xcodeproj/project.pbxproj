@@ -14,6 +14,7 @@
 		102969C42022B9AA00D01259 /* DLDigitClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 102969C32022B9AA00D01259 /* DLDigitClockViewController.m */; };
 		102969D42024006400D01259 /* DLTransformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 102969D32024006400D01259 /* DLTransformViewController.m */; };
 		102969DE2025597A00D01259 /* SLSolidObjectBuildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 102969DD2025597A00D01259 /* SLSolidObjectBuildViewController.m */; };
+		10372DAC3AB65281F54CC4DF /* Pods_DLObjectLearningProject_DLObjectLearningProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CC0116B781D2FFC500B9D25 /* Pods_DLObjectLearningProject_DLObjectLearningProjectTests.framework */; };
 		105E31BD20464F280006D3AD /* RWSearchFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31B820464F270006D3AD /* RWSearchFormViewController.m */; };
 		105E31BE20464F280006D3AD /* RWTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31B920464F270006D3AD /* RWTweet.m */; };
 		105E31BF20464F280006D3AD /* RWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31BA20464F270006D3AD /* RWTableViewCell.m */; };
@@ -34,11 +35,16 @@
 		10634764201AC3B700C62B54 /* Contract.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 10634754201AC3B600C62B54 /* Contract.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		10634767201AC65200C62B54 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10634766201AC65200C62B54 /* QuartzCore.framework */; };
 		1063476B201AC69F00C62B54 /* DLLayerTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1063476A201AC69F00C62B54 /* DLLayerTestViewController.m */; };
+		1079A0C420591EB70043E681 /* RVMViewModelSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1079A0C320591EB70043E681 /* RVMViewModelSpec.m */; };
+		1079A0C82059200B0043E681 /* RVMTestViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1079A0C62059200B0043E681 /* RVMTestViewModel.m */; };
+		1079A0C9205927B90043E681 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1079A0CA205927B90043E681 /* Nimble.framework */; };
+		1079A0CB205927BE0043E681 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1079A0CC205927BE0043E681 /* Quick.framework */; };
 		108F95DA202FE10B0044FDDC /* DLSpecialLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 108F95D9202FE10B0044FDDC /* DLSpecialLayerViewController.m */; };
 		108F95DC202FF1A00044FDDC /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108F95DB202FF1A00044FDDC /* CoreText.framework */; };
 		108F95DF2030109B0044FDDC /* DLLayerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 108F95DE2030109B0044FDDC /* DLLayerLabel.m */; };
 		10929B2B205118CA003DF3BC /* DLRACClassIntroduceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10929B2A205118CA003DF3BC /* DLRACClassIntroduceViewController.m */; };
 		10929B3120526035003DF3BC /* DLSubscriptionComprehandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10929B3020526035003DF3BC /* DLSubscriptionComprehandViewController.m */; };
+		109D9FE9205A1D2E00050253 /* 使用注意要点.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 109D9FE8205A1D2E00050253 /* 使用注意要点.rtf */; };
 		10B0C5C51FEB845E00C37675 /* DLSmoothTableViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C5C41FEB845E00C37675 /* DLSmoothTableViewViewController.m */; };
 		10B0C5C91FEB84CD00C37675 /* DWURunLoopWorkDistribution.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C5C81FEB84CD00C37675 /* DWURunLoopWorkDistribution.m */; };
 		10B0C5CC1FEB851D00C37675 /* UIViewController+HeavyTaskSimulateCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B0C5CB1FEB851D00C37675 /* UIViewController+HeavyTaskSimulateCategory.m */; };
@@ -135,9 +141,8 @@
 		10EDD8922047EC28003EA6B9 /* DLBooksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EDD8912047EC28003EA6B9 /* DLBooksViewController.m */; };
 		10EDD89620493E29003EA6B9 /* DLRACBasicConceptCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EDD89520493E29003EA6B9 /* DLRACBasicConceptCourse.m */; };
 		10EDD89A20493FE5003EA6B9 /* DLCaculatorMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EDD89920493FE5003EA6B9 /* DLCaculatorMaker.m */; };
-		244FCDB325BD12A118D22551 /* Pods_DLObjectLearningProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A95589D0F190AC88D8CE65D /* Pods_DLObjectLearningProjectUITests.framework */; };
-		3EE5C7AC1D590ACA5E38B9C0 /* Pods_DLObjectLearningProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 861742B96D511CC559F01DC1 /* Pods_DLObjectLearningProjectTests.framework */; };
 		4F66821E593BE290427D1E64 /* Pods_DLObjectLearningProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C3091F4F536E5DE79CCD22 /* Pods_DLObjectLearningProject.framework */; };
+		7E6BD7FA2567988F950321A2 /* Pods_DLObjectLearningProject_DLObjectLearningProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D1906DB5AFA812AD6718B1 /* Pods_DLObjectLearningProject_DLObjectLearningProjectUITests.framework */; };
 		B60F3E9E1FEAB5AE00EB3154 /* NSObject+LogCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = B60F3E9D1FEAB5AE00EB3154 /* NSObject+LogCategory.m */; };
 		B60F3EA11FEAB81600EB3154 /* DLGCDCompareWithOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B60F3EA01FEAB81600EB3154 /* DLGCDCompareWithOperation.m */; };
 		B656CA6C1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B656CA6B1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m */; };
@@ -171,6 +176,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00EE8F1193ED31E220C529B5 /* Pods-DLObjectLearningProject-DLObjectLearningProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLObjectLearningProject-DLObjectLearningProjectTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DLObjectLearningProject-DLObjectLearningProjectTests/Pods-DLObjectLearningProject-DLObjectLearningProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1027198F201EF6A20071EC9A /* HSClockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSClockView.m; sourceTree = "<group>"; };
 		10271990201EF6A20071EC9A /* HSTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSTimer.m; sourceTree = "<group>"; };
 		10271991201EF6A20071EC9A /* HSClockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSClockView.h; sourceTree = "<group>"; };
@@ -221,6 +227,11 @@
 		10634766201AC65200C62B54 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		10634769201AC69F00C62B54 /* DLLayerTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLLayerTestViewController.h; sourceTree = "<group>"; };
 		1063476A201AC69F00C62B54 /* DLLayerTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLLayerTestViewController.m; sourceTree = "<group>"; };
+		1079A0C320591EB70043E681 /* RVMViewModelSpec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RVMViewModelSpec.m; sourceTree = "<group>"; };
+		1079A0C62059200B0043E681 /* RVMTestViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVMTestViewModel.m; sourceTree = "<group>"; };
+		1079A0C72059200B0043E681 /* RVMTestViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVMTestViewModel.h; sourceTree = "<group>"; };
+		1079A0CA205927B90043E681 /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1079A0CC205927BE0043E681 /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		108F95D8202FE10B0044FDDC /* DLSpecialLayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLSpecialLayerViewController.h; sourceTree = "<group>"; };
 		108F95D9202FE10B0044FDDC /* DLSpecialLayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLSpecialLayerViewController.m; sourceTree = "<group>"; };
 		108F95DB202FF1A00044FDDC /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -230,6 +241,8 @@
 		10929B2A205118CA003DF3BC /* DLRACClassIntroduceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLRACClassIntroduceViewController.m; sourceTree = "<group>"; };
 		10929B2F20526035003DF3BC /* DLSubscriptionComprehandViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLSubscriptionComprehandViewController.h; sourceTree = "<group>"; };
 		10929B3020526035003DF3BC /* DLSubscriptionComprehandViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLSubscriptionComprehandViewController.m; sourceTree = "<group>"; };
+		109D9FE52059555200050253 /* DLObjectLearningProjectTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DLObjectLearningProjectTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		109D9FE8205A1D2E00050253 /* 使用注意要点.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "使用注意要点.rtf"; sourceTree = "<group>"; };
 		10B0C5C01FEB5CD000C37675 /* DLObjectLearningProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DLObjectLearningProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		10B0C5C31FEB845E00C37675 /* DLSmoothTableViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLSmoothTableViewViewController.h; sourceTree = "<group>"; };
 		10B0C5C41FEB845E00C37675 /* DLSmoothTableViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLSmoothTableViewViewController.m; sourceTree = "<group>"; };
@@ -437,13 +450,14 @@
 		10EDD89520493E29003EA6B9 /* DLRACBasicConceptCourse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLRACBasicConceptCourse.m; sourceTree = "<group>"; };
 		10EDD89820493FE5003EA6B9 /* DLCaculatorMaker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLCaculatorMaker.h; sourceTree = "<group>"; };
 		10EDD89920493FE5003EA6B9 /* DLCaculatorMaker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLCaculatorMaker.m; sourceTree = "<group>"; };
-		2A05F7BED7022439AC0141E4 /* Pods-DLObjectLearningProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLObjectLearningProjectUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DLObjectLearningProjectUITests/Pods-DLObjectLearningProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		33DE728B08349936399F547D /* Pods-DLObjectLearningProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLObjectLearningProjectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DLObjectLearningProjectTests/Pods-DLObjectLearningProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		3A95589D0F190AC88D8CE65D /* Pods_DLObjectLearningProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DLObjectLearningProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		415273351540B521825C1099 /* Pods-DLObjectLearningProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLObjectLearningProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-DLObjectLearningProject/Pods-DLObjectLearningProject.release.xcconfig"; sourceTree = "<group>"; };
-		622B04FD16F30D28555ECF15 /* Pods-DLObjectLearningProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLObjectLearningProjectUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DLObjectLearningProjectUITests/Pods-DLObjectLearningProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
+		49D1906DB5AFA812AD6718B1 /* Pods_DLObjectLearningProject_DLObjectLearningProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DLObjectLearningProject_DLObjectLearningProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		861742B96D511CC559F01DC1 /* Pods_DLObjectLearningProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DLObjectLearningProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3A2E79B711DCC2CAB36FA1C /* Pods-DLObjectLearningProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLObjectLearningProjectTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DLObjectLearningProjectTests/Pods-DLObjectLearningProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8D823A553510F87544BCA865 /* Pods-DLObjectLearningProject-DLObjectLearningProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLObjectLearningProject-DLObjectLearningProjectUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DLObjectLearningProject-DLObjectLearningProjectUITests/Pods-DLObjectLearningProject-DLObjectLearningProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		987C1B2AC95A554654F971D7 /* Pods-DLObjectLearningProject-DLObjectLearningProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLObjectLearningProject-DLObjectLearningProjectUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DLObjectLearningProject-DLObjectLearningProjectUITests/Pods-DLObjectLearningProject-DLObjectLearningProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9CC0116B781D2FFC500B9D25 /* Pods_DLObjectLearningProject_DLObjectLearningProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DLObjectLearningProject_DLObjectLearningProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B33237CE78DBCFA52AFC0B87 /* Pods-DLObjectLearningProject-DLObjectLearningProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLObjectLearningProject-DLObjectLearningProjectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DLObjectLearningProject-DLObjectLearningProjectTests/Pods-DLObjectLearningProject-DLObjectLearningProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		B60F3E9C1FEAB5AE00EB3154 /* NSObject+LogCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LogCategory.h"; sourceTree = "<group>"; };
 		B60F3E9D1FEAB5AE00EB3154 /* NSObject+LogCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LogCategory.m"; sourceTree = "<group>"; };
 		B60F3E9F1FEAB81600EB3154 /* DLGCDCompareWithOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLGCDCompareWithOperation.h; sourceTree = "<group>"; };
@@ -489,7 +503,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EE5C7AC1D590ACA5E38B9C0 /* Pods_DLObjectLearningProjectTests.framework in Frameworks */,
+				1079A0CB205927BE0043E681 /* Quick.framework in Frameworks */,
+				1079A0C9205927B90043E681 /* Nimble.framework in Frameworks */,
+				10372DAC3AB65281F54CC4DF /* Pods_DLObjectLearningProject_DLObjectLearningProjectTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,7 +513,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				244FCDB325BD12A118D22551 /* Pods_DLObjectLearningProjectUITests.framework in Frameworks */,
+				7E6BD7FA2567988F950321A2 /* Pods_DLObjectLearningProject_DLObjectLearningProjectUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -650,11 +666,15 @@
 		10634765201AC65100C62B54 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1079A0CC205927BE0043E681 /* Quick.framework */,
+				1079A0CA205927B90043E681 /* Nimble.framework */,
 				108F95DB202FF1A00044FDDC /* CoreText.framework */,
 				10634766201AC65200C62B54 /* QuartzCore.framework */,
 				F1C3091F4F536E5DE79CCD22 /* Pods_DLObjectLearningProject.framework */,
 				861742B96D511CC559F01DC1 /* Pods_DLObjectLearningProjectTests.framework */,
 				3A95589D0F190AC88D8CE65D /* Pods_DLObjectLearningProjectUITests.framework */,
+				9CC0116B781D2FFC500B9D25 /* Pods_DLObjectLearningProject_DLObjectLearningProjectTests.framework */,
+				49D1906DB5AFA812AD6718B1 /* Pods_DLObjectLearningProject_DLObjectLearningProjectUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -678,6 +698,16 @@
 				108F95DE2030109B0044FDDC /* DLLayerLabel.m */,
 			);
 			path = CoreAnimation;
+			sourceTree = "<group>";
+		};
+		1079A0C52059200B0043E681 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				1079A0C72059200B0043E681 /* RVMTestViewModel.h */,
+				1079A0C62059200B0043E681 /* RVMTestViewModel.m */,
+				109D9FE52059555200050253 /* DLObjectLearningProjectTests-Bridging-Header.h */,
+			);
+			path = test;
 			sourceTree = "<group>";
 		};
 		10B0C5BE1FEB5CB200C37675 /* RunLoop */ = {
@@ -1180,10 +1210,10 @@
 			children = (
 				E4C943ED76E847CE4C86CBB3 /* Pods-DLObjectLearningProject.debug.xcconfig */,
 				415273351540B521825C1099 /* Pods-DLObjectLearningProject.release.xcconfig */,
-				B3A2E79B711DCC2CAB36FA1C /* Pods-DLObjectLearningProjectTests.debug.xcconfig */,
-				33DE728B08349936399F547D /* Pods-DLObjectLearningProjectTests.release.xcconfig */,
-				2A05F7BED7022439AC0141E4 /* Pods-DLObjectLearningProjectUITests.debug.xcconfig */,
-				622B04FD16F30D28555ECF15 /* Pods-DLObjectLearningProjectUITests.release.xcconfig */,
+				00EE8F1193ED31E220C529B5 /* Pods-DLObjectLearningProject-DLObjectLearningProjectTests.debug.xcconfig */,
+				B33237CE78DBCFA52AFC0B87 /* Pods-DLObjectLearningProject-DLObjectLearningProjectTests.release.xcconfig */,
+				8D823A553510F87544BCA865 /* Pods-DLObjectLearningProject-DLObjectLearningProjectUITests.debug.xcconfig */,
+				987C1B2AC95A554654F971D7 /* Pods-DLObjectLearningProject-DLObjectLearningProjectUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1191,6 +1221,7 @@
 		B6BED67E1FE954670048F222 = {
 			isa = PBXGroup;
 			children = (
+				109D9FE8205A1D2E00050253 /* 使用注意要点.rtf */,
 				B6BED6891FE954670048F222 /* DLObjectLearningProject */,
 				B6BED6A21FE954670048F222 /* DLObjectLearningProjectTests */,
 				B6BED6AD1FE954670048F222 /* DLObjectLearningProjectUITests */,
@@ -1231,8 +1262,10 @@
 		B6BED6A21FE954670048F222 /* DLObjectLearningProjectTests */ = {
 			isa = PBXGroup;
 			children = (
+				1079A0C52059200B0043E681 /* test */,
 				B6BED6A31FE954670048F222 /* DLObjectLearningProjectTests.m */,
 				B6BED6A51FE954670048F222 /* Info.plist */,
+				1079A0C320591EB70043E681 /* RVMViewModelSpec.m */,
 			);
 			path = DLObjectLearningProjectTests;
 			sourceTree = "<group>";
@@ -1294,12 +1327,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6BED6B61FE954670048F222 /* Build configuration list for PBXNativeTarget "DLObjectLearningProjectTests" */;
 			buildPhases = (
-				6CD045A9305F11B777C3679D /* [CP] Check Pods Manifest.lock */,
+				131778D97BC9C370D08D262B /* [CP] Check Pods Manifest.lock */,
 				B6BED69B1FE954670048F222 /* Sources */,
 				B6BED69C1FE954670048F222 /* Frameworks */,
 				B6BED69D1FE954670048F222 /* Resources */,
-				4811774BE9F77925EB3A04CC /* [CP] Embed Pods Frameworks */,
-				1F0D877AC79530441FA2B9F8 /* [CP] Copy Pods Resources */,
+				AAB58E098522D0D8921602F5 /* [CP] Embed Pods Frameworks */,
+				28109B426D2ACECE542E7424 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1315,12 +1348,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6BED6B91FE954670048F222 /* Build configuration list for PBXNativeTarget "DLObjectLearningProjectUITests" */;
 			buildPhases = (
-				B8C01E78EEDB1C81F4C55F96 /* [CP] Check Pods Manifest.lock */,
+				791957B91788280B1B062FE5 /* [CP] Check Pods Manifest.lock */,
 				B6BED6A61FE954670048F222 /* Sources */,
 				B6BED6A71FE954670048F222 /* Frameworks */,
 				B6BED6A81FE954670048F222 /* Resources */,
-				74CACECE84D99A936E3455DC /* [CP] Embed Pods Frameworks */,
-				B6E14517F8AB5BF479787B8F /* [CP] Copy Pods Resources */,
+				B18BA9454E08E65CB34EEBEA /* [CP] Embed Pods Frameworks */,
+				0009B1D2947C3A3D6BE884E8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1348,11 +1381,13 @@
 					};
 					B6BED69E1FE954670048F222 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						TestTargetID = B6BED6861FE954670048F222;
 					};
 					B6BED6A91FE954670048F222 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						TestTargetID = B6BED6861FE954670048F222;
 					};
@@ -1389,6 +1424,7 @@
 				B6BED6971FE954670048F222 /* LaunchScreen.storyboard in Resources */,
 				10634759201AC3B700C62B54 /* README.markdown in Resources */,
 				102969C12022B64000D01259 /* Digits.png in Resources */,
+				109D9FE9205A1D2E00050253 /* 使用注意要点.rtf in Resources */,
 				10271996201EF6A20071EC9A /* bg_dail@2x.png in Resources */,
 				B6BED6941FE954670048F222 /* Assets.xcassets in Resources */,
 				B6BED6921FE954670048F222 /* Main.storyboard in Resources */,
@@ -1412,6 +1448,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0009B1D2947C3A3D6BE884E8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DLObjectLearningProject-DLObjectLearningProjectUITests/Pods-DLObjectLearningProject-DLObjectLearningProjectUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		0178F99228B4D02BA799ABB0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1424,6 +1475,8 @@
 				"${BUILT_PRODUCTS_DIR}/LinqToObjectiveC/LinqToObjectiveC.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/Motis/Motis.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
@@ -1435,6 +1488,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LinqToObjectiveC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Motis.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
@@ -1444,7 +1499,25 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DLObjectLearningProject/Pods-DLObjectLearningProject-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		1F0D877AC79530441FA2B9F8 /* [CP] Copy Pods Resources */ = {
+		131778D97BC9C370D08D262B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DLObjectLearningProject-DLObjectLearningProjectTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		28109B426D2ACECE542E7424 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1456,22 +1529,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DLObjectLearningProjectTests/Pods-DLObjectLearningProjectTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4811774BE9F77925EB3A04CC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DLObjectLearningProjectTests/Pods-DLObjectLearningProjectTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DLObjectLearningProject-DLObjectLearningProjectTests/Pods-DLObjectLearningProject-DLObjectLearningProjectTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4F46B2F814CDCDFFACE91CA9 /* [CP] Check Pods Manifest.lock */ = {
@@ -1492,7 +1550,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6CD045A9305F11B777C3679D /* [CP] Check Pods Manifest.lock */ = {
+		791957B91788280B1B062FE5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1503,59 +1561,83 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DLObjectLearningProjectTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-DLObjectLearningProject-DLObjectLearningProjectUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		74CACECE84D99A936E3455DC /* [CP] Embed Pods Frameworks */ = {
+		AAB58E098522D0D8921602F5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DLObjectLearningProject-DLObjectLearningProjectTests/Pods-DLObjectLearningProject-DLObjectLearningProjectTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/BlocksKit/BlocksKit.framework",
+				"${BUILT_PRODUCTS_DIR}/LinqToObjectiveC/LinqToObjectiveC.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/Motis/Motis.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BlocksKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LinqToObjectiveC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Motis.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DLObjectLearningProjectUITests/Pods-DLObjectLearningProjectUITests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DLObjectLearningProject-DLObjectLearningProjectTests/Pods-DLObjectLearningProject-DLObjectLearningProjectTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B6E14517F8AB5BF479787B8F /* [CP] Copy Pods Resources */ = {
+		B18BA9454E08E65CB34EEBEA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DLObjectLearningProject-DLObjectLearningProjectUITests/Pods-DLObjectLearningProject-DLObjectLearningProjectUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/BlocksKit/BlocksKit.framework",
+				"${BUILT_PRODUCTS_DIR}/LinqToObjectiveC/LinqToObjectiveC.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/Motis/Motis.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BlocksKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LinqToObjectiveC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Motis.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DLObjectLearningProjectUITests/Pods-DLObjectLearningProjectUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B8C01E78EEDB1C81F4C55F96 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DLObjectLearningProjectUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DLObjectLearningProject-DLObjectLearningProjectUITests/Pods-DLObjectLearningProject-DLObjectLearningProjectUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DDE22A3AAEE939B57FFEB6F3 /* [CP] Copy Pods Resources */ = {
@@ -1715,7 +1797,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1079A0C82059200B0043E681 /* RVMTestViewModel.m in Sources */,
 				B6BED6A41FE954670048F222 /* DLObjectLearningProjectTests.m in Sources */,
+				1079A0C420591EB70043E681 /* RVMViewModelSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1794,6 +1878,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1814,6 +1899,8 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
+				SWIFT_VERSION = "";
 			};
 			name = Debug;
 		};
@@ -1849,6 +1936,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1862,6 +1950,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
+				SWIFT_VERSION = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1870,19 +1960,22 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E4C943ED76E847CE4C86CBB3 /* Pods-DLObjectLearningProject.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GLWCRSS83U;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 982JFBV2HY;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = DLObjectLearningProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.long.DLObjectLearningProject2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.long.DLObjectLearningProject3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DLObjectLearningProject/RunLoop/TableViewFluency/DLObjectLearningProject-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1891,59 +1984,101 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 415273351540B521825C1099 /* Pods-DLObjectLearningProject.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GLWCRSS83U;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 982JFBV2HY;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = DLObjectLearningProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.long.DLObjectLearningProject2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.long.DLObjectLearningProject3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DLObjectLearningProject/RunLoop/TableViewFluency/DLObjectLearningProject-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 		B6BED6B71FE954670048F222 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3A2E79B711DCC2CAB36FA1C /* Pods-DLObjectLearningProjectTests.debug.xcconfig */;
+			baseConfigurationReference = 00EE8F1193ED31E220C529B5 /* Pods-DLObjectLearningProject-DLObjectLearningProjectTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 982JFBV2HY;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BlocksKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/LinqToObjectiveC\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Masonry\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Motis\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Nimble\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Quick\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ReactiveObjC\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SVProgressHUD\"",
+				);
 				INFOPLIST_FILE = DLObjectLearningProjectTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.long.DLObjectLearningProjectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DLObjectLearningProjectTests/test/DLObjectLearningProjectTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DLObjectLearningProject.app/DLObjectLearningProject";
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
 		};
 		B6BED6B81FE954670048F222 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 33DE728B08349936399F547D /* Pods-DLObjectLearningProjectTests.release.xcconfig */;
+			baseConfigurationReference = B33237CE78DBCFA52AFC0B87 /* Pods-DLObjectLearningProject-DLObjectLearningProjectTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 982JFBV2HY;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BlocksKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/LinqToObjectiveC\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Masonry\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Motis\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Nimble\"/**",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Quick\"/**",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ReactiveObjC\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SVProgressHUD\"",
+				);
 				INFOPLIST_FILE = DLObjectLearningProjectTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.long.DLObjectLearningProjectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DLObjectLearningProjectTests/test/DLObjectLearningProjectTests-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DLObjectLearningProject.app/DLObjectLearningProject";
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;
 		};
 		B6BED6BA1FE954670048F222 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2A05F7BED7022439AC0141E4 /* Pods-DLObjectLearningProjectUITests.debug.xcconfig */;
+			baseConfigurationReference = 8D823A553510F87544BCA865 /* Pods-DLObjectLearningProject-DLObjectLearningProjectUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1952,6 +2087,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.long.DLObjectLearningProjectUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = DLObjectLearningProject;
 			};
@@ -1959,7 +2095,7 @@
 		};
 		B6BED6BB1FE954670048F222 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 622B04FD16F30D28555ECF15 /* Pods-DLObjectLearningProjectUITests.release.xcconfig */;
+			baseConfigurationReference = 987C1B2AC95A554654F971D7 /* Pods-DLObjectLearningProject-DLObjectLearningProjectUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1968,6 +2104,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.long.DLObjectLearningProjectUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = DLObjectLearningProject;
 			};
