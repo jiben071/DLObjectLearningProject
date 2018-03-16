@@ -4,7 +4,7 @@
 //
 //  Created by denglong on 14/03/2018.
 //Copyright © 2018 long deng. All rights reserved.
-//
+//  该示例存在于ReactiveViewModel开源项目中（值得学习）
 
 //为了让这两个@import可用：
 //总结：统一整个项目的Swift版本，引起引入不对的根本原因是swift版本没有统一

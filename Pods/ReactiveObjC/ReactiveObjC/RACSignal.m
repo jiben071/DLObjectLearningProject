@@ -91,29 +91,31 @@
 }
 
 - (RACSignal *)bind:(RACSignalBindBlock (^)(void))block {
-	NSCParameterAssert(block != NULL);
+	NSCParameterAssert(block != NULL);//断言传入的block不能为空
 
 	/*
 	 * -bind: should:
 	 * 
-	 * 1. Subscribe to the original signal of values.
-	 * 2. Any time the original signal sends a value, transform it using the binding block.
-	 * 3. If the binding block returns a signal, subscribe to it, and pass all of its values through to the subscriber as they're received.
-	 * 4. If the binding block asks the bind to terminate, complete the _original_ signal.
-	 * 5. When _all_ signals complete, send completed to the subscriber.
+	 * 1. Subscribe to the original signal of values. 订阅源信号值
+	 * 2. Any time the original signal sends a value, transform it using the binding block. 任何时候源信号发送一个值，使用绑定的block进行运送
+	 * 3. If the binding block returns a signal, subscribe to it, and pass all of its values through to the subscriber as they're received.如果绑定的block返回了一个信号，订阅它，并传送它的所有值给订阅者，当收到数据的时候
+	 * 4. If the binding block asks the bind to terminate, complete the _original_ signal.如果绑定的block需要终止绑定，同时将源信号置为完成
+	 * 5. When _all_ signals complete, send completed to the subscriber.当所有信号完成，将完成信息发送给订阅者
 	 * 
-	 * If any signal sends an error at any point, send that to the subscriber.
+	 * If any signal sends an error at any point, send that to the subscriber.任何时间点信号发出了错误，同样需要传输给订阅者
 	 */
 
+    //返回一个信号
 	return [[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
-		RACSignalBindBlock bindingBlock = block();
+		RACSignalBindBlock bindingBlock = block();//获取block返回的拦截block,这个信号拦截处理返回的值
 
-		__block volatile int32_t signalCount = 1;   // indicates self
+		__block volatile int32_t signalCount = 1;   // indicates self  信号计数
 
 		RACCompoundDisposable *compoundDisposable = [RACCompoundDisposable compoundDisposable];
 
+        //完成信号回调
 		void (^completeSignal)(RACDisposable *) = ^(RACDisposable *finishedDisposable) {
-			if (OSAtomicDecrement32Barrier(&signalCount) == 0) {
+			if (OSAtomicDecrement32Barrier(&signalCount) == 0) {//如果信号计数为0，则释放资源
 				[subscriber sendCompleted];
 				[compoundDisposable dispose];
 			} else {
@@ -121,6 +123,7 @@
 			}
 		};
 
+        //增加信号回调
 		void (^addSignal)(RACSignal *) = ^(RACSignal *signal) {
 			OSAtomicIncrement32Barrier(&signalCount);
 
@@ -145,16 +148,17 @@
 			RACSerialDisposable *selfDisposable = [[RACSerialDisposable alloc] init];
 			[compoundDisposable addDisposable:selfDisposable];
 
+            //订阅自己
 			RACDisposable *bindingDisposable = [self subscribeNext:^(id x) {
 				// Manually check disposal to handle synchronous errors.
 				if (compoundDisposable.disposed) return;
 
 				BOOL stop = NO;
-				id signal = bindingBlock(x, &stop);
+				id signal = bindingBlock(x, &stop);//传入拦截block内部
 
 				@autoreleasepool {
 					if (signal != nil) addSignal(signal);
-					if (signal == nil || stop) {
+					if (signal == nil || stop) {//如果终止或者返回的信号为空，则清空该signa资源
 						[selfDisposable dispose];
 						completeSignal(selfDisposable);
 					}
