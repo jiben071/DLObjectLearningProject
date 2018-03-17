@@ -147,6 +147,7 @@
 		10EDD89A20493FE5003EA6B9 /* DLCaculatorMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EDD89920493FE5003EA6B9 /* DLCaculatorMaker.m */; };
 		4F66821E593BE290427D1E64 /* Pods_DLObjectLearningProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C3091F4F536E5DE79CCD22 /* Pods_DLObjectLearningProject.framework */; };
 		7E6BD7FA2567988F950321A2 /* Pods_DLObjectLearningProject_DLObjectLearningProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D1906DB5AFA812AD6718B1 /* Pods_DLObjectLearningProject_DLObjectLearningProjectUITests.framework */; };
+		B6046CD1205D4E7E0043DE96 /* 快捷键.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B6046CD0205D4E7E0043DE96 /* 快捷键.rtf */; };
 		B60F3E9E1FEAB5AE00EB3154 /* NSObject+LogCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = B60F3E9D1FEAB5AE00EB3154 /* NSObject+LogCategory.m */; };
 		B60F3EA11FEAB81600EB3154 /* DLGCDCompareWithOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B60F3EA01FEAB81600EB3154 /* DLGCDCompareWithOperation.m */; };
 		B656CA6C1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B656CA6B1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m */; };
@@ -469,6 +470,7 @@
 		987C1B2AC95A554654F971D7 /* Pods-DLObjectLearningProject-DLObjectLearningProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLObjectLearningProject-DLObjectLearningProjectUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DLObjectLearningProject-DLObjectLearningProjectUITests/Pods-DLObjectLearningProject-DLObjectLearningProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9CC0116B781D2FFC500B9D25 /* Pods_DLObjectLearningProject_DLObjectLearningProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DLObjectLearningProject_DLObjectLearningProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B33237CE78DBCFA52AFC0B87 /* Pods-DLObjectLearningProject-DLObjectLearningProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLObjectLearningProject-DLObjectLearningProjectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DLObjectLearningProject-DLObjectLearningProjectTests/Pods-DLObjectLearningProject-DLObjectLearningProjectTests.release.xcconfig"; sourceTree = "<group>"; };
+		B6046CD0205D4E7E0043DE96 /* 快捷键.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "快捷键.rtf"; sourceTree = "<group>"; };
 		B60F3E9C1FEAB5AE00EB3154 /* NSObject+LogCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LogCategory.h"; sourceTree = "<group>"; };
 		B60F3E9D1FEAB5AE00EB3154 /* NSObject+LogCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LogCategory.m"; sourceTree = "<group>"; };
 		B60F3E9F1FEAB81600EB3154 /* DLGCDCompareWithOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLGCDCompareWithOperation.h; sourceTree = "<group>"; };
@@ -1254,6 +1256,7 @@
 		B6BED67E1FE954670048F222 = {
 			isa = PBXGroup;
 			children = (
+				B6046CD0205D4E7E0043DE96 /* 快捷键.rtf */,
 				109D9FE8205A1D2E00050253 /* 使用注意要点.rtf */,
 				B6BED6891FE954670048F222 /* DLObjectLearningProject */,
 				B6BED6A21FE954670048F222 /* DLObjectLearningProjectTests */,
@@ -1461,6 +1464,7 @@
 				102969C12022B64000D01259 /* Digits.png in Resources */,
 				109D9FE9205A1D2E00050253 /* 使用注意要点.rtf in Resources */,
 				10271996201EF6A20071EC9A /* bg_dail@2x.png in Resources */,
+				B6046CD1205D4E7E0043DE96 /* 快捷键.rtf in Resources */,
 				B6BED6941FE954670048F222 /* Assets.xcassets in Resources */,
 				B6BED6921FE954670048F222 /* Main.storyboard in Resources */,
 			);
