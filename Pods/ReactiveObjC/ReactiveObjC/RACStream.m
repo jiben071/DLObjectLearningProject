@@ -73,12 +73,12 @@
 - (__kindof RACStream *)flattenMap:(__kindof RACStream * (^)(id value))block {
 	Class class = self.class;
 
-	return [[self bind:^{
+    return [[self bind:^{//信号绑定了一个再一次包装传进来的block的block
 		return ^(id value, BOOL *stop) {
 			id stream = block(value) ?: [class empty];
 			NSCAssert([stream isKindOfClass:RACStream.class], @"Value returned from -flattenMap: is not a stream: %@", stream);
 
-			return stream;
+			return stream;//这里拦截到bind内部新建信号的发送的值后，将外部获取到的信号再次传入到bind内部
 		};
 	}] setNameWithFormat:@"[%@] -flattenMap:", self.name];
 }

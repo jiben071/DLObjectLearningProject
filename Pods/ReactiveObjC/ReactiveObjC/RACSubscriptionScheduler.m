@@ -34,7 +34,9 @@
 - (RACDisposable *)schedule:(void (^)(void))block {
 	NSCParameterAssert(block != NULL);
 
-	if (RACScheduler.currentScheduler == nil) return [self.backgroundScheduler schedule:block];
+    if (RACScheduler.currentScheduler == nil) {
+        return [self.backgroundScheduler schedule:block];
+    }
 
 	block();
 	return nil;

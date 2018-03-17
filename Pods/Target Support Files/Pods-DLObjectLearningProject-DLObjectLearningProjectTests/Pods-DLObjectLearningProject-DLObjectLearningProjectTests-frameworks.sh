@@ -139,11 +139,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/LinqToObjectiveC/LinqToObjectiveC.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Motis/Motis.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Quick/Quick.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Quick/Quick.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework"
@@ -151,11 +151,11 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/LinqToObjectiveC/LinqToObjectiveC.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Motis/Motis.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Quick/Quick.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Quick/Quick.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

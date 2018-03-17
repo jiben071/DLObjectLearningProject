@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// of, the given disposable is immediately disposed. This allows a compound
 /// disposable to act as a stand-in for a disposable that will be delivered
 /// asynchronously.
+/// 使用组合模式
 @interface RACCompoundDisposable : RACDisposable
 
 /// Creates and returns a new compound disposable.

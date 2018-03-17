@@ -105,12 +105,13 @@
 	 * If any signal sends an error at any point, send that to the subscriber.任何时间点信号发出了错误，同样需要传输给订阅者
 	 */
 
-    //返回一个信号
+    //返回一个信号  这个信号是用来管理信号的信号的
 	return [[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
 		RACSignalBindBlock bindingBlock = block();//获取block返回的拦截block,这个信号拦截处理返回的值
 
 		__block volatile int32_t signalCount = 1;   // indicates self  信号计数
 
+        //用来管理信号的信号数组销毁
 		RACCompoundDisposable *compoundDisposable = [RACCompoundDisposable compoundDisposable];
 
         //完成信号回调
@@ -275,9 +276,9 @@
 
 - (RACDisposable *)subscribeNext:(void (^)(id x))nextBlock {
 	NSCParameterAssert(nextBlock != NULL);
-	
+	//创建订阅者,并在订阅者内部保存nextBlock
 	RACSubscriber *o = [RACSubscriber subscriberWithNext:nextBlock error:NULL completed:NULL];
-	return [self subscribe:o];
+	return [self subscribe:o];//将信号 订阅者  disposable绑定
 }
 
 - (RACDisposable *)subscribeNext:(void (^)(id x))nextBlock completed:(void (^)(void))completedBlock {

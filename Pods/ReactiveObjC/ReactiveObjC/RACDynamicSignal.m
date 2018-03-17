@@ -36,12 +36,14 @@
 - (RACDisposable *)subscribe:(id<RACSubscriber>)subscriber {
 	NSCParameterAssert(subscriber != nil);
 
+    //dispossable管理信号产生的disposal
 	RACCompoundDisposable *disposable = [RACCompoundDisposable compoundDisposable];
+    //将信号 订阅者  disposable绑定
 	subscriber = [[RACPassthroughSubscriber alloc] initWithSubscriber:subscriber signal:self disposable:disposable];
 
 	if (self.didSubscribe != NULL) {
-		RACDisposable *schedulingDisposable = [RACScheduler.subscriptionScheduler schedule:^{
-			RACDisposable *innerDisposable = self.didSubscribe(subscriber);
+		RACDisposable *schedulingDisposable = [RACScheduler.subscriptionScheduler schedule:^{//在当前线程
+			RACDisposable *innerDisposable = self.didSubscribe(subscriber);//回调订阅者
 			[disposable addDisposable:innerDisposable];
 		}];
 

@@ -19,6 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self flattemMapTest2];
 }
 
 - (void)kvoSample{
@@ -72,6 +74,92 @@
     }];
     //4.发送信号
     [subject sendNext:@"123"];
+}
+
+#pragma mark - map
+- (void)mapTest{
+    //创建信号
+    RACSubject *subject = [RACSubject subject];
+    //绑定信号
+    RACSignal *bindSignal = [subject map:^id _Nullable(id  _Nullable value) {
+        //返回的类型就是你需要映射的值
+        return [NSString stringWithFormat:@"ws:%@",value];//这里将源信号发送的“123”前面拼接了ws：
+    }];
+    //订阅绑定信号
+    [bindSignal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+    //发送信号
+    [subject sendNext:@"123"];
+}
+
+#pragma mark - flatMap
+- (void)flatMapTest{
+    //创建信号
+    RACSubject *subject = [RACSubject subject];
+    //绑定信号
+    RACSignal *bindSignal = [subject flattenMap:^__kindof RACSignal * _Nullable(id  _Nullable value) {
+        //block:只要源信号发送内容就会调用
+        //value:就是源信号发送的内容
+        //返回信号用来包装成修改内容的值
+        return [RACReturnSignal return:value];
+    }];
+    
+    //flattenMap中返回的是什么信号，订阅的就是什么信号（那么，x的值等于value的值，如果我们操纵value的值那么x也会随之而变）
+    //订阅信号
+    [bindSignal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+    
+    //发送数据
+    [subject sendNext:@"123"];
+}
+
+- (void)flattemMapTest2{
+    //flattenMap 主要用于信号中的信号
+    //创建信号
+    RACSubject *signalOfSignals = [RACSubject subject];
+    RACSubject *signal = [RACSubject subject];
+    
+    /*
+    //订阅信号
+    //方式1
+    [signalOfSignals subscribeNext:^(id  _Nullable x) {
+        [x subscribeNext:^(id  _Nullable x) {
+            NSLog(@"%@",x);
+        }];
+    }];
+    
+    //方式2
+    [signalOfSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+    
+    //方式3
+    RACSignal *bindSignal = [signalOfSignals flattenMap:^__kindof RACSignal * _Nullable(id  _Nullable value) {
+        //value:就是源信号发送的内容
+        return value;
+    }];
+    [bindSignal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+     */
+    
+    //方式4：也是开发中常用的
+    // flattenMap作用:把源信号的内容映射成一个新的信号，信号可以是任意类型。
+    [[signalOfSignals flattenMap:^__kindof RACSignal * _Nullable(id  _Nullable value) {
+        return value;
+    }] subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@", x);
+    }];
+    
+    //发送信号
+    [signalOfSignals sendNext:signal];
+    [signal sendNext:@"123"];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self flattemMapTest2];
 }
 
 @end

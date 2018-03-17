@@ -14,15 +14,15 @@ target 'DLObjectLearningProject' do
   pod 'Masonry'
   pod 'SVProgressHUD'
   pod 'SDWebImage'
-  pod 'Quick'
-  pod 'Nimble'
+#  pod 'Quick'
+#  pod 'Nimble'
 
   target 'DLObjectLearningProjectTests' do
     use_frameworks!
 #    inherit! :search_paths
     # Pods for testing
-#    pod 'Quick'
-#    pod 'Nimble'
+    pod 'Quick'
+    pod 'Nimble'
   end
 
   target 'DLObjectLearningProjectUITests' do
