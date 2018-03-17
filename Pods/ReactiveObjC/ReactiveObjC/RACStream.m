@@ -95,7 +95,7 @@
 	Class class = self.class;
 	
 	return [[self flattenMap:^(id value) {
-		return [class return:block(value)];
+		return [class return:block(value)];// Returns a stream containing only the given value.
 	}] setNameWithFormat:@"[%@] -map:", self.name];
 }
 

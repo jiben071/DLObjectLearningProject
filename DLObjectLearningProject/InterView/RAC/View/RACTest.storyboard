@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Experience View Controller-->
+        <!--Learning By Myself View Controller-->
         <scene sceneID="gg9-ye-xtD">
             <objects>
-                <viewController id="dK3-T2-1xA" customClass="DLRACExperienceViewController" sceneMemberID="viewController">
+                <viewController id="dK3-T2-1xA" customClass="DLRACLearningByMyselfViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eNN-pN-2uf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

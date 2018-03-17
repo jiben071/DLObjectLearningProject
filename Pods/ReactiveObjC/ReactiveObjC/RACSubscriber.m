@@ -102,6 +102,7 @@
 
 	// If this subscription terminates, purge its disposable to avoid unbounded
 	// memory growth.
+    //如果订阅行为终止，清理订阅者的disposable，以防不受限的内存增长
 	[otherDisposable addDisposable:[RACDisposable disposableWithBlock:^{
 		@strongify(otherDisposable);
 		[selfDisposable removeDisposable:otherDisposable];
