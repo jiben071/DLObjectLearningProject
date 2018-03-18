@@ -187,7 +187,7 @@
 	return [[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
 		__block RACSequence *sequence = self;
 
-		return [scheduler scheduleRecursiveBlock:^(void (^reschedule)(void)) {
+		return [scheduler scheduleRecursiveBlock:^(void (^reschedule)(void)) {//递归循环遍历
 			if (sequence.head == nil) {
 				[subscriber sendCompleted];
 				return;

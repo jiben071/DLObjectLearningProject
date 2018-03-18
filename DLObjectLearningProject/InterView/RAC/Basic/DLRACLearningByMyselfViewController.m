@@ -25,7 +25,9 @@
     //    [self flattemMapTest2];
 //    [self mapTest];
 //    [self signalTest];
-    [self subjectTest];
+//    [self subjectTest];
+//    [self racSequenceTest];
+    [self connectionTest];
 }
 
 
@@ -148,7 +150,9 @@
     //    [self flattemMapTest2];
 //    [self mapTest];
 //    [self signalTest];
-    [self subjectTest];
+//    [self subjectTest];
+//    [self racSequenceTest];
+    [self connectionTest];
 }
 
 #pragma mark - RACSignal
@@ -232,5 +236,54 @@
      注意 RACSubject和RACReplaySubject的区别 RACSubject必须要先订阅信号之后才能发送信号， 而RACReplaySubject可以先发送信号后订阅. RACSubject 代码中体现为：先走TwoViewController的sendNext，后走ViewController的subscribeNext订阅 RACReplaySubject 代码中体现为：先走ViewController的subscribeNext订阅，后走TwoViewController的sendNext 可按实际情况各取所需。
      */
 }
+
+#pragma mark - RACSequence
+//使用场景：可以快速高效遍历数组和字典
+- (void)racSequenceTest{
+    /*
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"flags.plist" ofType:nil];
+    NSArray *dictArr = [NSArray arrayWithContentsOfFile:path];
+     */
+    NSArray *dictArr = @[@{@"key":@1,@"key2":@2},@{@"key":@1,@"key2":@2}];
+    [dictArr.rac_sequence.signal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    } error:^(NSError * _Nullable error) {
+        NSLog(@"=====error======");
+    } completed:^{
+        NSLog(@"-----完毕");
+    }];
+}
+
+#pragma mark - RACMulticastConnection
+//当有多个订阅者，但是我们只想发送一个信号的时候怎么办？这时我们就可以用RACMulticastConnection，来实现。
+- (void)connectionTest{
+    //比较好的做法。使用RACMulticastConnection，无论有多少个订阅者，无论订阅多少次，我只发送一个。
+    //1.发送请求，用一个信号包装，不管有多少个订阅者，只想发一次请求
+    RACSignal *signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        //发送信号
+        [subscriber sendNext:@"ws"];
+        return nil;
+    }];
+    
+    //2.创建连接类
+    RACMulticastConnection *connection = [signal publish];
+    [connection.signal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+    
+    [connection.signal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+    
+    [connection.signal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+    
+    //3.连接，只有连接了才会把信号源变为热信号
+    [connection connect];
+}
+
+
+
 
 @end
