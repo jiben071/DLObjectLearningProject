@@ -13,7 +13,12 @@
 #import <ReactiveObjC/RACReturnSignal.h>
 
 @interface DLRACLearningByMyselfViewController ()
-
+@property(nonatomic, strong) UILabel *lable;
+@property(nonatomic, strong) UITextField *textField;
+@property(nonatomic, strong) RACSignal *signal;
+@property(nonatomic, strong) UITextField *accountField;
+@property(nonatomic, strong) UITextField *pwdField;
+@property(nonatomic, strong) UIButton *loginBtn;
 @end
 
 @implementation DLRACLearningByMyselfViewController
@@ -27,7 +32,8 @@
 //    [self signalTest];
 //    [self subjectTest];
 //    [self racSequenceTest];
-    [self connectionTest];
+//    [self connectionTest];
+    [self commandTest];
 }
 
 
@@ -152,7 +158,8 @@
 //    [self signalTest];
 //    [self subjectTest];
 //    [self racSequenceTest];
-    [self connectionTest];
+//    [self connectionTest];
+    [self commandTest];
 }
 
 #pragma mark - RACSignal
@@ -281,6 +288,380 @@
     
     //3.连接，只有连接了才会把信号源变为热信号
     [connection connect];
+}
+
+#pragma mark - RACCommand
+/*
+ RACCommand:RAC中用于处理事件的类，可以把事件如何处理，事件中的数据如何传递，包装到这个类中，他可以很方便的监控事件的执行过程，比如看事件有没有执行完毕
+ 使用场景：监听按钮点击，网络请求
+ */
+- (void)commandTest{
+    //普通做法
+    //RACCommand：处理事件
+    //不能返回空的信号
+    //1.创建命令
+    RACCommand *command = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+        //block调用，执行命令的时候就会调用
+        NSLog(@"%@",input);//input 为执行命令传进来的参数
+        //这里的返回值不允许为nil
+        return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+            [subscriber sendNext:@"执行命令产生的数据"];
+            return nil;
+        }];
+    }];
+    
+    //如何拿到执行命令中产生的数据呢？
+    //订阅命令内部的信号
+    //** 方式一：直接订阅执行命令返回的信号
+    
+    //2.执行命令
+    RACSignal *signal = [command execute:@2];//这里其实用到的是replaySubject 可以先发送命令再订阅
+    //在这里就可以订阅信号了
+    [signal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+}
+
+- (void)commandTest2{
+    //一般做法
+    //1.创建命令
+    RACCommand *command = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+        //block调用，执行命令的时候就会调用
+        NSLog(@"%@",input); // input 为执行命令传进来的参数
+        // 这里的返回值不允许为nil
+        return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+            [subscriber sendNext:@"执行命令产生的数据"];
+            return nil;
+        }];
+    }];
+    
+    //方式二：
+    //订阅信号
+    //注意：这里必须是先订阅才能发送命令
+    // executionSignals：信号源，信号中信号，signalofsignals:信号，发送数据就是信号
+    [command.executionSignals subscribeNext:^(RACSignal  *_Nullable x) {
+        [x subscribeNext:^(id  _Nullable x) {
+            NSLog(@"%@",x);
+        }];
+    }];
+    
+    //2.执行命令
+    [command execute:@2];
+}
+
+- (void)commandTest3{
+    //高级做法
+    //1.创建命令
+    RACCommand *command = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+        // block调用：执行命令的时候就会调用
+        NSLog(@"%@", input);
+        // 这里的返回值不允许为nil
+        return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+            [subscriber sendNext:@"发送信号"];
+            return nil;
+        }];
+    }];
+    
+    //方式三
+    // switchToLatest获取最新发送的信号，只能用于信号中信号。
+    [command.executionSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+    
+    //2.执行命令
+    [command execute:@3];
+}
+
+- (void)switchToLatestTest{
+    //switchToLatest——用于信号中的信号
+    //创建信号中的信号
+    RACSubject *signalOfSignals = [RACSubject subject];
+    RACSubject *signalA = [RACSubject subject];
+    //订阅信号
+    [signalOfSignals subscribeNext:^(RACSignal  *_Nullable x) {
+        [x subscribeNext:^(id  _Nullable x) {
+            NSLog(@"%@",x);
+        }];
+    }];
+    
+    
+    //switchToLatest:获取信号中信号发送的最新信号
+    [signalOfSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+    
+    //发送信号
+    [signalOfSignals sendNext:signalA];
+    [signalA sendNext:@4];
+}
+
+- (void)commandTest5{
+    //监听事件有没有完成
+    //注意：当前命令内部发送数据完成，一定要主动发送完成
+    //1.创建命令
+    RACCommand *command = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+        // block调用：执行命令的时候就会调用
+        NSLog(@"%@", input);
+        // 这里的返回值不允许为nil
+        return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+            //发送数据
+            [subscriber sendNext:@"执行命令产生的数据"];
+            //***发送完成****
+            [subscriber sendCompleted];
+            return nil;
+        }];
+    }];
+    
+    //监听事件有没有完成
+    [command.executing subscribeNext:^(NSNumber * _Nullable x) {
+        if ([x boolValue] == YES) {//正在执行
+            NSLog(@"当前正在执行%@",x);
+        }else{
+            //执行完成/没有执行
+            NSLog(@"执行完成/没有执行");
+        }
+    }];
+    
+    //执行命令
+    [command execute:@1];
+}
+
+#pragma mark - macro
+- (void)macroTest{
+    
+    //RAC：把一个对象的某个属性绑定一个信号，只要发出信号，就会把信号的内容给对象的属性赋值
+    // 给label的text属性绑定了文本框改变的信号
+    RAC(self.lable,text) = self.textField.rac_textSignal;
+    
+    //相当于：
+    //    [self.textField.rac_textSignal subscribeNext:^(id x) {
+    //        self.label.text = x;
+    //    }];
+    
+    /**
+     *  KVO
+     *  RACObserveL:快速的监听某个对象的某个属性改变
+     *  返回的是一个信号,对象的某个属性改变的信号
+     */
+    [RACObserve(self.view, center) subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+    
+    //例 textField输入的值赋值给label，监听label文字改变,
+    RAC(self.lable, text) = self.textField.rac_textSignal;
+    [RACObserve(self.lable, text) subscribeNext:^(id x) {
+        NSLog(@"====label的文字变了");
+    }];
+    
+    /**
+     *  循环引用问题
+     *  使用 @weakify(self)和@strongify(self)来避免循环引用
+     */
+    @weakify(self)
+    RACSignal *signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        @strongify(self)
+        NSLog(@"%@",self.view);
+        return nil;
+    }];
+    _signal = signal;
+    
+    /**
+     * 元祖
+     * 快速包装一个元组
+     * 把包装的类型放在宏的参数里面,就会自动包装
+     */
+    RACTuple *tuple = RACTuplePack(@1,@2,@4);
+    // 宏的参数类型要和元祖中元素类型一致， 右边为要解析的元祖。
+    RACTupleUnpack(NSNumber *num1,NSNumber *num2,NSNumber *num3) = tuple;//4.元组
+    NSLog(@"%@ %@ %@", num1, num2, num3);
+}
+
+#pragma mark - RAC-过滤
+- (void)filterTest{
+    //跳跃：如下，skip传入2 跳过前面两个值
+    //实际用处：在实际开发中比如后台返回的数据前面几个没用，我们想跳跃过去，便可以用skip
+    RACSubject *subject = [RACSubject subject];
+    [[subject skip:2] subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@", x);
+    }];
+    [subject sendNext:@1];
+    [subject sendNext:@2];
+    [subject sendNext:@3];
+    
+    //distinctUntilChanged:-- 如果当前的值跟上一次的值一样，就不会被订阅到
+    [[subject distinctUntilChanged] subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@", x);
+    }];
+    // 发送信号
+    [subject sendNext:@1];
+    [subject sendNext:@2];
+    [subject sendNext:@2]; // 不会被订阅
+    
+    //take：可以屏蔽一些值，去掉前面几个值——这里take为2，则只拿到前面两个值
+    RACSubject *subject3 = [RACSubject subject];
+    [[subject3 take:2] subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+    
+    // 发送信号
+    [subject3 sendNext:@1];
+    [subject3 sendNext:@2];
+    [subject3 sendNext:@3];
+    [subject3 sendCompleted];
+    
+    // 一般和文本框一起用，添加过滤条件
+    // 只有当文本框的内容长度大于5，才获取文本框里的内容
+    [[self.textField.rac_textSignal filter:^BOOL(id value) {
+        // value 源信号的内容
+        return [value length] > 5;
+        // 返回值 就是过滤条件。只有满足这个条件才能获取到内容
+    }] subscribeNext:^(id x) {
+        NSLog(@"%@", x);
+    }];
+}
+
+- (void)takeUntilTest{
+    //takeUntil:——给takeUntil传的是哪个信号，那么当这个信号发送信号或sendCompleted,就不能再接受源信号的内容了。
+    RACSubject *subject = [RACSubject subject];
+    RACSubject *subject2 = [RACSubject subject];
+    [[subject takeUntil:subject2] subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+    //发送信号
+    [subject sendNext:@1];
+    [subject sendNext:@2];
+    [subject2 sendNext:@3];  // 1
+    //    [subject2 sendCompleted]; // 或2
+    [subject sendNext:@4];
+}
+
+- (void)ignoreTest {
+    // ignore: 忽略掉一些值
+    //ignore:忽略一些值
+    //ignoreValues:表示忽略所有的值
+    //1.创建信号
+    RACSubject *subject = [RACSubject subject];
+    //2.忽略一些值
+    RACSignal *ignoreSignal = [subject ignore:@2];//ignoreValues:表示忽略所有的值
+    //3.订阅信号
+    [ignoreSignal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+    //4.发送数据
+    [subject sendNext:@2];
+}
+
+#pragma mark - RAC-组合
+//把多个信号聚合成你想要的信号，使用场景：比如，当多个输入框都有值的时候按钮才可点击
+- (void)combineTest{
+    //思路：就是把输入框输入值的信号都聚合成按钮是否能点击的信号
+    RACSignal *combineSignal = [RACSignal combineLatest:@[self.accountField.rac_textSignal,self.pwdField.rac_textSignal] reduce:^id (NSString *account,NSString *pwd){
+        // block: 只要源信号发送内容，就会调用，组合成一个新值。
+        NSLog(@"%@ %@", account, pwd);
+        return @(account.length && pwd.length);
+    }];
+    
+    //    // 订阅信号
+    //    [combinSignal subscribeNext:^(id x) {
+    //        self.loginBtn.enabled = [x boolValue];
+    //    }];    // ----这样写有些麻烦，可以直接用RAC宏
+    RAC(self.loginBtn,enabled) = combineSignal;
+}
+
+- (void)zipWith {
+    //zipWith:把两个信号压缩成一个信号，只有当两个信号同时发出信号内容时，并且把两个信号的内容合并成一个元组，才会触发压缩流的next事件
+    //创建信号A
+    RACSubject *signalA = [RACSubject subject];
+    RACSubject *signalB = [RACSubject subject];
+    //压缩成一个信号
+    // **-zipWith-**: 当一个界面多个请求的时候，要等所有请求完成才更新UI
+    // 等所有信号都发送内容的时候才会调用
+    RACSignal *zipSignal = [signalA zipWith:signalB];
+    [zipSignal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);//所有的值都被包装成了元组
+    }];
+    // 发送信号 交互顺序，元组内元素的顺序不会变，跟发送的顺序无关，而是跟压缩的顺序有关[signalA zipWith:signalB]---先是A后是B
+    [signalA sendNext:@1];
+    [signalB sendNext:@2];
+}
+
+- (void)mergeTest {
+    // 任何一个信号请求完成都会被订阅到
+    // merge:多个信号合并成一个信号，任何一个信号有新值就会调用
+    //创建信号
+    RACSubject *signalA = [RACSubject subject];
+    RACSubject *signalB = [RACSubject subject];
+    //组合信号
+    RACSignal *mergeSignal = [signalA merge:signalB];
+    //订阅信号
+    [mergeSignal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+    // 发送信号---交换位置则数据结果顺序也会交换
+    [signalB sendNext:@"下部分"];
+    [signalA sendNext:@"上部分"];
+}
+
+//then——使用需求：有两部分数据：想让上部分先进行网络请求但是过滤掉数据，然后进行下部分的，拿到下部分数据
+- (void)thenTest {
+    //创建信号A
+    RACSignal *signalA = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        //发送请求
+        NSLog(@"——发送上部分请求——afn");
+        [subscriber sendNext:@"上部分数据"];
+        [subscriber sendCompleted]; // 必须要调用sendCompleted方法！
+        return nil;
+    }];
+    
+    //创建信号B
+    RACSignal *signalB = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        // 发送请求
+        NSLog(@"--发送下部分请求--afn");
+        [subscriber sendNext:@"下部分数据"];
+        return nil;
+    }];
+    
+    //创建组合信号
+    //then：忽略掉第一个信号的所有值
+    RACSignal *thenSignal = [signalA then:^RACSignal * _Nonnull{
+        return signalB;// 返回的信号就是要组合的信号
+    }];
+    
+    //订阅信号
+    [thenSignal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+}
+
+// concat----- 使用需求：有两部分数据：想让上部分先执行，完了之后再让下部分执行（都可获取值）
+- (void)concatTest {
+    //组合
+    // 创建信号A
+    RACSignal *signalA = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        // 发送请求
+        //        NSLog(@"----发送上部分请求---afn");
+        
+        [subscriber sendNext:@"上部分数据"];
+        [subscriber sendCompleted]; // 必须要调用sendCompleted方法！
+        return nil;
+    }];
+    
+    // 创建信号B，
+    RACSignal *signalsB = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        // 发送请求
+        //        NSLog(@"--发送下部分请求--afn");
+        [subscriber sendNext:@"下部分数据"];
+        return nil;
+    }];
+    
+    //concat:按顺序去链接
+    //**-注意-**：concat，第一个信号必须要调用sendCompleted
+    //创建组合信号
+    RACSignal *concatSignal = [signalA concat:signalsB];
+    //订阅组合信号
+    [concatSignal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
 }
 
 

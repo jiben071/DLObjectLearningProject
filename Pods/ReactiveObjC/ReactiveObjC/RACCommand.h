@@ -13,6 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /// The domain for errors originating within `RACCommand`.
+/// 错误域
 extern NSString * const RACCommandErrorDomain;
 
 /// -execute: was invoked while the command was disabled.
@@ -26,6 +27,12 @@ extern NSString * const RACUnderlyingCommandErrorKey;
 
 /// A command is a signal triggered in response to some action, typically
 /// UI-related.
+///
+/*
+ covariant && contravariant
+ __covariant : 子类型可以强转到父类型（里氏替换原则）
+ __contravariant : 父类型可以强转到子类型（WTF?）
+ */
 @interface RACCommand<__contravariant InputType, __covariant ValueType> : NSObject
 
 /// A signal of the signals returned by successful invocations of -execute:
@@ -36,7 +43,7 @@ extern NSString * const RACUnderlyingCommandErrorKey;
 /// -[RACSignal materialize].
 /// 
 /// Only executions that begin _after_ subscription will be sent upon this
-/// signal. All inner signals will arrive upon the main thread.
+/// signal. All inner signals will arrive upon the main thread.//主线程执行
 @property (nonatomic, strong, readonly) RACSignal<RACSignal<ValueType> *> *executionSignals;
 
 /// A signal of whether this command is currently executing.

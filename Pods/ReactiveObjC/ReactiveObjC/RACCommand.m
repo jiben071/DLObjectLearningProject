@@ -40,7 +40,7 @@ const NSInteger RACCommandErrorNotEnabled = 1;
 // Values from this signal may arrive on any thread.
 @property (nonatomic, strong, readonly) RACSignal *immediateEnabled;
 
-// The signal block that the receiver was initialized with.
+// The signal block that the receiver was initialized with.接收器初始化的信号块。
 @property (nonatomic, copy, readonly) RACSignal * (^signalBlock)(id input);
 
 @end
@@ -55,9 +55,9 @@ const NSInteger RACCommandErrorNotEnabled = 1;
 
 - (void)setAllowsConcurrentExecution:(BOOL)allowed {
 	if (allowed) {
-		OSAtomicOr32Barrier(1, &_allowsConcurrentExecution);
+		OSAtomicOr32Barrier(1, &_allowsConcurrentExecution);//在指定的32位值和32位掩码之间执行逻辑或。
 	} else {
-		OSAtomicAnd32Barrier(0, &_allowsConcurrentExecution);
+		OSAtomicAnd32Barrier(0, &_allowsConcurrentExecution);//在指定的32位值和32位掩码之间执行逻辑与。
 	}
 
 	[self.allowsConcurrentExecutionSubject sendNext:@(_allowsConcurrentExecution)];
@@ -84,22 +84,24 @@ const NSInteger RACCommandErrorNotEnabled = 1;
 
 	self = [super init];
 
-	_addedExecutionSignalsSubject = [RACSubject new];
-	_allowsConcurrentExecutionSubject = [RACSubject new];
+	_addedExecutionSignalsSubject = [RACSubject new];//添加可执行信号的信号
+	_allowsConcurrentExecutionSubject = [RACSubject new];//允许并发执行信号的信号
 	_signalBlock = [signalBlock copy];
 
+    //需要执行的信号
 	_executionSignals = [[[self.addedExecutionSignalsSubject
-		map:^(RACSignal *signal) {
-			return [signal catchTo:[RACSignal empty]];
+		map:^(RACSignal *signal) {//映射
+            return [signal catchTo:[RACSignal empty]];//catchTo:发生错误时订阅给定的信号。
 		}]
 		deliverOn:RACScheduler.mainThreadScheduler]
 		setNameWithFormat:@"%@ -executionSignals", self];
-	
+	// 错误需要可以多点传送
 	// `errors` needs to be multicasted so that it picks up all
 	// `activeExecutionSignals` that are added.
 	//
 	// In other words, if someone subscribes to `errors` _after_ an execution
 	// has started, it should still receive any error from that execution.
+    // 错误处理：
 	RACMulticastConnection *errorsConnection = [[[self.addedExecutionSignalsSubject
 		flattenMap:^(RACSignal *signal) {
 			return [[signal
@@ -114,17 +116,18 @@ const NSInteger RACCommandErrorNotEnabled = 1;
 	_errors = [errorsConnection.signal setNameWithFormat:@"%@ -errors", self];
 	[errorsConnection connect];
 
+    //立即执行的信号
 	RACSignal *immediateExecuting = [[[[self.addedExecutionSignalsSubject
 		flattenMap:^(RACSignal *signal) {
 			return [[[signal
-				catchTo:[RACSignal empty]]
-				then:^{
+				catchTo:[RACSignal empty]]//发生错误时订阅给定的信号。
+                     then:^{//忽略来自接收器的所有“next”，等待接收器完成，然后订阅一个新的信号。
 					return [RACSignal return:@-1];
 				}]
-				startWith:@1];
+                    startWith:@1];//startWith:Returns a signal consisting of `value`
 		}]
 		scanWithStart:@0 reduce:^(NSNumber *running, NSNumber *next) {
-			return @(running.integerValue + next.integerValue);
+			return @(running.integerValue + next.integerValue);//实现遍历累加的效果
 		}]
 		map:^(NSNumber *count) {
 			return @(count.integerValue > 0);
@@ -139,10 +142,11 @@ const NSInteger RACCommandErrorNotEnabled = 1;
 		replayLast]
 		setNameWithFormat:@"%@ -executing", self];
 	
+    // Switches between `trueSignal` and `falseSignal` based on the latest value sent by `boolSignal`.
 	RACSignal *moreExecutionsAllowed = [RACSignal
 		if:[self.allowsConcurrentExecutionSubject startWith:@NO]
 		then:[RACSignal return:@YES]
-		else:[immediateExecuting not]];
+		else:[immediateExecuting not]];//Inverts each NSNumber-wrapped BOOL sent by the receiver.
 	
 	if (enabledSignal == nil) {
 		enabledSignal = [RACSignal return:@YES];
