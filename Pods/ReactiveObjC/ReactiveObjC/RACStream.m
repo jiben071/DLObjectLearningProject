@@ -75,7 +75,7 @@
 
     return [[self bind:^{//信号绑定了一个再一次包装传进来的block的block
 		return ^(id value, BOOL *stop) {
-			id stream = block(value) ?: [class empty];
+			id stream = block(value) ?: [class empty];//在flattenMap中，返回block(value)的信号，如果信号为nil，则返回[class empty]。RACEmptySignal是RACSignal的子类，一旦订阅它，它就会同步的发送completed完成信号给订阅者。
 			NSCAssert([stream isKindOfClass:RACStream.class], @"Value returned from -flattenMap: is not a stream: %@", stream);
 
 			return stream;//这里拦截到bind内部新建信号的发送的值后，将外部获取到的信号再次传入到bind内部
@@ -92,10 +92,15 @@
 - (__kindof RACStream *)map:(id (^)(id value))block {
 	NSCParameterAssert(block != nil);
 
+    //这里实现代码比较严谨，先判断self的类型。
+    //因为RACStream的子类中会有一些子类会重写这些方法，所以需要判断self的类型，在回调中可以回调到原类型的方法中去。
 	Class class = self.class;
 	
+    //由于本篇文章中我们都分析RACSignal的操作，所以这里的self.class是RACDynamicSignal类型的。相应的在return返回值中也返回class，即RACDynamicSignal类型的信号。
+    //flattenMap算是对bind函数的一种封装。bind函数的入参是一个RACStreamBindBlock类型的闭包。而flattenMap函数的入参是一个value，返回值RACStream类型的闭包。
 	return [[self flattenMap:^(id value) {
-		return [class return:block(value)];// Returns a stream containing only the given value.
+        //在这个闭包中把原信号的value值传进去进行变换，变换结束之后，包装成和原信号相同类型的信号，返回。返回的信号作为bind函数的闭包的返回值。这样订阅新的map之后的信号就会拿到变换之后的值。
+		return [class return:block(value)];// 这个闭包返回一个信号，信号类型和原信号的类型一样，即RACDynamicSignal类型的，值是block(value)。
 	}] setNameWithFormat:@"[%@] -map:", self.name];
 }
 

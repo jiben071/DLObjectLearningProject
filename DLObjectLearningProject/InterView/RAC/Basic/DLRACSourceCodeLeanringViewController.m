@@ -131,6 +131,24 @@
     }];
 }
 
-
+- (void)mapTest{
+    RACSignal *signal = [RACSignal createSignal:
+                         ^RACDisposable *(id<RACSubscriber> subscriber)
+                         {
+                             [subscriber sendNext:@1];
+                             [subscriber sendNext:@2];
+                             [subscriber sendNext:@3];
+                             [subscriber sendNext:@4];
+                             [subscriber sendCompleted];
+                             return [RACDisposable disposableWithBlock:^{
+                                 NSLog(@"signal dispose");
+                             }];
+                         }];
+    
+    //map操作一般是用来做信号变换的。
+    RACSignal *signalB = [signal map:^id _Nullable(NSNumber  *_Nullable value) {
+        return @([value intValue] * 10);
+    }];
+}
 
 @end
