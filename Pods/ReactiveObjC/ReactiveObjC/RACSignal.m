@@ -28,7 +28,7 @@
 #pragma mark Lifecycle
 
 + (RACSignal *)createSignal:(RACDisposable * (^)(id<RACSubscriber> subscriber))didSubscribe {
-	return [RACDynamicSignal createSignal:didSubscribe];
+	return [RACDynamicSignal createSignal:didSubscribe];//RACDynamicSignal是RACSignal的子类。
 }
 
 + (RACSignal *)error:(NSError *)error {
@@ -90,6 +90,15 @@
 	return [RACReturnSignal return:value];
 }
 
+/*
+ 先来说说bind函数的作用：
+ 1. 会订阅原始的信号。
+ 2. 任何时刻原始信号发送一个值，都会绑定的block转换一次。
+ 3. 一旦绑定的block转换了值变成信号，就立即订阅，并把值发给订阅者subscriber。
+ 4. 一旦绑定的block要终止绑定，原始的信号就complete。
+ 5. 当所有的信号都complete，发送completed信号给订阅者subscriber。
+ 6. 如果中途信号出现了任何error，都要把这个错误发送给subscriber
+ */
 - (RACSignal *)bind:(RACSignalBindBlock (^)(void))block {
 	NSCParameterAssert(block != NULL);//断言传入的block不能为空
 
@@ -180,15 +189,24 @@
 	}] setNameWithFormat:@"[%@] -bind:", self.name];
 }
 
+/*
+ 这里有二点需要注意的是：
+ 
+ 只有当第一个信号完成之后才能收到第二个信号的值，因为第二个信号是在第一个信号completed的闭包里面订阅的，所以第一个信号不结束，第二个信号也不会被订阅。
+ 两个信号concat在一起之后，新的信号的结束信号在第二个信号结束的时候才结束。看上图描述，新的信号的发送长度等于前面两个信号长度之和，concat之后的新信号的结束信号也就是第二个信号的结束信号。
+ concat是有序的组合，第一个信号完成之后才发送第二个信号。
+ */
 - (RACSignal *)concat:(RACSignal *)signal {
 	return [[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
 		RACCompoundDisposable *compoundDisposable = [[RACCompoundDisposable alloc] init];
 
 		RACDisposable *sourceDisposable = [self subscribeNext:^(id x) {
+            //发送第一个信号的值
 			[subscriber sendNext:x];
 		} error:^(NSError *error) {
 			[subscriber sendError:error];
 		} completed:^{
+            //订阅第二个信号
 			RACDisposable *concattedDisposable = [signal subscribe:subscriber];
 			[compoundDisposable addDisposable:concattedDisposable];
 		}];
@@ -198,6 +216,9 @@
 	}] setNameWithFormat:@"[%@] -concat: %@", self.name, signal];
 }
 
+/*
+ 当把两个信号通过zipWith之后，就像上面的那张图一样，拉链的两边被中间的拉索拉到了一起。既然是拉链，那么一一的位置是有对应的，上面的拉链第一个位置只能对着下面拉链第一个位置，这样拉链才能拉到一起去。
+ */
 - (RACSignal *)zipWith:(RACSignal *)signal {
 	NSCParameterAssert(signal != nil);
 
@@ -212,26 +233,32 @@
 			@synchronized (selfValues) {
 				BOOL selfEmpty = (selfCompleted && selfValues.count == 0);
 				BOOL otherEmpty = (otherCompleted && otherValues.count == 0);
+                //如果任意一个信号完成并且数组里面空了，就整个信号算完成
 				if (selfEmpty || otherEmpty) [subscriber sendCompleted];
 			}
 		};
 
 		void (^sendNext)(void) = ^{
 			@synchronized (selfValues) {
+                //数组里面的空了就返回
 				if (selfValues.count == 0) return;
 				if (otherValues.count == 0) return;
 
+                //每次都取出两个数组里面的第0位的值，打包成元组
 				RACTuple *tuple = RACTuplePack(selfValues[0], otherValues[0]);
 				[selfValues removeObjectAtIndex:0];
 				[otherValues removeObjectAtIndex:0];
 
+                //把元组发送出去
 				[subscriber sendNext:tuple];
 				sendCompletedIfNecessary();
 			}
 		};
 
+        //订阅第一个信号
 		RACDisposable *selfDisposable = [self subscribeNext:^(id x) {
 			@synchronized (selfValues) {
+                //把第一个信号的值加入到数组中
 				[selfValues addObject:x ?: RACTupleNil.tupleNil];
 				sendNext();
 			}
@@ -239,13 +266,16 @@
 			[subscriber sendError:error];
 		} completed:^{
 			@synchronized (selfValues) {
+                //订阅完成时判断是否要发送完成信号
 				selfCompleted = YES;
 				sendCompletedIfNecessary();
 			}
 		}];
 
+        //订阅第二个信号
 		RACDisposable *otherDisposable = [signal subscribeNext:^(id x) {
 			@synchronized (selfValues) {
+                //把第二个信号加入到数组中
 				[otherValues addObject:x ?: RACTupleNil.tupleNil];
 				sendNext();
 			}
@@ -253,12 +283,14 @@
 			[subscriber sendError:error];
 		} completed:^{
 			@synchronized (selfValues) {
+                //订阅完成时判断是否要发送完成信号
 				otherCompleted = YES;
 				sendCompletedIfNecessary();
 			}
 		}];
 
 		return [RACDisposable disposableWithBlock:^{
+            //销毁两个信号
 			[selfDisposable dispose];
 			[otherDisposable dispose];
 		}];
@@ -278,7 +310,7 @@
 	NSCParameterAssert(nextBlock != NULL);
 	//创建订阅者,并在订阅者内部保存nextBlock
 	RACSubscriber *o = [RACSubscriber subscriberWithNext:nextBlock error:NULL completed:NULL];
-	return [self subscribe:o];//将信号 订阅者  disposable绑定
+	return [self subscribe:o];//这里实际是调用了RACDynamicSignal类里面的subscribe方法。
 }
 
 - (RACDisposable *)subscribeNext:(void (^)(id x))nextBlock completed:(void (^)(void))completedBlock {

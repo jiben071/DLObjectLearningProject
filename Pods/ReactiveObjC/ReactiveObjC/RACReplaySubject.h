@@ -15,6 +15,7 @@ extern const NSUInteger RACReplaySubjectUnlimitedCapacity;
 /// A replay subject saves the values it is sent (up to its defined capacity)
 /// and resends those to new subscribers. It will also replay an error or
 /// completion.
+/// 保存发送过的值，数量以capacity为准，每当有新的订阅者，都会重发
 @interface RACReplaySubject<ValueType> : RACSubject<ValueType>
 
 /// Creates a new replay subject with the given capacity. A capacity of

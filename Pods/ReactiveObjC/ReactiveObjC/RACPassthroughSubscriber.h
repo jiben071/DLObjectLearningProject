@@ -14,6 +14,7 @@
 
 // A private subscriber that passes through all events to another subscriber
 // while not disposed.
+// 目的就是为了把所有的信号事件从一个订阅者subscriber传递给另一个还没有disposed的订阅者subscriber。
 @interface RACPassthroughSubscriber : NSObject <RACSubscriber>
 
 // Initializes the receiver to pass through events until disposed.

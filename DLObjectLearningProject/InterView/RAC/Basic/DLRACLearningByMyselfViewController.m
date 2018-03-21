@@ -295,11 +295,20 @@
  RACCommand:RAC中用于处理事件的类，可以把事件如何处理，事件中的数据如何传递，包装到这个类中，他可以很方便的监控事件的执行过程，比如看事件有没有执行完毕
  使用场景：监听按钮点击，网络请求
  */
+/*
+ https://halfrost.com/reactivecocoa_raccommand/  RACCommand底层分析
+ */
 - (void)commandTest{
     //普通做法
     //RACCommand：处理事件
     //不能返回空的信号
     //1.创建命令
+    /*
+     RACCommand最常见的例子就是在注册登录的时候，点击获取验证码的按钮，这个按钮的点击事件和触发条件就可以用RACCommand来封装，触发条件是一个信号，它可以是验证手机号，验证邮箱，验证身份证等一些验证条件产生的enabledSignal。触发事件就是按钮点击之后执行的事件，可以是发送验证码的网络请求。
+     */
+    /*
+     RACCommand在ReactiveCocoa中算是很特别的一种存在，因为它的实现并不是FRP实现的，是OOP实现的。RACCommand的本质就是一个对象，在这个对象里面封装了4个信号。
+     */
     RACCommand *command = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
         //block调用，执行命令的时候就会调用
         NSLog(@"%@",input);//input 为执行命令传进来的参数
@@ -320,6 +329,31 @@
     [signal subscribeNext:^(id  _Nullable x) {
         NSLog(@"%@",x);
     }];
+    
+    [signal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+    
+    
+    /*
+    - (void)removeActiveExecutionSignal:(RACSignal *)signal {
+        NSCParameterAssert([signal isKindOfClass:RACSignal.class]);
+        
+        @synchronized (self) {
+            NSIndexSet *indexes = [_activeExecutionSignals indexesOfObjectsPassingTest:^ BOOL (RACSignal *obj, NSUInteger index, BOOL *stop) {
+                return obj == signal;
+            }];
+            
+            if (indexes.count == 0) return;
+            
+            [self willChange:NSKeyValueChangeRemoval valuesAtIndexes:indexes forKey:@keypath(self.activeExecutionSignals)];
+            [_activeExecutionSignals removeObjectsAtIndexes:indexes];
+            [self didChange:NSKeyValueChangeRemoval valuesAtIndexes:indexes forKey:@keypath(self.activeExecutionSignals)];
+        }
+    }
+     */
+    
+    //从上面增加和删除的操作中我们可以看见了RAC的作者在手动发送change notification，手动调用willChange: 和 didChange:方法。作者的目的在于防止一些不必要的swizzling可能会影响到增加和删除的操作，所以这里选择的手动发送通知的方式。
 }
 
 - (void)commandTest2{

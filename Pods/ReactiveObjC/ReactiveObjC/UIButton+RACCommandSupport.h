@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+/*
+ __covariant - 协变性，子类型可以强转到父类型（里氏替换原则）
+ __contravariant - 逆变性，父类型可以强转到子类型（WTF?）
+ */
 @class RACCommand<__contravariant InputType, __covariant ValueType>;
 
 NS_ASSUME_NONNULL_BEGIN

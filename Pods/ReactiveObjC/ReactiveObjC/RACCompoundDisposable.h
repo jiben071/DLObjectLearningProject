@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// of, the given disposable is immediately disposed. This allows a compound
 /// disposable to act as a stand-in for a disposable that will be delivered
 /// asynchronously.
+/// RACCompoundDisposable虽然是RACDisposable的子类，但是它里面可以加入多个RACDisposable对象，在必要的时候可以一口气都调用dispose方法来销毁信号。当RACCompoundDisposable对象被dispose的时候，也会自动dispose容器内的所有RACDisposable对象。
 /// 使用组合模式
 @interface RACCompoundDisposable : RACDisposable
 

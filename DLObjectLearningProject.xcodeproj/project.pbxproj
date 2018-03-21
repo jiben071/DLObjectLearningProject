@@ -18,6 +18,7 @@
 		1050A6EF205BB88700FCD555 /* RACTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1050A6EE205BB88700FCD555 /* RACTest.storyboard */; };
 		1050A6F3205CEBED00FCD555 /* DLNavigationRelatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1050A6F2205CEBED00FCD555 /* DLNavigationRelatedViewController.m */; };
 		1050A6F6205CFAE000FCD555 /* DLRACLearningByMyselfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1050A6F5205CFAE000FCD555 /* DLRACLearningByMyselfViewController.m */; };
+		1050A767206238DA00FCD555 /* DLRACSourceCodeLeanringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1050A766206238DA00FCD555 /* DLRACSourceCodeLeanringViewController.m */; };
 		105E31BD20464F280006D3AD /* RWSearchFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31B820464F270006D3AD /* RWSearchFormViewController.m */; };
 		105E31BE20464F280006D3AD /* RWTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31B920464F270006D3AD /* RWTweet.m */; };
 		105E31BF20464F280006D3AD /* RWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31BA20464F270006D3AD /* RWTableViewCell.m */; };
@@ -199,6 +200,8 @@
 		1050A6F2205CEBED00FCD555 /* DLNavigationRelatedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLNavigationRelatedViewController.m; sourceTree = "<group>"; };
 		1050A6F4205CFAE000FCD555 /* DLRACLearningByMyselfViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLRACLearningByMyselfViewController.h; sourceTree = "<group>"; };
 		1050A6F5205CFAE000FCD555 /* DLRACLearningByMyselfViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLRACLearningByMyselfViewController.m; sourceTree = "<group>"; };
+		1050A765206238DA00FCD555 /* DLRACSourceCodeLeanringViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLRACSourceCodeLeanringViewController.h; sourceTree = "<group>"; };
+		1050A766206238DA00FCD555 /* DLRACSourceCodeLeanringViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLRACSourceCodeLeanringViewController.m; sourceTree = "<group>"; };
 		105E31B520464F270006D3AD /* RWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTableViewCell.h; sourceTree = "<group>"; };
 		105E31B620464F270006D3AD /* RWTweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTweet.h; sourceTree = "<group>"; };
 		105E31B720464F270006D3AD /* RWSearchResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWSearchResultsViewController.h; sourceTree = "<group>"; };
@@ -1189,6 +1192,8 @@
 				109D9FEB205AA3A800050253 /* DLRACExperienceViewController.m */,
 				1050A6F4205CFAE000FCD555 /* DLRACLearningByMyselfViewController.h */,
 				1050A6F5205CFAE000FCD555 /* DLRACLearningByMyselfViewController.m */,
+				1050A765206238DA00FCD555 /* DLRACSourceCodeLeanringViewController.h */,
+				1050A766206238DA00FCD555 /* DLRACSourceCodeLeanringViewController.m */,
 			);
 			path = Basic;
 			sourceTree = "<group>";
@@ -1736,6 +1741,7 @@
 				105E31BD20464F280006D3AD /* RWSearchFormViewController.m in Sources */,
 				10929B2B205118CA003DF3BC /* DLRACClassIntroduceViewController.m in Sources */,
 				102969DE2025597A00D01259 /* SLSolidObjectBuildViewController.m in Sources */,
+				1050A767206238DA00FCD555 /* DLRACSourceCodeLeanringViewController.m in Sources */,
 				10B0C7D21FEBB33800C37675 /* Result.m in Sources */,
 				10B0C7D51FEBB33800C37675 /* SyncCloudClient.m in Sources */,
 				105E31BE20464F280006D3AD /* RWTweet.m in Sources */,

@@ -538,6 +538,7 @@ extern const NSInteger RACSignalErrorNoMatchingCase;
 /// Creates and returns a multicast connection that pushes values into the given
 /// subject. This allows you to share a single subscription to the underlying
 /// signal.
+/// 让传入的subject可以共享底层的signal信号
 - (RACMulticastConnection<ValueType> *)multicast:(RACSubject<ValueType> *)subject RAC_WARN_UNUSED_RESULT;
 
 /// Multicasts the signal to a RACReplaySubject of unlimited capacity, and

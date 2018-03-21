@@ -34,6 +34,7 @@
 - (RACDisposable *)schedule:(void (^)(void))block {
 	NSCParameterAssert(block != NULL);
 
+    //在取currentScheduler的过程中，会判断currentScheduler是否存在，和是否在主线程中。如果都没有，那么就会调用后台backgroundScheduler去执行schedule。
     if (RACScheduler.currentScheduler == nil) {
         return [self.backgroundScheduler schedule:block];
     }

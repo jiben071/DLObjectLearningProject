@@ -13,7 +13,7 @@
 
 @interface RACSubscriber ()
 
-// These callbacks should only be accessed while synchronized on self.
+// These callbacks should only be accessed while synchronized on self.  自我同步才能访问
 @property (nonatomic, copy) void (^next)(id value);
 @property (nonatomic, copy) void (^error)(NSError *error);
 @property (nonatomic, copy) void (^completed)(void);

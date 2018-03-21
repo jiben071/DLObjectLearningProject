@@ -40,6 +40,7 @@ static const char *cleanedSignalDescription(RACSignal *signal) {
 // This property isn't `weak` because it's only used for DTrace probes, so
 // a zeroing weak reference would incur an unnecessary performance penalty in
 // normal usage.
+// 这里需要注意的是内部还保存了一个RACSignal，并且它的属性是unsafe_unretained。这里和其他两个属性有区别， 其他两个属性都是strong的。这里之所以不是weak，是因为引用RACSignal仅仅只是一个DTrace probes动态跟踪技术的探针。如果设置成weak，会造成没必要的性能损失。所以这里仅仅是unsafe_unretained就够了。
 @property (nonatomic, unsafe_unretained, readonly) RACSignal *signal;
 
 // A disposable representing the subscription. When disposed, no further events
@@ -57,9 +58,9 @@ static const char *cleanedSignalDescription(RACSignal *signal) {
 
 	self = [super init];
 
-	_innerSubscriber = subscriber;
+	_innerSubscriber = subscriber;//待转发的信号的订阅者subscriber。
 	_signal = signal;
-	_disposable = disposable;
+	_disposable = disposable;//订阅者的销毁对象，一旦它被disposed了，innerSubscriber就再也接受不到事件流了。
 
 	[self.innerSubscriber didSubscribeWithDisposable:self.disposable];
 	return self;

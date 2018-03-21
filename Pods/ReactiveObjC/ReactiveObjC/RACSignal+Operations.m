@@ -867,6 +867,9 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 }
 
 - (id)firstOrDefault:(id)defaultValue success:(BOOL *)success error:(NSError **)error {
+    /*
+     NSCondition 的对象实际上作为一个锁和一个线程检查器：锁主要为了当检测条件时保护数据源，执行条件引发的任务；线程检查器主要是根据条件决定是否继续运行线程，即线程是否被阻塞。
+     */
 	NSCondition *condition = [[NSCondition alloc] init];
 	condition.name = [NSString stringWithFormat:@"[%@] -firstOrDefault: %@ success:error:", self.name, defaultValue];
 
@@ -878,7 +881,7 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	__block BOOL localSuccess;
 
 	[[self take:1] subscribeNext:^(id x) {
-		[condition lock];
+		[condition lock];//一般用于多线程同时访问、修改同一个数据源，保证在同一时间内数据源只被访问、修改一次，其他线程的命令需要在lock 外等待，只到unlock ，才可访问
 
 		value = x;
 		localSuccess = YES;
@@ -910,7 +913,7 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 
 	[condition lock];
 	while (!done) {
-		[condition wait];
+		[condition wait];//让当前线程处于等待状态
 	}
 
 	if (success != NULL) *success = localSuccess;
