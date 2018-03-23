@@ -151,4 +151,68 @@
     }];
 }
 
+- (void)mapReplaceTest{
+    RACSignal *signal = [RACSignal createSignal:
+                         ^RACDisposable *(id<RACSubscriber> subscriber)
+                         {
+                             [subscriber sendNext:@1];
+                             [subscriber sendNext:@2];
+                             [subscriber sendNext:@3];
+                             [subscriber sendNext:@4];
+                             [subscriber sendCompleted];
+                             return [RACDisposable disposableWithBlock:^{
+                                 NSLog(@"signal dispose");
+                             }];
+                         }];
+    //效果是不管signal发送什么信号，就替换成@"A"
+    RACSignal *signalB = [signal mapReplace:@"A"];
+    [signalB subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+}
+
+//reduce是减少，聚合在一起的意思，reduceEach就是每个信号内部都聚合在一起
+- (void)reduceEachTest{
+    RACSignal *signalA = [RACSignal createSignal:
+                         ^RACDisposable *(id<RACSubscriber> subscriber)
+                         {
+                             [subscriber sendNext:@1];
+                             [subscriber sendNext:@2];
+                             [subscriber sendNext:@3];
+                             [subscriber sendNext:@4];
+                             [subscriber sendCompleted];
+                             return [RACDisposable disposableWithBlock:^{
+                                 NSLog(@"signal dispose");
+                             }];
+                         }];
+    
+    RACSignal *signalB = [signalA reduceEach:^id (NSNumber *num1,NSNumber *num2){
+        return @([num1 intValue] + [num2 intValue]);
+    }];
+    
+    [signalB subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+}
+
+- (void)reduceApplyTest {
+    RACSignal *signalA = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        id block = ^id(NSNumber *first,NSNumber *second,NSNumber *third){
+            return @(first.integerValue + second.integerValue * third.integerValue);
+        };
+        [subscriber sendNext:RACTuplePack(block,@2,@3,@8)];
+        [subscriber sendNext:RACTuplePack((id)(^id(NSNumber *x){
+            return @(x.intValue * 10);
+        }),@9,@10,@30)];
+        [subscriber sendCompleted];
+        return [RACDisposable disposableWithBlock:^{
+            NSLog(@"signal dispose");
+        }];
+    }];
+    RACSignal *signalB = [signalA reduceApply];
+    [signalB subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+}
+
 @end
