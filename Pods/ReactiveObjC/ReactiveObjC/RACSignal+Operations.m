@@ -85,6 +85,9 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 
 @implementation RACSignal (Operations)
 
+/*
+ doNext:能让我们在原信号sendNext之前，能执行一个block闭包，在这个闭包中我们可以执行我们想要执行的副作用操作。
+ */
 - (RACSignal *)doNext:(void (^)(id x))block {
 	NSCParameterAssert(block != NULL);
 
@@ -100,6 +103,9 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	}] setNameWithFormat:@"[%@] -doNext:", self.name];
 }
 
+/*
+ doError:能让我们在原信号sendError之前，能执行一个block闭包，在这个闭包中我们可以执行我们想要执行的副作用操作。
+ */
 - (RACSignal *)doError:(void (^)(NSError *error))block {
 	NSCParameterAssert(block != NULL);
 
@@ -115,6 +121,7 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	}] setNameWithFormat:@"[%@] -doError:", self.name];
 }
 
+/*doCompleted:能让我们在原信号sendCompleted之前，能执行一个block闭包，在这个闭包中我们可以执行我们想要执行的副作用操作。*/
 - (RACSignal *)doCompleted:(void (^)(void))block {
 	NSCParameterAssert(block != NULL);
 
@@ -270,6 +277,9 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 		} error:^(NSError *error) {
 			RACSignal *signal = catchBlock(error);
 			NSCAssert(signal != nil, @"Expected non-nil signal from catch block on %@", self);
+            //当对原信号进行订阅的时候，如果出现了错误，会去执行catchBlock( )闭包，入参为刚刚产生的error。catchBlock( )闭包产生的是一个新的RACSignal，并再次用订阅者订阅该信号。
+            
+            //这里之所以说是高阶操作，是因为这里原信号发生错误之后，错误会升阶成一个信号。
 			catchDisposable.disposable = [signal subscribe:subscriber];
 		} completed:^{
 			[subscriber sendCompleted];
@@ -284,7 +294,7 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 
 - (RACSignal *)catchTo:(RACSignal *)signal {
 	return [[self catch:^(NSError *error) {
-		return signal;
+		return signal;//catchTo:的实现就是调用catch:方法，只不过原来catch:方法里面的catchBlock( )闭包，永远都只返回catchTo:的入参，signal信号。
 	}] setNameWithFormat:@"[%@] -catchTo: %@", self.name, signal];
 }
 
@@ -299,6 +309,9 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	}] setNameWithFormat:@"+try:"];
 }
 
+/*
+ try:可以用来进来信号的升阶操作。对原信号进行flattenMap变换，对信号发出来的每个值都调用一遍tryBlock( )闭包，如果这个闭包的返回值是YES，那么就返回[RACSignal return:value]，如果闭包的返回值是NO，那么就返回error。原信号中如果都是值，那么经过try:操作之后，每个值都会变成RACSignal，于是原信号也就变成了高阶信号了。
+ */
 - (RACSignal *)try:(BOOL (^)(id value, NSError **errorPtr))tryBlock {
 	NSCParameterAssert(tryBlock != NULL);
 
@@ -309,6 +322,9 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	}] setNameWithFormat:@"[%@] -try:", self.name];
 }
 
+/*
+ tryMap:的实现和try:的实现基本一致，唯一不同的就是入参闭包的返回值不同。在tryMap:中调用mapBlock( )闭包，返回是一个对象，如果这个对象不为nil，就返回[RACSignal return:mappedValue]。如果返回的对象是nil，那么就变换成error信号。
+ */
 - (RACSignal *)tryMap:(id (^)(id value, NSError **errorPtr))mapBlock {
 	NSCParameterAssert(mapBlock != NULL);
 
@@ -319,6 +335,9 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	}] setNameWithFormat:@"[%@] -tryMap:", self.name];
 }
 
+/*
+ initially:能让我们在原信号发送之前，先调用了defer:操作，在return self之前先执行了一个闭包，在这个闭包中我们可以执行我们想要执行的副作用操作。
+ */
 - (RACSignal *)initially:(void (^)(void))block {
 	NSCParameterAssert(block != NULL);
 
@@ -328,6 +347,9 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	}] setNameWithFormat:@"[%@] -initially:", self.name];
 }
 
+/*
+ finally:操作调用了doError:和doCompleted:操作，依次在sendError之前，sendCompleted之前，插入一个block( )闭包。这样当信号因为错误而要终止取消订阅，或者，发送结束之前，都能执行一段我们想要执行的副作用操作。
+ */
 - (RACSignal *)finally:(void (^)(void))block {
 	NSCParameterAssert(block != NULL);
 
@@ -520,30 +542,41 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 		setNameWithFormat:@"+merge: %@", copiedSignals];
 }
 
+/*
+ 如果maxConcurrent = 0，会发生什么？那么flatten:就退化成flatten了。
+ 如果maxConcurrent = 1，会发生什么？那么flatten:就退化成concat了。
+ 如果maxConcurrent > 1，会发生什么？由于至今还没有遇到能用到maxConcurrent > 1的需求情况，所以这里暂时不展示图解了。maxConcurrent > 1之后，flatten的行为还依照高阶信号的个数和maxConcurrent的关系。如果高阶信号的个数<=maxConcurrent的值，那么flatten:又退化成flatten了。如果高阶信号的个数>maxConcurrent的值，那么多的信号就会进入queuedSignals缓存数组。
+ */
 - (RACSignal *)flatten:(NSUInteger)maxConcurrent {
+    //入参maxConcurrent的意思是最大可容纳同时被订阅的信号个数。
 	return [[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
 		RACCompoundDisposable *compoundDisposable = [[RACCompoundDisposable alloc] init];
 
 		// Contains disposables for the currently active subscriptions.
 		//
 		// This should only be used while synchronized on `subscriber`.
+        //activeDisposables里面装的是当前正在订阅的订阅者们的disposables信号。
 		NSMutableArray *activeDisposables = [[NSMutableArray alloc] initWithCapacity:maxConcurrent];
 
 		// Whether the signal-of-signals has completed yet.
 		//
 		// This should only be used while synchronized on `subscriber`.
+        //selfCompleted表示高阶信号是否Completed。
 		__block BOOL selfCompleted = NO;
 
 		// Subscribes to the given signal.
 		__block void (^subscribeToSignal)(RACSignal *);
 
 		// Weak reference to the above, to avoid a leak.
+        //recur是对subscribeToSignal闭包的一个弱引用，防止strong-weak循环引用，在下面会分析subscribeToSignal闭包，就会明白为什么recur要用weak修饰了。
 		__weak __block void (^recur)(RACSignal *);
 
 		// Sends completed to the subscriber if all signals are finished.
 		//
 		// This should only be used while synchronized on `subscriber`.
+        //completeIfAllowed的作用是在所有信号都发送完毕的时候，通知订阅者，给订阅者发送completed。
 		void (^completeIfAllowed)(void) = ^{
+            //当selfCompleted = YES 并且activeDisposables数组里面的信号都发送完毕，没有可以发送的信号了，即activeDisposables.count = 0，那么就给订阅者sendCompleted。
 			if (selfCompleted && activeDisposables.count == 0) {
 				[subscriber sendCompleted];
 			}
@@ -552,12 +585,15 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 		// The signals waiting to be started.
 		//
 		// This array should only be used while synchronized on `subscriber`.
+        //queuedSignals里面装的是被暂时缓存起来的信号，它们等待被订阅。
 		NSMutableArray *queuedSignals = [NSMutableArray array];
 
+        //subscribeToSignal闭包的作用是订阅所给的信号。这个闭包的入参参数就是一个信号，在闭包内部订阅这个信号，并进行一些操作。
 		recur = subscribeToSignal = ^(RACSignal *signal) {
 			RACSerialDisposable *serialDisposable = [[RACSerialDisposable alloc] init];
 
 			@synchronized (subscriber) {
+                //activeDisposables先添加当前高阶信号发出来的信号的Disposable( 也就是入参信号的Disposable)
 				[compoundDisposable addDisposable:serialDisposable];
 				[activeDisposables addObject:serialDisposable];
 			}
@@ -567,32 +603,42 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 			} error:^(NSError *error) {
 				[subscriber sendError:error];
 			} completed:^{
+                //这里会对recur进行__strong，因为下面第6步会用到subscribeToSignal( )闭包，同样也是为了防止出现循环引用。
 				__strong void (^subscribeToSignal)(RACSignal *) = recur;
 				RACSignal *nextSignal;
 
+                //订阅入参信号，给订阅者发送信号。当发送完毕后，activeDisposables中移除它对应的Disposable。
 				@synchronized (subscriber) {
 					[compoundDisposable removeDisposable:serialDisposable];
 					[activeDisposables removeObjectIdenticalTo:serialDisposable];
 
+                    //如果当前缓存的queuedSignals数组里面没有缓存的信号，那么就调用completeIfAllowed( )闭包。
 					if (queuedSignals.count == 0) {
 						completeIfAllowed();
 						return;
 					}
 
+                    //如果当前缓存的queuedSignals数组里面有缓存的信号，那么就取出第0个信号，并在queuedSignals数组移除它。
 					nextSignal = queuedSignals[0];
 					[queuedSignals removeObjectAtIndex:0];
 				}
 
+                // 6  把第4步取出的信号继续订阅，继续调用subscribeToSignal( )闭包。
 				subscribeToSignal(nextSignal);
 			}];
 		};
 
+        //订阅高阶信号发出来的信号
+        /*
+         每发送完一个信号就判断缓存数组queuedSignals的个数，如果缓存数组里面已经没有信号了，那么就结束原来高阶信号的发送。如果缓存数组里面还有信号就继续订阅。如此循环，直到原高阶信号所有的信号都发送完毕。
+         */
 		[compoundDisposable addDisposable:[self subscribeNext:^(RACSignal *signal) {
 			if (signal == nil) return;
 
 			NSCAssert([signal isKindOfClass:RACSignal.class], @"Expected a RACSignal, got %@", signal);
 
 			@synchronized (subscriber) {
+                //如果当前最大可容纳信号的个数 > 0 ，且，activeDisposables数组里面已经装满到最大可容纳信号的个数，不能再装新的信号了。那么就把当前的信号缓存到queuedSignals数组中。
 				if (maxConcurrent > 0 && activeDisposables.count >= maxConcurrent) {
 					[queuedSignals addObject:signal];
 
@@ -602,11 +648,13 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 				}
 			}
 
+            //直到activeDisposables数组里面有空的位子可以加入新的信号，那么就调用subscribeToSignal( )闭包，开始订阅这个新的信号。
 			subscribeToSignal(signal);
 		} error:^(NSError *error) {
 			[subscriber sendError:error];
 		} completed:^{
 			@synchronized (subscriber) {
+                //最后完成的时候标记变量selfCompleted为YES，并且调用completeIfAllowed( )闭包。
 				selfCompleted = YES;
 				completeIfAllowed();
 			}
@@ -615,6 +663,7 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 		[compoundDisposable addDisposable:[RACDisposable disposableWithBlock:^{
 			// A strong reference is held to `subscribeToSignal` until we're
 			// done, preventing it from deallocating early.
+            //这里值得一提的是，还需要把subscribeToSignal手动置为nil。因为在subscribeToSignal闭包中强引用了completeIfAllowed闭包，防止completeIfAllowed闭包被提早的销毁掉了。所以在completeIfAllowed闭包执行完毕的时候，需要再把subscribeToSignal闭包置为nil。
 			subscribeToSignal = nil;
 		}]];
 
@@ -622,6 +671,9 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	}] setNameWithFormat:@"[%@] -flatten: %lu", self.name, (unsigned long)maxConcurrent];
 }
 
+/*
+ then的操作也是延迟，只不过它是把block( )闭包延迟到原信号发送complete之后。通过then信号变化得到的新的信号，在原信号发送值的期间的时间内，都不会发送任何值，因为ignoreValues了，一旦原信号sendComplete之后，就紧接着block( )闭包产生的信号。
+ */
 - (RACSignal *)then:(RACSignal * (^)(void))block {
 	NSCParameterAssert(block != nil);
 
@@ -631,6 +683,7 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 		setNameWithFormat:@"[%@] -then:", self.name];
 }
 
+//但是针对的信号的对象是不同的，concat是针对高阶信号进行降阶操作。concat:是把两个信号连接起来的操作。
 - (RACSignal *)concat {
 	return [[self flatten:1] setNameWithFormat:@"[%@] -concat", self.name];
 }
@@ -671,6 +724,7 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 		setNameWithFormat:@"[%@] -aggregateWithStart: %@ reduceWithIndex:", self.name, RACDescription(start)];
 }
 
+//setKeyPath: onObject:就是调用setKeyPath: onObject: nilValue:方法，只不过nilValue传递的是nil。
 - (RACDisposable *)setKeyPath:(NSString *)keyPath onObject:(NSObject *)object {
 	return [self setKeyPath:keyPath onObject:object nilValue:nil];
 }
@@ -692,6 +746,17 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 		// result in a retain here, effectively an invisible __unsafe_unretained
 		// qualifier. Using objc_precise_lifetime gives the __strong reference
 		// desired. The explicit use of __strong is strictly defensive.
+        /*
+         作者怀疑是编译器的一个bug，即使是显示的调用了__strong，依旧没法保证被强引用了，所以还需要用objc_precise_lifetime来保证强引用。
+         
+         关于这个问题，笔者查询了一下LLVM的文档，在6.3 precise lifetime semantics这一节中提到了这个问题。
+         
+         通常上，凡是声明了__strong的变量，都会有很确切的生命周期。ARC会维持这些__strong的变量在其生命周期中被retained。
+         
+         但是自动存储的局部变量是没有确切的生命周期的。这些变量仅仅只是简单的持有一个强引用，强引用着retain对象的指针类型的值。这些值完全受控于本地控制者的如何优化。所以要想改变这些局部变量的生命周期，是不可能的事情。因为有太多的优化，理论上都会导致局部变量的生命周期减少，但是这些优化非常有用。
+         
+         但是LLVM为我们提供了一个关键字objc_precise_lifetime，使用这个可以是局部变量的生命周期变成确切的。这个关键字有时候还是非常有用的。甚至更加极端情况，该局部变量都没有被使用，但是它依旧可以保持一个确定的生命周期。
+         */
 		__strong NSObject *object __attribute__((objc_precise_lifetime)) = (__bridge __strong id)objectPtr;
 		[object setValue:x ?: nilValue forKeyPath:keyPath];
 	} error:^(NSError *error) {
@@ -714,6 +779,11 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	NSMutableDictionary *bindings;
 
 	@synchronized (object) {
+        /*
+         如果bindings字典不存在，那么就调用objc_setAssociatedObject对object进行关联对象。参数是OBJC_ASSOCIATION_RETAIN_NONATOMIC。如果bindings字典存在，就用objc_getAssociatedObject取出字典。
+         
+         在字典里面重新更新绑定key-value值，key就是入参keyPath，value是原信号。
+         */
 		bindings = objc_getAssociatedObject(object, bindingsKey);
 		if (bindings == nil) {
 			bindings = [NSMutableDictionary dictionary];
@@ -731,12 +801,15 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	RACDisposable *clearPointerDisposable = [RACDisposable disposableWithBlock:^{
 		#if DEBUG
 		@synchronized (bindings) {
-			[bindings removeObjectForKey:keyPath];
+			[bindings removeObjectForKey:keyPath];//当信号取消订阅的时候，移除所有的关联值。
 		}
 		#endif
 
+        //在这个while的死循环里面只有当OSAtomicCompareAndSwapPtrBarrier返回值为YES，才能退出整个死循环。返回值为YES就代表&objectPtr被置为了NULL，这样就确保了在线程安全的情况下，不存在野指针的问题了。
 		while (YES) {
 			void *ptr = objectPtr;
+            //OSAtomicCompareAndSwapPtrBarrier(type __oldValue, type __newValue, volatile type *__theValue)
+            //这个函数用于比较__oldValue是否与__theValue指针指向的内存位置的值匹配，如果匹配，则将__newValue的值存储到__theValue指向的内存位置。整个函数的返回值就是交换是否成功的BOOL值。
 			if (OSAtomicCompareAndSwapPtrBarrier(ptr, NULL, &objectPtr)) {
 				break;
 			}
@@ -830,8 +903,14 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	}];
 }
 
+/*
+ witchToLatest这个操作只能用在高阶信号上，如果原信号里面有不是信号的值，那么就会崩溃，崩溃信息如下：
+
+ ***** Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: '-switchToLatest requires that the source signal (<RACDynamicSignal: 0x608000038ec0> name: ) send signals.
+ */
 - (RACSignal *)switchToLatest {
 	return [[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
+        //在switchToLatest操作中，先把原信号转换成热信号，connection.signal就是RACSubject类型的。对RACSubject进行flattenMap:变换。在flattenMap:变换中，connection.signal会先concat:一个never信号。这里concat:一个never信号的原因是为了内部的信号过早的结束而导致订阅者收到complete信号。
 		RACMulticastConnection *connection = [self publish];
 
 		RACDisposable *subscriptionDisposable = [[connection.signal
@@ -840,7 +919,8 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 
 				// -concat:[RACSignal never] prevents completion of the receiver from
 				// prematurely terminating the inner signal.
-				return [x takeUntil:[connection.signal concat:[RACSignal never]]];
+                //flattenMap:变换中x也是一个信号，对x进行takeUntil:变换，效果就是下一个信号到来之前，x会一直发送信号，一旦下一个信号到来，x就会被取消订阅，开始订阅新的信号。
+				return [x takeUntil:[connection.signal concat:[RACSignal never]]];//这里concat:一个never信号的原因是为了内部的信号过早的结束而导致订阅者收到complete信号。
 			}]
 			subscribe:subscriber];
 
@@ -873,35 +953,41 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 				return [RACSignal error:[NSError errorWithDomain:RACSignalErrorDomain code:RACSignalErrorNoMatchingCase userInfo:@{ NSLocalizedDescriptionKey: description }]];
 			}
 
-			return signal;
+			return signal;//如果得到的信号不为nil，那么原信号完全转换完成就会变成一个高阶信号，这个高阶信号里面装的都是信号。最后再对这个高阶信号执行switchToLatest转换。
 		}]
 		switchToLatest]
 		setNameWithFormat:@"+switch: %@ cases: %@ default: %@", signal, cases, defaultSignal];
 }
 
 + (RACSignal *)if:(RACSignal *)boolSignal then:(RACSignal *)trueSignal else:(RACSignal *)falseSignal {
+    //入参boolSignal，trueSignal，falseSignal三个信号都不能为nil。
 	NSCParameterAssert(boolSignal != nil);
 	NSCParameterAssert(trueSignal != nil);
 	NSCParameterAssert(falseSignal != nil);
 
 	return [[[boolSignal
 		map:^(NSNumber *value) {
+            //boolSignal里面都必须装的是NSNumber类型的值。
 			NSCAssert([value isKindOfClass:NSNumber.class], @"Expected %@ to send BOOLs, not %@", boolSignal, value);
 
+            //针对boolSignal进行map升阶操作，boolSignal信号里面的值如果是YES，那么就转换成trueSignal信号，如果为NO，就转换成falseSignal。升阶转换完成之后，boolSignal就是一个高阶信号，然后再进行switchToLatest操作。
 			return (value.boolValue ? trueSignal : falseSignal);
 		}]
 		switchToLatest]
 		setNameWithFormat:@"+if: %@ then: %@ else: %@", boolSignal, trueSignal, falseSignal];
 }
 
+//first方法就更加省略，连defaultValue也不传。最终返回信号是原信号中第一个next里面的值，如果原信号第一个值没有，比如直接error或者completed，那么返回的是nil。
 - (id)first {
 	return [self firstOrDefault:nil];
 }
 
+//firstOrDefault:的实现就是调用了firstOrDefault: success: error:方法。只不过不需要传success和error，不关心内部的状态。最终返回信号是原信号中第一个next里面的值，如果原信号第一个值没有，比如直接error或者completed，那么返回的是defaultValue。
 - (id)firstOrDefault:(id)defaultValue {
 	return [self firstOrDefault:defaultValue success:NULL error:NULL];
 }
 
+//在ReactiveCocoa中还包含一些同步的操作，这些操作一般我们很少使用，除非真的很确定这样做了之后不会有什么问题，否则胡乱使用会导致线程死锁等一些严重的问题。
 - (id)firstOrDefault:(id)defaultValue success:(BOOL *)success error:(NSError **)error {
     /*
      NSCondition 的对象实际上作为一个锁和一个线程检查器：锁主要为了当检测条件时保护数据源，执行条件引发的任务；线程检查器主要是根据条件决定是否继续运行线程，即线程是否被阻塞。
@@ -910,20 +996,21 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	condition.name = [NSString stringWithFormat:@"[%@] -firstOrDefault: %@ success:error:", self.name, defaultValue];
 
 	__block id value = defaultValue;
-	__block BOOL done = NO;
+	__block BOOL done = NO;//done为YES表示已经成功执行了subscribeNext，error，completed这3个操作里面的任意一个。反之为NO。
 
 	// Ensures that we don't pass values across thread boundaries by reference.
 	__block NSError *localError;
 	__block BOOL localSuccess;
 
+    //由于对原信号进行了take:1操作，所以只会对第一个值进行操作。执行完subscribeNext，error，completed这3个操作里面的任意一个，又会加一次锁，对外部传进来的入参success和error进行赋值，已便外部可以拿到里面的状态。最终返回信号是原信号中第一个next里面的值，如果原信号第一个值没有，比如直接error或者completed，那么返回的是defaultValue。
 	[[self take:1] subscribeNext:^(id x) {
 		[condition lock];//一般用于多线程同时访问、修改同一个数据源，保证在同一时间内数据源只被访问、修改一次，其他线程的命令需要在lock 外等待，只到unlock ，才可访问
 
-		value = x;
+		value = x;//入参defaultValue是给内部变量value的一个初始值。当原信号发送出一个值之后，value的值时刻都会与原信号的值保持一致。
 		localSuccess = YES;
 
 		done = YES;
-		[condition broadcast];
+		[condition broadcast];//condition的broadcast操作是唤醒其他线程的操作，相当于操作系统里面互斥信号量的signal操作。
 		[condition unlock];
 	} error:^(NSError *e) {
 		[condition lock];
@@ -952,6 +1039,7 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 		[condition wait];//让当前线程处于等待状态
 	}
 
+    //success和error是外部变量的地址，从外面可以监听到里面的状态。在函数内部赋值，在函数外面拿到它们的值。
 	if (success != NULL) *success = localSuccess;
 	if (error != NULL) *error = localError;
 
@@ -959,6 +1047,11 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	return value;
 }
 
+/*
+ waitUntilCompleted:里面还是调用firstOrDefault: success: error:方法。返回值是success。只要原信号正常的发送完信号，success应该为YES，但是如果发送过程中出现了error，success就为NO。success作为返回值，外部就可以监听到是否发送成功。
+ 
+ 虽然这个方法可以监听到发送结束的状态，但是也尽量不要使用，因为它的实现调用了firstOrDefault: success: error:方法，这个方法里面有大量的锁的操作，一不留神就会导致死锁。
+ */
 - (BOOL)waitUntilCompleted:(NSError **)error {
 	BOOL success = NO;
 
@@ -978,6 +1071,7 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	}] setNameWithFormat:@"+defer:"];
 }
 
+//经过collect之后，原信号所有的值都会被加到一个数组里面，取出信号的第一个值就是一个数组。所以执行完first之后第一个值就是原信号所有值的数组。
 - (NSArray *)toArray {
 	return [[[self collect] first] copy];
 }
@@ -986,19 +1080,32 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	return [[RACSignalSequence sequenceWithSignal:self] setNameWithFormat:@"[%@] -sequence", self.name];
 }
 
+/*
+ publish方法只不过是去调用了multicast:方法，publish内部会新建好一个RACSubject，并把它当成入参传递给RACMulticastConnection。
+ 同样publish方法也需要手动的调用connect方法。
+ */
 - (RACMulticastConnection *)publish {
 	RACSubject *subject = [[RACSubject subject] setNameWithFormat:@"[%@] -publish", self.name];
 	RACMulticastConnection *connection = [self multicast:subject];
 	return connection;
 }
 
+/*
+ 调用 multicast:把冷信号转换成热信号有一个点不方便的是，需要自己手动connect。注意转换完之后的热信号在RACMulticastConnection的signal属性中，所以需要订阅的是connection.signal。
+ */
 - (RACMulticastConnection *)multicast:(RACSubject *)subject {
 	[subject setNameWithFormat:@"[%@] -multicast: %@", self.name, subject.name];
 	RACMulticastConnection *connection = [[RACMulticastConnection alloc] initWithSourceSignal:self subject:subject];
 	return connection;
 }
 
+/*
+ replay方法会把RACReplaySubject当成RACMulticastConnection的RACSubject传递进去，初始化好了RACMulticastConnection，再自动调用connect方法，返回的信号就是转换好的热信号，即RACMulticastConnection里面的RACSubject信号。
+ */
 - (RACSignal *)replay {
+    /*
+     这里必须是RACReplaySubject，因为在replay方法里面先connect了。如果用RACSubject，那信号在connect之后就会通过RACSubject把原信号发送给各个订阅者了。用RACReplaySubject把信号保存起来，即使replay方法里面先connect，订阅者后订阅也是可以拿到之前的信号值的。
+     */
 	RACReplaySubject *subject = [[RACReplaySubject subject] setNameWithFormat:@"[%@] -replay", self.name];
 
 	RACMulticastConnection *connection = [self multicast:subject];
@@ -1007,6 +1114,9 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	return connection.signal;
 }
 
+/*
+ replayLast 和 replay的实现基本一样，唯一的不同就是传入的RACReplaySubject的Capacity是1，意味着只能保存最新的值。所以使用replayLast，订阅之后就只能拿到原信号最新的值。
+ */
 - (RACSignal *)replayLast {
 	RACReplaySubject *subject = [[RACReplaySubject replaySubjectWithCapacity:1] setNameWithFormat:@"[%@] -replayLast", self.name];
 
@@ -1016,10 +1126,19 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	return connection.signal;
 }
 
+
+/*
+ 作用同样是把冷信号转换成热信号
+ sourceSignal是在返回的新信号第一次被订阅的时候才被订阅。
+ */
 - (RACSignal *)replayLazily {
 	RACMulticastConnection *connection = [self multicast:[RACReplaySubject subject]];
+    /*
+     defer 单词的字面意思是延迟的。也和这个函数实现的效果是一致的。只有当defer返回的新信号被订阅的时候，才会执行入参block( )闭包。订阅者会订阅这个block( )闭包的返回值RACSignal。
+     */
 	return [[RACSignal
 		defer:^{
+            //block( )闭包被延迟创建RACSignal了，这就是defer。如果block( )闭包含有和时间有关的操作，或者副作用，想要延迟执行，就可以用defer。
 			[connection connect];
 			return connection.signal;
 		}]
@@ -1033,6 +1152,7 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	return [[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
 		RACCompoundDisposable *disposable = [RACCompoundDisposable compoundDisposable];
 
+        //timeout: onScheduler:的实现很简单，它比正常的信号订阅多了一个timeoutDisposable操作。它在信号订阅的内部开启了一个scheduler，经过interval的时间之后，就会停止订阅原信号，并对订阅者sendError。
 		RACDisposable *timeoutDisposable = [scheduler afterDelay:interval schedule:^{
 			[disposable dispose];
 			[subscriber sendError:[NSError errorWithDomain:RACSignalErrorDomain code:RACSignalErrorTimedOut userInfo:nil]];
@@ -1055,6 +1175,9 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	}] setNameWithFormat:@"[%@] -timeout: %f onScheduler: %@", self.name, (double)interval, scheduler];
 }
 
+/*
+ deliverOn:的入参是一个scheduler，当原信号subscribeNext，sendError，sendCompleted的时候，都去调用scheduler的schedule方法。
+ */
 - (RACSignal *)deliverOn:(RACScheduler *)scheduler {
 	return [[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
 		return [self subscribeNext:^(id x) {
@@ -1073,6 +1196,9 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	}] setNameWithFormat:@"[%@] -deliverOn: %@", self.name, scheduler];
 }
 
+//subscribeOn:操作就是在传入的scheduler的闭包内部订阅原信号的。它与deliverOn:操作就不同：
+
+//subscribeOn:操作能够保证didSubscribe block( )闭包在入参scheduler中执行，但是不能保证原信号subscribeNext，sendError，sendCompleted在哪个scheduler中执行。
 - (RACSignal *)subscribeOn:(RACScheduler *)scheduler {
 	return [[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
 		RACCompoundDisposable *disposable = [RACCompoundDisposable compoundDisposable];
@@ -1092,6 +1218,7 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	return [[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
 		__block volatile int32_t queueLength = 0;
 		
+        //OSAtomicIncrement32 和 OSAtomicDecrement32是原子操作，分别代表+1和-1。下面的if-else判断里面，不管是满足哪一条，最终都还是在主线程中执行block( )闭包。
 		void (^performOnMainThread)(dispatch_block_t) = ^(dispatch_block_t block) {
 			int32_t queued = OSAtomicIncrement32(&queueLength);
 			if (NSThread.isMainThread && queued == 1) {

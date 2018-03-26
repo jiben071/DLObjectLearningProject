@@ -37,6 +37,8 @@
 	[[leadingSubject ignoreValues] subscribe:followingSubject];
 	[[followingSubject ignoreValues] subscribe:leadingSubject];
 
+    //RACChannelTerminal管道两边都是RACReplaySubject类型的信号。当RACChannelTerminal开始sendNext，sendError，sendCompleted是调用的管道另外一个的RACReplaySubject进行这些对应的操作的。
+    //平时使用RACChannelTerminal的地方在View和ViewModel的双向绑定上面。
 	_leadingTerminal = [[[RACChannelTerminal alloc] initWithValues:leadingSubject otherTerminal:followingSubject] setNameWithFormat:@"leadingTerminal"];
 	_followingTerminal = [[[RACChannelTerminal alloc] initWithValues:followingSubject otherTerminal:leadingSubject] setNameWithFormat:@"followingTerminal"];
 

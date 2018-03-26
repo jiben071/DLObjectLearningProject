@@ -83,6 +83,13 @@
 	}] setNameWithFormat:@"[%@] -flattenMap:", self.name];
 }
 
+/*
+ flatten操作必须是对高阶信号进行操作，如果信号里面不是信号，即不是高阶信号，那么就会崩溃。崩溃信息如下：
+ 
+ *** Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: 'Value returned from -flattenMap: is not a stream
+ 
+ 所以flatten是对高阶信号进行的降阶操作。高阶信号每发送一次信号，经过flatten变换，由于flattenMap:操作之后，返回的新的信号的每个值就是原信号中每个信号的值。
+ */
 - (__kindof RACStream *)flatten {
 	return [[self flattenMap:^(id value) {
 		return value;
@@ -150,6 +157,7 @@
 	__weak RACStream *stream __attribute__((unused)) = self;
 	return [[self map:^(RACTuple *t) {
 		NSCAssert([t isKindOfClass:RACTuple.class], @"Value from stream %@ is not a tuple: %@", stream, t);
+        //RACBlockTrampoline就是一个保存了一个block闭包的对象，它会根据传进来的参数，动态的构造一个NSInvocation，并执行
 		return [RACBlockTrampoline invokeBlock:reduceBlock withArguments:t];
 	}] setNameWithFormat:@"[%@] -reduceEach:", self.name];
 }

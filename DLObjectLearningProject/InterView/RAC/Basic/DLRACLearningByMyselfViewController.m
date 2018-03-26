@@ -7,6 +7,7 @@
 //  参考链接：
 //  https://github.com/shuaiwang007/RAC
 //  http://zhz.io/2017/08/18/ReactiveCocoa信号类分析/
+// 常用用法链接：https://github.com/ming1016/study/wiki/iOS函数响应式编程以及ReactiveCocoa的使用
 
 #import "DLRACLearningByMyselfViewController.h"
 #import <ReactiveObjC/ReactiveObjC.h>
