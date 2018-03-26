@@ -238,6 +238,9 @@
 - (BOOL)all:(BOOL (^)(id))block {
 	NSCParameterAssert(block != NULL);
 	
+    /*
+     第一次循环reduce( )闭包是拿YES和原信号RACTuple的第一个值进行&计算。第二个循环reduce( )闭包是拿原信号RACTuple的第一个值和第二个值进行&计算，得到的值参与下一次循环，与第三个值进行&计算，如此下去。这也是折叠函数的意思，foldLeft从左边开始折叠。fold函数会从左至右，把RACTuple转换成的数组里面每个值都一个接着一个进行&计算。
+     */
 	NSNumber *result = [self foldLeftWithStart:@YES reduce:^(NSNumber *accumulator, id value) {
 		return @(accumulator.boolValue && block(value));
 	}];

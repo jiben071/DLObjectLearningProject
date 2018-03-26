@@ -130,6 +130,9 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	}] setNameWithFormat:@"[%@] -doCompleted:", self.name];
 }
 
+/*
+ 这个操作其实就是调用了throttle:valuesPassingTest:方法，传入时间间隔interval，predicate( )闭包则永远返回YES，原信号的每个信号都执行节流操作。
+ */
 - (RACSignal *)throttle:(NSTimeInterval)interval {
 	return [[self throttle:interval valuesPassingTest:^(id _) {
 		return YES;
@@ -140,6 +143,14 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	NSCParameterAssert(interval >= 0);
 	NSCParameterAssert(predicate != nil);
 
+    /*
+     小结一下，每个原信号发送过来，通过在throttle:valuesPassingTest:里面的did subscriber闭包中进行订阅。这个闭包中主要干了4件事情：
+     
+     调用flushNext(NO)闭包判断能否发送原信号的值。入参为NO，不发送原信号的值。
+     判断阀门条件predicate(x)能否发送原信号的值。
+     如果以上两个条件都满足，nextValue中进行赋值为原信号发来的值，hasNextValue = YES代表当前有要发送的值。
+     开启一个delayScheduler，延迟interval的时间，发送原信号的这个值，即调用flushNext(YES)。
+     */
 	return [[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
 		RACCompoundDisposable *compoundDisposable = [RACCompoundDisposable compoundDisposable];
 
@@ -152,8 +163,9 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 		__block BOOL hasNextValue = NO;
 		RACSerialDisposable *nextDisposable = [[RACSerialDisposable alloc] init];
 
+        //flushNext( )这个闭包是为了hook住原信号的发送。
 		void (^flushNext)(BOOL send) = ^(BOOL send) {
-			@synchronized (compoundDisposable) {
+			@synchronized (compoundDisposable) {//之所以把RACCompoundDisposable作为线程间互斥信号量，因为RACCompoundDisposable里面会加入所有的RACDisposable信号。接着下面的操作用@synchronized给线程间加锁。
 				[nextDisposable.disposable dispose];
 
 				if (!hasNextValue) return;
@@ -165,6 +177,9 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 		};
 
 		RACDisposable *subscriptionDisposable = [self subscribeNext:^(id x) {
+            /*
+             首先先创建一个delayScheduler。先判断当前的currentScheduler是否存在，不存在就取之前创建的[RACScheduler scheduler]。这里虽然两处都是RACTargetQueueScheduler类型的，但是currentScheduler是com.ReactiveCocoa.RACScheduler.mainThreadScheduler，而[RACScheduler scheduler]创建的是com.ReactiveCocoa.RACScheduler.backgroundScheduler。
+             */
 			RACScheduler *delayScheduler = RACScheduler.currentScheduler ?: scheduler;
 			BOOL shouldThrottle = predicate(x);
 
@@ -202,6 +217,9 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 		// time so that our scheduled blocks are run serially if we do.
 		RACScheduler *scheduler = [RACScheduler scheduler];
 
+        /*
+         在schedule闭包中做的时间就是延迟interval的时间发送原信号的值。
+         */
 		void (^schedule)(dispatch_block_t) = ^(dispatch_block_t block) {
 			RACScheduler *delayScheduler = RACScheduler.currentScheduler ?: scheduler;
 			RACDisposable *schedulerDisposable = [delayScheduler afterDelay:interval schedule:block];
@@ -331,6 +349,11 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 		RACSerialDisposable *timerDisposable = [[RACSerialDisposable alloc] init];
 		NSMutableArray *values = [NSMutableArray array];
 
+        /*
+         flushValues( )闭包里面主要是把数组包装成一个元组，并且全部发送出来，原数组里面就全部清空了。这也是bufferWithTime:onScheduler:的作用，在interval时间内，把这个时间间隔内的原信号都缓存起来，并且在interval的那一刻，把这些缓存的信号打包成一个元组，发送出来。
+         
+         和throttle:valuesPassingTest:方法一样，在原信号completed的时候，立即执行flushValues( )闭包，把里面存的值都发送出来。
+         */
 		void (^flushValues)() = ^{
 			@synchronized (values) {
 				[timerDisposable.disposable dispose];
@@ -365,6 +388,9 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	}] setNameWithFormat:@"[%@] -bufferWithTime: %f onScheduler: %@", self.name, (double)interval, scheduler];
 }
 
+/*
+ collect函数会调用aggregateWithStartFactory: reduce:方法。把所有原信号的值收集起来，保存在NSMutableArray中。
+ */
 - (RACSignal *)collect {
 	return [[self aggregateWithStartFactory:^{
 		return [[NSMutableArray alloc] init];
@@ -609,6 +635,9 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	return [[self flatten:1] setNameWithFormat:@"[%@] -concat", self.name];
 }
 
+/*
+ aggregateWithStartFactory: reduce:内部实现就是调用aggregateWithStart: reduce:，只不过入参多了一个产生start的startFactory( )闭包罢了。
+ */
 - (RACSignal *)aggregateWithStartFactory:(id (^)(void))startFactory reduce:(id (^)(id running, id next))reduceBlock {
 	NSCParameterAssert(startFactory != NULL);
 	NSCParameterAssert(reduceBlock != NULL);
@@ -618,6 +647,9 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	}] setNameWithFormat:@"[%@] -aggregateWithStartFactory:reduce:", self.name];
 }
 
+/*
+ aggregateWithStart: reduce:调用aggregateWithStart: reduceWithIndex:函数，只不过没有只用index值。同样，如果原信号没有发送complete信号，也不会输出任何信号。
+ */
 - (RACSignal *)aggregateWithStart:(id)start reduce:(id (^)(id running, id next))reduceBlock {
 	return [[self
 		aggregateWithStart:start
@@ -627,6 +659,10 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 		setNameWithFormat:@"[%@] -aggregateWithStart: %@ reduce:", self.name, RACDescription(start)];
 }
 
+/*
+ aggregate是合计的意思。所以最后变换出来的信号只有最后一个值。
+ 值得注意的一点是，原信号如果没有发送complete信号，那么该函数就不会输出新的信号值。因为在一直等待结束。
+ */
 - (RACSignal *)aggregateWithStart:(id)start reduceWithIndex:(id (^)(id, id, NSUInteger))reduceBlock {
 	return [[[[self
 		scanWithStart:start reduceWithIndex:reduceBlock]
@@ -1122,15 +1158,24 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	return [[self groupBy:keyBlock transform:nil] setNameWithFormat:@"[%@] -groupBy:", self.name];
 }
 
+/*
+ any操作是any:操作中的一种情况。即predicateBlock闭包永远都返回YES，所以any操作之后永远都只能得到一个只发送一个YES的新信号。
+ */
 - (RACSignal *)any {
 	return [[self any:^(id x) {
 		return YES;
 	}] setNameWithFormat:@"[%@] -any", self.name];
 }
 
+/*
+ 所以any:操作的目的是找到第一个满足predicateBlock条件的值。找到了就返回YES的RACSignal的信号，如果没有找到，返回NO的RACSignal。
+ */
 - (RACSignal *)any:(BOOL (^)(id object))predicateBlock {
 	NSCParameterAssert(predicateBlock != NULL);
 
+    /*
+     原信号会先经过materialize转换包装成RACEvent事件。依次判断predicateBlock(event.value)值的BOOL值，如果返回YES，就包装成RACSignal的新信号，发送YES出去，并且stop接下来的信号。如果返回MO，就返回[RACSignal empty]空信号。直到event.finished，返回[RACSignal return:@NO]。
+     */
 	return [[[self materialize] bind:^{
 		return ^(RACEvent *event, BOOL *stop) {
 			if (event.finished) {
@@ -1148,6 +1193,9 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	}] setNameWithFormat:@"[%@] -any:", self.name];
 }
 
+/*
+ all:可以用来判断整个原信号发送过程中是否有错误事件RACEventTypeError，或者是否存在predicateBlock为NO的情况。可以把predicateBlock设置成一个正确条件。如果原信号出现错误事件，或者不满足设置的错误条件，都会发送新信号返回NO。如果全过程都没有出错，或者都满足predicateBlock设置的条件，则一直到RACEventTypeCompleted，发送YES的新信号。
+ */
 - (RACSignal *)all:(BOOL (^)(id object))predicateBlock {
 	NSCParameterAssert(predicateBlock != NULL);
 
@@ -1168,6 +1216,10 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	}] setNameWithFormat:@"[%@] -all:", self.name];
 }
 
+/*
+ 所以retry:操作的用途就是在原信号在出现error的时候，重试retryCount的次数，如果依旧error，那么就会停止重试。
+ 如果原信号没有发生错误，那么原信号在发送结束，subscribeForever也就结束了。retry:操作对于没有任何error的信号相当于什么都没有发生。
+ */
 - (RACSignal *)retry:(NSInteger)retryCount {
 	return [[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
 		__block NSInteger currentRetryCount = 0;
@@ -1192,6 +1244,10 @@ static RACDisposable *subscribeForever (RACSignal *signal, void (^next)(id), voi
 	}] setNameWithFormat:@"[%@] -retry: %lu", self.name, (unsigned long)retryCount];
 }
 
+/*
+ 这里的retry操作就是一个无限重试的操作。因为retryCount设置成0之后，在error的闭包中中，retryCount 永远等于 0，原信号永远都不会被dispose，所以subscribeForever会一直无限重试下去。
+ 同样的，如果对一个没有error的信号调用retry操作，也是不起任何作用的。
+ */
 - (RACSignal *)retry {
 	return [[self retry:0] setNameWithFormat:@"[%@] -retry", self.name];
 }

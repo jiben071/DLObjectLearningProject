@@ -151,4 +151,29 @@
     }];
 }
 
+- (void)scanWithStartTest {
+    RACSignal *signalA = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        [subscriber sendNext:@1];
+        [subscriber sendNext:@1];
+        [subscriber sendNext:@4];
+        return [RACDisposable disposableWithBlock:^{
+            
+        }];
+    }];
+    
+    //通过使用scan这一系列的操作，可以有效的消除副作用操作！  什么副作用？！
+    RACSignal *signalB = [signalA scanWithStart:@(2) reduceWithIndex:^id _Nullable(NSNumber * _Nullable running, NSNumber  *_Nullable next, NSUInteger index) {
+        return @(running.intValue * next.intValue + index);
+    }];
+    
+    /*
+     2    // 2 * 1 + 0 = 2
+     3    // 2 * 1 + 1 = 3
+     14   // 3 * 4 + 2 = 14
+     */
+}
+
+
+
+
 @end
