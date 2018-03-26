@@ -65,6 +65,13 @@ NS_ASSUME_NONNULL_BEGIN
 /// terminals.
 ///
 /// Do not instantiate this class directly. Create a RACChannel instead.
+/*
+ RACChannelTerminal在RAC日常开发中，用来双向绑定的。它和RACSubject一样，既继承自RACSignal，同样又遵守RACSubscriber协议。虽然具有RACSubject的发送和接收信号的特性，但是它依旧是冷信号，因为它无法一对多，它发送信号还是只能一对一。
+ RACChannelTerminal无法手动初始化，需要靠RACChannel去初始化。
+ 
+ 平时使用RACChannelTerminal的地方在View和ViewModel的双向绑定上面。
+ 例如在登录界面，输入密码文本框TextField和ViewModel的Password双向绑定
+ */
 @interface RACChannelTerminal<ValueType> : RACSignal<ValueType> <RACSubscriber>
 
 - (instancetype)init __attribute__((unavailable("Instantiate a RACChannel instead")));

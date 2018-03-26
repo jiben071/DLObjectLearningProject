@@ -91,6 +91,9 @@ NSString * const RACSchedulerCurrentSchedulerKey = @"RACSchedulerCurrentSchedule
 	return [NSOperationQueue.currentQueue isEqual:NSOperationQueue.mainQueue] || [NSThread isMainThread];
 }
 
+/*
+ 判断currentScheduler是否存在，看两点，一是当前线程的字典里面，是否存在RACSchedulerCurrentSchedulerKey( @"RACSchedulerCurrentSchedulerKey" )，如果存在对应的value，返回scheduler，二是看当前的类是不是在主线程，如果在主线程，返回mainThreadScheduler。如果两个条件都不存在，那么当前currentScheduler就不存在，返回nil。
+ */
 + (RACScheduler *)currentScheduler {
 	RACScheduler *scheduler = NSThread.currentThread.threadDictionary[RACSchedulerCurrentSchedulerKey];
 	if (scheduler != nil) return scheduler;

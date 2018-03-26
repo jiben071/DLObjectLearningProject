@@ -26,6 +26,10 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// Note that you shouldn't create RACMulticastConnection manually. Instead use
 /// -[RACSignal publish] or -[RACSignal multicast:].
+/// RACMulticastConnection不应该手动创建
+/*
+ 看看RACMulticastConnection类的定义。最主要的是保存了两个信号，一个是RACSubject，一个是sourceSignal(RACSignal类型)。在.h中暴露给外面的是RACSignal，在.m中实际使用的是RACSubject。看它的定义就能猜到接下去它会做什么：用sourceSignal去发送信号，内部再用RACSubject去订阅sourceSignal，然后RACSubject会把sourceSignal的信号值依次发给它的订阅者们。
+ */
 @interface RACMulticastConnection<__covariant ValueType> : NSObject
 
 /// The multicasted signal.

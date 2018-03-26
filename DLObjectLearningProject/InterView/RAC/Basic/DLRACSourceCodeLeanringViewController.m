@@ -215,4 +215,50 @@
     }];
 }
 
+#pragma mark - 冷热信号 https://halfrost.com/reactivecocoa_hot_cold_signal/
+/*
+ 如何做到信号只执行一次didSubscribe闭包，最重要的一点是RACSignal冷信号只能被订阅一次。由于冷信号只能一对一，那么想一对多就只能交给热信号去处理了。这时候就需要把冷信号转换成热信号。
+ 在ReactiveCocoa v2.5中，冷信号转换成热信号需要用到RACMulticastConnection 这个类。
+ */
+
+/*
+ 把冷信号转换成热信号用以下5种方式，5种方法都会用到RACMulticastConnection。接下来一一分析它们的具体实现。
+ 1. multicast
+ 2. publish
+ 3. replay
+ 4. replayLast
+ 
+ 关于ReactiveCocoa v2.5中，冷信号即使转换成了热信号，热信号在之后的变换中还会在变成冷信号，所以在v2.5的版本中会有很多冷信号转成热信号的操作。在ReactiveCocoa v3.0以后的版本中，新增了热信号变换之后还是热信号的机制，如此以来就方便很多，不需要增加很多不必要的冷信号转成热信号的代码。
+ */
+
+#pragma mark - 高阶信号操作 https://halfrost.com/reactivecocoa_racsignal_operations3/
+/*
+ 高阶操作大部分的操作是针对高阶信号的，也就是说信号里面发送的值还是一个信号或者是一个高阶信号。可以类比数组，这里就是多维数组，数组里面还是套的数组。
+ */
+#pragma mark -- 1. flattenMap: (在父类RACStream中定义的)
+- (void)flattenMapTest{
+    /*
+     flattenMap:在整个RAC中具有很重要的地位，很多信号变换都是可以用flattenMap:来实现的。
+     
+     map:，flatten，filter，sequenceMany:这4个操作都是用flattenMap:来实现的。然而其他变换操作实现里面用到map:，flatten，filter又有很多。
+     */
+}
+
+
+/*
+ 升阶操作：
+ 
+ map( 把值map成一个信号)
+ [RACSignal return:signal]
+ 
+ 降阶操作：
+ 
+ flatten(等效于flatten:0，+merge:)
+ concat(等效于flatten:1)
+ flatten:1
+ switchToLatest
+ flattenMap:
+ 这5种操作能将高阶信号变为低阶信号，但是最终降阶之后的效果就只有3种：switchToLatest，flatten，concat。
+ */
+
 @end
