@@ -269,6 +269,9 @@
 	return [result setNameWithFormat:@"+concat: %@", streams];
 }
 
+/*
+ scanWithStart: reduce:就是scanWithStart: reduceWithIndex: 的缩略版。变换函数也是外面闭包reduceBlock( )传进来的。只不过变换过程中不会使用index自增的这个变量。
+ */
 - (__kindof RACStream *)scanWithStart:(id)startingValue reduce:(id (^)(id running, id next))reduceBlock {
 	NSCParameterAssert(reduceBlock != nil);
 
@@ -280,6 +283,10 @@
 		setNameWithFormat:@"[%@] -scanWithStart: %@ reduce:", self.name, RACDescription(startingValue)];
 }
 
+/*
+ scanWithStart这个变换由初始值，变换函数reduceBlock( )，和index步进的变量组成。原信号的每个信号都会由变换函数reduceBlock( )进行变换。index每次都是自增。变换的初始值是由入参startingValue传入的。
+ 通过使用scan这一系列的操作，可以有效的消除副作用操作！
+ */
 - (__kindof RACStream *)scanWithStart:(id)startingValue reduceWithIndex:(id (^)(id, id, NSUInteger))reduceBlock {
 	NSCParameterAssert(reduceBlock != nil);
 
