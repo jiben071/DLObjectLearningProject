@@ -5,6 +5,7 @@
 //  Created by denglong on 28/03/2018.
 //  Copyright © 2018 long deng. All rights reserved.
 //  http://www.yiqivr.com/2015/10/19/译-ReactiveCocoa基础：理解并使用RACCommand/
+//  http://blog.harrisonxi.com/2017/09/RAC中用RACCommand处理指令.html  （推荐）
 
 #import "DLRACCommandLearningViewController.h"
 #import <ReactiveObjC/ReactiveObjC.h>
@@ -125,6 +126,103 @@
         NSLog(@"The command executed");
     }];
 }
+
+/*
+ 信号流 - 即RACSignal，一组next / error / completed信号组成，本文称之为信号流。
+ 
+ 发送信号 - sendNext / sendError / sendCompleted，统称为发送信号。
+ 
+ 主流程信号流 - execute:成功执行一次指令产生的指令流程信号流。
+ 
+ 因为将RACSignal也称为信号，容易引起理解的困难，而其通常就是一组信号组成，所以在这里称之为信号流。
+ */
+
+/*
+ RACCommand的用途
+ 
+ 通常来说我们的App中会存在很多UI指令需要等待异步处理完成（比如等待网络请求返回结果），处理这些UI指令时如果我们手动去处理逻辑的话，一般需要完成以下内容：
+ 
+ 保证指令不会在正在执行时被重复执行。
+ 维护指令是否在执行中的状态，方便外界监视，用来确定是否需要展示loading界面。
+ 维护指令是否可以执行的状态，方便和外界UI状态进行同步。
+ 提供执行指令的入口和指令执行的信号流供处理后续逻辑。
+ 
+ 而RACCommand的出现就是为了将以上大部分逻辑封装起来，方便大家使用。
+ */
+
+/*
+ RACCommand的公开属性和方法
+ 
+ executionSignals & errors
+ 在指令成功开始执行后executionSignals会发送一个信号，信号内包含的数据是一个信号流。对，这是一个信号流的信号流，和指针的指针一样绕口。后面介绍内部实现的时候再详细介绍这个属性。
+ 
+ 在指令开始执行但遇到错误时errors会发送一个next信号，信号的数据是一个NSError。这里不能发送error信号，因为发送error信号后这整个信号流就会终止了。
+ 
+ 
+ 
+ allowsConcurrentExecution
+ 是否支持同时多次执行指令，通常来说都会使用默认值NO。在本文里，我们暂不讨论此属性值为YES的情况。
+ 
+ 
+ 
+ executing & enabled
+ executing用来标记指令是否正在运行，通常用于绑定到loading界面的hidden属性上。
+ 
+ enabled用来标记指令是否可以运行，通常用于绑定到UIButton的enabled属性上。
+ 
+ 一般来说以下两种情况下enabled为NO：
+ 
+ 指令禁止同时多次运行，且指令正在运行中时。
+ 初始化RACCommand时传入了enabledSignal，且enabledSignal返回NO的时候。
+ 
+ 
+ 
+ 初始化方法 - initWithEnabled:signalBlock:
+ enabledSignal参数在上面提到了，用于控制指令是否可执行。
+ 
+ 而signalBlock参数是为了传递数据和执行指令流程用的，先看一下这个block的类型：
+ 
+ RACSignal<ValueType> * (^)(InputType _Nullable input)
+ 返回一个信号流，要求输入一个input值。这里返回的信号流就是给之前的executionSignals用的，而这里的输入值就是后面的execute:方法要用的。具体为什么要用这种方式，会在后面的单独章节里介绍。
+ 
+ 
+ 执行指令方法 - execute:
+ 
+ execute:方法用于执行指令，input用于传递一些自定义的数据，这个输入值可以为空。
+ 
+ 在指令可以执行时，会通过executionSignals发出成功开始执行指令的主流程信号流并将之返回，否则会直接返回一个RACErrorSignal，另外在执行指令过程中遇到的错误信号会由errors信号流收集后统一发出。
+ 
+ 如果想要获得单次执行的内部信号流，特别是想要获得信号流里的原始错误，可以从execute:方法的返回值获得对应信号流。
+ 
+ */
+
+/*
+ 为什么一定要使用『主流程信号流』的形式
+ 
+ 很多人要问，为什么不是直接发送一个执行成功或一个执行失败两种信号就可以了。
+ 
+ 这里要说下执行的流程，这个流程不一定是单步的，所以使用RACCommand的时候是需要了解每一步执行的情况的。比如以下载文件为例：整个流程可能分为获得文件地址列表，逐个下载文件，全部下载完成，下载失败等各种步骤和状态。
+ 
+ 这种时候每一个单独的执行流程就作为一个整体封装起来就更合理，而封装『流程』最合适的当然就是信号流了。
+ 
+ 为什么要单独封装errors信号流
+ 
+ 这样可以使得我们处理问题时更专注，在executionSignals信号流里只处理流程状态相关的逻辑，在errors信号流里专注于各种错误的处理。
+ 
+ 当然不得不承认这在某些情况下也会带来问题：比如某些流程状态和错误状态很强相关的场景下，可能将代码写在一起反而会更容易理解。不过总体来说目前的设计更为通用一点。
+ 
+ 另外一个重点是这样可以保证executionSignals能使用switchToLatest方法。这个后文会介绍。
+ 
+ 为什么主流程信号流执行时还需要一个input参数
+ 
+ 这个一定意义上来说和UIButton的点击事件- (void)clickAction:(id)sender为什么需要sender差不多。
+ 
+ 展开来说的话就是函数需要消除副作用成为纯函数，所以我们的主流程信号流也要具有这个特性，使得每一次的执行流程更独立。
+ 
+ 通常来说这个input是用来区分调用者的，当然也可以用来传递一些其它的关键参数。
+ */
+
+
 
 
 @end

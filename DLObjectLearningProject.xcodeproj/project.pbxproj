@@ -21,6 +21,8 @@
 		1050A767206238DA00FCD555 /* DLRACSourceCodeLeanringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1050A766206238DA00FCD555 /* DLRACSourceCodeLeanringViewController.m */; };
 		105CFC2D206B3D9400F0AD1F /* DLRACCommandLearningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 105CFC2C206B3D9300F0AD1F /* DLRACCommandLearningViewController.m */; };
 		105CFC31206B656300F0AD1F /* NSString+EmailAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 105CFC30206B656300F0AD1F /* NSString+EmailAdditions.m */; };
+		105CFC36206B830100F0AD1F /* DLMVVMSampleFourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 105CFC35206B830100F0AD1F /* DLMVVMSampleFourViewController.m */; };
+		105CFC39206B834000F0AD1F /* DLMVVMViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 105CFC38206B834000F0AD1F /* DLMVVMViewModel.m */; };
 		105E31BD20464F280006D3AD /* RWSearchFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31B820464F270006D3AD /* RWSearchFormViewController.m */; };
 		105E31BE20464F280006D3AD /* RWTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31B920464F270006D3AD /* RWTweet.m */; };
 		105E31BF20464F280006D3AD /* RWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31BA20464F270006D3AD /* RWTableViewCell.m */; };
@@ -208,6 +210,10 @@
 		105CFC2C206B3D9300F0AD1F /* DLRACCommandLearningViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLRACCommandLearningViewController.m; sourceTree = "<group>"; };
 		105CFC2F206B656300F0AD1F /* NSString+EmailAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+EmailAdditions.h"; sourceTree = "<group>"; };
 		105CFC30206B656300F0AD1F /* NSString+EmailAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+EmailAdditions.m"; sourceTree = "<group>"; };
+		105CFC34206B830100F0AD1F /* DLMVVMSampleFourViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLMVVMSampleFourViewController.h; sourceTree = "<group>"; };
+		105CFC35206B830100F0AD1F /* DLMVVMSampleFourViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLMVVMSampleFourViewController.m; sourceTree = "<group>"; };
+		105CFC37206B834000F0AD1F /* DLMVVMViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLMVVMViewModel.h; sourceTree = "<group>"; };
+		105CFC38206B834000F0AD1F /* DLMVVMViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLMVVMViewModel.m; sourceTree = "<group>"; };
 		105E31B520464F270006D3AD /* RWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTableViewCell.h; sourceTree = "<group>"; };
 		105E31B620464F270006D3AD /* RWTweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTweet.h; sourceTree = "<group>"; };
 		105E31B720464F270006D3AD /* RWSearchResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWSearchResultsViewController.h; sourceTree = "<group>"; };
@@ -586,6 +592,17 @@
 				105CFC30206B656300F0AD1F /* NSString+EmailAdditions.m */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		105CFC33206B82EB00F0AD1F /* DemoFour */ = {
+			isa = PBXGroup;
+			children = (
+				105CFC34206B830100F0AD1F /* DLMVVMSampleFourViewController.h */,
+				105CFC35206B830100F0AD1F /* DLMVVMSampleFourViewController.m */,
+				105CFC37206B834000F0AD1F /* DLMVVMViewModel.h */,
+				105CFC38206B834000F0AD1F /* DLMVVMViewModel.m */,
+			);
+			path = DemoFour;
 			sourceTree = "<group>";
 		};
 		105E31782044019A0006D3AD /* RAC */ = {
@@ -1218,6 +1235,7 @@
 		10EDD8752047D1CE003EA6B9 /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
+				105CFC33206B82EB00F0AD1F /* DemoFour */,
 				10B98C272057789B001D1526 /* DemoThree */,
 				10EDD87F2047DBC6003EA6B9 /* DemoOne */,
 				10EDD8862047DBC6003EA6B9 /* DemoTwo */,
@@ -1746,7 +1764,9 @@
 				10B0C7DC1FEBB33800C37675 /* GPBDescriptor.m in Sources */,
 				10B0C5E81FEBA92C00C37675 /* BLE.m in Sources */,
 				10929B3120526035003DF3BC /* DLSubscriptionComprehandViewController.m in Sources */,
+				105CFC39206B834000F0AD1F /* DLMVVMViewModel.m in Sources */,
 				10B0C7C01FEBB33800C37675 /* FileModel.m in Sources */,
+				105CFC36206B830100F0AD1F /* DLMVVMSampleFourViewController.m in Sources */,
 				10B0C7EE1FEBB33800C37675 /* GPBUnknownField.m in Sources */,
 				10B0C7DE1FEBB33800C37675 /* GPBWireFormat.m in Sources */,
 				10B0C5D21FEB8A3700C37675 /* DLMainPageTableViewController.m in Sources */,
