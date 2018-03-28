@@ -19,6 +19,8 @@
 		1050A6F3205CEBED00FCD555 /* DLNavigationRelatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1050A6F2205CEBED00FCD555 /* DLNavigationRelatedViewController.m */; };
 		1050A6F6205CFAE000FCD555 /* DLRACLearningByMyselfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1050A6F5205CFAE000FCD555 /* DLRACLearningByMyselfViewController.m */; };
 		1050A767206238DA00FCD555 /* DLRACSourceCodeLeanringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1050A766206238DA00FCD555 /* DLRACSourceCodeLeanringViewController.m */; };
+		105CFC2D206B3D9400F0AD1F /* DLRACCommandLearningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 105CFC2C206B3D9300F0AD1F /* DLRACCommandLearningViewController.m */; };
+		105CFC31206B656300F0AD1F /* NSString+EmailAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 105CFC30206B656300F0AD1F /* NSString+EmailAdditions.m */; };
 		105E31BD20464F280006D3AD /* RWSearchFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31B820464F270006D3AD /* RWSearchFormViewController.m */; };
 		105E31BE20464F280006D3AD /* RWTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31B920464F270006D3AD /* RWTweet.m */; };
 		105E31BF20464F280006D3AD /* RWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31BA20464F270006D3AD /* RWTableViewCell.m */; };
@@ -202,6 +204,10 @@
 		1050A6F5205CFAE000FCD555 /* DLRACLearningByMyselfViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLRACLearningByMyselfViewController.m; sourceTree = "<group>"; };
 		1050A765206238DA00FCD555 /* DLRACSourceCodeLeanringViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLRACSourceCodeLeanringViewController.h; sourceTree = "<group>"; };
 		1050A766206238DA00FCD555 /* DLRACSourceCodeLeanringViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLRACSourceCodeLeanringViewController.m; sourceTree = "<group>"; };
+		105CFC2B206B3D9300F0AD1F /* DLRACCommandLearningViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLRACCommandLearningViewController.h; sourceTree = "<group>"; };
+		105CFC2C206B3D9300F0AD1F /* DLRACCommandLearningViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLRACCommandLearningViewController.m; sourceTree = "<group>"; };
+		105CFC2F206B656300F0AD1F /* NSString+EmailAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+EmailAdditions.h"; sourceTree = "<group>"; };
+		105CFC30206B656300F0AD1F /* NSString+EmailAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+EmailAdditions.m"; sourceTree = "<group>"; };
 		105E31B520464F270006D3AD /* RWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTableViewCell.h; sourceTree = "<group>"; };
 		105E31B620464F270006D3AD /* RWTweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTweet.h; sourceTree = "<group>"; };
 		105E31B720464F270006D3AD /* RWSearchResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWSearchResultsViewController.h; sourceTree = "<group>"; };
@@ -571,6 +577,15 @@
 				1050A6F2205CEBED00FCD555 /* DLNavigationRelatedViewController.m */,
 			);
 			path = Experience;
+			sourceTree = "<group>";
+		};
+		105CFC2E206B655900F0AD1F /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				105CFC2F206B656300F0AD1F /* NSString+EmailAdditions.h */,
+				105CFC30206B656300F0AD1F /* NSString+EmailAdditions.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		105E31782044019A0006D3AD /* RAC */ = {
@@ -1194,6 +1209,8 @@
 				1050A6F5205CFAE000FCD555 /* DLRACLearningByMyselfViewController.m */,
 				1050A765206238DA00FCD555 /* DLRACSourceCodeLeanringViewController.h */,
 				1050A766206238DA00FCD555 /* DLRACSourceCodeLeanringViewController.m */,
+				105CFC2B206B3D9300F0AD1F /* DLRACCommandLearningViewController.h */,
+				105CFC2C206B3D9300F0AD1F /* DLRACCommandLearningViewController.m */,
 			);
 			path = Basic;
 			sourceTree = "<group>";
@@ -1285,6 +1302,7 @@
 		B6BED6891FE954670048F222 /* DLObjectLearningProject */ = {
 			isa = PBXGroup;
 			children = (
+				105CFC2E206B655900F0AD1F /* Category */,
 				1050A6F0205CEBBA00FCD555 /* Experience */,
 				10B98C6220590034001D1526 /* AppDelegate */,
 				10B0C5EB1FEBAE5900C37675 /* Vender */,
@@ -1743,6 +1761,7 @@
 				102969DE2025597A00D01259 /* SLSolidObjectBuildViewController.m in Sources */,
 				1050A767206238DA00FCD555 /* DLRACSourceCodeLeanringViewController.m in Sources */,
 				10B0C7D21FEBB33800C37675 /* Result.m in Sources */,
+				105CFC2D206B3D9400F0AD1F /* DLRACCommandLearningViewController.m in Sources */,
 				10B0C7D51FEBB33800C37675 /* SyncCloudClient.m in Sources */,
 				105E31BE20464F280006D3AD /* RWTweet.m in Sources */,
 				10B0C7B61FEBB33800C37675 /* SyncParams.pbobjc.m in Sources */,
@@ -1763,6 +1782,7 @@
 				10B0C7ED1FEBB33800C37675 /* GPBWellKnownTypes.m in Sources */,
 				10B0C7CE1FEBB33800C37675 /* RobotPushTask.m in Sources */,
 				10EDD8872047DBC7003EA6B9 /* DLAccount.m in Sources */,
+				105CFC31206B656300F0AD1F /* NSString+EmailAdditions.m in Sources */,
 				10B0C7C51FEBB33800C37675 /* ModifyModel.m in Sources */,
 				10B0C7DA1FEBB33800C37675 /* GPBExtensionRegistry.m in Sources */,
 				1050A6F6205CFAE000FCD555 /* DLRACLearningByMyselfViewController.m in Sources */,

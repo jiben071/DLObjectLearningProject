@@ -14,6 +14,9 @@ target 'DLObjectLearningProject' do
   pod 'Masonry'
   pod 'SVProgressHUD'
   pod 'SDWebImage'
+#  pod 'AFNetworking-RACExtensions'  #AFNetworking-RACExtensions was resolved to 0.0.1, which depends onAFNetworking (~> 1.2.0)
+
+
 #  pod 'Quick'
 #  pod 'Nimble'
 
