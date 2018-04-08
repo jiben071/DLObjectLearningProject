@@ -23,6 +23,7 @@
 		105CFC31206B656300F0AD1F /* NSString+EmailAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 105CFC30206B656300F0AD1F /* NSString+EmailAdditions.m */; };
 		105CFC36206B830100F0AD1F /* DLMVVMSampleFourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 105CFC35206B830100F0AD1F /* DLMVVMSampleFourViewController.m */; };
 		105CFC39206B834000F0AD1F /* DLMVVMViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 105CFC38206B834000F0AD1F /* DLMVVMViewModel.m */; };
+		105CFC44206DE0AF00F0AD1F /* DLCustomOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 105CFC43206DE0AE00F0AD1F /* DLCustomOperation.m */; };
 		105E31BD20464F280006D3AD /* RWSearchFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31B820464F270006D3AD /* RWSearchFormViewController.m */; };
 		105E31BE20464F280006D3AD /* RWTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31B920464F270006D3AD /* RWTweet.m */; };
 		105E31BF20464F280006D3AD /* RWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31BA20464F270006D3AD /* RWTableViewCell.m */; };
@@ -214,6 +215,8 @@
 		105CFC35206B830100F0AD1F /* DLMVVMSampleFourViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLMVVMSampleFourViewController.m; sourceTree = "<group>"; };
 		105CFC37206B834000F0AD1F /* DLMVVMViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLMVVMViewModel.h; sourceTree = "<group>"; };
 		105CFC38206B834000F0AD1F /* DLMVVMViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLMVVMViewModel.m; sourceTree = "<group>"; };
+		105CFC42206DE0AE00F0AD1F /* DLCustomOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLCustomOperation.h; sourceTree = "<group>"; };
+		105CFC43206DE0AE00F0AD1F /* DLCustomOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLCustomOperation.m; sourceTree = "<group>"; };
 		105E31B520464F270006D3AD /* RWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTableViewCell.h; sourceTree = "<group>"; };
 		105E31B620464F270006D3AD /* RWTweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTweet.h; sourceTree = "<group>"; };
 		105E31B720464F270006D3AD /* RWSearchResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWSearchResultsViewController.h; sourceTree = "<group>"; };
@@ -603,6 +606,15 @@
 				105CFC38206B834000F0AD1F /* DLMVVMViewModel.m */,
 			);
 			path = DemoFour;
+			sourceTree = "<group>";
+		};
+		105CFC41206DE06E00F0AD1F /* QueueHandle */ = {
+			isa = PBXGroup;
+			children = (
+				105CFC42206DE0AE00F0AD1F /* DLCustomOperation.h */,
+				105CFC43206DE0AE00F0AD1F /* DLCustomOperation.m */,
+			);
+			path = QueueHandle;
 			sourceTree = "<group>";
 		};
 		105E31782044019A0006D3AD /* RAC */ = {
@@ -1320,6 +1332,7 @@
 		B6BED6891FE954670048F222 /* DLObjectLearningProject */ = {
 			isa = PBXGroup;
 			children = (
+				105CFC41206DE06E00F0AD1F /* QueueHandle */,
 				105CFC2E206B655900F0AD1F /* Category */,
 				1050A6F0205CEBBA00FCD555 /* Experience */,
 				10B98C6220590034001D1526 /* AppDelegate */,
@@ -1818,6 +1831,7 @@
 				10B0C7CA1FEBB33800C37675 /* Sync_Utils.m in Sources */,
 				10B0C7C71FEBB33800C37675 /* RobotTable.m in Sources */,
 				10B98C5A2057BBFE001D1526 /* DLRACBasicVersion2ViewController.m in Sources */,
+				105CFC44206DE0AF00F0AD1F /* DLCustomOperation.m in Sources */,
 				10B0C7C41FEBB33800C37675 /* CloudTable.m in Sources */,
 				10B0C7C31FEBB33800C37675 /* BaseModel.m in Sources */,
 				10634760201AC3B700C62B54 /* packethub_utils.m in Sources */,
