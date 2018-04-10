@@ -74,7 +74,7 @@ static NSString * const RWTwitterInstantDomain = @"TwitterInstant";
     }] filter:^BOOL(NSString *  _Nullable value) {
         @strongify(self)
         return [self isValidSearchText:value];
-        //throttle限流  500毫秒后才真正进行搜索
+        //throttle限流  500毫秒后才真正进行搜索  500毫秒后，数据无变化，才进行真正的搜索
     }] throttle:0.5] flattenMap:^__kindof RACSignal * _Nullable(NSString  *_Nullable value) {//flattenMap作用:把源信号的内容映射成一个新的信号，信号可以是任意类型。
         @strongify(self)
         return [self signalForSearchWithText:value];

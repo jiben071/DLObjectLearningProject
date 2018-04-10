@@ -48,6 +48,8 @@
 		1073A9CC207C5F100080EEB0 /* UIViewController+swizzleMethodSampleCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073A9CB207C5F100080EEB0 /* UIViewController+swizzleMethodSampleCategory.m */; };
 		1073A9D2207C615A0080EEB0 /* AMAFNetworkingSwizzleHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073A9D0207C615A0080EEB0 /* AMAFNetworkingSwizzleHandle.m */; };
 		1073A9D3207C615A0080EEB0 /* NSError+additionInfoCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073A9D1207C615A0080EEB0 /* NSError+additionInfoCategory.m */; };
+		1073A9D6207C97B80080EEB0 /* DLButtonHandleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073A9D5207C97B80080EEB0 /* DLButtonHandleViewController.m */; };
+		1073A9D8207C9FF00080EEB0 /* 开发生活中遇到的问题.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 1073A9D7207C9FF00080EEB0 /* 开发生活中遇到的问题.rtf */; };
 		1079A0C420591EB70043E681 /* RVMViewModelSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1079A0C320591EB70043E681 /* RVMViewModelSpec.m */; };
 		1079A0C82059200B0043E681 /* RVMTestViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1079A0C62059200B0043E681 /* RVMTestViewModel.m */; };
 		1079A0C9205927B90043E681 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1079A0CA205927B90043E681 /* Nimble.framework */; };
@@ -267,6 +269,9 @@
 		1073A9CF207C615A0080EEB0 /* NSError+additionInfoCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+additionInfoCategory.h"; sourceTree = "<group>"; };
 		1073A9D0207C615A0080EEB0 /* AMAFNetworkingSwizzleHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMAFNetworkingSwizzleHandle.m; sourceTree = "<group>"; };
 		1073A9D1207C615A0080EEB0 /* NSError+additionInfoCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+additionInfoCategory.m"; sourceTree = "<group>"; };
+		1073A9D4207C97B80080EEB0 /* DLButtonHandleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLButtonHandleViewController.h; sourceTree = "<group>"; };
+		1073A9D5207C97B80080EEB0 /* DLButtonHandleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLButtonHandleViewController.m; sourceTree = "<group>"; };
+		1073A9D7207C9FF00080EEB0 /* 开发生活中遇到的问题.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "开发生活中遇到的问题.rtf"; sourceTree = "<group>"; };
 		1079A0C320591EB70043E681 /* RVMViewModelSpec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RVMViewModelSpec.m; sourceTree = "<group>"; };
 		1079A0C62059200B0043E681 /* RVMTestViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVMTestViewModel.m; sourceTree = "<group>"; };
 		1079A0C72059200B0043E681 /* RVMTestViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVMTestViewModel.h; sourceTree = "<group>"; };
@@ -596,6 +601,8 @@
 			children = (
 				1050A6F1205CEBED00FCD555 /* DLNavigationRelatedViewController.h */,
 				1050A6F2205CEBED00FCD555 /* DLNavigationRelatedViewController.m */,
+				1073A9D4207C97B80080EEB0 /* DLButtonHandleViewController.h */,
+				1073A9D5207C97B80080EEB0 /* DLButtonHandleViewController.m */,
 			);
 			path = Experience;
 			sourceTree = "<group>";
@@ -1343,6 +1350,7 @@
 		B6BED67E1FE954670048F222 = {
 			isa = PBXGroup;
 			children = (
+				1073A9D7207C9FF00080EEB0 /* 开发生活中遇到的问题.rtf */,
 				B6046CD0205D4E7E0043DE96 /* 快捷键.rtf */,
 				109D9FE8205A1D2E00050253 /* 使用注意要点.rtf */,
 				B6BED6891FE954670048F222 /* DLObjectLearningProject */,
@@ -1553,6 +1561,7 @@
 				1050A6EF205BB88700FCD555 /* RACTest.storyboard in Resources */,
 				102969C12022B64000D01259 /* Digits.png in Resources */,
 				109D9FE9205A1D2E00050253 /* 使用注意要点.rtf in Resources */,
+				1073A9D8207C9FF00080EEB0 /* 开发生活中遇到的问题.rtf in Resources */,
 				10271996201EF6A20071EC9A /* bg_dail@2x.png in Resources */,
 				B6046CD1205D4E7E0043DE96 /* 快捷键.rtf in Resources */,
 				B6BED6941FE954670048F222 /* Assets.xcassets in Resources */,
@@ -1823,6 +1832,7 @@
 				1063475C201AC3B700C62B54 /* HeartBeat.m in Sources */,
 				10634761201AC3B700C62B54 /* PacketHub_IM.m in Sources */,
 				10B0C7E81FEBB33800C37675 /* Wrappers.pbobjc.m in Sources */,
+				1073A9D6207C97B80080EEB0 /* DLButtonHandleViewController.m in Sources */,
 				10B0C7B51FEBB33800C37675 /* SyncEvents.pbobjc.m in Sources */,
 				B60F3E9E1FEAB5AE00EB3154 /* NSObject+LogCategory.m in Sources */,
 				10B0C7CB1FEBB33800C37675 /* SyncManager.m in Sources */,
