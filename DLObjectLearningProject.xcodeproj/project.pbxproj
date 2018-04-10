@@ -44,6 +44,10 @@
 		10634764201AC3B700C62B54 /* Contract.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 10634754201AC3B600C62B54 /* Contract.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		10634767201AC65200C62B54 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10634766201AC65200C62B54 /* QuartzCore.framework */; };
 		1063476B201AC69F00C62B54 /* DLLayerTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1063476A201AC69F00C62B54 /* DLLayerTestViewController.m */; };
+		1073A9C9207C5EA90080EEB0 /* TWRProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073A9C8207C5EA90080EEB0 /* TWRProgressView.m */; };
+		1073A9CC207C5F100080EEB0 /* UIViewController+swizzleMethodSampleCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073A9CB207C5F100080EEB0 /* UIViewController+swizzleMethodSampleCategory.m */; };
+		1073A9D2207C615A0080EEB0 /* AMAFNetworkingSwizzleHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073A9D0207C615A0080EEB0 /* AMAFNetworkingSwizzleHandle.m */; };
+		1073A9D3207C615A0080EEB0 /* NSError+additionInfoCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1073A9D1207C615A0080EEB0 /* NSError+additionInfoCategory.m */; };
 		1079A0C420591EB70043E681 /* RVMViewModelSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1079A0C320591EB70043E681 /* RVMViewModelSpec.m */; };
 		1079A0C82059200B0043E681 /* RVMTestViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1079A0C62059200B0043E681 /* RVMTestViewModel.m */; };
 		1079A0C9205927B90043E681 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1079A0CA205927B90043E681 /* Nimble.framework */; };
@@ -255,6 +259,14 @@
 		10634766201AC65200C62B54 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		10634769201AC69F00C62B54 /* DLLayerTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLLayerTestViewController.h; sourceTree = "<group>"; };
 		1063476A201AC69F00C62B54 /* DLLayerTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLLayerTestViewController.m; sourceTree = "<group>"; };
+		1073A9C7207C5EA90080EEB0 /* TWRProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRProgressView.h; sourceTree = "<group>"; };
+		1073A9C8207C5EA90080EEB0 /* TWRProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRProgressView.m; sourceTree = "<group>"; };
+		1073A9CA207C5F100080EEB0 /* UIViewController+swizzleMethodSampleCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+swizzleMethodSampleCategory.h"; sourceTree = "<group>"; };
+		1073A9CB207C5F100080EEB0 /* UIViewController+swizzleMethodSampleCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+swizzleMethodSampleCategory.m"; sourceTree = "<group>"; };
+		1073A9CE207C615A0080EEB0 /* AMAFNetworkingSwizzleHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMAFNetworkingSwizzleHandle.h; sourceTree = "<group>"; };
+		1073A9CF207C615A0080EEB0 /* NSError+additionInfoCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+additionInfoCategory.h"; sourceTree = "<group>"; };
+		1073A9D0207C615A0080EEB0 /* AMAFNetworkingSwizzleHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMAFNetworkingSwizzleHandle.m; sourceTree = "<group>"; };
+		1073A9D1207C615A0080EEB0 /* NSError+additionInfoCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+additionInfoCategory.m"; sourceTree = "<group>"; };
 		1079A0C320591EB70043E681 /* RVMViewModelSpec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RVMViewModelSpec.m; sourceTree = "<group>"; };
 		1079A0C62059200B0043E681 /* RVMTestViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVMTestViewModel.m; sourceTree = "<group>"; };
 		1079A0C72059200B0043E681 /* RVMTestViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVMTestViewModel.h; sourceTree = "<group>"; };
@@ -593,6 +605,8 @@
 			children = (
 				105CFC2F206B656300F0AD1F /* NSString+EmailAdditions.h */,
 				105CFC30206B656300F0AD1F /* NSString+EmailAdditions.m */,
+				1073A9CA207C5F100080EEB0 /* UIViewController+swizzleMethodSampleCategory.h */,
+				1073A9CB207C5F100080EEB0 /* UIViewController+swizzleMethodSampleCategory.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -778,6 +792,26 @@
 			path = CoreAnimation;
 			sourceTree = "<group>";
 		};
+		1073A9C3207C5DC80080EEB0 /* TWRProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				1073A9C7207C5EA90080EEB0 /* TWRProgressView.h */,
+				1073A9C8207C5EA90080EEB0 /* TWRProgressView.m */,
+			);
+			path = TWRProgressView;
+			sourceTree = "<group>";
+		};
+		1073A9CD207C615A0080EEB0 /* RuntimeSwizzle */ = {
+			isa = PBXGroup;
+			children = (
+				1073A9CE207C615A0080EEB0 /* AMAFNetworkingSwizzleHandle.h */,
+				1073A9D0207C615A0080EEB0 /* AMAFNetworkingSwizzleHandle.m */,
+				1073A9CF207C615A0080EEB0 /* NSError+additionInfoCategory.h */,
+				1073A9D1207C615A0080EEB0 /* NSError+additionInfoCategory.m */,
+			);
+			path = RuntimeSwizzle;
+			sourceTree = "<group>";
+		};
 		1079A0C52059200B0043E681 /* test */ = {
 			isa = PBXGroup;
 			children = (
@@ -864,6 +898,7 @@
 		10B0C5EB1FEBAE5900C37675 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				1073A9C3207C5DC80080EEB0 /* TWRProgressView */,
 				1063473B201AC3B600C62B54 /* Channel */,
 				10634733201AC3B600C62B54 /* CocoaAsyncSocket */,
 				10B0C6F31FEBB33800C37675 /* DatabaseAbout */,
@@ -1373,6 +1408,7 @@
 		B6BED6BE1FE9551F0048F222 /* InterView */ = {
 			isa = PBXGroup;
 			children = (
+				1073A9CD207C615A0080EEB0 /* RuntimeSwizzle */,
 				105E31782044019A0006D3AD /* RAC */,
 				10634768201AC67D00C62B54 /* CoreAnimation */,
 				B6BED6BF1FE9554B0048F222 /* DLFatherObject.h */,
@@ -1762,6 +1798,7 @@
 				10B0C7BD1FEBB33800C37675 /* FMDatabase.m in Sources */,
 				10B0C7CF1FEBB33800C37675 /* SimpleTask.m in Sources */,
 				B656CA721FEAB065001573A0 /* DLGestureOnImitateScrollViewViewController.m in Sources */,
+				1073A9C9207C5EA90080EEB0 /* TWRProgressView.m in Sources */,
 				10EDD8742047D02C003EA6B9 /* DLMVVMCourse.m in Sources */,
 				10B0C7E21FEBB33800C37675 /* Type.pbobjc.m in Sources */,
 				10B0C7EF1FEBB33800C37675 /* GPBArray.m in Sources */,
@@ -1819,6 +1856,7 @@
 				10B0C7C51FEBB33800C37675 /* ModifyModel.m in Sources */,
 				10B0C7DA1FEBB33800C37675 /* GPBExtensionRegistry.m in Sources */,
 				1050A6F6205CFAE000FCD555 /* DLRACLearningByMyselfViewController.m in Sources */,
+				1073A9D2207C615A0080EEB0 /* AMAFNetworkingSwizzleHandle.m in Sources */,
 				10EDD8712046B61C003EA6B9 /* DLRacBasicCourse.m in Sources */,
 				10B0C7E31FEBB33800C37675 /* Timestamp.pbobjc.m in Sources */,
 				10B0C7BC1FEBB33800C37675 /* FMDatabaseAdditions.m in Sources */,
@@ -1872,6 +1910,7 @@
 				10EDD86E2046B5F2003EA6B9 /* RWDummySignInService.m in Sources */,
 				10B0C5C51FEB845E00C37675 /* DLSmoothTableViewViewController.m in Sources */,
 				10B98C6820590073001D1526 /* YDThirdPartService.m in Sources */,
+				1073A9CC207C5F100080EEB0 /* UIViewController+swizzleMethodSampleCategory.m in Sources */,
 				10B98C262056A6A0001D1526 /* RVMViewModel.m in Sources */,
 				10EDD8922047EC28003EA6B9 /* DLBooksViewController.m in Sources */,
 				10B0C7BB1FEBB33800C37675 /* FMDatabaseQueue.m in Sources */,
@@ -1879,6 +1918,7 @@
 				102969D42024006400D01259 /* DLTransformViewController.m in Sources */,
 				1063475F201AC3B700C62B54 /* PacketHub.m in Sources */,
 				10B0C7F01FEBB33800C37675 /* GPBCodedOutputStream.m in Sources */,
+				1073A9D3207C615A0080EEB0 /* NSError+additionInfoCategory.m in Sources */,
 				10B0C5D51FEB8C9400C37675 /* DLRunLoopTableViewController.m in Sources */,
 				10B0C5E91FEBA92C00C37675 /* UBTBLEListModel.m in Sources */,
 				102969C42022B9AA00D01259 /* DLDigitClockViewController.m in Sources */,
