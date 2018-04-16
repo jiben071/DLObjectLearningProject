@@ -19,6 +19,7 @@
 		1050A6F3205CEBED00FCD555 /* DLNavigationRelatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1050A6F2205CEBED00FCD555 /* DLNavigationRelatedViewController.m */; };
 		1050A6F6205CFAE000FCD555 /* DLRACLearningByMyselfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1050A6F5205CFAE000FCD555 /* DLRACLearningByMyselfViewController.m */; };
 		1050A767206238DA00FCD555 /* DLRACSourceCodeLeanringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1050A766206238DA00FCD555 /* DLRACSourceCodeLeanringViewController.m */; };
+		1058D8832080918D005E68EF /* DLHollowOutTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1058D8822080918D005E68EF /* DLHollowOutTextViewController.m */; };
 		105CFC2D206B3D9400F0AD1F /* DLRACCommandLearningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 105CFC2C206B3D9300F0AD1F /* DLRACCommandLearningViewController.m */; };
 		105CFC31206B656300F0AD1F /* NSString+EmailAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 105CFC30206B656300F0AD1F /* NSString+EmailAdditions.m */; };
 		105CFC36206B830100F0AD1F /* DLMVVMSampleFourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 105CFC35206B830100F0AD1F /* DLMVVMSampleFourViewController.m */; };
@@ -54,6 +55,9 @@
 		1079A0C82059200B0043E681 /* RVMTestViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1079A0C62059200B0043E681 /* RVMTestViewModel.m */; };
 		1079A0C9205927B90043E681 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1079A0CA205927B90043E681 /* Nimble.framework */; };
 		1079A0CB205927BE0043E681 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1079A0CC205927BE0043E681 /* Quick.framework */; };
+		1083812C2080A4F300F168C0 /* UIColor+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 108381262080A4F300F168C0 /* UIColor+Extensions.m */; };
+		1083812D2080A4F300F168C0 /* UIView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 108381272080A4F300F168C0 /* UIView+Extensions.m */; };
+		1083812E2080A4F300F168C0 /* LXGradientProcessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 108381282080A4F300F168C0 /* LXGradientProcessView.m */; };
 		108F95DA202FE10B0044FDDC /* DLSpecialLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 108F95D9202FE10B0044FDDC /* DLSpecialLayerViewController.m */; };
 		108F95DC202FF1A00044FDDC /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108F95DB202FF1A00044FDDC /* CoreText.framework */; };
 		108F95DF2030109B0044FDDC /* DLLayerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 108F95DE2030109B0044FDDC /* DLLayerLabel.m */; };
@@ -213,6 +217,8 @@
 		1050A6F5205CFAE000FCD555 /* DLRACLearningByMyselfViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLRACLearningByMyselfViewController.m; sourceTree = "<group>"; };
 		1050A765206238DA00FCD555 /* DLRACSourceCodeLeanringViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLRACSourceCodeLeanringViewController.h; sourceTree = "<group>"; };
 		1050A766206238DA00FCD555 /* DLRACSourceCodeLeanringViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLRACSourceCodeLeanringViewController.m; sourceTree = "<group>"; };
+		1058D8812080918D005E68EF /* DLHollowOutTextViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLHollowOutTextViewController.h; sourceTree = "<group>"; };
+		1058D8822080918D005E68EF /* DLHollowOutTextViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLHollowOutTextViewController.m; sourceTree = "<group>"; };
 		105CFC2B206B3D9300F0AD1F /* DLRACCommandLearningViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLRACCommandLearningViewController.h; sourceTree = "<group>"; };
 		105CFC2C206B3D9300F0AD1F /* DLRACCommandLearningViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLRACCommandLearningViewController.m; sourceTree = "<group>"; };
 		105CFC2F206B656300F0AD1F /* NSString+EmailAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+EmailAdditions.h"; sourceTree = "<group>"; };
@@ -277,6 +283,12 @@
 		1079A0C72059200B0043E681 /* RVMTestViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVMTestViewModel.h; sourceTree = "<group>"; };
 		1079A0CA205927B90043E681 /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1079A0CC205927BE0043E681 /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		108381262080A4F300F168C0 /* UIColor+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extensions.m"; sourceTree = "<group>"; };
+		108381272080A4F300F168C0 /* UIView+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extensions.m"; sourceTree = "<group>"; };
+		108381282080A4F300F168C0 /* LXGradientProcessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXGradientProcessView.m; sourceTree = "<group>"; };
+		108381292080A4F300F168C0 /* UIView+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extensions.h"; sourceTree = "<group>"; };
+		1083812A2080A4F300F168C0 /* UIColor+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extensions.h"; sourceTree = "<group>"; };
+		1083812B2080A4F300F168C0 /* LXGradientProcessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXGradientProcessView.h; sourceTree = "<group>"; };
 		108F95D8202FE10B0044FDDC /* DLSpecialLayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLSpecialLayerViewController.h; sourceTree = "<group>"; };
 		108F95D9202FE10B0044FDDC /* DLSpecialLayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLSpecialLayerViewController.m; sourceTree = "<group>"; };
 		108F95DB202FF1A00044FDDC /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -607,6 +619,16 @@
 			path = Experience;
 			sourceTree = "<group>";
 		};
+		1058D88020809155005E68EF /* TextHandle */ = {
+			isa = PBXGroup;
+			children = (
+				108381252080A4F300F168C0 /* LXGradientProcessView */,
+				1058D8812080918D005E68EF /* DLHollowOutTextViewController.h */,
+				1058D8822080918D005E68EF /* DLHollowOutTextViewController.m */,
+			);
+			path = TextHandle;
+			sourceTree = "<group>";
+		};
 		105CFC2E206B655900F0AD1F /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -781,6 +803,7 @@
 		10634768201AC67D00C62B54 /* CoreAnimation */ = {
 			isa = PBXGroup;
 			children = (
+				1058D88020809155005E68EF /* TextHandle */,
 				102969BF2022B62F00D01259 /* resource */,
 				1027198E201EF6A20071EC9A /* TimerClock */,
 				10634769201AC69F00C62B54 /* DLLayerTestViewController.h */,
@@ -827,6 +850,19 @@
 				109D9FE52059555200050253 /* DLObjectLearningProjectTests-Bridging-Header.h */,
 			);
 			path = test;
+			sourceTree = "<group>";
+		};
+		108381252080A4F300F168C0 /* LXGradientProcessView */ = {
+			isa = PBXGroup;
+			children = (
+				1083812B2080A4F300F168C0 /* LXGradientProcessView.h */,
+				108381282080A4F300F168C0 /* LXGradientProcessView.m */,
+				1083812A2080A4F300F168C0 /* UIColor+Extensions.h */,
+				108381262080A4F300F168C0 /* UIColor+Extensions.m */,
+				108381292080A4F300F168C0 /* UIView+Extensions.h */,
+				108381272080A4F300F168C0 /* UIView+Extensions.m */,
+			);
+			path = LXGradientProcessView;
 			sourceTree = "<group>";
 		};
 		10B0C5BE1FEB5CB200C37675 /* RunLoop */ = {
@@ -1815,6 +1851,7 @@
 				10DAA87D20494295008A6C58 /* NSObject+caculator.m in Sources */,
 				10B0C7B81FEBB33800C37675 /* Protocol.m in Sources */,
 				10B0C7CD1FEBB33800C37675 /* CloudPushTask.m in Sources */,
+				1083812C2080A4F300F168C0 /* UIColor+Extensions.m in Sources */,
 				10B0C7EB1FEBB33800C37675 /* Struct.pbobjc.m in Sources */,
 				10B98C6720590073001D1526 /* YDStartAPP.m in Sources */,
 				10EDD88C2047DC01003EA6B9 /* DLRequestViewModel.m in Sources */,
@@ -1823,6 +1860,7 @@
 				10B0C7DC1FEBB33800C37675 /* GPBDescriptor.m in Sources */,
 				10B0C5E81FEBA92C00C37675 /* BLE.m in Sources */,
 				10929B3120526035003DF3BC /* DLSubscriptionComprehandViewController.m in Sources */,
+				1083812E2080A4F300F168C0 /* LXGradientProcessView.m in Sources */,
 				105CFC39206B834000F0AD1F /* DLMVVMViewModel.m in Sources */,
 				10B0C7C01FEBB33800C37675 /* FileModel.m in Sources */,
 				105CFC36206B830100F0AD1F /* DLMVVMSampleFourViewController.m in Sources */,
@@ -1863,8 +1901,10 @@
 				10B0C7CE1FEBB33800C37675 /* RobotPushTask.m in Sources */,
 				10EDD8872047DBC7003EA6B9 /* DLAccount.m in Sources */,
 				105CFC31206B656300F0AD1F /* NSString+EmailAdditions.m in Sources */,
+				1083812D2080A4F300F168C0 /* UIView+Extensions.m in Sources */,
 				10B0C7C51FEBB33800C37675 /* ModifyModel.m in Sources */,
 				10B0C7DA1FEBB33800C37675 /* GPBExtensionRegistry.m in Sources */,
+				1058D8832080918D005E68EF /* DLHollowOutTextViewController.m in Sources */,
 				1050A6F6205CFAE000FCD555 /* DLRACLearningByMyselfViewController.m in Sources */,
 				1073A9D2207C615A0080EEB0 /* AMAFNetworkingSwizzleHandle.m in Sources */,
 				10EDD8712046B61C003EA6B9 /* DLRacBasicCourse.m in Sources */,
