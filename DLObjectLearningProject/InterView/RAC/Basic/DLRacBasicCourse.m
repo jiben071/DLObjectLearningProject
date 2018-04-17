@@ -5,6 +5,7 @@
 //  Created by denglong on 28/02/2018.
 //  Copyright © 2018 long deng. All rights reserved.
 //  参考链接：http://bbs.520it.com/forum.php?mod=viewthread&tid=257
+//  常用用法：http://www.itboth.com/d/EfQF3e/oracle-reactivecocoa-rac
 
 #import "DLRacBasicCourse.h"
 #import <UIKit/UIKit.h>
@@ -13,6 +14,10 @@
 
 @interface DLRacBasicCourse()
 @property(nonatomic, strong) UITextField *textField;
+@property(nonatomic, strong) UIScrollView *scrollView;
+@property(nonatomic, assign) BOOL bCheck;
+@property(nonatomic, strong) UIButton *customButton;
+@property(nonatomic, strong) UILabel *customLabel;
 @end
 
 @implementation DLRacBasicCourse
@@ -447,6 +452,218 @@
         NSLog(@"%@",x);
     }];
 }
+
+
+#pragma mark - 常用用法
+//监听KVO
+- (void)kvoObserving{
+    [RACObserve(self.scrollView, contentSize) subscribeNext:^(id  _Nullable x) {
+        
+    }];
+    
+    [RACObserve(self, bCheck) subscribeNext:^(id  _Nullable x) {
+        
+    }];
+    
+    //监听方法
+    [[self rac_signalForSelector:@selector(viewDidAppear:)] subscribeNext:^(RACTuple * _Nullable x) {
+        
+    }];
+    
+    //指定某个代理中的方法
+    [[self rac_signalForSelector:@selector(alertView:clickedButtonAtIndex:) fromProtocol:@protocol(UIAlertViewDelegate)] subscribeNext:^(RACTuple * _Nullable x) {
+        
+    }];
+    
+    [self.textField.rac_textSignal subscribeNext:^(NSString * _Nullable x) {
+        //文本输入变化
+    }];
+    
+    [[self.textField rac_signalForControlEvents:UIControlEventEditingChanged] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        //文本输入变化
+    }];
+    
+    [[self.textField rac_signalForControlEvents:UIControlEventEditingDidEnd] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        //结束编辑
+    }];
+    
+    //RACObserver监听的对象属性返回值作为RAC监听对象属性的值
+    RAC(self.customButton,hidden) = RACObserve(self.textField, hidden);
+    
+    
+    //等价于:
+    [RACObserve(self.textField, hidden) subscribeNext:^(NSNumber *x) {
+        self.customButton.hidden = x.boolValue;
+    }];
+}
+
+//事件
+- (void)eventTest{
+    [[self.customButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        
+    }];
+    
+    //手势事件
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] init];
+    [[tap rac_gestureSignal] subscribeNext:^(__kindof UIGestureRecognizer * _Nullable x) {
+        
+    }];
+}
+
+//通知
+- (void)notification{
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"postData" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+        
+    }];
+}
+
+//替代代理
+- (void)replaceDelegate{
+    //信号创建
+    RACSubject *moresignal = [RACSubject subject];
+    //信号发送
+    [moresignal sendNext:@1];
+    //信号响应
+    [moresignal subscribeNext:^(id  _Nullable x) {
+        
+    }];
+}
+
+//映射
+- (void)mapTestAgain{
+    RAC(self.customLabel,text) = [self.textField.rac_textSignal map:^id _Nullable(NSString * _Nullable value) {
+        return value;
+    }];
+    
+    [[self.textField.rac_textSignal map:^id _Nullable(NSString * _Nullable value) {
+        return @(1);
+    }] subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@", x);    //输出1，这个x是上面block中return返回值1
+    }];
+}
+
+//过滤
+- (void)filterTestAgain{
+    //filter 可以帮助你筛选出你需要的值
+    [[self.textField.rac_textSignal filter:^BOOL(NSString * _Nullable value) {
+        return [value length] > 3;
+    }] subscribeNext:^(NSString * _Nullable x) {
+        NSLog(@"x = %@",x);
+    }];
+    
+    //ignore 可以忽略某些值
+    [[[self.textField.rac_textSignal ignore:@""] filter:^BOOL(NSString * _Nullable value) {
+        return [value length] > 3;
+    }] subscribeNext:^(NSString * _Nullable x) {
+        
+    }];
+    
+    //take 从开始一共取几次信号
+    RACSubject *subject = [RACSubject subject];
+    [[subject take:2] subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);// 1 2
+    }];
+    [subject sendNext:@"1"];
+    [subject sendNext:@"2"];
+    [subject sendNext:@"3"];
+    
+    //takeLast 取后面的值  必须是发送完成
+    [[subject takeLast:2] subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x); // 2 3
+    }];
+    [subject sendNext:@"1"];
+    [subject sendNext:@"2"];
+    [subject sendNext:@"3"];
+    [subject sendCompleted];
+    
+    //takeUntil 当传入的某个信号发送完成，这样就不会再接收源信号的内容，或者发送任意数据也不会再接收
+    RACSubject *subject3 = [RACSubject subject];
+    RACSubject *signal = [RACSubject subject];
+    [[subject3 takeUntil:signal] subscribeNext:^(id  _Nullable x) {
+         NSLog(@"%@",x); //1 2
+    }];
+    [subject sendNext:@"1"];
+    [subject sendNext:@"2"];
+    [signal sendCompleted];
+    [subject sendNext:@"3"];
+    
+    //distinctUntilChanged 如果当前的值跟上一个值相同，这样就不会被订阅发送信号
+    [[subject distinctUntilChanged] subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x); //A
+    }];
+    [subject sendNext:@"A"];
+    [subject sendNext:@"A"];
+}
+
+//RACMulticastConnection
+//当我们多次订阅同一个信号的时候，避免订阅信号block中的代码被调用多次。
+- (void)connectionTest{
+    RACSignal *signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        return nil;
+    }];
+    RACMulticastConnection *connection = [signal publish];//转化为连接类
+    [connection.signal subscribeNext:^(id  _Nullable x) {
+        
+    }];
+    [connection.signal subscribeNext:^(id  _Nullable x) {
+        
+    }];
+    
+    [connection connect];//链接
+}
+
+//rac_liftSelector:withSignalsFromArray:
+/*
+ 当进入一个页面需要发多次请求，当全部请求结束再执行更新UI，可以使用下面RAC方法，可以替代多线程GCD的dispatch_group_enter和dispatch_group_leave 参数1：请求结束执行的方法，参数个数必须是和参数二的数组信号个数一致，是信号发送的值 参数2: 数组 存放所有信号
+ */
+
+
+//组合
+- (void)combinationTest{
+    //concat 数组组合
+    RACSequence *letters = [@"A B C D E F G H I" componentsSeparatedByString:@" "].rac_sequence;
+    RACSequence *numbers = [@"1 2 3 4 5 6 7 8 9" componentsSeparatedByString:@" "].rac_sequence;
+    RACSequence *concatenated = [letters concat:numbers];
+    [concatenated.signal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x); // Contains: A B C D E F G H I 1 2 3 4 5 6 7 8 9
+    }];
+    
+    //merge当多个信号执行同一种操作 使用merge
+    RACSubject *subject1 = [RACSubject subject];
+    RACSubject *subject2 = [RACSubject subject];
+    RACSignal *mergeSignal = [subject1 merge:subject2];
+    [mergeSignal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+    [subject1 sendNext:@"第一个位置调用"];
+    [subject1 sendNext:@"第二个位置调用"];
+    
+    //zipWith 当希望两个信号都发出信号时才调用，并且会把两个信号的内容组成一个元组
+    RACSignal *zipSignal = [subject1 zipWith:subject2];
+    [zipSignal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+    [subject1 sendNext:@"第一个位置调用"];
+    [subject1 sendNext:@"第二个位置调用"];
+    
+    //combineLatest 将多个信号合并起来，当希望两个信号都发出信号时才调用
+    //reduce reduce是聚合的作用，讲多个信号分别发送的信号聚在一起返回。
+    RACSignal *combineSignal = [RACSignal combineLatest:@[subject1,subject2] reduce:^id (NSString * title1,NSString *title2){
+        NSLog(@"%@ -- %@",title1,title2);
+        return @"返回值";
+    }];
+    
+    [combineSignal subscribeNext:^(id x) {
+        NSLog(@"%@",x);   //返回值
+    }];
+    [subject1 sendNext:@"第一个位置调用"];
+    [subject2 sendNext:@"第二个位置调用"];
+    
+}
+
+
+
+
 
 
 @end
