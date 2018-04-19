@@ -13,7 +13,7 @@ target 'DLObjectLearningProject' do
   pod 'BlocksKit'  #UIKit的代理转为Block使用
   pod 'Masonry'
   pod 'SVProgressHUD'
-  pod 'SDWebImage'
+#  pod 'SDWebImage'
 #  pod 'AFNetworking-RACExtensions'  #AFNetworking-RACExtensions was resolved to 0.0.1, which depends onAFNetworking (~> 1.2.0)
 
 

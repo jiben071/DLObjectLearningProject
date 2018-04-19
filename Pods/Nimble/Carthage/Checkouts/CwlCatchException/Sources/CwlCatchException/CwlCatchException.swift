@@ -25,13 +25,11 @@ import CwlCatchExceptionSupport
 #endif
 
 private func catchReturnTypeConverter<T: NSException>(_ type: T.Type, block: () -> Void) -> T? {
-	// Get the type from an *instance*, instead of a receiving the type directly
 	return catchExceptionOfKind(type, block) as? T
 }
 
 extension NSException {
-	@objc public static func catchException(in block: () -> Void) -> Self? {
-		// Use a dummy instance of Self to provide the type
+	public static func catchException(in block: () -> Void) -> Self? {
 		return catchReturnTypeConverter(self, block: block)
 	}
 }

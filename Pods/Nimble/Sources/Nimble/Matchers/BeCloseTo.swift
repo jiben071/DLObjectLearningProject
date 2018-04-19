@@ -36,9 +36,9 @@ public func beCloseTo(_ expectedValue: NMBDoubleConvertible, within delta: Doubl
 
 #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 public class NMBObjCBeCloseToMatcher: NSObject, NMBMatcher {
-    @objc var _expected: NSNumber
-    @objc var _delta: CDouble
-    @objc init(expected: NSNumber, within: CDouble) {
+    var _expected: NSNumber
+    var _delta: CDouble
+    init(expected: NSNumber, within: CDouble) {
         _expected = expected
         _delta = within
     }

@@ -117,12 +117,12 @@ internal func exceptionMatchesNonNilFieldsOrClosure(
 }
 
 public class NMBObjCRaiseExceptionMatcher: NSObject, NMBMatcher {
-    @objc internal var _name: String?
-    @objc internal var _reason: String?
-    @objc internal var _userInfo: NSDictionary?
-    @objc internal var _block: ((NSException) -> Void)?
+    internal var _name: String?
+    internal var _reason: String?
+    internal var _userInfo: NSDictionary?
+    internal var _block: ((NSException) -> Void)?
 
-    @objc internal init(name: String?, reason: String?, userInfo: NSDictionary?, block: ((NSException) -> Void)?) {
+    internal init(name: String?, reason: String?, userInfo: NSDictionary?, block: ((NSException) -> Void)?) {
         _name = name
         _reason = reason
         _userInfo = userInfo

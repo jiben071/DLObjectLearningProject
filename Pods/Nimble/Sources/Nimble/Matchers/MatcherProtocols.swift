@@ -110,7 +110,7 @@ extension Date: NMBDoubleConvertible {
 }
 
 extension NSDate: NMBDoubleConvertible {
-    @objc public var doubleValue: CDouble {
+    public var doubleValue: CDouble {
         return self.timeIntervalSinceReferenceDate
     }
 }
@@ -122,7 +122,7 @@ extension Date: TestOutputStringConvertible {
 }
 
 extension NSDate: TestOutputStringConvertible {
-    @objc public var testDescription: String {
+    public var testDescription: String {
         return dateFormatter.string(from: Date(timeIntervalSinceReferenceDate: self.timeIntervalSinceReferenceDate))
     }
 }

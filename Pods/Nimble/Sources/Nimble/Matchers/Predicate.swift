@@ -82,8 +82,8 @@ extension Predicate {
     }
 }
 
-// Question: Should this be exposed? It's safer to not for now and decide later.
-internal enum ExpectationStyle {
+// The Expectation style intended for comparison to a PredicateStatus.
+public enum ExpectationStyle {
     case toMatch, toNotMatch
 }
 
@@ -91,9 +91,9 @@ internal enum ExpectationStyle {
 /// predicate.
 public struct PredicateResult {
     /// Status indicates if the predicate matches, does not match, or fails.
-    var status: PredicateStatus
+    public var status: PredicateStatus
     /// The error message that can be displayed if it does not match
-    var message: ExpectationMessage
+    public var message: ExpectationMessage
 
     /// Constructs a new PredicateResult with a given status and error message
     public init(status: PredicateStatus, message: ExpectationMessage) {
@@ -108,7 +108,7 @@ public struct PredicateResult {
     }
 
     /// Converts the result to a boolean based on what the expectation intended
-    internal func toBoolean(expectation style: ExpectationStyle) -> Bool {
+    public func toBoolean(expectation style: ExpectationStyle) -> Bool {
         return status.toBoolean(expectation: style)
     }
 }
@@ -251,7 +251,7 @@ public class NMBPredicate: NSObject {
         self.predicate = predicate
     }
 
-    @objc func satisfies(_ expression: @escaping () -> NSObject!, location: SourceLocation) -> NMBPredicateResult {
+    func satisfies(_ expression: @escaping () -> NSObject!, location: SourceLocation) -> NMBPredicateResult {
         let expr = Expression(expression: expression, location: location)
         return self.predicate(expr)
     }
@@ -272,15 +272,15 @@ extension NMBPredicate: NMBMatcher {
 }
 
 final public class NMBPredicateResult: NSObject {
-    @objc public var status: NMBPredicateStatus
-    @objc public var message: NMBExpectationMessage
+    public var status: NMBPredicateStatus
+    public var message: NMBExpectationMessage
 
-    @objc public init(status: NMBPredicateStatus, message: NMBExpectationMessage) {
+    public init(status: NMBPredicateStatus, message: NMBExpectationMessage) {
         self.status = status
         self.message = message
     }
 
-    @objc public init(bool success: Bool, message: NMBExpectationMessage) {
+    public init(bool success: Bool, message: NMBExpectationMessage) {
         self.status = NMBPredicateStatus.from(bool: success)
         self.message = message
     }
@@ -303,9 +303,9 @@ final public class NMBPredicateStatus: NSObject {
         self.status = status
     }
 
-    @objc public static let matches: NMBPredicateStatus = NMBPredicateStatus(status: 0)
-    @objc public static let doesNotMatch: NMBPredicateStatus = NMBPredicateStatus(status: 1)
-    @objc public static let fail: NMBPredicateStatus = NMBPredicateStatus(status: 2)
+    public static let matches: NMBPredicateStatus = NMBPredicateStatus(status: 0)
+    public static let doesNotMatch: NMBPredicateStatus = NMBPredicateStatus(status: 1)
+    public static let fail: NMBPredicateStatus = NMBPredicateStatus(status: 2)
 
     public override var hashValue: Int { return self.status.hashValue }
 
@@ -324,7 +324,7 @@ final public class NMBPredicateStatus: NSObject {
         }
     }
 
-    @objc public static func from(bool success: Bool) -> NMBPredicateStatus {
+    public static func from(bool success: Bool) -> NMBPredicateStatus {
         return self.from(status: PredicateStatus(bool: success))
     }
 

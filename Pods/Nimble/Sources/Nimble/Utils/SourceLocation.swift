@@ -12,15 +12,15 @@ public typealias FileString = String
 #endif
 
 public final class SourceLocation: NSObject {
-    @objc public let file: FileString
-    @objc public let line: UInt
+    public let file: FileString
+    public let line: UInt
 
     override init() {
         file = "Unknown File"
         line = 0
     }
 
-    @objc init(file: FileString, line: UInt) {
+    init(file: FileString, line: UInt) {
         self.file = file
         self.line = line
     }

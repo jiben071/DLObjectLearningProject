@@ -48,7 +48,7 @@ extension NSNumber: TestOutputStringConvertible {
     // This is using `NSString(format:)` instead of
     // `String(format:)` because the latter somehow breaks
     // the travis CI build on linux.
-    @objc public var testDescription: String {
+    public var testDescription: String {
         let description = self.description
 
         if description.contains(".") {
@@ -100,14 +100,14 @@ extension AnySequence: TestOutputStringConvertible {
 }
 
 extension NSArray: TestOutputStringConvertible {
-    @objc public var testDescription: String {
+    public var testDescription: String {
         let list = Array(self).map(Nimble.stringify).joined(separator: ", ")
         return "(\(list))"
     }
 }
 
 extension NSIndexSet: TestOutputStringConvertible {
-    @objc public var testDescription: String {
+    public var testDescription: String {
         let list = Array(self).map(Nimble.stringify).joined(separator: ", ")
         return "(\(list))"
     }

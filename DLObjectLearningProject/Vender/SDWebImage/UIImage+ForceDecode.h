@@ -8,6 +8,7 @@
 
 #import "SDWebImageCompat.h"
 
+//图片的解压缩
 @interface UIImage (ForceDecode)
 
 + (nullable UIImage *)decodedImageWithImage:(nullable UIImage *)image;

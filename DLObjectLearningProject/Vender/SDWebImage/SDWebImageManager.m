@@ -341,14 +341,17 @@
 
 @implementation SDWebImageCombinedOperation
 
+/*
+ 在里面封装一个NSOperation，这么做的目的应该是为了使代码更简洁。因为下载操作需要查询缓存的operation和实际下载的operation，这个类的cancel方法可以同时cancel两个operation，同时还可以维护一个状态cancelled。
+ */
 - (void)cancel {
     @synchronized(self) {
         self.cancelled = YES;
-        if (self.cacheOperation) {
+        if (self.cacheOperation) {//缓存的operation
             [self.cacheOperation cancel];
             self.cacheOperation = nil;
         }
-        if (self.downloadToken) {
+        if (self.downloadToken) {//实际下载的operation
             [self.manager.imageDownloader cancel:self.downloadToken];
         }
         [self.manager safelyRemoveOperationFromRunning:self];

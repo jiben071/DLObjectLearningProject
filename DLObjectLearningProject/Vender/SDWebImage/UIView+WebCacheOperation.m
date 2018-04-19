@@ -26,6 +26,28 @@ typedef NSMapTable<NSString *, id<SDWebImageOperation>> SDOperationsDictionary;
         if (operations) {
             return operations;
         }
+        /*
+         NSMapTable是可变的，没有不可变的类
+         NSMapTable可以持有键和值的弱引用，当键或值当中的一个被释放时，整个这一项就会被移除掉
+         NSMapTable可以在加入成员时进行copy操作
+         NSMapTable可以存储任意的指针，通过指针来进行相等性和散列检查
+         */
+        /*
+         对比
+         
+         传统的集合类型都有哪些短板：
+         
+         放到集合中的对象，只能强引用
+         如果想要弱引用，要先用NSValue打包
+         不能放入nil
+         
+         总结
+         永远先从最高的抽象层次去尝试解决问题
+         如果碰到的问题包含内存管理需求，那么NSHashTable和NSMapTable值得一试
+         https://www.jianshu.com/p/cf4e15b26f64
+         
+         关键：NSPointerFunctionsWeakMemory  不会修改NSMapTable容器内对象元素的引用计数，并且对象释放后，会被自动移除
+         */
         operations = [[NSMapTable alloc] initWithKeyOptions:NSPointerFunctionsStrongMemory valueOptions:NSPointerFunctionsWeakMemory capacity:0];
         objc_setAssociatedObject(self, &loadOperationKey, operations, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         return operations;
@@ -52,7 +74,7 @@ typedef NSMapTable<NSString *, id<SDWebImageOperation>> SDOperationsDictionary;
         operation = [operationDictionary objectForKey:key];
     }
     if (operation) {
-        if ([operation conformsToProtocol:@protocol(SDWebImageOperation)]){
+        if ([operation conformsToProtocol:@protocol(SDWebImageOperation)]){//面向接口编程，不用指定某个类，以便实现自定义的下载操作类
             [operation cancel];
         }
         @synchronized (self) {

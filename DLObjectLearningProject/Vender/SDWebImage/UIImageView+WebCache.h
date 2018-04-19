@@ -185,12 +185,12 @@
 
 /**
  * Download an array of images and starts them in an animation loop
- *
+ * 下载一组图像并在动画循环中启动它们
  * @param arrayOfURLs An array of NSURL
  */
 - (void)sd_setAnimationImagesWithURLs:(nonnull NSArray<NSURL *> *)arrayOfURLs;
 
-- (void)sd_cancelCurrentAnimationImagesLoad;
+- (void)sd_cancelCurrentAnimationImagesLoad;//取消循环动画
 
 #endif
 

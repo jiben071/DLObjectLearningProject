@@ -32,12 +32,9 @@ PODS:
   - LinqToObjectiveC (2.1.0)
   - Masonry (1.1.0)
   - Motis (1.4.4)
-  - Nimble (7.0.3)
+  - Nimble (7.1.0)
   - Quick (1.2.0)
   - ReactiveObjC (3.1.0)
-  - SDWebImage (4.3.3):
-    - SDWebImage/Core (= 4.3.3)
-  - SDWebImage/Core (4.3.3)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
@@ -49,7 +46,6 @@ DEPENDENCIES:
   - Nimble
   - Quick
   - ReactiveObjC
-  - SDWebImage
   - SVProgressHUD
 
 SPEC CHECKSUMS:
@@ -58,12 +54,11 @@ SPEC CHECKSUMS:
   LinqToObjectiveC: f0e40c137a458b6b9725c4c7b6a575c0c72e3aec
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   Motis: 49f0420eae2b4c23b91c80565afc9ef6ba3fde0f
-  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
+  Nimble: 9c6651c3021af6de54c3ed90a4a0a87d548f7359
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   ReactiveObjC: 2a38ea15335de4119d8b17caf1db1484f61db902
-  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 44265f66ae3f12b68dd8dfa1c098ff208a452600
+PODFILE CHECKSUM: 3b5a74c7a1616798c7424cc84f72a0cbd3db0908
 
 COCOAPODS: 1.4.0

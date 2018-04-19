@@ -14,7 +14,7 @@
 
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <Masonry/Masonry.h>
-#import <SDWebImage/UIImageView+WebCache.h>
+#import "UIImageView+WebCache.h"
 #import <BlocksKit/BlocksKit.h>
 #import <BlocksKit/A2DynamicDelegate.h>
 #import <Motis/Motis.h>

@@ -40,7 +40,7 @@ class NimbleXCTestUnavailableHandler: AssertionHandler {
 @objc final internal class CurrentTestCaseTracker: NSObject, XCTestObservation {
     @objc static let sharedInstance = CurrentTestCaseTracker()
 
-    @objc private(set) var currentTestCase: XCTestCase?
+    private(set) var currentTestCase: XCTestCase?
 
     @objc func testCaseWillStart(_ testCase: XCTestCase) {
         currentTestCase = testCase

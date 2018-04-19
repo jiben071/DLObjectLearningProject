@@ -16,11 +16,11 @@ typedef NS_ENUM(NSInteger, SDImageCacheType) {
      */
     SDImageCacheTypeNone,
     /**
-     * The image was obtained from the disk cache.
+     * The image was obtained from the disk cache.  硬盘缓存
      */
     SDImageCacheTypeDisk,
     /**
-     * The image was obtained from the memory cache.
+     * The image was obtained from the memory cache.  内存缓存
      */
     SDImageCacheTypeMemory
 };
@@ -46,6 +46,8 @@ typedef void(^SDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger tot
 /**
  * SDImageCache maintains a memory cache and an optional disk cache. Disk cache write operations are performed
  * asynchronous so it doesn’t add unnecessary latency to the UI.
+ * 硬盘的写操作是在异步线程，不会使UI卡顿
+ * 负责图片的缓存
  */
 @interface SDImageCache : NSObject
 

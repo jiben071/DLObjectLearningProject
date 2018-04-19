@@ -59,7 +59,9 @@
                                           options:(SDWebImageOptions)options
                                          progress:(nullable SDWebImageDownloaderProgressBlock)progressBlock
                                         completed:(nullable SDExternalCompletionBlock)completedBlock {
+    
     NSString *key = [[SDWebImageManager sharedManager] cacheKeyForURL:url];
+    //尝试从缓存中获取图片
     UIImage *lastPreviousCachedImage = [[SDImageCache sharedImageCache] imageFromCacheForKey:key];
     
     [self sd_setImageWithURL:url placeholderImage:lastPreviousCachedImage ?: placeholder options:options progress:progressBlock completed:completedBlock];    
@@ -99,7 +101,7 @@
                     sself.animationImages = currentImages;
                     [sself setNeedsLayout];
                 }
-                [sself startAnimating];
+                [sself startAnimating];//逐帧播放动画
             });
         }];
         @synchronized (self) {
@@ -118,6 +120,15 @@ static char animationLoadOperationKey;
         if (operationsArray) {
             return operationsArray;
         }
+        /*
+         NSPointerArray是NSArray的通用版本，NSPointerArray具有下面特性：
+         和传统Array一样，用于有序的插入或移除
+         与传统Array不同的是，可以存储NULL，并且NULL还参与count的计算
+         与传统Array不同的是，count可以set，如果直接set count，那么会使用NULL占位
+         可以使用weak来修饰成员
+         成员可以是所有指针类型
+         遵循NSFastEnumeration，可以通过for...in来进行遍历
+         */
         operationsArray = [NSPointerArray weakObjectsPointerArray];
         objc_setAssociatedObject(self, &animationLoadOperationKey, operationsArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         return operationsArray;

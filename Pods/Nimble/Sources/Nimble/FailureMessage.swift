@@ -4,18 +4,18 @@ import Foundation
 ///
 /// This is shared state between Nimble and matchers that mutate this value.
 public class FailureMessage: NSObject {
-    @objc public var expected: String = "expected"
-    @objc public var actualValue: String? = "" // empty string -> use default; nil -> exclude
-    @objc public var to: String = "to"
-    @objc public var postfixMessage: String = "match"
-    @objc public var postfixActual: String = ""
+    public var expected: String = "expected"
+    public var actualValue: String? = "" // empty string -> use default; nil -> exclude
+    public var to: String = "to"
+    public var postfixMessage: String = "match"
+    public var postfixActual: String = ""
     /// An optional message that will be appended as a new line and provides additional details
     /// about the failure. This message will only be visible in the issue navigator / in logs but
     /// not directly in the source editor since only a single line is presented there.
-    @objc public var extendedMessage: String?
-    @objc public var userDescription: String?
+    public var extendedMessage: String?
+    public var userDescription: String?
 
-    @objc public var stringValue: String {
+    public var stringValue: String {
         get {
             if let value = _stringValueOverride {
                 return value
@@ -28,19 +28,19 @@ public class FailureMessage: NSObject {
         }
     }
 
-    @objc internal var _stringValueOverride: String?
-    @objc internal var hasOverriddenStringValue: Bool {
+    internal var _stringValueOverride: String?
+    internal var hasOverriddenStringValue: Bool {
         return _stringValueOverride != nil
     }
 
     public override init() {
     }
 
-    @objc public init(stringValue: String) {
+    public init(stringValue: String) {
         _stringValueOverride = stringValue
     }
 
-    @objc internal func stripNewlines(_ str: String) -> String {
+    internal func stripNewlines(_ str: String) -> String {
         let whitespaces = CharacterSet.whitespacesAndNewlines
         return str
             .components(separatedBy: "\n")
@@ -48,7 +48,7 @@ public class FailureMessage: NSObject {
             .joined(separator: "")
     }
 
-    @objc internal func computeStringValue() -> String {
+    internal func computeStringValue() -> String {
         var value = "\(expected) \(to) \(postfixMessage)"
         if let actualValue = actualValue {
             value = "\(expected) \(to) \(postfixMessage), got \(actualValue)\(postfixActual)"
@@ -66,7 +66,7 @@ public class FailureMessage: NSObject {
         return value
     }
 
-    @objc internal func appendMessage(_ msg: String) {
+    internal func appendMessage(_ msg: String) {
         if hasOverriddenStringValue {
             stringValue += "\(msg)"
         } else if actualValue != nil {
@@ -76,7 +76,7 @@ public class FailureMessage: NSObject {
         }
     }
 
-    @objc internal func appendDetails(_ msg: String) {
+    internal func appendDetails(_ msg: String) {
         if hasOverriddenStringValue {
             if let desc = userDescription {
                 stringValue = "\(desc)\n\(stringValue)"

@@ -78,7 +78,7 @@
     //渐变色进度条
     //1.创建一个CALayer作为背景色进度条
     CALayer *bgLayer = [CALayer layer];
-    bgLayer.frame = CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
+    bgLayer.frame = CGRectMake(0, 0, 30, 30);
 }
 
 @end

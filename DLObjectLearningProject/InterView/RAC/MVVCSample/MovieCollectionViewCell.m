@@ -9,7 +9,7 @@
 #import "MovieCollectionViewCell.h"
 #import <Masonry/Masonry.h>
 #import "MovieModel.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+#import "UIImageView+WebCache.h"
 @interface MovieCollectionViewCell()
 
 @property (nonatomic,weak) UIImageView* imageView;

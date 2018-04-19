@@ -134,7 +134,7 @@ typedef NSMutableDictionary<NSString *, id> SDCallbacksDictionary;
         if (hasApplication && [self shouldContinueWhenAppEntersBackground]) {
             __weak __typeof__ (self) wself = self;
             UIApplication * app = [UIApplicationClass performSelector:@selector(sharedApplication)];
-            self.backgroundTaskId = [app beginBackgroundTaskWithExpirationHandler:^{
+            self.backgroundTaskId = [app beginBackgroundTaskWithExpirationHandler:^{//后台任务超时
                 __strong __typeof (wself) sself = wself;
 
                 if (sself) {

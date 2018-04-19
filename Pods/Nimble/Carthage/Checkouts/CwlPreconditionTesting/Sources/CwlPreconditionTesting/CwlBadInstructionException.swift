@@ -31,7 +31,7 @@ private func raiseBadInstructionException() {
 /// A simple NSException subclass. It's not required to subclass NSException (since the exception type is represented in the name) but this helps for identifying the exception through runtime type.
 @objc(BadInstructionException)
 public class BadInstructionException: NSException {
-	@objc static var name: String = "com.cocoawithlove.BadInstruction"
+	static var name: String = "com.cocoawithlove.BadInstruction"
 	
 	init() {
 		super.init(name: NSExceptionName(rawValue: BadInstructionException.name), reason: nil, userInfo: nil)

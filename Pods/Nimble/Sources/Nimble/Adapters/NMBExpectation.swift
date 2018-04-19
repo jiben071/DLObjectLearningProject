@@ -30,11 +30,11 @@ internal struct ObjCMatcherWrapper: Matcher {
 
 // Equivalent to Expectation, but for Nimble's Objective-C interface
 public class NMBExpectation: NSObject {
-    @objc internal let _actualBlock: () -> NSObject!
-    @objc internal var _negative: Bool
-    @objc internal let _file: FileString
-    @objc internal let _line: UInt
-    @objc internal var _timeout: TimeInterval = 1.0
+    internal let _actualBlock: () -> NSObject!
+    internal var _negative: Bool
+    internal let _file: FileString
+    internal let _line: UInt
+    internal var _timeout: TimeInterval = 1.0
 
     @objc public init(actualBlock: @escaping () -> NSObject!, negative: Bool, file: FileString, line: UInt) {
         self._actualBlock = actualBlock

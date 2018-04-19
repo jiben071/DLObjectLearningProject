@@ -10,7 +10,7 @@ public typealias FullMatcherBlock = (_ actualExpression: Expression<NSObject>, _
 public class NMBObjCMatcher: NSObject, NMBMatcher {
     let _match: MatcherBlock
     let _doesNotMatch: MatcherBlock
-    @objc let canMatchNil: Bool
+    let canMatchNil: Bool
 
     public init(canMatchNil: Bool, matcher: @escaping MatcherBlock, notMatcher: @escaping MatcherBlock) {
         self.canMatchNil = canMatchNil

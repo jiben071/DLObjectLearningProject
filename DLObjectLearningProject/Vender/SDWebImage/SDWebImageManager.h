@@ -14,34 +14,38 @@
 typedef NS_OPTIONS(NSUInteger, SDWebImageOptions) {
     /**
      * By default, when a URL fail to be downloaded, the URL is blacklisted so the library won't keep trying.
-     * This flag disable this blacklisting.
+     * This flag disable this blacklisting.  禁用黑名单
      */
     SDWebImageRetryFailed = 1 << 0,
 
     /**
      * By default, image downloads are started during UI interactions, this flags disable this feature,
-     * leading to delayed download on UIScrollView deceleration for instance.
+     * leading to delayed download on UIScrollView deceleration for instance.  比如在scrollView减速的时候才开始下载
      */
     SDWebImageLowPriority = 1 << 1,
 
     /**
      * This flag disables on-disk caching after the download finished, only cache in memory
+     * 仅缓存在内存中
      */
     SDWebImageCacheMemoryOnly = 1 << 2,
 
     /**
      * This flag enables progressive download, the image is displayed progressively during download as a browser would do.
      * By default, the image is only displayed once completely downloaded.
+     * 一点点显示图片
      */
     SDWebImageProgressiveDownload = 1 << 3,
 
     /**
      * Even if the image is cached, respect the HTTP response cache control, and refresh the image from remote location if needed.
+     * 即使缓存过图片，按照HTTP response 缓存控制策略，按需重新从远程地址拉取图片
      * The disk caching will be handled by NSURLCache instead of SDWebImage leading to slight performance degradation.
      * This option helps deal with images changing behind the same request URL, e.g. Facebook graph api profile pics.
      * If a cached image is refreshed, the completion block is called once with the cached image and again with the final image.
      *
      * Use this flag only if you can't make your URLs static with embedded cache busting parameter.
+     * 只有当您的网址无法使用嵌入式缓存清除参数静态化时，才使用此标志。
      */
     SDWebImageRefreshCached = 1 << 4,
 
@@ -72,12 +76,13 @@ typedef NS_OPTIONS(NSUInteger, SDWebImageOptions) {
     /**
      * By default, placeholder images are loaded while the image is loading. This flag will delay the loading
      * of the placeholder image until after the image has finished loading.
+     * 延迟加载占位图
      */
     SDWebImageDelayPlaceholder = 1 << 9,
 
     /**
      * We usually don't call transformDownloadedImage delegate method on animated images,
-     * as most transformation code would mangle it.
+     * as most transformation code would mangle it.  因为大多数转换代码会破坏它。
      * Use this flag to transform them anyway.
      */
     SDWebImageTransformAnimatedImage = 1 << 10,
@@ -92,6 +97,7 @@ typedef NS_OPTIONS(NSUInteger, SDWebImageOptions) {
     /**
      * By default, images are decoded respecting their original size. On iOS, this flag will scale down the
      * images to a size compatible with the constrained memory of devices.
+     * 默认情况下，图像将根据其原始大小进行解码。 在iOS上，该标志将缩小图像的大小与设备的受限内存兼容。
      * If `SDWebImageProgressiveDownload` flag is set the scale down is deactivated.
      */
     SDWebImageScaleDownLargeImages = 1 << 12,
@@ -189,6 +195,7 @@ SDWebImageManager *manager = [SDWebImageManager sharedManager];
 
  * @endcode
  */
+//总的管理类，维护了一个SDWebImageDownloader实例和一个SDImageCache实例，是下载与缓存的桥梁
 @interface SDWebImageManager : NSObject
 
 @property (weak, nonatomic, nullable) id <SDWebImageManagerDelegate> delegate;
@@ -199,6 +206,7 @@ SDWebImageManager *manager = [SDWebImageManager sharedManager];
 /**
  * The cache filter is a block used each time SDWebImageManager need to convert an URL into a cache key. This can
  * be used to remove dynamic part of an image URL.
+ * 可以将默认的url作为key的策略进行key的修改
  *
  * The following example sets a filter in the application delegate that will remove any query-string from the
  * URL before to use it as a cache key:
@@ -216,11 +224,12 @@ SDWebImageManager.sharedManager.cacheKeyFilter = ^(NSURL * _Nullable url) {
 
 /**
  * The cache serializer is a block used to convert the decoded image, the source downloaded data, to the actual data used for storing to the disk cache. If you return nil, means to generate the data from the image instance, see `SDImageCache`.
+ * 解码图像
  * For example, if you are using WebP images and facing the slow decoding time issue when later retriving from disk cache again. You can try to encode the decoded image to JPEG/PNG format to disk cache instead of source downloaded data.
  * @note The `image` arg is nonnull, but when you also provide a image transformer and the image is transformed, the `data` arg may be nil, take attention to this case.
  * @note This method is called from a global queue in order to not to block the main thread.
  * @code
- SDWebImageManager.sharedManager.cacheKeyFilter = ^NSData * _Nullable(UIImage * _Nonnull image, NSData * _Nullable data, NSURL * _Nullable imageURL) {
+ SDWebImageManager.sharedManager.cacheSerializer = ^NSData * _Nullable(UIImage * _Nonnull image, NSData * _Nullable data, NSURL * _Nullable imageURL) {
     SDImageFormat format = [NSData sd_imageFormatForImageData:data];
     switch (format) {
         case SDImageFormatWebP:
