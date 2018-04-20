@@ -32,6 +32,8 @@ static char TAG_ACTIVITY_SHOW;
     return objc_getAssociatedObject(self, &imageURLKey);
 }
 
+//https://blog.csdn.net/cloudox_/article/details/53423707
+// NSProgress 专门用来管理进度
 - (NSProgress *)sd_imageProgress {
     NSProgress *progress = objc_getAssociatedObject(self, @selector(sd_imageProgress));
     if (!progress) {
@@ -81,34 +83,42 @@ static char TAG_ACTIVITY_SHOW;
     
     if (url) {
         // check if activityView is enabled or not
+        // 检查是否开启了菊花
         if ([self sd_showActivityIndicatorView]) {
-            [self sd_addActivityIndicator];
+            [self sd_addActivityIndicator];//添加菊花
         }
         
         // reset the progress
+        // 重置进度
         self.sd_imageProgress.totalUnitCount = 0;
         self.sd_imageProgress.completedUnitCount = 0;
         
+        // 获取下载管理器
         SDWebImageManager *manager;
-        if ([context valueForKey:SDWebImageExternalCustomManagerKey]) {
+        if ([context valueForKey:SDWebImageExternalCustomManagerKey]) {//如果有自定义的管理器
             manager = (SDWebImageManager *)[context valueForKey:SDWebImageExternalCustomManagerKey];
         } else {
             manager = [SDWebImageManager sharedManager];
         }
         
         __weak __typeof(self)wself = self;
+        //下载进度回调
         SDWebImageDownloaderProgressBlock combinedProgressBlock = ^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+            //下载进度记录
             wself.sd_imageProgress.totalUnitCount = expectedSize;
             wself.sd_imageProgress.completedUnitCount = receivedSize;
             if (progressBlock) {
                 progressBlock(receivedSize, expectedSize, targetURL);
             }
         };
+        
+        //下载图片
         id <SDWebImageOperation> operation = [manager loadImageWithURL:url options:options progress:combinedProgressBlock completed:^(UIImage *image, NSData *data, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
             __strong __typeof (wself) sself = wself;
             if (!sself) { return; }
-            [sself sd_removeActivityIndicator];
+            [sself sd_removeActivityIndicator];//移除菊花
             // if the progress not been updated, mark it to complete state
+            // 如果进度没有更新，置为完成状态
             if (finished && !error && sself.sd_imageProgress.totalUnitCount == 0 && sself.sd_imageProgress.completedUnitCount == 0) {
                 sself.sd_imageProgress.totalUnitCount = SDWebImageProgressUnitCountUnknown;
                 sself.sd_imageProgress.completedUnitCount = SDWebImageProgressUnitCountUnknown;
@@ -118,7 +128,7 @@ static char TAG_ACTIVITY_SHOW;
                                       (!image && !(options & SDWebImageDelayPlaceholder)));
             SDWebImageNoParamsBlock callCompletedBlockClojure = ^{
                 if (!sself) { return; }
-                if (!shouldNotSetImage) {
+                if (!shouldNotSetImage) {//需要马上设置图片
                     [sself sd_setNeedsLayout];
                 }
                 if (completedBlock && shouldCallCompletedBlock) {
@@ -129,7 +139,7 @@ static char TAG_ACTIVITY_SHOW;
             // case 1a: we got an image, but the SDWebImageAvoidAutoSetImage flag is set
             // OR
             // case 1b: we got no image and the SDWebImageDelayPlaceholder is not set
-            if (shouldNotSetImage) {
+            if (shouldNotSetImage) {//调用已经完成加载的回调
                 dispatch_main_async_safe(callCompletedBlockClojure);
                 return;
             }
@@ -147,6 +157,7 @@ static char TAG_ACTIVITY_SHOW;
             }
             
             // check whether we should use the image transition
+            // 检查是否使用了图片的过渡动画
             SDWebImageTransition *transition = nil;
             if (finished && (options & SDWebImageForceTransition || cacheType == SDImageCacheTypeNone)) {
                 transition = sself.sd_imageTransition;
@@ -168,6 +179,7 @@ static char TAG_ACTIVITY_SHOW;
                 });
             }
         }];
+        //记录正在下载的操作
         [self sd_setImageLoadOperation:operation forKey:validOperationKey];
     } else {
         dispatch_main_async_safe(^{
@@ -317,6 +329,7 @@ static char TAG_ACTIVITY_SHOW;
         
             [self addSubview:self.activityIndicator];
             
+            //设置居中的约束
             [self addConstraint:[NSLayoutConstraint constraintWithItem:self.activityIndicator
                                                              attribute:NSLayoutAttributeCenterX
                                                              relatedBy:NSLayoutRelationEqual

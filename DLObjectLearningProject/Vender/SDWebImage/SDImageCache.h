@@ -31,7 +31,7 @@ typedef NS_OPTIONS(NSUInteger, SDImageCacheOptions) {
      */
     SDImageCacheQueryDataWhenInMemory = 1 << 0,
     /**
-     * By default, we query the memory cache synchronously, disk cache asynchronously. This mask can force to query disk cache synchronously.
+     * By default, we query the memory cache synchronously, disk cache asynchronously. This mask can force to query disk cache synchronously.  强制同步查询磁盘缓存
      */
     SDImageCacheQueryDiskSync = 1 << 1
 };

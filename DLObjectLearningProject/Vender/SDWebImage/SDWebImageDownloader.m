@@ -42,7 +42,7 @@
 @property (strong, nonatomic, nonnull) dispatch_semaphore_t operationsLock; // a lock to keep the access to `URLOperations` thread-safe
 @property (strong, nonatomic, nonnull) dispatch_semaphore_t headersLock; // a lock to keep the access to `HTTPHeaders` thread-safe
 
-// The session in which data tasks will run
+// The session in which data tasks will run  数据任务将运行的会话
 @property (strong, nonatomic) NSURLSession *session;
 
 @end
@@ -201,12 +201,12 @@
 
     return [self addProgressCallback:progressBlock completedBlock:completedBlock forURL:url createCallback:^SDWebImageDownloaderOperation *{
         __strong __typeof (wself) sself = wself;
-        NSTimeInterval timeoutInterval = sself.downloadTimeout;
+        NSTimeInterval timeoutInterval = sself.downloadTimeout;//下载超时时间
         if (timeoutInterval == 0.0) {
             timeoutInterval = 15.0;
         }
 
-        // In order to prevent from potential duplicate caching (NSURLCache + SDImageCache) we disable the cache for image requests if told otherwise
+        // In order to prevent from potential duplicate caching (NSURLCache + SDImageCache) we disable the cache for image requests if told otherwise  为了防止潜在的重复缓存（NSURLCache + SDImageCache），我们禁用图像请求的缓存
         NSURLRequestCachePolicy cachePolicy = options & SDWebImageDownloaderUseNSURLCache ? NSURLRequestUseProtocolCachePolicy : NSURLRequestReloadIgnoringLocalCacheData;
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
                                                                     cachePolicy:cachePolicy
@@ -237,7 +237,7 @@
         
         if (sself.executionOrder == SDWebImageDownloaderLIFOExecutionOrder) {
             // Emulate LIFO execution order by systematically adding new operations as last operation's dependency
-            [sself.lastAddedOperation addDependency:operation];
+            [sself.lastAddedOperation addDependency:operation];//通过依赖关系实现LIFO调用
             sself.lastAddedOperation = operation;
         }
 
@@ -284,16 +284,17 @@
                 return;
             }
             LOCK(sself.operationsLock);
-            [sself.URLOperations removeObjectForKey:url];
+            [sself.URLOperations removeObjectForKey:url];//操作完成后移除任务
             UNLOCK(sself.operationsLock);
         };
-        [self.URLOperations setObject:operation forKey:url];
-        // Add operation to operation queue only after all configuration done according to Apple's doc.
+        [self.URLOperations setObject:operation forKey:url];//记录下载操作
+        // Add operation to operation queue only after all configuration done according to Apple's doc.  必须先全部配置好才能添加到操作队列中
         // `addOperation:` does not synchronously execute the `operation.completionBlock` so this will not cause deadlock.
-        [self.downloadQueue addOperation:operation];
+        [self.downloadQueue addOperation:operation];//将下载操作添加到下载队列中
     }
     UNLOCK(self.operationsLock);
 
+    //保存对应的回调block
     id downloadOperationCancelToken = [operation addHandlersForProgress:progressBlock completed:completedBlock];
     
     SDWebImageDownloadToken *token = [SDWebImageDownloadToken new];

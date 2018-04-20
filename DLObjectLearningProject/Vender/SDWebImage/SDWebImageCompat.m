@@ -17,6 +17,8 @@
     #error SDWebImage need ARC for dispatch object
 #endif
 
+//https://www.jianshu.com/p/d557b0831c6a
+//这是一个内联函数：作用:替代宏
 inline UIImage *SDScaledImageForKey(NSString * _Nullable key, UIImage * _Nullable image) {
     if (!image) {
         return nil;
@@ -25,16 +27,17 @@ inline UIImage *SDScaledImageForKey(NSString * _Nullable key, UIImage * _Nullabl
 #if SD_MAC
     return image;
 #elif SD_UIKIT || SD_WATCH
-    if ((image.images).count > 0) {
+    if ((image.images).count > 0) {//如果是帧动画
         NSMutableArray<UIImage *> *scaledImages = [NSMutableArray array];
 
         for (UIImage *tempImage in image.images) {
-            [scaledImages addObject:SDScaledImageForKey(key, tempImage)];
+            [scaledImages addObject:SDScaledImageForKey(key, tempImage)];//继续单帧压缩
         }
         
+        //组装回帧动画
         UIImage *animatedImage = [UIImage animatedImageWithImages:scaledImages duration:image.duration];
         if (animatedImage) {
-            animatedImage.sd_imageLoopCount = image.sd_imageLoopCount;
+            animatedImage.sd_imageLoopCount = image.sd_imageLoopCount;//动画循环次数
         }
         return animatedImage;
     } else {

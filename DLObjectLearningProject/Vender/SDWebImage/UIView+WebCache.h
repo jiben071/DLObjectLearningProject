@@ -42,7 +42,7 @@ typedef void(^SDSetImageBlock)(UIImage * _Nullable image, NSData * _Nullable ima
  * The `totalUnitCount` and `completedUnitCount` will be reset to 0 after a new image loading start (change from current queue). And they will be set to `SDWebImageProgressUnitCountUnknown` if the progressBlock not been called but the image loading success to mark the progress finished (change from main queue).
  * @note You can use Key-Value Observing on the progress, but you should take care that the change to progress is from a background queue during download(the same as progressBlock). If you want to using KVO and update the UI, make sure to dispatch on the main queue. And it's recommand to use some KVO libs like KVOController because it's more safe and easy to use.
  * @note The getter will create a progress instance if the value is nil. You can also set a custom progress instance and let it been updated during image loading
- * @note Note that because of the limitations of categories this property can get out of sync if you update the progress directly.
+ * @note Note that because of the limitations of categories this property can get out of sync if you update the progress directly.  请注意，由于类别的限制，如果您直接更新进度，则此属性可能会不同步。
  */
 @property (nonatomic, strong, null_resettable) NSProgress *sd_imageProgress;
 

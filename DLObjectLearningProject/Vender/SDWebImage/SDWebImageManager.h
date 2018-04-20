@@ -91,6 +91,7 @@ typedef NS_OPTIONS(NSUInteger, SDWebImageOptions) {
      * By default, image is added to the imageView after download. But in some cases, we want to
      * have the hand before setting the image (apply a filter or add it with cross-fade animation for instance)
      * Use this flag if you want to manually set the image in the completion when success
+     * 避免直接设置图像（用于手动做一些设置，如过渡动画 一些过滤）
      */
     SDWebImageAvoidAutoSetImage = 1 << 11,
     
@@ -224,8 +225,9 @@ SDWebImageManager.sharedManager.cacheKeyFilter = ^(NSURL * _Nullable url) {
 
 /**
  * The cache serializer is a block used to convert the decoded image, the source downloaded data, to the actual data used for storing to the disk cache. If you return nil, means to generate the data from the image instance, see `SDImageCache`.
- * 解码图像
+ * 解码图像data，将源下载的data转成真正可以存在disk上的data
  * For example, if you are using WebP images and facing the slow decoding time issue when later retriving from disk cache again. You can try to encode the decoded image to JPEG/PNG format to disk cache instead of source downloaded data.
+ * 例如，如果您正在使用WebP图像，并且在稍后从磁盘缓存再次进行回放时遇到缓慢的解码时间问题。 您可以尝试将解码后的图像编码为JPEG / PNG格式，而不是源下载数据。
  * @note The `image` arg is nonnull, but when you also provide a image transformer and the image is transformed, the `data` arg may be nil, take attention to this case.
  * @note This method is called from a global queue in order to not to block the main thread.
  * @code
