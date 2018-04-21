@@ -227,6 +227,7 @@ typedef NSMutableDictionary<NSString *, id> SDCallbacksDictionary;
 }
 
 - (void)cancelInternal {
+    //一个NSOperationQueue在判断一个Operation是否执行完成的标志是Operation的- (BOOL)isFinished方法返回YES
     if (self.isFinished) return;
     [super cancel];
 
@@ -239,6 +240,7 @@ typedef NSMutableDictionary<NSString *, id> SDCallbacksDictionary;
 
         // As we cancelled the task, its callback won't be called and thus won't
         // maintain the isFinished and isExecuting flags.
+        // 取消了操作，就没有必要维护这两个标志位了
         if (self.isExecuting) self.executing = NO;
         if (!self.isFinished) self.finished = YES;
     }
@@ -415,6 +417,7 @@ didReceiveResponse:(NSURLResponse *)response
                     [self done];
                 } else {
                     // decode the image in coder queue
+                    // 在压缩队列中压缩图像
                     dispatch_async(self.coderQueue, ^{
                         UIImage *image = [[SDWebImageCodersManager sharedInstance] decodedImageWithData:imageData];
                         NSString *key = [[SDWebImageManager sharedManager] cacheKeyForURL:self.request.URL];
