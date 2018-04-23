@@ -17,6 +17,7 @@
 
 /**
  * Called when an image was prefetched.
+ * 当预抓取图片完成就调用
  *
  * @param imagePrefetcher The current image prefetcher
  * @param imageURL        The image url that was prefetched

@@ -26,7 +26,7 @@
 }
 
 #pragma mark - Decode
-- (BOOL)canDecodeFromData:(nullable NSData *)data {
+- (BOOL)canDecodeFromData:(nullable NSData *)data {//判断是否可以解码GIF
     return ([NSData sd_imageFormatForImageData:data] == SDImageFormatGIF);
 }
 
@@ -46,13 +46,13 @@
     if (!source) {
         return nil;
     }
-    size_t count = CGImageSourceGetCount(source);
+    size_t count = CGImageSourceGetCount(source);//获取原图数量
     
     UIImage *animatedImage;
     
     if (count <= 1) {
         animatedImage = [[UIImage alloc] initWithData:data];
-    } else {
+    } else {//将每一帧的数据还原成image图像
         NSMutableArray<SDWebImageFrame *> *frames = [NSMutableArray array];
         
         for (size_t i = 0; i < count; i++) {
@@ -89,7 +89,7 @@
 #endif
 }
 
-- (float)sd_frameDurationAtIndex:(NSUInteger)index source:(CGImageSourceRef)source {
+- (float)sd_frameDurationAtIndex:(NSUInteger)index source:(CGImageSourceRef)source {//获取每一帧播放的时间
     float frameDuration = 0.1f;
     CFDictionaryRef cfFrameProperties = CGImageSourceCopyPropertiesAtIndex(source, index, nil);
     if (!cfFrameProperties) {

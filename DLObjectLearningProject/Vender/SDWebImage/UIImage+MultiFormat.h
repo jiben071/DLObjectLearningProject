@@ -21,10 +21,10 @@
  * The getter of this property will get the loop count from GIF imageRep
  * The setter of this property will set the loop count from GIF imageRep
  */
-@property (nonatomic, assign) NSUInteger sd_imageLoopCount;
+@property (nonatomic, assign) NSUInteger sd_imageLoopCount;//GIF大于0  静态图为0
 
-+ (nullable UIImage *)sd_imageWithData:(nullable NSData *)data;
-- (nullable NSData *)sd_imageData;
-- (nullable NSData *)sd_imageDataAsFormat:(SDImageFormat)imageFormat;
++ (nullable UIImage *)sd_imageWithData:(nullable NSData *)data;//data——>image
+- (nullable NSData *)sd_imageData;//image——>data
+- (nullable NSData *)sd_imageDataAsFormat:(SDImageFormat)imageFormat;//转化成多种格式
 
 @end

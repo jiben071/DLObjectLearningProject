@@ -19,6 +19,7 @@
 
 /**
  *  Checks if an UIImage instance is a GIF. Will use the `images` array.
+ *  检查UIImage实例是否是一个GIF图片.
  */
 - (BOOL)isGIF;
 

@@ -242,11 +242,13 @@
 
 /**
  * Cancel the current image download
+ * 取消当前的图片下载
  */
 - (void)sd_cancelImageLoadForState:(UIControlState)state;
 
 /**
  * Cancel the current backgroundImage download
+ * 取消当前背景图片的下载
  */
 - (void)sd_cancelBackgroundImageLoadForState:(UIControlState)state;
 
