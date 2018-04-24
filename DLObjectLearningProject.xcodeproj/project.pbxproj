@@ -46,6 +46,8 @@
 		105E31BE20464F280006D3AD /* RWTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31B920464F270006D3AD /* RWTweet.m */; };
 		105E31BF20464F280006D3AD /* RWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31BA20464F270006D3AD /* RWTableViewCell.m */; };
 		105E31C020464F280006D3AD /* RWSearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 105E31BB20464F270006D3AD /* RWSearchResultsViewController.m */; };
+		105E5FC2208F108200B2696D /* 命令模式.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 105E5FC1208F108200B2696D /* 命令模式.rtf */; };
+		105E5FC4208F10BA00B2696D /* OBJECTIVE－C编程之道  IOS设计模式解析电子书+源代码.zip in Resources */ = {isa = PBXBuildFile; fileRef = 105E5FC3208F10BA00B2696D /* OBJECTIVE－C编程之道  IOS设计模式解析电子书+源代码.zip */; };
 		10634757201AC3B700C62B54 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 10634736201AC3B600C62B54 /* GCDAsyncUdpSocket.m */; };
 		10634758201AC3B700C62B54 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 10634737201AC3B600C62B54 /* GCDAsyncSocket.m */; };
 		10634759201AC3B700C62B54 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 1063473A201AC3B600C62B54 /* README.markdown */; };
@@ -323,6 +325,8 @@
 		105E31BA20464F270006D3AD /* RWTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTableViewCell.m; sourceTree = "<group>"; };
 		105E31BB20464F270006D3AD /* RWSearchResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWSearchResultsViewController.m; sourceTree = "<group>"; };
 		105E31BC20464F270006D3AD /* RWSearchFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWSearchFormViewController.h; sourceTree = "<group>"; };
+		105E5FC1208F108200B2696D /* 命令模式.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "命令模式.rtf"; sourceTree = "<group>"; };
+		105E5FC3208F10BA00B2696D /* OBJECTIVE－C编程之道  IOS设计模式解析电子书+源代码.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "OBJECTIVE－C编程之道  IOS设计模式解析电子书+源代码.zip"; sourceTree = "<group>"; };
 		10634736201AC3B600C62B54 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
 		10634737201AC3B600C62B54 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		10634738201AC3B600C62B54 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
@@ -896,6 +900,23 @@
 				105E31B920464F270006D3AD /* RWTweet.m */,
 			);
 			path = partTwo;
+			sourceTree = "<group>";
+		};
+		105E5FBF208F104800B2696D /* DesignPatterns */ = {
+			isa = PBXGroup;
+			children = (
+				105E5FC3208F10BA00B2696D /* OBJECTIVE－C编程之道  IOS设计模式解析电子书+源代码.zip */,
+				105E5FC0208F106300B2696D /* CommandPattern */,
+			);
+			path = DesignPatterns;
+			sourceTree = "<group>";
+		};
+		105E5FC0208F106300B2696D /* CommandPattern */ = {
+			isa = PBXGroup;
+			children = (
+				105E5FC1208F108200B2696D /* 命令模式.rtf */,
+			);
+			path = CommandPattern;
 			sourceTree = "<group>";
 		};
 		10634733201AC3B600C62B54 /* CocoaAsyncSocket */ = {
@@ -1714,6 +1735,7 @@
 		B6BED6891FE954670048F222 /* DLObjectLearningProject */ = {
 			isa = PBXGroup;
 			children = (
+				105E5FBF208F104800B2696D /* DesignPatterns */,
 				105CFC41206DE06E00F0AD1F /* QueueHandle */,
 				105CFC2E206B655900F0AD1F /* Category */,
 				1050A6F0205CEBBA00FCD555 /* Experience */,
@@ -1895,6 +1917,8 @@
 				10B0C7BA1FEBB33800C37675 /* LICENSE.txt in Resources */,
 				10B0C5D81FEB90D600C37675 /* spaceship.jpg in Resources */,
 				10B0C7B91FEBB33800C37675 /* README.markdown in Resources */,
+				105E5FC4208F10BA00B2696D /* OBJECTIVE－C编程之道  IOS设计模式解析电子书+源代码.zip in Resources */,
+				105E5FC2208F108200B2696D /* 命令模式.rtf in Resources */,
 				B6BED6971FE954670048F222 /* LaunchScreen.storyboard in Resources */,
 				10634759201AC3B700C62B54 /* README.markdown in Resources */,
 				1050A6EF205BB88700FCD555 /* RACTest.storyboard in Resources */,
