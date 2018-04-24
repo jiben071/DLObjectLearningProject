@@ -10,7 +10,7 @@
 
 #import "DLSubscriptionComprehandViewController.h"
 #import <ReactiveObjC/ReactiveObjC.h>
-#import <AFNetworking/AFNetworking.h>
+#import "AFNetworking.h"
 
 @interface DLSubscriptionComprehandViewController ()
 

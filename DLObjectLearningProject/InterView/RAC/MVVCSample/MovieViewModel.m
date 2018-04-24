@@ -8,7 +8,7 @@
 
 #import "MovieViewModel.h"
 
-#import <AFNetworking/AFNetworking.h>
+#import "AFNetworking.h"
 #import <Motis/Motis.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 

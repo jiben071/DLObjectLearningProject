@@ -37,7 +37,7 @@ final public class Configuration: NSObject {
     /**
         Run all examples if none match the configured filters. True by default.
     */
-    @objc public var runAllWhenEverythingFiltered = true
+    public var runAllWhenEverythingFiltered = true
 
     /**
         Registers an inclusion filter.
@@ -49,7 +49,7 @@ final public class Configuration: NSObject {
                        whether that example should be included in the examples
                        that are run.
     */
-    @objc public func include(_ filter: @escaping ExampleFilter) {
+    public func include(_ filter: @escaping ExampleFilter) {
         inclusionFilters.append(filter)
     }
 
@@ -63,7 +63,7 @@ final public class Configuration: NSObject {
                        whether that example should be excluded from the examples
                        that are run.
     */
-    @objc public func exclude(_ filter: @escaping ExampleFilter) {
+    public func exclude(_ filter: @escaping ExampleFilter) {
         exclusionFilters.append(filter)
     }
 
@@ -100,7 +100,7 @@ final public class Configuration: NSObject {
         - parameter closure: The closure to be executed before each example
                         in the test suite.
     */
-    @objc public func beforeEach(_ closure: @escaping BeforeExampleClosure) {
+    public func beforeEach(_ closure: @escaping BeforeExampleClosure) {
         exampleHooks.appendBefore(closure)
     }
 
@@ -137,7 +137,7 @@ final public class Configuration: NSObject {
         - parameter closure: The closure to be executed before each example
                         in the test suite.
     */
-    @objc public func afterEach(_ closure: @escaping AfterExampleClosure) {
+    public func afterEach(_ closure: @escaping AfterExampleClosure) {
         exampleHooks.appendAfter(closure)
     }
 
@@ -146,7 +146,7 @@ final public class Configuration: NSObject {
         the given closure prior to any and all examples that are run.
         The two methods are functionally equivalent.
     */
-    @objc public func beforeSuite(_ closure: @escaping BeforeSuiteClosure) {
+    public func beforeSuite(_ closure: @escaping BeforeSuiteClosure) {
         suiteHooks.appendBefore(closure)
     }
 
@@ -155,7 +155,7 @@ final public class Configuration: NSObject {
         the given closure after all examples have been run.
         The two methods are functionally equivalent.
     */
-    @objc public func afterSuite(_ closure: @escaping AfterSuiteClosure) {
+    public func afterSuite(_ closure: @escaping AfterSuiteClosure) {
         suiteHooks.appendAfter(closure)
     }
 }

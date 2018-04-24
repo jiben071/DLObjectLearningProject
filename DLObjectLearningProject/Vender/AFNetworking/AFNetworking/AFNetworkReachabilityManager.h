@@ -25,16 +25,17 @@
 #import <SystemConfiguration/SystemConfiguration.h>
 
 typedef NS_ENUM(NSInteger, AFNetworkReachabilityStatus) {
-    AFNetworkReachabilityStatusUnknown          = -1,
-    AFNetworkReachabilityStatusNotReachable     = 0,
-    AFNetworkReachabilityStatusReachableViaWWAN = 1,
-    AFNetworkReachabilityStatusReachableViaWiFi = 2,
+    AFNetworkReachabilityStatusUnknown          = -1,//未知状态
+    AFNetworkReachabilityStatusNotReachable     = 0,//可连接
+    AFNetworkReachabilityStatusReachableViaWWAN = 1,//连接手机网络
+    AFNetworkReachabilityStatusReachableViaWiFi = 2,//连接wifi
 };
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
  `AFNetworkReachabilityManager` monitors the reachability of domains, and addresses for both WWAN and WiFi network interfaces.
+ AFNetworkReachabilityManager监控域名、网址、WiFi端口是否可用
 
  Reachability can be used to determine background information about why a network operation failed, or to trigger a network operation retrying when a connection is established. It should not be used to prevent a user from initiating a network request, as it's possible that an initial request may be required to establish reachability.
 
@@ -42,25 +43,31 @@ NS_ASSUME_NONNULL_BEGIN
 
  @warning Instances of `AFNetworkReachabilityManager` must be started with `-startMonitoring` before reachability status can be determined.
  */
+//https://www.jianshu.com/p/5cc481877849 AFNetworking源码学习（一）- AFNetworkReachabilityManager
+//AFNetworkReachabilityManager是监控网络环境变化的类
 @interface AFNetworkReachabilityManager : NSObject
 
 /**
  The current network reachability status.
+ 当前网络连接状态
  */
 @property (readonly, nonatomic, assign) AFNetworkReachabilityStatus networkReachabilityStatus;
 
 /**
  Whether or not the network is currently reachable.
+ 判断当前网络是否可用
  */
 @property (readonly, nonatomic, assign, getter = isReachable) BOOL reachable;
 
 /**
  Whether or not the network is currently reachable via WWAN.
+ 判断当前手机网络是否可用
  */
 @property (readonly, nonatomic, assign, getter = isReachableViaWWAN) BOOL reachableViaWWAN;
 
 /**
  Whether or not the network is currently reachable via WiFi.
+ 判断该当前wifi是否可用
  */
 @property (readonly, nonatomic, assign, getter = isReachableViaWiFi) BOOL reachableViaWiFi;
 
@@ -75,6 +82,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  Creates and returns a network reachability manager with the default socket address.
+ 使用默认socket地址创建管理器
  
  @return An initialized network reachability manager, actively monitoring the default socket address.
  */
@@ -82,6 +90,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  Creates and returns a network reachability manager for the specified domain.
+ 指定domain
 
  @param domain The domain used to evaluate network reachability.
 
@@ -91,6 +100,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  Creates and returns a network reachability manager for the socket address.
+ 指定socket地址创建管理器
 
  @param address The socket address (`sockaddr_in6`) used to evaluate network reachability.
 
@@ -120,11 +130,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  Starts monitoring for changes in network reachability status.
+ 开始监听
  */
 - (void)startMonitoring;
 
 /**
  Stops monitoring for changes in network reachability status.
+ 停止监听
  */
 - (void)stopMonitoring;
 
@@ -134,6 +146,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  Returns a localized string representation of the current network reachability status.
+ 获取本地化网络状态描述
  */
 - (NSString *)localizedNetworkReachabilityStatusString;
 
@@ -143,6 +156,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  Sets a callback to be executed when the network availability of the `baseURL` host changes.
+ 使用回调监听网络状态变化
 
  @param block A block object to be executed when the network availability of the `baseURL` host changes.. This block has no return value and takes a single argument which represents the various reachability states from the device to the `baseURL`.
  */

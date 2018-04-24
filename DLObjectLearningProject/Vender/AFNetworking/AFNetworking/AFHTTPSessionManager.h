@@ -35,6 +35,7 @@
 
 /**
  `AFHTTPSessionManager` is a subclass of `AFURLSessionManager` with convenience methods for making HTTP requests. When a `baseURL` is provided, requests made with the `GET` / `POST` / et al. convenience methods can be made with relative paths.
+ HTTP请求的便捷方法
 
  ## Subclassing Notes
 
@@ -56,7 +57,7 @@
 
  For HTTP convenience methods, the request serializer constructs URLs from the path relative to the `-baseURL`, using `NSURL +URLWithString:relativeToURL:`, when provided. If `baseURL` is `nil`, `path` needs to resolve to a valid `NSURL` object using `NSURL +URLWithString:`.
 
- Below are a few examples of how `baseURL` and relative paths interact:
+ Below are a few examples of how `baseURL` and relative paths interact:(如何构造baseUrl)
 
     NSURL *baseURL = [NSURL URLWithString:@"http://example.com/v1/"];
     [NSURL URLWithString:@"foo" relativeToURL:baseURL];                  // http://example.com/v1/foo
@@ -66,13 +67,17 @@
     [NSURL URLWithString:@"/foo/" relativeToURL:baseURL];                // http://example.com/foo/
     [NSURL URLWithString:@"http://example2.com/" relativeToURL:baseURL]; // http://example2.com/
 
- Also important to note is that a trailing slash will be added to any `baseURL` without one. This would otherwise cause unexpected behavior when constructing URLs using paths without a leading slash.
+ Also important to note is that a trailing slash will be added to any `baseURL` without one. This would otherwise cause unexpected behavior when constructing URLs using paths without a leading slash.斜杠
 
  @warning Managers for background sessions must be owned for the duration of their use. This can be accomplished by creating an application-wide or shared singleton instance.
  */
 
 NS_ASSUME_NONNULL_BEGIN
 
+/*
+ NSSecureCoding 推测应该是存储时对数据加盐后进行md5，并保存为校验数据，读取时再比对以防篡改。
+ HTTP请求的便捷方法
+ */
 @interface AFHTTPSessionManager : AFURLSessionManager <NSSecureCoding, NSCopying>
 
 /**
@@ -100,6 +105,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  The security policy used by created session to evaluate server trust for secure connections. `AFURLSessionManager` uses the `defaultPolicy` unless otherwise specified. A security policy configured with `AFSSLPinningModePublicKey` or `AFSSLPinningModeCertificate` can only be applied on a session manager initialized with a secure base URL (i.e. https). Applying a security policy with pinning enabled on an insecure session manager throws an `Invalid Security Policy` exception.
+ 在不安全的会话管理器上启用启用锁定的安全策略会引发“无效的安全策略”异常。
  */
 @property (nonatomic, strong) AFSecurityPolicy *securityPolicy;
 

@@ -10,7 +10,7 @@
 #import "NSError+additionInfoCategory.h"
 #import <objc/runtime.h>
 #import <objc/message.h>
-#import <AFNetworking/AFNetworking.h>
+#import "AFNetworking.h"
 
 @implementation AMAFNetworkingSwizzleHandle
 + (void)load{

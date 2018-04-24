@@ -48,6 +48,8 @@ NSString * AFPercentEscapedStringFromString(NSString *string) {
     static NSString * const kAFCharactersGeneralDelimitersToEncode = @":#[]@"; // does not include "?" or "/" due to RFC 3986 - Section 3.4
     static NSString * const kAFCharactersSubDelimitersToEncode = @"!$&'()*+,;=";
 
+    //'?'和'/'在query查询允许不被转义，因此!$&'()*+,;=和:#[]@都要被转义，也就是在URLQueryAllowedCharacterSet中删除掉这些字符
+    //1. 字符串需要经过过滤 ，过滤法则通过 NSMutableCharacterSet 实现。添加规则后，只对规则内的因子进行编码。
     NSMutableCharacterSet * allowedCharacterSet = [[NSCharacterSet URLQueryAllowedCharacterSet] mutableCopy];
     [allowedCharacterSet removeCharactersInString:[kAFCharactersGeneralDelimitersToEncode stringByAppendingString:kAFCharactersSubDelimitersToEncode]];
 
@@ -59,6 +61,7 @@ NSString * AFPercentEscapedStringFromString(NSString *string) {
     NSUInteger index = 0;
     NSMutableString *escaped = @"".mutableCopy;
 
+    //2. 为了处理类似emoji这样的字符串，rangeOfComposedCharacterSequencesForRange 使用了while循环来处理，也就是把字符串按照batchSize分割处理完再拼回。
     while (index < string.length) {
         NSUInteger length = MIN(string.length - index, batchSize);
         NSRange range = NSMakeRange(index, length);
@@ -112,10 +115,11 @@ NSString * AFPercentEscapedStringFromString(NSString *string) {
 @end
 
 #pragma mark -
-
+//对函数的声明，作用于下边函数的调用顺序
 FOUNDATION_EXPORT NSArray * AFQueryStringPairsFromDictionary(NSDictionary *dictionary);
 FOUNDATION_EXPORT NSArray * AFQueryStringPairsFromKeyAndValue(NSString *key, id value);
 
+//根据参数字典得到字符串，用于拼接到url后边
 NSString * AFQueryStringFromParameters(NSDictionary *parameters) {
     NSMutableArray *mutablePairs = [NSMutableArray array];
     for (AFQueryStringPair *pair in AFQueryStringPairsFromDictionary(parameters)) {
@@ -129,9 +133,11 @@ NSArray * AFQueryStringPairsFromDictionary(NSDictionary *dictionary) {
     return AFQueryStringPairsFromKeyAndValue(nil, dictionary);
 }
 
+//把key value数据转换成数组
 NSArray * AFQueryStringPairsFromKeyAndValue(NSString *key, id value) {
     NSMutableArray *mutableQueryStringComponents = [NSMutableArray array];
 
+    //排序：升序
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"description" ascending:YES selector:@selector(compare:)];
 
     if ([value isKindOfClass:[NSDictionary class]]) {
@@ -623,29 +629,31 @@ NSUInteger const kAFUploadStream3GSuggestedPacketSize = 1024 * 16;
 NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
 
 @interface AFHTTPBodyPart : NSObject
-@property (nonatomic, assign) NSStringEncoding stringEncoding;
-@property (nonatomic, strong) NSDictionary *headers;
-@property (nonatomic, copy) NSString *boundary;
-@property (nonatomic, strong) id body;
-@property (nonatomic, assign) unsigned long long bodyContentLength;
-@property (nonatomic, strong) NSInputStream *inputStream;
+@property (nonatomic, assign) NSStringEncoding stringEncoding;//编码方式
+@property (nonatomic, strong) NSDictionary *headers;//头
+@property (nonatomic, copy) NSString *boundary;//边界
+@property (nonatomic, strong) id body;//主体内容
+@property (nonatomic, assign) unsigned long long bodyContentLength;//主题大小
+@property (nonatomic, strong) NSInputStream *inputStream;//流
 
-@property (nonatomic, assign) BOOL hasInitialBoundary;
-@property (nonatomic, assign) BOOL hasFinalBoundary;
+@property (nonatomic, assign) BOOL hasInitialBoundary;//是否有初始边界
+@property (nonatomic, assign) BOOL hasFinalBoundary;//是否有结束边界
 
-@property (readonly, nonatomic, assign, getter = hasBytesAvailable) BOOL bytesAvailable;
-@property (readonly, nonatomic, assign) unsigned long long contentLength;
+@property (readonly, nonatomic, assign, getter = hasBytesAvailable) BOOL bytesAvailable;//body是否有可用字节，也就是说是不是nil
+@property (readonly, nonatomic, assign) unsigned long long contentLength;//长度
 
+//读取数据
 - (NSInteger)read:(uint8_t *)buffer
         maxLength:(NSUInteger)length;
 @end
 
+//其实AFHTTPBodyPart就像是一个个具体的数据一样，而AFMultipartBodyStream更像是一个管道，和body相连，数据从body沿着管道流入request中去。
 @interface AFMultipartBodyStream : NSInputStream <NSStreamDelegate>
-@property (nonatomic, assign) NSUInteger numberOfBytesInPacket;
-@property (nonatomic, assign) NSTimeInterval delay;
-@property (nonatomic, strong) NSInputStream *inputStream;
-@property (readonly, nonatomic, assign) unsigned long long contentLength;
-@property (readonly, nonatomic, assign, getter = isEmpty) BOOL empty;
+@property (nonatomic, assign) NSUInteger numberOfBytesInPacket;//读取的包的大小
+@property (nonatomic, assign) NSTimeInterval delay;//延时
+@property (nonatomic, strong) NSInputStream *inputStream;//输入流
+@property (readonly, nonatomic, assign) unsigned long long contentLength;//内容大小
+@property (readonly, nonatomic, assign, getter = isEmpty) BOOL empty;//是否为空
 
 - (instancetype)initWithStringEncoding:(NSStringEncoding)encoding;
 - (void)setInitialAndFinalBoundaries;
@@ -883,10 +891,12 @@ NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
     }
 }
 
+//拼接body对象到数组中
 - (void)appendHTTPBodyPart:(AFHTTPBodyPart *)bodyPart {
     [self.HTTPBodyParts addObject:bodyPart];
 }
 
+//是否为空
 - (BOOL)isEmpty {
     return [self.HTTPBodyParts count] == 0;
 }
@@ -902,13 +912,18 @@ NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
 
     NSInteger totalNumberOfBytesRead = 0;
 
+    //遍历读取数据
     while ((NSUInteger)totalNumberOfBytesRead < MIN(length, self.numberOfBytesInPacket)) {
+        //如果当前读取的body不存在或者body没有可读字节
         if (!self.currentHTTPBodyPart || ![self.currentHTTPBodyPart hasBytesAvailable]) {
+            //把下一个body赋值给当前的body，如果下一个为nil就退出循环
             if (!(self.currentHTTPBodyPart = [self.HTTPBodyPartEnumerator nextObject])) {
                 break;
             }
-        } else {
+        } else {//当前body存在
+            //剩余可读文件的大小
             NSUInteger maxLength = MIN(length, self.numberOfBytesInPacket) - (NSUInteger)totalNumberOfBytesRead;
+            //把当前的body的数据读入到buffer中
             NSInteger numberOfBytesRead = [self.currentHTTPBodyPart read:&buffer[totalNumberOfBytesRead] maxLength:maxLength];
             if (numberOfBytesRead == -1) {
                 self.streamError = self.currentHTTPBodyPart.inputStream.streamError;
@@ -1022,15 +1037,15 @@ typedef enum {
 } AFHTTPBodyPartReadPhase;
 
 @interface AFHTTPBodyPart () <NSCopying> {
-    AFHTTPBodyPartReadPhase _phase;
-    NSInputStream *_inputStream;
-    unsigned long long _phaseReadOffset;
+    AFHTTPBodyPartReadPhase _phase;//使用枚举包装body4大组成部分
+    NSInputStream *_inputStream;//输入流
+    unsigned long long _phaseReadOffset;//每个组成部分的位置
 }
 
-- (BOOL)transitionToNextPhase;
+- (BOOL)transitionToNextPhase;//转移到下一个阶段
 - (NSInteger)readData:(NSData *)data
            intoBuffer:(uint8_t *)buffer
-            maxLength:(NSUInteger)length;
+            maxLength:(NSUInteger)length;//读取数据
 @end
 
 @implementation AFHTTPBodyPart
@@ -1053,6 +1068,7 @@ typedef enum {
     }
 }
 
+//body可能有好几种类型，根据不同的类型返回不同方法创建的NS
 - (NSInputStream *)inputStream {
     if (!_inputStream) {
         if ([self.body isKindOfClass:[NSData class]]) {
@@ -1069,6 +1085,7 @@ typedef enum {
     return _inputStream;
 }
 
+//根据headers字典来拼接body头
 - (NSString *)stringForHeaders {
     NSMutableString *headerString = [NSMutableString string];
     for (NSString *field in [self.headers allKeys]) {
@@ -1082,20 +1099,25 @@ typedef enum {
 - (unsigned long long)contentLength {
     unsigned long long length = 0;
 
+    //初始边界
     NSData *encapsulationBoundaryData = [([self hasInitialBoundary] ? AFMultipartFormInitialBoundary(self.boundary) : AFMultipartFormEncapsulationBoundary(self.boundary)) dataUsingEncoding:self.stringEncoding];
     length += [encapsulationBoundaryData length];
 
+    //头
     NSData *headersData = [[self stringForHeaders] dataUsingEncoding:self.stringEncoding];
     length += [headersData length];
 
+    //主体
     length += _bodyContentLength;
 
+    //结束边界
     NSData *closingBoundaryData = ([self hasFinalBoundary] ? [AFMultipartFormFinalBoundary(self.boundary) dataUsingEncoding:self.stringEncoding] : [NSData data]);
     length += [closingBoundaryData length];
 
     return length;
 }
 
+//判断是否还有数据可读
 - (BOOL)hasBytesAvailable {
     // Allows `read:maxLength:` to be called again if `AFMultipartFormFinalBoundary` doesn't fit into the available buffer
     if (_phase == AFFinalBoundaryPhase) {
@@ -1117,6 +1139,8 @@ typedef enum {
     }
 }
 
+//对于NSInputStream的使用来说，我们要手动实现方法
+//当我们使用open打开流的时候，就会调用这个方法，我们需要在这个方法中处理我们的逻辑。
 - (NSInteger)read:(uint8_t *)buffer
         maxLength:(NSUInteger)length
 {
@@ -1155,6 +1179,7 @@ typedef enum {
     return totalNumberOfBytesRead;
 }
 
+//把body数据写入到buffer中
 - (NSInteger)readData:(NSData *)data
            intoBuffer:(uint8_t *)buffer
             maxLength:(NSUInteger)length
@@ -1172,7 +1197,7 @@ typedef enum {
 }
 
 - (BOOL)transitionToNextPhase {
-    if (![[NSThread currentThread] isMainThread]) {
+    if (![[NSThread currentThread] isMainThread]) {//保证置于主线程
         dispatch_sync(dispatch_get_main_queue(), ^{
             [self transitionToNextPhase];
         });
@@ -1183,12 +1208,12 @@ typedef enum {
         case AFEncapsulationBoundaryPhase:
             _phase = AFHeaderPhase;
             break;
-        case AFHeaderPhase:
+        case AFHeaderPhase://打开流，准备接受数据
             [self.inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
             [self.inputStream open];
             _phase = AFBodyPhase;
             break;
-        case AFBodyPhase:
+        case AFBodyPhase://关闭流
             [self.inputStream close];
             _phase = AFFinalBoundaryPhase;
             break;
@@ -1197,6 +1222,7 @@ typedef enum {
             _phase = AFEncapsulationBoundaryPhase;
             break;
     }
+    //重置offset
     _phaseReadOffset = 0;
 
     return YES;

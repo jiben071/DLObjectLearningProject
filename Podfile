@@ -8,7 +8,7 @@ target 'DLObjectLearningProject' do
   # Pods for DLObjectLearningProject
   pod 'ReactiveObjC'
   pod 'LinqToObjectiveC'
-  pod 'AFNetworking'
+#  pod 'AFNetworking'
   pod 'Motis'  #json转模型
   pod 'BlocksKit'  #UIKit的代理转为Block使用
   pod 'Masonry'

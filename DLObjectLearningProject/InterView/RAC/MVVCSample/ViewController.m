@@ -18,7 +18,7 @@
 #import <BlocksKit/BlocksKit.h>
 #import <BlocksKit/A2DynamicDelegate.h>
 #import <Motis/Motis.h>
-#import <AFNetworking/AFNetworking.h>
+#import "AFNetworking.h"
 
 @interface ViewController ()
 //viewModel

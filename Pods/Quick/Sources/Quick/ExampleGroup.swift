@@ -6,7 +6,7 @@ import Foundation
     setup and teardown code.
 */
 final public class ExampleGroup: NSObject {
-    @objc weak internal var parent: ExampleGroup?
+    weak internal var parent: ExampleGroup?
     internal let hooks = ExampleHooks()
 
     internal var phase: HooksPhase = .nothingExecuted
@@ -17,7 +17,7 @@ final public class ExampleGroup: NSObject {
     private var childGroups = [ExampleGroup]()
     private var childExamples = [Example]()
 
-    @objc internal init(description: String, flags: FilterFlags, isInternalRootExampleGroup: Bool = false) {
+    internal init(description: String, flags: FilterFlags, isInternalRootExampleGroup: Bool = false) {
         self.internalDescription = description
         self.flags = flags
         self.isInternalRootExampleGroup = isInternalRootExampleGroup
@@ -31,11 +31,11 @@ final public class ExampleGroup: NSObject {
         Returns a list of examples that belong to this example group,
         or to any of its descendant example groups.
     */
-    @objc public var examples: [Example] {
+    public var examples: [Example] {
         return childExamples + childGroups.flatMap { $0.examples }
     }
 
-    @objc internal var name: String? {
+    internal var name: String? {
         guard let parent = parent else {
             return isInternalRootExampleGroup ? nil : description
         }
@@ -44,7 +44,7 @@ final public class ExampleGroup: NSObject {
         return "\(name), \(description)"
     }
 
-    @objc internal var filterFlags: FilterFlags {
+    internal var filterFlags: FilterFlags {
         var aggregateFlags = flags
         walkUp { group in
             for (key, value) in group.flags {
@@ -70,7 +70,7 @@ final public class ExampleGroup: NSObject {
         return closures
     }
 
-    @objc internal func walkDownExamples(_ callback: (_ example: Example) -> Void) {
+    internal func walkDownExamples(_ callback: (_ example: Example) -> Void) {
         for example in childExamples {
             callback(example)
         }
@@ -79,12 +79,12 @@ final public class ExampleGroup: NSObject {
         }
     }
 
-    @objc internal func appendExampleGroup(_ group: ExampleGroup) {
+    internal func appendExampleGroup(_ group: ExampleGroup) {
         group.parent = self
         childGroups.append(group)
     }
 
-    @objc internal func appendExample(_ example: Example) {
+    internal func appendExample(_ example: Example) {
         example.group = self
         childExamples.append(example)
     }

@@ -72,6 +72,7 @@ static AFNetworkReachabilityStatus AFNetworkReachabilityStatusForFlags(SCNetwork
 
 /**
  * Queue a status change notification for the main thread.
+ * 在主线程抛送通知
  *
  * This is done to ensure that the notifications are received in the same order
  * as they are sent. If notifications are sent directly, it is possible that
@@ -96,6 +97,8 @@ static void AFNetworkReachabilityCallback(SCNetworkReachabilityRef __unused targ
 
 
 static const void * AFNetworkReachabilityRetainCallback(const void *info) {
+    //当block捕获到一个外部非对象类型的变量时，一开始是创建在栈内存上的，因为栈内存是会被系统回收重复使用的，所以如果我们想一直使用这个block的话就需要调用Block_copy()函数，类似于Objective-C中对block发送一条copy消息，因为block可以被看成是一个OC对象，发送copy消息也会去调用Block_copy()函数。
+    //https://www.jianshu.com/p/ccc256f369c8
     return Block_copy(info);
 }
 
@@ -134,6 +137,8 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
 }
 
 + (instancetype)managerForAddress:(const void *)address {
+    //https://juejin.im/post/5a712812f265da3e2e62cc06
+    //SCNetworkReachabilityRef接口可以确定当前主机的网络状态以及目标主机的可达性, 可达性是指data packet(数据包)可以从当前主机发送出去, 而不是目标主机可以接收到data packet(数据包).
     SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, (const struct sockaddr *)address);
     AFNetworkReachabilityManager *manager = [[self alloc] initWithReachability:reachability];
 
@@ -163,7 +168,7 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
     if (!self) {
         return nil;
     }
-
+    //时候你可能需要用到一些Core Foundation对象（比如CFArrayRef或者CFMutableDictionaryRef），对于这些对象，编译器是不会自动管理它们的生命周期的，你需要使用CFRetain或CFRelease之类的方法来管理它们的持有情况（ ownership）。
     _networkReachability = CFRetain(reachability);
     self.networkReachabilityStatus = AFNetworkReachabilityStatusUnknown;
 
@@ -221,6 +226,7 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
     SCNetworkReachabilitySetCallback(self.networkReachability, AFNetworkReachabilityCallback, &context);
     SCNetworkReachabilityScheduleWithRunLoop(self.networkReachability, CFRunLoopGetMain(), kCFRunLoopCommonModes);
 
+    //在一个runloop里面监控
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),^{
         SCNetworkReachabilityFlags flags;
         if (SCNetworkReachabilityGetFlags(self.networkReachability, &flags)) {
@@ -234,6 +240,7 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
         return;
     }
 
+    //退出runloop
     SCNetworkReachabilityUnscheduleFromRunLoop(self.networkReachability, CFRunLoopGetMain(), kCFRunLoopCommonModes);
 }
 

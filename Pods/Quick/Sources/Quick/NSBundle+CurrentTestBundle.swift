@@ -7,7 +7,7 @@ extension Bundle {
     /**
      Locates the first bundle with a '.xctest' file extension.
      */
-    @objc internal static var currentTestBundle: Bundle? {
+    internal static var currentTestBundle: Bundle? {
         return allBundles.first { $0.bundlePath.hasSuffix(".xctest") }
     }
 
@@ -16,7 +16,7 @@ extension Bundle {
      Uses the bundle filename and transform it to match Xcode's transformation.
      Module name has to be a valid "C99 extended identifier".
      */
-    @objc internal var moduleName: String {
+    internal var moduleName: String {
         let fileName = bundleURL.fileName as NSString
         return fileName.c99ExtendedIdentifier
     }

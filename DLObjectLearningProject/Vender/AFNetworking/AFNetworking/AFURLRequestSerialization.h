@@ -43,6 +43,10 @@ NS_ASSUME_NONNULL_BEGIN
  @param string The string to be percent-escaped.
  
  @return The percent-escaped string.
+ 根据RFC 3986的规定：URL百分比编码的保留字段分为：
+ 1.   ':'  '#'  '['  ']'  '@'  '?'  '/'
+ 2.   '!'  '$'  '&'  '''  '('  ')'  '*'  '+'  ','  ';' '='
+ 在对查询字段百分比编码时，'?'和'/'可以不用编码，其他的都要进行编码。
  */
 FOUNDATION_EXPORT NSString * AFPercentEscapedStringFromString(NSString *string);
 
@@ -53,6 +57,7 @@ FOUNDATION_EXPORT NSString * AFPercentEscapedStringFromString(NSString *string);
 
  @return A url encoded query string
  */
+//该方法最终把类型为NSDictionary的参数处理为字符串类型。
 FOUNDATION_EXPORT NSString * AFQueryStringFromParameters(NSDictionary *parameters);
 
 /**
