@@ -16,7 +16,7 @@
 @interface MASConstraintMaker () <MASConstraintDelegate>
 
 @property (nonatomic, weak) MAS_VIEW *view;
-@property (nonatomic, strong) NSMutableArray *constraints;
+@property (nonatomic, strong) NSMutableArray *constraints;//记录了该工厂创建的所有MASConstraint对象。
 
 @end
 
@@ -32,33 +32,47 @@
     return self;
 }
 
+//负责调用MASConstraint对象的install方法来将相应的约束安装到想要的视图上
+//在MASConstraintMake类中的install方法就是遍历工厂对象所创建所有约束对象并调用每个约束对象的install方法来进行约束的安装。
+//往View上Install约束
 - (NSArray *)install {
-    if (self.removeExisting) {//如果需要移除约束
+    //如果是mas_remakeConstraint，要先将该视图上的约束先uninstall
+    if (self.removeExisting) {//移除当前视图上的所有约束
+        //获取当前视图上添加的所有约束，(NSArray<MSConstraint>)
         NSArray *installedConstraints = [MASViewConstraint installedConstraintsForView:self.view];
+        //移除所有约束
         for (MASConstraint *constraint in installedConstraints) {
-            [constraint uninstall];//删除约束
+            [constraint uninstall];
         }
     }
+    //添加约束
     NSArray *constraints = self.constraints.copy;
     for (MASConstraint *constraint in constraints) {
-        constraint.updateExisting = self.updateExisting;
-        [constraint install];//更新约束
+        constraint.updateExisting = self.updateExisting;//updateExisting默认是NO
+        [constraint install];//更新原有约束
     }
     [self.constraints removeAllObjects];
     return constraints;
 }
 
 #pragma mark - MASConstraintDelegate
-
+//替换约束
 - (void)constraint:(MASConstraint *)constraint shouldBeReplacedWithConstraint:(MASConstraint *)replacementConstraint {
     NSUInteger index = [self.constraints indexOfObject:constraint];
     NSAssert(index != NSNotFound, @"Could not find constraint %@", constraint);
     [self.constraints replaceObjectAtIndex:index withObject:replacementConstraint];
 }
 
+//添加约束的工厂方法
+//根据提供的参数创建MSAViewConstraint对象，如果该函数的第一个参数不为空的话就会将新创建的MSAViewConstraint对象与参数进行合并组合成MASCompositeConstraint类（MASCompositeConstraint本质上是MSAViewConstraint对象的数组）的对象。
 - (MASConstraint *)constraint:(MASConstraint *)constraint addConstraintWithLayoutAttribute:(NSLayoutAttribute)layoutAttribute {
+    //创建viewAttribute
     MASViewAttribute *viewAttribute = [[MASViewAttribute alloc] initWithView:self.view layoutAttribute:layoutAttribute];
+    
+    //根据viewAttribute创建ViewConstraint
     MASViewConstraint *newConstraint = [[MASViewConstraint alloc] initWithFirstViewAttribute:viewAttribute];
+    
+    //constraint不为nil时，就和newConstraint合并组合成MASCompositeConstraint
     if ([constraint isKindOfClass:MASViewConstraint.class]) {
         //replace with composite constraint
         NSArray *children = @[constraint, newConstraint];
@@ -68,8 +82,8 @@
         return compositeConstraint;
     }
     if (!constraint) {
-        newConstraint.delegate = self;
-        [self.constraints addObject:newConstraint];
+        newConstraint.delegate = self;//这句话是非常重要的，由于为MASConstraint对象设置了代理，所以才支持链式调用（例如：maker.top.left.right.equalTo(@10)）。
+        [self.constraints addObject:newConstraint];//添加进数组
     }
     return newConstraint;
 }
@@ -78,10 +92,8 @@
     __unused MASAttribute anyAttribute = (MASAttributeLeft | MASAttributeRight | MASAttributeTop | MASAttributeBottom | MASAttributeLeading
                                           | MASAttributeTrailing | MASAttributeWidth | MASAttributeHeight | MASAttributeCenterX
                                           | MASAttributeCenterY | MASAttributeBaseline
-#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
                                           | MASAttributeFirstBaseline | MASAttributeLastBaseline
-#endif
-#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000)
+#if TARGET_OS_IPHONE || TARGET_OS_TV
                                           | MASAttributeLeftMargin | MASAttributeRightMargin | MASAttributeTopMargin | MASAttributeBottomMargin
                                           | MASAttributeLeadingMargin | MASAttributeTrailingMargin | MASAttributeCenterXWithinMargins
                                           | MASAttributeCenterYWithinMargins
@@ -103,15 +115,10 @@
     if (attrs & MASAttributeCenterX) [attributes addObject:self.view.mas_centerX];
     if (attrs & MASAttributeCenterY) [attributes addObject:self.view.mas_centerY];
     if (attrs & MASAttributeBaseline) [attributes addObject:self.view.mas_baseline];
-    
-#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
-    
     if (attrs & MASAttributeFirstBaseline) [attributes addObject:self.view.mas_firstBaseline];
     if (attrs & MASAttributeLastBaseline) [attributes addObject:self.view.mas_lastBaseline];
     
-#endif
-    
-#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000)
+#if TARGET_OS_IPHONE || TARGET_OS_TV
     
     if (attrs & MASAttributeLeftMargin) [attributes addObject:self.view.mas_leftMargin];
     if (attrs & MASAttributeRightMargin) [attributes addObject:self.view.mas_rightMargin];
@@ -192,8 +199,6 @@
     };
 }
 
-#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
-
 - (MASConstraint *)firstBaseline {
     return [self addConstraintWithLayoutAttribute:NSLayoutAttributeFirstBaseline];
 }
@@ -202,10 +207,7 @@
     return [self addConstraintWithLayoutAttribute:NSLayoutAttributeLastBaseline];
 }
 
-#endif
-
-
-#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000)
+#if TARGET_OS_IPHONE || TARGET_OS_TV
 
 - (MASConstraint *)leftMargin {
     return [self addConstraintWithLayoutAttribute:NSLayoutAttributeLeftMargin];

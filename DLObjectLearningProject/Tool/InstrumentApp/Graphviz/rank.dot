@@ -1,0 +1,5 @@
+digraph rank{
+a -> b -> c -> d [label = "rank增加"];
+b -> {e f} [label = "rank增加"];
+f -> a [label = "不影响rank"];
+}

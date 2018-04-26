@@ -1,0 +1,116 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf400
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset134 PingFangSC-Regular;\f2\fmodern\fcharset0 Courier-Bold;
+\f3\fmodern\fcharset0 Courier;\f4\froman\fcharset0 TimesNewRomanPSMT;\f5\fnil\fcharset134 STSongti-SC-Regular;
+}
+{\colortbl;\red255\green255\blue255;\red42\green42\blue42;\red62\green62\blue62;\red255\green255\blue255;
+\red213\green213\blue213;}
+{\*\expandedcolortbl;;\cssrgb\c21961\c21961\c21961;\cssrgb\c30980\c30980\c30980;\cssrgb\c100000\c100000\c100000;
+\cssrgb\c86667\c86667\c86667;}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs36 \cf0 https://hustlijian.github.io/tutorial/2015/05/29/graphviz-learn.html\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs46 \cf2 \expnd0\expndtw0\kerning0
+1. 
+\f1 \'b1\'e0\'d0\'b4\'d2\'d4
+\f2 dot
+\f1 \'ce\'aa\'ba\'f3\'d7\'ba\'b5\'c4\'d4\'b4\'b4\'fa\'c2\'eb\'ce\'c4\'bc\'fe\'a3\'ac\'c8\'e7\'a3\'ba
+\f0 \
+
+\b0\fs40 // hello.dot \
+digraph \{\
+
+\f3 	hello -> world;\
+\}\
+\
+
+\f0\b\fs46 2. 
+\f1 \'ca\'b9\'d3\'c3
+\f2 dot
+\f1 \'c3\'fc\'c1\'ee\'b1\'e0\'d2\'eb\'a3\'ac\'c8\'e7
+\f0 \
+
+\b0\fs40 dot hello.dot -T png -o hello.png\
+\
+
+\f1 \'cd\'ea\'d5\'fb\'b5\'c4\'c3\'fc\'c1\'ee\'ce\'aa
+\f0 :\
+
+\f1 \'a3\'bc
+\f0 cmd
+\f1 \'a3\'be
+\f0  
+\f1 \'a3\'bc
+\f0 inputfile
+\f1 \'a3\'be
+\f0  -T 
+\f1 \'a3\'bc
+\f0 format
+\f1 \'a3\'be
+\f0  -o 
+\f1 \'a3\'bc
+\f0 outputfile
+\f1 \'a3\'be\
+\
+https://blog.csdn.net/xiajian2010/article/details/23748557\
+\
+\pard\pardeftab720\qj\partightenfactor0
+
+\fs36 \cf3 \cb4 \'ce\'aa\'c1\'cb\'bc\'f5\'c9\'d9\'b4\'f2\'d7\'d6\'b5\'c4\'b4\'ce\'ca\'fd\'a3\'ac\'b1\'e0\'d0\'b4\'bc\'f2\'b5\'a5\'b5\'c4
+\f4 shell
+\f5 \'bd\'c5\'b1\'be
+\f4 dot.sh
+\f5 \'a3\'ac\'c6\'e4\'d6\'d0\'c9\'e6\'bc\'b0\'bb\'f1\'c8\'a1\'ce\'c4\'bc\'fe\'c3\'fb\'ba\'cd\'c0\'a9\'d5\'b9\'a3\'ac\'b4\'d3\'cd\'f8\'c9\'cf\'cb\'d1\'b5\'c4\'a3\'ac\'b9\'a4\'d7\'f7\'b5\'c4\'ba\'dc\'ba\'c3\'a3\'ac\'b5\'ab\'b2\'bb\'cc\'ab\'c7\'e5\'b3\'fe\'ca\'b5\'cf\'d6\'d4\'ad\'c0\'ed\'a3\'ba
+\f1\fs32 \cb1 \
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \tamarb480 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clcbpat4 \clwWidth15580\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf5 \clbrdrr\brdrs\brdrw20\brdrcf5 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\fs36 \cf3 \cb4 #!/bin/sh
+\fs28 \cb1 \
+
+\fs36 \cb4 #\uc0\u160 dot.sh
+\fs28 \cb1 \
+
+\fs36 \cb4 file=$1
+\fs28 \cb1 \
+
+\fs36 \cb4 filename=$\{file%.*\}
+\fs28 \cb1 \
+
+\fs36 \cb4 extension=$\{file##*.\}
+\fs28 \cb1 \
+
+\fs36 \cb4 outfile=$\{filename\}.png
+\fs28 \cb1 \
+
+\fs36 \cb4 dot\uc0\u160 -Tpng\u160 $file\u160 -o\u160 $outfile
+\fs28 \cb1 \
+
+\fs36 \cb4 #show\uc0\u160 generate\u160 image\u160 file
+\fs28 \cb1 \
+
+\fs36 \cb4 eog\uc0\u160 $outfile\u160 &
+\fs28 \cb1 \cell \lastrow\row
+\pard\pardeftab720\qj\partightenfactor0
+
+\fs36 \cf3 \cb4 \'b8\'f8\'bd\'c5\'b1\'be
+\f4 dot.sh
+\f5 \'bc\'d3\'c9\'cf\'d6\'b4\'d0\'d0\'c8\'a8\'cf\'de\'a3\'ac\'c8\'bb\'ba\'f3\'b5\'f7\'d3\'c3\'c3\'fc\'c1\'ee\'be\'cd\'bc\'f2\'bb\'af\'ce\'aa\'a3\'ba
+\f1\fs32 \cb1 \
+
+\fs36 \cb4 ./dot.sh\uc0\u160 demo.dot
+\fs32 \cb1 \
+
+\fs36 \cb4 \'b5\'b1\'c8\'bb\'a3\'ac\'c8\'e7\'b9\'fb\'d5\'fb\'b8\'f6\'c3\'fc\'c1\'ee\'ba\'dc\'b3\'a3\'d3\'c3\'b5\'c4\'bb\'b0\'a3\'ac\'bf\'c9\'d2\'d4\'bd\'ab\'b8\'c4\'d7\'f7\'ba\'af\'ca\'fd\'c6\'e4\'d0\'b4\'b5\'bd
+\f4 .bashrc
+\f5 \'d6\'d0\'a1\'a3
+\f1\fs40 \cf2 \cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs36 \cf0 \kerning1\expnd0\expndtw0 \
+}

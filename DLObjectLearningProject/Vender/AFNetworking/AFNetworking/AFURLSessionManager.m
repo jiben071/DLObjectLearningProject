@@ -344,6 +344,7 @@ static NSString * const AFNSURLSessionTaskDidSuspendNotification = @"com.alamofi
 
 @implementation _AFURLSessionTaskSwizzling
 
+//https://blog.csdn.net/tsunamier/article/details/53204839
 + (void)load {
     /**
      WARNING: Trouble Ahead

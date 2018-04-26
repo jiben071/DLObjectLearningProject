@@ -1,0 +1,55 @@
+graph G{
+
+"黑海" [shape = circle, color = blueviolet, fontcolor = blueviolet, fontsize = 20];
+
+"黑海" -- "亚速海" [label = "刻赤海峡"];
+
+subgraph cluster_T{
+
+label = "黑海海峡";
+
+fontsize = 24;
+
+fillcolor = darkslategray;
+
+style = filled;
+
+fontcolor = white;
+
+node [fontcolor = white, color = white];
+
+"博斯普鲁斯海峡" -- "马尔马拉海" -- "达达尼尔海峡" [color = white];
+
+"博斯普鲁斯海峡" [shape = parallelogram];
+
+"达达尼尔海峡" [shape = parallelogram];
+
+}
+
+"黑海" -- "博斯普鲁斯海峡" [color = red ,penwidth = 2];
+
+"达达尼尔海峡" -- "爱琴海" [color = red ,penwidth = 2];
+
+subgraph cluster_M{
+
+label = "地中海海域";
+
+fontsize = 24;
+
+"西部地中海" [shape = Mcircle, style = filled, color = grey, fillcolor = aquamarine, fontsize = 20];
+
+"中部地中海" [shape = Mcircle, style = filled, color = grey, fillcolor = aquamarine, fontsize = 20];
+
+"直布罗陀海峡" [shape = parallelogram, fontcolor = red];
+
+"西西里海峡" [shape = parallelogram ];
+
+"中部地中海" -- {"爱琴海" "爱奥尼亚海" "西西里海峡"};
+
+"西部地中海" -- {"西西里海峡" "第勒安海" "利古里亚海" "伊比利海" "阿尔沃兰海"};
+
+"爱奥尼亚海" -- "亚得里亚海"; 30 "阿尔沃兰海" -- "直布罗陀海峡";
+
+}
+
+}

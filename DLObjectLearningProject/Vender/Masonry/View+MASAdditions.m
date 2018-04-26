@@ -11,16 +11,26 @@
 
 @implementation MAS_VIEW (MASAdditions)
 
+//返回值是一个数组（NSArray）,数组中所存放的就是当前视图中所添加的所有约束,此处数组中存储的是MASViewConstraint对象
+//新建约束并添加
 - (NSArray *)mas_makeConstraints:(void(^)(MASConstraintMaker *))block {
+    //关闭自动添加约束，我们要手动添加
     self.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    //创建MASConstraintMaker
     MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithView:self];
+    
+    //给maker中的各种成员属性，通过block进行值的回调，此处的Block就是钩取用户数据的钩子（参考设计模式中的“好莱坞原则”）
     block(constraintMaker);
-    return [constraintMaker install];
+    
+    //进行约束添加，并返回所Install的约束数组(Array<MASConstraint>)
+    return [constraintMaker install];//对用户指定的约束进行安装
 }
 
 - (NSArray *)mas_updateConstraints:(void(^)(MASConstraintMaker *))block {
     self.translatesAutoresizingMaskIntoConstraints = NO;
     MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithView:self];
+    //打开更新开关
     constraintMaker.updateExisting = YES;
     block(constraintMaker);
     return [constraintMaker install];
@@ -29,12 +39,13 @@
 - (NSArray *)mas_remakeConstraints:(void(^)(MASConstraintMaker *make))block {
     self.translatesAutoresizingMaskIntoConstraints = NO;
     MASConstraintMaker *constraintMaker = [[MASConstraintMaker alloc] initWithView:self];
+    //打开衣橱约束开关
     constraintMaker.removeExisting = YES;
     block(constraintMaker);
     return [constraintMaker install];
 }
 
-#pragma mark - NSLayoutAttribute properties -- 成员属性的Get方法，创建MASViewAttribute对象
+#pragma mark - NSLayoutAttribute properties
 
 - (MASViewAttribute *)mas_left {
     return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeLeft];
@@ -87,8 +98,6 @@
     };
 }
 
-#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
-
 - (MASViewAttribute *)mas_firstBaseline {
     return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeFirstBaseline];
 }
@@ -96,9 +105,7 @@
     return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeLastBaseline];
 }
 
-#endif
-
-#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000)
+#if TARGET_OS_IPHONE || TARGET_OS_TV
 
 - (MASViewAttribute *)mas_leftMargin {
     return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeLeftMargin];
@@ -132,24 +139,48 @@
     return [[MASViewAttribute alloc] initWithView:self layoutAttribute:NSLayoutAttributeCenterYWithinMargins];
 }
 
-#endif
-
-#if (__IPHONE_OS_VERSION_MAX_ALLOWED >= 110000) || (__TV_OS_VERSION_MAX_ALLOWED >= 110000)
-
 - (MASViewAttribute *)mas_safeAreaLayoutGuide {
-    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeBottom];
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeNotAnAttribute];
 }
-- (MASViewAttribute *)mas_safeAreaLayoutGuideTop {
-    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeTop];
+
+- (MASViewAttribute *)mas_safeAreaLayoutGuideLeading {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeLeading];
 }
-- (MASViewAttribute *)mas_safeAreaLayoutGuideBottom {
-    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeBottom];
+
+- (MASViewAttribute *)mas_safeAreaLayoutGuideTrailing {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeTrailing];
 }
+
 - (MASViewAttribute *)mas_safeAreaLayoutGuideLeft {
     return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeLeft];
 }
+
 - (MASViewAttribute *)mas_safeAreaLayoutGuideRight {
     return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeRight];
+}
+
+- (MASViewAttribute *)mas_safeAreaLayoutGuideTop {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeTop];
+}
+
+- (MASViewAttribute *)mas_safeAreaLayoutGuideBottom {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeBottom];
+}
+
+- (MASViewAttribute *)mas_safeAreaLayoutGuideWidth {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeWidth];
+}
+
+- (MASViewAttribute *)mas_safeAreaLayoutGuideHeight {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeHeight];
+}
+
+- (MASViewAttribute *)mas_safeAreaLayoutGuideCenterX {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeCenterX];
+}
+
+- (MASViewAttribute *)mas_safeAreaLayoutGuideCenterY {
+    return [[MASViewAttribute alloc] initWithView:self item:self.safeAreaLayoutGuide layoutAttribute:NSLayoutAttributeCenterY];
 }
 
 #endif
@@ -165,22 +196,23 @@
 }
 
 #pragma mark - heirachy
-
+//mas_closestCommonSuperview方法负责计算出两个视图的公共父视图，这个类似求两个数字的最小公倍数。
+//寻找当前视图与参数中的视图的共同父视图，因为约束是添加在父视图上的
 - (instancetype)mas_closestCommonSuperview:(MAS_VIEW *)view {
-    MAS_VIEW *closestCommonSuperview = nil;
+    MAS_VIEW *closestCommonSuperview = nil;//暂存父视图
 
     MAS_VIEW *secondViewSuperview = view;
-    while (!closestCommonSuperview && secondViewSuperview) {
+    while (!closestCommonSuperview && secondViewSuperview) {//遍历secondView的所有父视图
         MAS_VIEW *firstViewSuperview = self;
-        while (!closestCommonSuperview && firstViewSuperview) {
+        while (!closestCommonSuperview && firstViewSuperview) {//遍历当前视图的父视图
             if (secondViewSuperview == firstViewSuperview) {
-                closestCommonSuperview = secondViewSuperview;
+                closestCommonSuperview = secondViewSuperview;//找到了共同的父视图就结束循环
             }
             firstViewSuperview = firstViewSuperview.superview;
         }
         secondViewSuperview = secondViewSuperview.superview;
     }
-    return closestCommonSuperview;
+    return closestCommonSuperview;//返回共同的父视图
 }
 
 @end

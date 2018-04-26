@@ -44,6 +44,7 @@ typedef NSString * (^AFQueryStringSerializationBlock)(NSURLRequest *request, id 
     - parameter string: The string to be percent-escaped.
     - returns: The percent-escaped string.
  */
+//https://blog.csdn.net/tsunamier/article/details/53318846
 NSString * AFPercentEscapedStringFromString(NSString *string) {
     static NSString * const kAFCharactersGeneralDelimitersToEncode = @":#[]@"; // does not include "?" or "/" due to RFC 3986 - Section 3.4
     static NSString * const kAFCharactersSubDelimitersToEncode = @"!$&'()*+,;=";
@@ -80,7 +81,7 @@ NSString * AFPercentEscapedStringFromString(NSString *string) {
 }
 
 #pragma mark -
-
+//比如请求内容的编码，AFNetWorking中使用AFQueryStringPair类用来对网络请求数据进行编码（百分号编码）遵循rfc3986,
 @interface AFQueryStringPair : NSObject
 @property (readwrite, nonatomic, strong) id field;
 @property (readwrite, nonatomic, strong) id value;
@@ -269,6 +270,7 @@ static void *AFHTTPRequestSerializerObserverContext = &AFHTTPRequestSerializerOb
 // Workarounds for crashing behavior using Key-Value Observing with XCTest
 // See https://github.com/AFNetworking/AFNetworking/issues/2523
 
+//手动触发通知的函数，当调用以下属性的setter方法是会触发以下函数：
 - (void)setAllowsCellularAccess:(BOOL)allowsCellularAccess {
     [self willChangeValueForKey:NSStringFromSelector(@selector(allowsCellularAccess))];
     _allowsCellularAccess = allowsCellularAccess;
@@ -363,16 +365,54 @@ forHTTPHeaderField:(NSString *)field
                                 parameters:(id)parameters
                                      error:(NSError *__autoreleasing *)error
 {
+    //---增加断言  当参数为空的时候停止程序并打印错误日志
     NSParameterAssert(method);
     NSParameterAssert(URLString);
 
     NSURL *url = [NSURL URLWithString:URLString];
 
+    //如果根据传入的参数创建出来的url为空则停止程序打印错误日志
     NSParameterAssert(url);
 
+    //通过以上断言，成功通过之后根据正确的url创建mutableReqeust对象
     NSMutableURLRequest *mutableRequest = [[NSMutableURLRequest alloc] initWithURL:url];
-    mutableRequest.HTTPMethod = method;
+    mutableRequest.HTTPMethod = method;//设置mutableRequest的请求方式（GET、POST、HEAD、DELETE、PUT等）
 
+    /*
+     设置mutableRequest的属性 AFHTTPRequestSerializerObservedKeyPaths()函数创建参数数组
+     ①allowsCellularAccess 是否允许使用蜂窝网络
+     ②cachePolicy   缓存策略
+     
+     1:NSURLRequestUseProtocolCachePolicy （默认的缓存策略，如果本地缓存不存在,直接从服务端获取。如果缓存存在，会根据response中的Cache-Control字段判断下一步操作，如: Cache-Control字段为must-revalidata, 则询问服务端该数据是否有更新，无更新的话直接返回给用户缓存数据，若已更新，则请求服务端）
+     2:NSURLRequestReloadIgnoringLocalCacheData （忽略本地缓存数据，直接请求服务端）
+     3:NSURLRequestReloadIgnoringLocalAndRemoteCacheData（忽略本地缓存，代理服务器以及其他中介，直接请求源服务端）
+     4:NSURLRequestReloadIgnoringCacheData = NSURLRequestReloadIgnoringLocalCacheData
+     5:NSURLRequestReturnCacheDataElseLoad（有缓存就使用，不管其有效性(即忽略Cache-Control字段), 无则请求服务端）
+     6:NSURLRequestReturnCacheDataDontLoad （只使用cache数据，如果不存在cache，请求失败；用于没有建立网络连接离线模式）
+     7:NSURLRequestReloadRevalidatingCacheData //目前未实现
+     
+     ③HTTPShouldHandleCookies//设置请求不保存cookie
+     ④HTTPShouldUsePipelining //是否使用流水线式请求作业（当前请求的发送需要等待上一个请求发送处理完成之后）
+     ⑤networkServiceType    //网络服务类型表示当前请求是处理那种类型的业务
+     
+     1:NSURLNetworkServiceTypeDefault        // Standard internet traffic
+     2:NSURLNetworkServiceTypeVoIP           //Voice over IP control traffic
+     3:NSURLNetworkServiceTypeVideo          // Video traffic
+     4:NSURLNetworkServiceTypeBackground     // Background traffic
+     5:NSURLNetworkServiceTypeVoice          // Voice data
+     6:NSURLNetworkServiceTypeCallSignaling  // Call Signaling
+     timeoutInterval- 默认超时时间是60s
+     ]
+     
+     */
+    
+    
+    /*---mutableObservedChangedKeyPaths 这个数组在初始化的时候创建：
+     self.mutableObservedChangedKeyPaths = [NSMutableSet set];
+     使用set避免重复出现keypath
+     mutableObservedChangedKeyPaths 添加keypath的时机，NSKeyValueObserving
+     
+     */
     for (NSString *keyPath in AFHTTPRequestSerializerObservedKeyPaths()) {
         if ([self.mutableObservedChangedKeyPaths containsObject:keyPath]) {
             [mutableRequest setValue:[self valueForKeyPath:keyPath] forKey:keyPath];
@@ -477,12 +517,17 @@ forHTTPHeaderField:(NSString *)field
 
 #pragma mark - AFURLRequestSerialization
 
+/*
+ 解析原理：递归解析参数,直到出现参数中最终的结构为key :value(没有嵌套类型)时生成AFQueryStringPair对象，最终生成了所有key:value方式的AFQueryStringPair对象的数组，然后对数组中的每个对象进行百分号编码，最终使用&拼接，生成最终的query字符串。
+ */
 - (NSURLRequest *)requestBySerializingRequest:(NSURLRequest *)request
                                withParameters:(id)parameters
                                         error:(NSError *__autoreleasing *)error
 {
+    //验证原始request是否为空，如果为空就输出错误日志信息，并结束程序
     NSParameterAssert(request);
 
+    //1.深拷贝原始request对象，并设置新request对象的请求头参数
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
 
     [self.HTTPRequestHeaders enumerateKeysAndObjectsUsingBlock:^(id field, id value, BOOL * __unused stop) {
@@ -491,9 +536,10 @@ forHTTPHeaderField:(NSString *)field
         }
     }];
 
+    //2.解析并生成query string，此处可以实现自定义的解析方式，AFNetworking抛出的有接口 queryStringSerialization block对象，默认是按照上面的application/x-www-form-urlencoded 方式
     NSString *query = nil;
     if (parameters) {
-        if (self.queryStringSerialization) {
+        if (self.queryStringSerialization) {//如果自己实现了对参数的解析，就调用自定义的参数解析
             NSError *serializationError;
             query = self.queryStringSerialization(request, parameters, &serializationError);
 
@@ -505,15 +551,19 @@ forHTTPHeaderField:(NSString *)field
                 return nil;
             }
         } else {
+            //默认的解析方式有AFNetworking自己实现对参数的解析并生成query字符串
             switch (self.queryStringSerializationStyle) {
                 case AFHTTPRequestQueryStringDefaultStyle:
-                    query = AFQueryStringFromParameters(parameters);
+                    query = AFQueryStringFromParameters(parameters);//默认是按照上面的application/x-www-form-urlencoded 方式
                     break;
             }
         }
     }
 
+    //3.设置Content-Type和处理URI
     if ([self.HTTPMethodsEncodingParametersInURI containsObject:[[request HTTPMethod] uppercaseString]]) {
+        //普通GET，HEAD等，参数直接拼接在url后面用&分开
+        //如果是老三样（GET，HEAD，DELETE）按照RFC的规范这几种请求方式的请求参数是放在url query部分，显式的呈现在URI中，并且是默认使用application/x-www-form-urlencoded,
         if (query && query.length > 0) {
             mutableRequest.URL = [NSURL URLWithString:[[mutableRequest.URL absoluteString] stringByAppendingFormat:mutableRequest.URL.query ? @"&%@" : @"?%@", query]];
         }
@@ -522,9 +572,12 @@ forHTTPHeaderField:(NSString *)field
         if (!query) {
             query = @"";
         }
+        //如果是其它的(POST,PUT)则设置Content-Type为application/x-www-form-urlencoded同时设置请求体参数。
         if (![mutableRequest valueForHTTPHeaderField:@"Content-Type"]) {
             [mutableRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
         }
+        // 普通的POST请求参数，直接转换成NSData设置到HTTP的body中。
+        // 其它方式的请求如（POST PUT ）设置httpBody,默认设置Content-Type为form表单提交形式
         [mutableRequest setHTTPBody:[query dataUsingEncoding:self.stringEncoding]];
     }
 
@@ -534,6 +587,7 @@ forHTTPHeaderField:(NSString *)field
 #pragma mark - NSKeyValueObserving
 
 + (BOOL)automaticallyNotifiesObserversForKey:(NSString *)key {
+    //将添加观察者的keypaths改为手动通知，未添加观察者的使用系统的自动通知
     if ([AFHTTPRequestSerializerObservedKeyPaths() containsObject:key]) {
         return NO;
     }
@@ -541,12 +595,16 @@ forHTTPHeaderField:(NSString *)field
     return [super automaticallyNotifiesObserversForKey:key];
 }
 
+//接收到监听对象的变化之后会调用下面的函数：
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(__unused id)object
                         change:(NSDictionary *)change
                        context:(void *)context
 {
+     //此处只会处理AFHTTPRequestSerializerObserverContext 类型的监听，其它的不予处理
+    //另外AFHTTPRequestSerializerObserverContext是 static void * 类型，表示此变量旨在本类的编译单元可见，指向任何类型的指针变量，赋值之后（&AFHTTPRequestSerializerObserverContext）表示指向自己地址的指针
     if (context == AFHTTPRequestSerializerObserverContext) {
+        //只判断新值，如果新值不为null，将相应的keypath添加进mutableObservedChangedKeyPaths里面
         if ([change[NSKeyValueChangeNewKey] isEqual:[NSNull null]]) {
             [self.mutableObservedChangedKeyPaths removeObject:keyPath];
         } else {
@@ -1267,24 +1325,29 @@ typedef enum {
                                         error:(NSError *__autoreleasing *)error
 {
     NSParameterAssert(request);
-
+    //序列化原始请求对象：
+    //如果是（GET，HEAD，DELETE）方式直接调用父类的序列化解析：
     if ([self.HTTPMethodsEncodingParametersInURI containsObject:[[request HTTPMethod] uppercaseString]]) {
         return [super requestBySerializingRequest:request withParameters:parameters error:error];
     }
 
+    //如果是(POST,PUT)方式先序列化原始请求对象并设置请求参数：
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
 
+    //设置公共的请求头
     [self.HTTPRequestHeaders enumerateKeysAndObjectsUsingBlock:^(id field, id value, BOOL * __unused stop) {
         if (![request valueForHTTPHeaderField:field]) {
             [mutableRequest setValue:value forHTTPHeaderField:field];
         }
     }];
 
+    //2.设置Content-Type为application/json
     if (parameters) {
         if (![mutableRequest valueForHTTPHeaderField:@"Content-Type"]) {
             [mutableRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         }
 
+        //3.解析请求参数为jsondata并设置请求体参数：
         if (![NSJSONSerialization isValidJSONObject:parameters]) {
             if (error) {
                 NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedStringFromTable(@"The `parameters` argument is not valid JSON.", @"AFNetworking", nil)};

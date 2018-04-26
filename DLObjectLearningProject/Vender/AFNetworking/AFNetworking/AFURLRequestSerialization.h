@@ -64,17 +64,21 @@ FOUNDATION_EXPORT NSString * AFQueryStringFromParameters(NSDictionary *parameter
  The `AFURLRequestSerialization` protocol is adopted by an object that encodes parameters for a specified HTTP requests. Request serializers may encode parameters as query strings, HTTP bodies, setting the appropriate HTTP header fields as necessary.
 
  For example, a JSON request serializer may set the HTTP body of the request to a JSON representation, and set the `Content-Type` HTTP header field value to `application/json`.
+ 负责参数转换成NSMutableURLRequest类型，进行网络请求
+ 1.构建普通请求：格式化请求参数，生成HTTP Header
+ 2.构建multipart请求
  */
 @protocol AFURLRequestSerialization <NSObject, NSSecureCoding, NSCopying>
 
 /**
  Returns a request with the specified parameters encoded into a copy of the original request.
+ 对原始请求对象进行copy（即序列化原始request，因为从NSURLRequest定义可以知道内部已经实现了序列化协议，可以直接使用mutableCopy来序列化）
+ 
+ @param request The original request.  原始请求对象
+ @param parameters The parameters to be encoded.  需要编码的请求参数
+ @param error The error that occurred while attempting to encode the request parameters.  编码请求参数过程中出现的错误信息
 
- @param request The original request.
- @param parameters The parameters to be encoded.
- @param error The error that occurred while attempting to encode the request parameters.
-
- @return A serialized request.
+ @return A serialized request.  返回值为经过序列号之后的请求对象
  */
 - (nullable NSURLRequest *)requestBySerializingRequest:(NSURLRequest *)request
                                withParameters:(nullable id)parameters
@@ -97,6 +101,17 @@ typedef NS_ENUM(NSUInteger, AFHTTPRequestQueryStringSerializationStyle) {
  `AFHTTPRequestSerializer` conforms to the `AFURLRequestSerialization` & `AFURLResponseSerialization` protocols, offering a concrete base implementation of query string / URL form-encoded parameter serialization and default request headers, as well as response status code and content type validation.
 
  Any request or response serializer dealing with HTTP is encouraged to subclass `AFHTTPRequestSerializer` in order to ensure consistent default behavior.
+ http请求或回复序列化处理鼓励子类化AFHTTPRequestSerializer来确保一致的默认行为
+ 
+ 父类：AFHTTPRequestSerializer,二进制格式（query字符串转换成二进制）
+ 子类：
+ AFJSONRequestSerializer,Json格式（Json序列化成NSData类型）
+ AFPropertyListRequestSerializer，Plist（一种特殊的XML，解析起来相对容易）
+ 
+ AFNetworking支持三种media-type对应的http请求头字段Content-Type为：
+ ①application/x-www-form-urlencoded     ------>AFHTTPRequestSerializer
+ ②application/json                      ------>AFJSONRequestSerializer
+ ③application/x-plist                   ------>AFPropertyListRequestSerializer
  */
 @interface AFHTTPRequestSerializer : NSObject <AFURLRequestSerialization>
 
