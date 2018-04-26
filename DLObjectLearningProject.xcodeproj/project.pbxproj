@@ -242,6 +242,7 @@
 		B618CD9A209219AA003F880B /* Receiver.m in Sources */ = {isa = PBXBuildFile; fileRef = B618CD95209219AA003F880B /* Receiver.m */; };
 		B618CD9D209219EB003F880B /* DLCommandPatternViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B618CD9C209219EB003F880B /* DLCommandPatternViewController.m */; };
 		B618CD9F20921B41003F880B /* 设计模式.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = B618CD9E20921B41003F880B /* 设计模式.rtfd */; };
+		B618CDA120921D62003F880B /* 设计模式简介.md in Resources */ = {isa = PBXBuildFile; fileRef = B618CDA020921D61003F880B /* 设计模式简介.md */; };
 		B656CA6C1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B656CA6B1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m */; };
 		B656CA6F1FEAA826001573A0 /* DLImitateScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B656CA6E1FEAA826001573A0 /* DLImitateScrollView.m */; };
 		B656CA721FEAB065001573A0 /* DLGestureOnImitateScrollViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B656CA711FEAB065001573A0 /* DLGestureOnImitateScrollViewViewController.m */; };
@@ -748,6 +749,7 @@
 		B618CD9B209219EB003F880B /* DLCommandPatternViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLCommandPatternViewController.h; sourceTree = "<group>"; };
 		B618CD9C209219EB003F880B /* DLCommandPatternViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLCommandPatternViewController.m; sourceTree = "<group>"; };
 		B618CD9E20921B41003F880B /* 设计模式.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = "设计模式.rtfd"; sourceTree = "<group>"; };
+		B618CDA020921D61003F880B /* 设计模式简介.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "设计模式简介.md"; sourceTree = "<group>"; };
 		B656CA6A1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLPrivatePropertyVisitedViewController.h; sourceTree = "<group>"; };
 		B656CA6B1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLPrivatePropertyVisitedViewController.m; sourceTree = "<group>"; };
 		B656CA6D1FEAA826001573A0 /* DLImitateScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLImitateScrollView.h; sourceTree = "<group>"; };
@@ -996,6 +998,7 @@
 		105E5FBF208F104800B2696D /* DesignPatterns */ = {
 			isa = PBXGroup;
 			children = (
+				B618CDA020921D61003F880B /* 设计模式简介.md */,
 				B618CD9E20921B41003F880B /* 设计模式.rtfd */,
 				105E5FC3208F10BA00B2696D /* OBJECTIVE－C编程之道  IOS设计模式解析电子书+源代码.zip */,
 				105E5FC0208F106300B2696D /* CommandPattern */,
@@ -2087,6 +2090,7 @@
 				B6BED6971FE954670048F222 /* LaunchScreen.storyboard in Resources */,
 				10634759201AC3B700C62B54 /* README.markdown in Resources */,
 				1050A6EF205BB88700FCD555 /* RACTest.storyboard in Resources */,
+				B618CDA120921D62003F880B /* 设计模式简介.md in Resources */,
 				102969C12022B64000D01259 /* Digits.png in Resources */,
 				105394652091A75E00024723 /* attributeDemo.dot in Resources */,
 				109D9FE9205A1D2E00050253 /* 使用注意要点.rtf in Resources */,
