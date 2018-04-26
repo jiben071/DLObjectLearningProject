@@ -236,6 +236,12 @@
 		B6046CD1205D4E7E0043DE96 /* 快捷键.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B6046CD0205D4E7E0043DE96 /* 快捷键.rtf */; };
 		B60F3E9E1FEAB5AE00EB3154 /* NSObject+LogCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = B60F3E9D1FEAB5AE00EB3154 /* NSObject+LogCategory.m */; };
 		B60F3EA11FEAB81600EB3154 /* DLGCDCompareWithOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B60F3EA01FEAB81600EB3154 /* DLGCDCompareWithOperation.m */; };
+		B618CD97209219AA003F880B /* LighterCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = B618CD8A209219AA003F880B /* LighterCommand.m */; };
+		B618CD98209219AA003F880B /* DarkerCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = B618CD8D209219AA003F880B /* DarkerCommand.m */; };
+		B618CD99209219AA003F880B /* Invoker.m in Sources */ = {isa = PBXBuildFile; fileRef = B618CD93209219AA003F880B /* Invoker.m */; };
+		B618CD9A209219AA003F880B /* Receiver.m in Sources */ = {isa = PBXBuildFile; fileRef = B618CD95209219AA003F880B /* Receiver.m */; };
+		B618CD9D209219EB003F880B /* DLCommandPatternViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B618CD9C209219EB003F880B /* DLCommandPatternViewController.m */; };
+		B618CD9F20921B41003F880B /* 设计模式.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = B618CD9E20921B41003F880B /* 设计模式.rtfd */; };
 		B656CA6C1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B656CA6B1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m */; };
 		B656CA6F1FEAA826001573A0 /* DLImitateScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B656CA6E1FEAA826001573A0 /* DLImitateScrollView.m */; };
 		B656CA721FEAB065001573A0 /* DLGestureOnImitateScrollViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B656CA711FEAB065001573A0 /* DLGestureOnImitateScrollViewViewController.m */; };
@@ -728,6 +734,20 @@
 		B60F3E9D1FEAB5AE00EB3154 /* NSObject+LogCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LogCategory.m"; sourceTree = "<group>"; };
 		B60F3E9F1FEAB81600EB3154 /* DLGCDCompareWithOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLGCDCompareWithOperation.h; sourceTree = "<group>"; };
 		B60F3EA01FEAB81600EB3154 /* DLGCDCompareWithOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLGCDCompareWithOperation.m; sourceTree = "<group>"; };
+		B618CD8A209219AA003F880B /* LighterCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LighterCommand.m; sourceTree = "<group>"; };
+		B618CD8B209219AA003F880B /* DarkerCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DarkerCommand.h; sourceTree = "<group>"; };
+		B618CD8C209219AA003F880B /* LighterCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LighterCommand.h; sourceTree = "<group>"; };
+		B618CD8D209219AA003F880B /* DarkerCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DarkerCommand.m; sourceTree = "<group>"; };
+		B618CD8E209219AA003F880B /* CommandHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandHelper.h; sourceTree = "<group>"; };
+		B618CD90209219AA003F880B /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		B618CD91209219AA003F880B /* Invoker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Invoker.h; sourceTree = "<group>"; };
+		B618CD92209219AA003F880B /* InvokerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvokerProtocol.h; sourceTree = "<group>"; };
+		B618CD93209219AA003F880B /* Invoker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Invoker.m; sourceTree = "<group>"; };
+		B618CD95209219AA003F880B /* Receiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Receiver.m; sourceTree = "<group>"; };
+		B618CD96209219AA003F880B /* Receiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Receiver.h; sourceTree = "<group>"; };
+		B618CD9B209219EB003F880B /* DLCommandPatternViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLCommandPatternViewController.h; sourceTree = "<group>"; };
+		B618CD9C209219EB003F880B /* DLCommandPatternViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLCommandPatternViewController.m; sourceTree = "<group>"; };
+		B618CD9E20921B41003F880B /* 设计模式.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = "设计模式.rtfd"; sourceTree = "<group>"; };
 		B656CA6A1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLPrivatePropertyVisitedViewController.h; sourceTree = "<group>"; };
 		B656CA6B1FE95692001573A0 /* DLPrivatePropertyVisitedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLPrivatePropertyVisitedViewController.m; sourceTree = "<group>"; };
 		B656CA6D1FEAA826001573A0 /* DLImitateScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLImitateScrollView.h; sourceTree = "<group>"; };
@@ -976,6 +996,7 @@
 		105E5FBF208F104800B2696D /* DesignPatterns */ = {
 			isa = PBXGroup;
 			children = (
+				B618CD9E20921B41003F880B /* 设计模式.rtfd */,
 				105E5FC3208F10BA00B2696D /* OBJECTIVE－C编程之道  IOS设计模式解析电子书+源代码.zip */,
 				105E5FC0208F106300B2696D /* CommandPattern */,
 			);
@@ -986,6 +1007,11 @@
 			isa = PBXGroup;
 			children = (
 				105E5FC1208F108200B2696D /* 命令模式.rtf */,
+				B618CD89209219AA003F880B /* Command */,
+				B618CD8F209219AA003F880B /* Invoke */,
+				B618CD94209219AA003F880B /* Receiver */,
+				B618CD9B209219EB003F880B /* DLCommandPatternViewController.h */,
+				B618CD9C209219EB003F880B /* DLCommandPatternViewController.m */,
 			);
 			path = CommandPattern;
 			sourceTree = "<group>";
@@ -1812,6 +1838,38 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B618CD89209219AA003F880B /* Command */ = {
+			isa = PBXGroup;
+			children = (
+				B618CD8A209219AA003F880B /* LighterCommand.m */,
+				B618CD8B209219AA003F880B /* DarkerCommand.h */,
+				B618CD8C209219AA003F880B /* LighterCommand.h */,
+				B618CD8D209219AA003F880B /* DarkerCommand.m */,
+				B618CD8E209219AA003F880B /* CommandHelper.h */,
+			);
+			path = Command;
+			sourceTree = "<group>";
+		};
+		B618CD8F209219AA003F880B /* Invoke */ = {
+			isa = PBXGroup;
+			children = (
+				B618CD90209219AA003F880B /* Singleton.h */,
+				B618CD91209219AA003F880B /* Invoker.h */,
+				B618CD92209219AA003F880B /* InvokerProtocol.h */,
+				B618CD93209219AA003F880B /* Invoker.m */,
+			);
+			path = Invoke;
+			sourceTree = "<group>";
+		};
+		B618CD94209219AA003F880B /* Receiver */ = {
+			isa = PBXGroup;
+			children = (
+				B618CD95209219AA003F880B /* Receiver.m */,
+				B618CD96209219AA003F880B /* Receiver.h */,
+			);
+			path = Receiver;
+			sourceTree = "<group>";
+		};
 		B6BED67E1FE954670048F222 = {
 			isa = PBXGroup;
 			children = (
@@ -2033,6 +2091,7 @@
 				105394652091A75E00024723 /* attributeDemo.dot in Resources */,
 				109D9FE9205A1D2E00050253 /* 使用注意要点.rtf in Resources */,
 				1053945B20917D4600024723 /* mode.dot in Resources */,
+				B618CD9F20921B41003F880B /* 设计模式.rtfd in Resources */,
 				1073A9D8207C9FF00080EEB0 /* 开发生活中遇到的问题.rtf in Resources */,
 				1053945D20917DA700024723 /* 教程.rtf in Resources */,
 				105394612091A30800024723 /* rank.dot in Resources */,
@@ -2300,6 +2359,7 @@
 				10B0C7DC1FEBB33800C37675 /* GPBDescriptor.m in Sources */,
 				10B0C5E81FEBA92C00C37675 /* BLE.m in Sources */,
 				10929B3120526035003DF3BC /* DLSubscriptionComprehandViewController.m in Sources */,
+				B618CD99209219AA003F880B /* Invoker.m in Sources */,
 				1083812E2080A4F300F168C0 /* LXGradientProcessView.m in Sources */,
 				105CFC39206B834000F0AD1F /* DLMVVMViewModel.m in Sources */,
 				10B0C7C01FEBB33800C37675 /* FileModel.m in Sources */,
@@ -2352,6 +2412,7 @@
 				10271995201EF6A20071EC9A /* HSTimer.m in Sources */,
 				1000E6B5208DABAC0028427C /* UIProgressView+AFNetworking.m in Sources */,
 				1083818C2086ED6700F168C0 /* UIImageView+WebCache.m in Sources */,
+				B618CD9D209219EB003F880B /* DLCommandPatternViewController.m in Sources */,
 				10B0C5E71FEBA92C00C37675 /* BLEManage.m in Sources */,
 				10B0C5CC1FEB851D00C37675 /* UIViewController+HeavyTaskSimulateCategory.m in Sources */,
 				10B98C752059106F001D1526 /* MovieModel.m in Sources */,
@@ -2371,6 +2432,7 @@
 				105E5FE4208F32AA00B2696D /* MASLayoutConstraint.m in Sources */,
 				105E5FE6208F32AA00B2696D /* View+MASAdditions.m in Sources */,
 				1083817C2086ED6700F168C0 /* UIImage+ForceDecode.m in Sources */,
+				B618CD9A209219AA003F880B /* Receiver.m in Sources */,
 				1073A9D2207C615A0080EEB0 /* AMAFNetworkingSwizzleHandle.m in Sources */,
 				10EDD8712046B61C003EA6B9 /* DLRacBasicCourse.m in Sources */,
 				105E5FE2208F32AA00B2696D /* MASCompositeConstraint.m in Sources */,
@@ -2394,6 +2456,7 @@
 				10B0C7C41FEBB33800C37675 /* CloudTable.m in Sources */,
 				10B0C7C31FEBB33800C37675 /* BaseModel.m in Sources */,
 				10634760201AC3B700C62B54 /* packethub_utils.m in Sources */,
+				B618CD97209219AA003F880B /* LighterCommand.m in Sources */,
 				108381792086ED6700F168C0 /* SDWebImageManager.m in Sources */,
 				10B0C7C61FEBB33800C37675 /* ModifyTable.m in Sources */,
 				10B0C7E11FEBB33800C37675 /* GPBUnknownFieldSet.m in Sources */,
@@ -2414,6 +2477,7 @@
 				10EDD89A20493FE5003EA6B9 /* DLCaculatorMaker.m in Sources */,
 				10B0C7C11FEBB33800C37675 /* DataBase.m in Sources */,
 				1000E6B7208DABAC0028427C /* AFNetworkActivityIndicatorManager.m in Sources */,
+				B618CD98209219AA003F880B /* DarkerCommand.m in Sources */,
 				1063475D201AC3B700C62B54 /* AsynSocketManager.m in Sources */,
 				108381772086ED6700F168C0 /* UIImage+WebP.m in Sources */,
 				109D9FEC205AA3A800050253 /* DLRACExperienceViewController.m in Sources */,
