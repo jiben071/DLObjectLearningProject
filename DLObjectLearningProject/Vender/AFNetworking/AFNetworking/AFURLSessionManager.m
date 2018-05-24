@@ -38,8 +38,10 @@ static dispatch_queue_t url_session_manager_creation_queue() {
     return af_url_session_manager_creation_queue;
 }
 
+//安全的创建task：
 static void url_session_manager_create_task_safely(dispatch_block_t block) {
     if (NSFoundationVersionNumber < NSFoundationVersionNumber_With_Fixed_5871104061079552_bug) {
+         //在并发环境中创建task，task的identifier 有可能相同，因此需要在iOSbug版本中改为串行创建，后台类型的session是串行顺序的创建task
         // Fix of bug
         // Open Radar:http://openradar.appspot.com/radar?id=5871104061079552 (status: Fixed in iOS8)
         // Issue about:https://github.com/AFNetworking/AFNetworking/issues/2093
@@ -683,9 +685,16 @@ static NSString * const AFNSURLSessionTaskDidSuspendNotification = @"com.alamofi
 #pragma mark -
 
 - (void)invalidateSessionCancelingTasks:(BOOL)cancelPendingTasks {
+    //西面的两个函数对单例session 不起作用
     if (cancelPendingTasks) {
+        /*invalidateAndCancel 作用同 finishTasksAndInvalidate，
+         cancel可以取消所有的未完成的任务，
+         cancellation受task的状态约束，在调用cancel的时候，有可能许多task已经完成了*/
         [self.session invalidateAndCancel];
     } else {
+        /*存在执行中的task继续执行，已经完成的实效，不允许创建新的task，
+         当失效一个background session时，在URLSession:didBecomeInvalidWithError:还没执行之前，
+         不能使用相同的identifier创建新的background session*/
         [self.session finishTasksAndInvalidate];
     }
 }
@@ -743,6 +752,7 @@ static NSString * const AFNSURLSessionTaskDidSuspendNotification = @"com.alamofi
     url_session_manager_create_task_safely(^{
         uploadTask = [self.session uploadTaskWithRequest:request fromFile:fileURL];
         
+        //在iOS7系统，从指定的本地文件创建上传任务可能会为nil，AF默认尝试创建3次：
         // uploadTask may be nil on iOS7 because uploadTaskWithRequest:fromFile: may return nil despite being documented as nonnull (https://devforums.apple.com/message/926113#926113)
         if (!uploadTask && self.attemptsToRecreateUploadTasksForBackgroundSessions && self.session.configuration.identifier) {
             for (NSUInteger attempts = 0; !uploadTask && attempts < AFMaximumNumberOfAttemptsToRecreateBackgroundSessionUploadTask; attempts++) {
@@ -836,6 +846,9 @@ static NSString * const AFNSURLSessionTaskDidSuspendNotification = @"com.alamofi
     self.sessionDidBecomeInvalid = block;
 }
 
+/*
+  开放接口，当网络链接需要认证的时候调用，默认实现单向认证（客户端认证服务器）,如果需要实现双向认证（客户端和服务器都互相认证）实现此函数，根据苹果挂网的配置：
+ */
 - (void)setSessionDidReceiveAuthenticationChallengeBlock:(NSURLSessionAuthChallengeDisposition (^)(NSURLSession *session, NSURLAuthenticationChallenge *challenge, NSURLCredential * __autoreleasing *credential))block {
     self.sessionDidReceiveAuthenticationChallenge = block;
 }

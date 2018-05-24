@@ -468,26 +468,33 @@ forHTTPHeaderField:(NSString *)field
     NSParameterAssert(request.HTTPBodyStream);
     NSParameterAssert([fileURL isFileURL]);
 
+    //获取原始请求对象的HTTPBodyStream
     NSInputStream *inputStream = request.HTTPBodyStream;
+    //根据请求url创建NSOutputStream
     NSOutputStream *outputStream = [[NSOutputStream alloc] initWithURL:fileURL append:NO];
     __block NSError *error = nil;
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //指配输入输出流的runloopmode
         [inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
         [outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
 
+        //配置好输入输出流之后打开输入输出流，开始读写数据
         [inputStream open];
         [outputStream open];
 
+        //读写数据逻辑
         while ([inputStream hasBytesAvailable] && [outputStream hasSpaceAvailable]) {
             uint8_t buffer[1024];
 
+            //向内存中写入数据
             NSInteger bytesRead = [inputStream read:buffer maxLength:1024];
             if (inputStream.streamError || bytesRead < 0) {
                 error = inputStream.streamError;
                 break;
             }
 
+            //从内存中读数据到远程url
             NSInteger bytesWritten = [outputStream write:buffer maxLength:(NSUInteger)bytesRead];
             if (outputStream.streamError || bytesWritten < 0) {
                 error = outputStream.streamError;
@@ -499,9 +506,11 @@ forHTTPHeaderField:(NSString *)field
             }
         }
 
+        //读写结束之后关闭流
         [outputStream close];
         [inputStream close];
 
+        //完成之后回调成功
         if (handler) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 handler(error);
@@ -509,6 +518,7 @@ forHTTPHeaderField:(NSString *)field
         }
     });
 
+    //创建request的副本  
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
     mutableRequest.HTTPBodyStream = nil;
 
@@ -737,9 +747,18 @@ NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
         return nil;
     }
 
+    //持有外部创建的NSMutableURLRequest
     self.request = urlRequest;
+    //设置字符串转换成NSdata的编码（使用utf8），在创建httpbodystream的每一个分段（AFHTTPBodyPart）的时候使用到此编码
     self.stringEncoding = encoding;
+    /*
+     设置请求体的分割符：[NSString stringWithFormat:@"Boundary+%08X%08X", arc4random(), arc4random()];
+     请求头MIMEType用到：（[self.request setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", self.boundary] forHTTPHeaderField:@"Content-Type"];）
+     */
     self.boundary = AFCreateMultipartFormBoundary();
+    /*
+     初始化AFMultipartBodyStream request的httpBodyStream用到（[self.request setHTTPBodyStream:self.bodyStream]）
+     */
     self.bodyStream = [[AFMultipartBodyStream alloc] initWithStringEncoding:encoding];
 
     return self;
@@ -835,6 +854,7 @@ NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
     [self.bodyStream appendHTTPBodyPart:bodyPart];
 }
 
+//自定义添加分段数据信息（可以自定义参数设置每个片段的信息）
 - (void)appendPartWithFileData:(NSData *)data
                           name:(NSString *)name
                       fileName:(NSString *)fileName
@@ -856,6 +876,7 @@ NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
 {
     NSParameterAssert(name);
 
+    //设置每段数据的头信息
     NSMutableDictionary *mutableHeaders = [NSMutableDictionary dictionary];
     [mutableHeaders setValue:[NSString stringWithFormat:@"form-data; name=\"%@\"", name] forKey:@"Content-Disposition"];
 
@@ -867,14 +888,15 @@ NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
 {
     NSParameterAssert(body);
 
+    //构造请求体
     AFHTTPBodyPart *bodyPart = [[AFHTTPBodyPart alloc] init];
-    bodyPart.stringEncoding = self.stringEncoding;
-    bodyPart.headers = headers;
-    bodyPart.boundary = self.boundary;
-    bodyPart.bodyContentLength = [body length];
+    bodyPart.stringEncoding = self.stringEncoding;//计算文字大小（字符串转换为data）的编码
+    bodyPart.headers = headers;//分段请求头信息
+    bodyPart.boundary = self.boundary;//分段字符串
+    bodyPart.bodyContentLength = [body length];//请求体每段内容的数据长度（比如发送的内容是图片就是图片的大小）
     bodyPart.body = body;
 
-    [self.bodyStream appendHTTPBodyPart:bodyPart];
+    [self.bodyStream appendHTTPBodyPart:bodyPart];//将构造好的分段数据添加到AFMultipartBodyStream 里的数组中
 }
 
 - (void)throttleBandwidthWithPacketSize:(NSUInteger)numberOfBytes
@@ -884,16 +906,21 @@ NSTimeInterval const kAFUploadStream3GSuggestedDelay = 0.2;
     self.bodyStream.delay = delay;
 }
 
+//设置最终的网络请求参数
 - (NSMutableURLRequest *)requestByFinalizingMultipartFormData {
-    if ([self.bodyStream isEmpty]) {
+    if ([self.bodyStream isEmpty]) {//如果用户未设置任何参数，返回原始默认的（普通form）请求方式
         return self.request;
     }
 
     // Reset the initial and final boundaries to ensure correct Content-Length
+    // 循环设置请求体中每个片段的起始标示（因为起始的分割符合结束的分隔符是不一样的：（起始：  --------分隔符）（结束： ------分隔符-----））
     [self.bodyStream setInitialAndFinalBoundaries];
+    //设置请求体httpBodyStream
     [self.request setHTTPBodyStream:self.bodyStream];
 
+    //设置请求的MIMEType
     [self.request setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", self.boundary] forHTTPHeaderField:@"Content-Type"];
+    //设置请求发送的数据长度
     [self.request setValue:[NSString stringWithFormat:@"%llu", [self.bodyStream contentLength]] forHTTPHeaderField:@"Content-Length"];
 
     return self.request;
@@ -1154,21 +1181,22 @@ typedef enum {
     return [NSString stringWithString:headerString];
 }
 
+//计算请求内容的length（包含每个段的headers和内容）
 - (unsigned long long)contentLength {
     unsigned long long length = 0;
 
-    //初始边界
+    //开始分段标识
     NSData *encapsulationBoundaryData = [([self hasInitialBoundary] ? AFMultipartFormInitialBoundary(self.boundary) : AFMultipartFormEncapsulationBoundary(self.boundary)) dataUsingEncoding:self.stringEncoding];
     length += [encapsulationBoundaryData length];
 
-    //头
+    //header
     NSData *headersData = [[self stringForHeaders] dataUsingEncoding:self.stringEncoding];
     length += [headersData length];
 
-    //主体
+    //内容（图片、文本、视频等）
     length += _bodyContentLength;
 
-    //结束边界
+    //结束分段标识
     NSData *closingBoundaryData = ([self hasFinalBoundary] ? [AFMultipartFormFinalBoundary(self.boundary) dataUsingEncoding:self.stringEncoding] : [NSData data]);
     length += [closingBoundaryData length];
 

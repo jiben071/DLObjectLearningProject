@@ -280,11 +280,13 @@ forHTTPHeaderField:(NSString *)field;
 
 /**
  Creates an `NSMutableURLRequest` by removing the `HTTPBodyStream` from a request, and asynchronously writing its contents into the specified file, invoking the completion handler when finished.
+ 创建一个NSMutableURLRequest并删除request的HTTPBodyStream，在请求结束的回调中把数据异步的方式写到指定的文件中
 
  @param request The multipart form request. The `HTTPBodyStream` property of `request` must not be `nil`.
  @param fileURL The file URL to write multipart form contents to.
  @param handler A handler block to execute.
 
+ 在与Amazon S3服务交互时会出现当请求体内容为streaming时会导致请求头无法发送Content-Length字段,解决办法是使用下面的方法创建request请求取代通过上面你的方式创建的请求或者其他的带有httpbodystream的方式的request，创建一个原始请求对象的副本，并把HTTPBodyStream设置为nil。
  @discussion There is a bug in `NSURLSessionTask` that causes requests to not send a `Content-Length` header when streaming contents from an HTTP body, which is notably problematic when interacting with the Amazon S3 webservice. As a workaround, this method takes a request constructed with `multipartFormRequestWithMethod:URLString:parameters:constructingBodyWithBlock:error:`, or any other request with an `HTTPBodyStream`, writes the contents to the specified file and returns a copy of the original request with the `HTTPBodyStream` property set to `nil`. From here, the file can either be passed to `AFURLSessionManager -uploadTaskWithRequest:fromFile:progress:completionHandler:`, or have its contents read into an `NSData` that's assigned to the `HTTPBody` property of the request.
 
  @see https://github.com/AFNetworking/AFNetworking/issues/1398

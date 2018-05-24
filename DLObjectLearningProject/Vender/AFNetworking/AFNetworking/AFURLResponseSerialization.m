@@ -60,6 +60,7 @@ static BOOL AFErrorOrUnderlyingErrorHasCodeInDomain(NSError *error, NSInteger co
     return NO;
 }
 
+//json解析时去除空值功能
 static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingOptions readingOptions) {
     if ([JSONObject isKindOfClass:[NSArray class]]) {
         NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:[(NSArray *)JSONObject count]];
@@ -78,7 +79,12 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
                 mutableDictionary[key] = AFJSONObjectByRemovingKeysWithNullValues(value, readingOptions);
             }
         }
-
+        /*
+         NSJSONReadingMutableContainers：返回可变容器
+         NSJSONReadingMutableLeaves：返回的JSON对象中字符串的值为NSMutableString
+         NSJSONReadingAllowFragments：允许JSON字符串最外层既不是NSArray也不是NSDictionary，但必须是有效的JSON Fragment。例如使用这个选项可以解析 @“123” 这样的字符串
+         
+         */
         return (readingOptions & NSJSONReadingMutableContainers) ? mutableDictionary : [NSDictionary dictionaryWithDictionary:mutableDictionary];
     }
 
@@ -767,6 +773,7 @@ static UIImage * AFInflatedImageFromResponseWithDataAtScale(NSHTTPURLResponse *r
                            data:(NSData *)data
                           error:(NSError *__autoreleasing *)error
 {
+    //循环解析，遇见可以解析的类解析数据，如果解析数据为空，继续执行其它的解析方式
     for (id <AFURLResponseSerialization> serializer in self.responseSerializers) {
         if (![serializer isKindOfClass:[AFHTTPResponseSerializer class]]) {
             continue;

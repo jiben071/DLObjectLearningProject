@@ -23,9 +23,9 @@
 #import <Security/Security.h>
 
 typedef NS_ENUM(NSUInteger, AFSSLPinningMode) {
-    AFSSLPinningModeNone,//代表无条件信任服务器的证书
-    AFSSLPinningModePublicKey,//代表会对服务器返回的证书中的PublicKey进行验证
-    AFSSLPinningModeCertificate,//代表会对服务器返回的证书同本地证书全部进行校验
+    AFSSLPinningModeNone,//客户端本地预置证书不对服务器证书进行任何验证
+    AFSSLPinningModePublicKey,//客户端本地预置证书对服务器证书进行公钥验证
+    AFSSLPinningModeCertificate,//客户端本地预置证书不对服务器证书进行严格的证书验证
 };
 
 /**
@@ -94,6 +94,7 @@ NS_ASSUME_NONNULL_BEGIN
  返回指定bundle中的证书。如果使用AFNetworking的证书验证 ，就必须实现此方法，并且使用policyWithPinningMode:withPinnedCertificates方法来创建security policy。
 
  @return The certificates included in the given bundle.
+ 创建指定目录下面的证书集合
  */
 + (NSSet <NSData *> *)certificatesInBundle:(NSBundle *)bundle;
 
@@ -105,7 +106,7 @@ NS_ASSUME_NONNULL_BEGIN
  Returns the shared default security policy, which does not allow invalid certificates, validates domain name, and does not validate against pinned certificates or public keys.
 
  @return The default security policy.
- 默认的security policy。其认证设置为：不允许无效或过期的证书；验证domain域名；不对证书和公钥进行验证。
+ 默认完全策略, 不允许无效证书, 验证域名, 不验证固定证书或公共密钥
  */
 + (instancetype)defaultPolicy;
 
@@ -143,8 +144,10 @@ NS_ASSUME_NONNULL_BEGIN
  This method should be used when responding to an authentication challenge from a server.
  响应来自服务器的身份验证质询时应使用此方法。
 
- @param serverTrust The X.509 certificate trust of the server.
- @param domain The domain of serverTrust. If `nil`, the domain will not be validated.
+ 当响应来自服务器身份验证的挑战时需要用此方法根据安全策略来指定服务器信任是否应该被接受
+ 
+ @param serverTrust The X.509 certificate trust of the server.符合X.509标准的服务器证书信任
+ @param domain The domain of serverTrust. If `nil`, the domain will not be validated.受信的服务域名，如果为空，此域名将不被验证
 
  @return Whether or not to trust the server.
  
@@ -152,6 +155,9 @@ NS_ASSUME_NONNULL_BEGIN
  第二个参数：domain是发放信任证书的服务器域名。
  这个方法是基于security policy来验证指定的服务器是否可信任。这个方法应该在响应服务器身份验证挑战时使用。
  属于核心方法
+ 
+ 验证服务器证书
+ 
  */
 - (BOOL)evaluateServerTrust:(SecTrustRef)serverTrust
                   forDomain:(nullable NSString *)domain;
